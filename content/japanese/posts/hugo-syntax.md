@@ -20,9 +20,6 @@ toc: true
 Markdown の文法を説明します。
 <!--more-->
 
-
-
-
 ## パラグラフと改行
 
 単純にパラグラフは、
@@ -49,9 +46,7 @@ at the end of the line, or insert `<br/>`.
 
 ``` markdown
 # これは H1
-
 ## これは H2
-
 ###### これは H6
 ```
 

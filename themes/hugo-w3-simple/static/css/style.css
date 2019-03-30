@@ -56,12 +56,19 @@ a:hover {
     text-align: left;
 
 }
-code,kbd,pre,samp{
+code,kbd,samp{
     width:auto;
     font-family: "Courier New", Consolas, monospace;
     overflow-x:auto;
-    padding:8px 12px;
+    font-size: 1rem;
+}
 
+pre,samp{
+    width: auto;
+    font-family: "Courier New", Consolas, monospace;
+    overflow-x:auto;
+    font-size: 1rem;
+    padding: 1rem 1rem 1rem 1rem ;
 }
 
 font-size:1rem
@@ -503,6 +510,3 @@ dd {
     margin-inline-start: 40px;
 }
 
-.highlight{
-    font-family: "Courier New", Consolas, monospace;
-}

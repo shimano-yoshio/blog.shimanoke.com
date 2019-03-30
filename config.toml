@@ -14,8 +14,9 @@ hasCJKLanguage = true
 # See https://gohugo.io/content-management/syntax-highlighting/
 pygmentsCodeFences = true # Enable syntax highlighting with GitHub flavoundred code fences
 # pygmentsUseClasses = true # Use CSS classes to format highlighted code
-pygmentsCodefencesGuessSyntax = true
+# pygmentsCodefencesGuessSyntax = true
 # pygmentsOptions = "linenos=table"
+# pygmentsOptions = "linenos=inline"
 # Pygment のスタイル
 pygmentsStyle = "monokai"
 # pygmentsStyle = "perldoc"
