@@ -1,0 +1,18 @@
+{{- $author := .Get "author" -}}
+{{- $width := .Get "width" -}}
+<div class="w3-panel w3-card-4 w3-light-grey"
+  {{ if eq $width ""}}
+     style="width:50%"
+  {{ else }}
+     style="width:{{$width}}"
+  {{ end }}>
+  <i class="fa fa-quote-left w3-large w3-text-red"></i><br>
+  <p class="w3-large">
+    {{ .Inner  }}
+  </p>
+{{ with $author }}
+  <p class="w3-large w3-right">by: {{.}}</p><br>
+{{ end }}
+<i class="fa fa-quote-right w3-large w3-text-red"></i><br>
+</div>
+

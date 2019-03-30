@@ -1,0 +1,375 @@
+#+title: Hugo を使う
+#+author: Yoshio Shimano
+#+STARTUP: indent
+#+OPTIONS: H:6 num:t
+#+hugo_type: post
+#+hugo_type: 
+#+hugo_base_dir: ..
+#+hugo_section: japanese/posts
+#+hugo_auto_set_lastmod: t
+#+options: creator:nil author:t
+#+LANGUAGE: en
+* はじめに
+:PROPERTIES:
+:EXPORT_FILE_NAME: _index.ja.md
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:ID:       1a18bbcb-225d-461a-80b1-9f5285829f06
+:END:
+** なぜ Hugo を使うのか？
+:PROPERTIES:
+:ID:       29177fb9-4db4-4307-88f6-9a525a0443cf
+:END:
+
+#+begin_quote
+早い!
+#+end_quote
+
+の一言につきます。
+ポストが少ないのであれば、 Hugo のサイトのリビルドは一瞬です。
+
+
+
+** なぜ ox-hugo を使うのか？
+:PROPERTIES:
+:EXPORT_FILE_NAME: about_ox_hugo.ja.md
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:ID:       4dfbbb61-5ac6-4d52-bf29-bfcafb477fcd
+:END:
+
+ox-hugo は Org mode から Markdown へのエクスポートバックエンドです。
+
+Hugo は Markdown で書くのが普通ですが、私は Markdown に慣れることが
+できません。そこで、 ox-hugo というパッケージを使って、
+Org-mode のファイルを Markdown に変換しています。
+この ox-hugo というパッケージがなかなか優れもので、
+やりたいことはほとんどできます。
+
+それでも、自分の好みの機能がないので、 ox-hugo をカスタマイズして
+使っています。
+* ox-hugo でのプリアンブルの設定方法
+:PROPERTIES:
+:ID:       91f6c028-eb4a-4ef7-aa22-5c89b7f385ab
+:END:
+
+#+begin_src org
+#+OPTIONS: H:6 num:t
+#+end_src
+
+- H:6 :: 見出しのレベルを 6 まで出力します。
+- num::t :: 見出しに番号をつけます。
+* このサイトでで使える記法
+:PROPERTIES:
+:EXPORT_FILE_NAME: /contents/Japanese/posts/ox-hugo-syntax.ja.md
+:ID:       05b8bdfa-816a-4eba-b366-4771e28c43cf
+:END:
+
+** 図
+:PROPERTIES:
+:ID:       3fa4834f-1cdb-45b8-a7fd-06ac2878930f
+:END:
+
+これは:
+
+#+begin_src org
+  ,#+ATTR_HTML: :alt test :width 25%
+  ,#+caption: Reddit Icon
+  [[file:reddit.svg]]
+#+end_src
+
+次に変換されます:
+
+#+ATTR_HTML: :alt test :width 25%
+#+caption: Reddit Icon
+
+
+** Babel
+:PROPERTIES:
+:ID:       fa5afc3c-362c-409c-abc3-13541c7154fd
+:END:
+
+Org-mode の中でプログラミング言語を書くことができます。
+それだけではなく、 Org-mode の中でプログラムを実行することが
+できます。
+
+この Ditaa のプログラムは:
+
+#+BEGIN_SRC ditaa :file hello-world.png
++--------------+
+|              |
+| Hello World! |
+|              |
++--------------+
+#+END_SRC
+
+このように変換されます:
+
+#+name: fig:first
+#+caption: Ditaa の出力
+#+RESULTS:
+[[file:hello-world.png]]
+
+
+** 数式
+:PROPERTIES:
+:EXPORT_FILE_NAME: equqtions.ja.md
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :mathjax true
+:ID:       224e77c5-0eff-47a0-a45c-0282c68663b1
+:END:
+
+*** インライン数式
+:PROPERTIES:
+:ID:       d10aa4b8-8fe1-44df-a618-12812338ef7b
+:END:
+例えば下の Org mode の断片は:
+
+#+begin_src org
+LaTeX formatted equation: \( E = -J \sum_{i=1}^N s_i s_{i+1} \)
+#+end_src
+
+これは Hugo がレンダリングする HTML の中でこのように見えます:
+
+LaTeX formatted equation: \( E = -J \sum_{i=1}^N s_i s_{i+1 }\)
+*** $\LaTeX$ の数式
+:PROPERTIES:
+:ID:       a818c83d-6650-4866-b23a-bada526e7e19
+:END:
+=ox-hugo= は $\LaTeX$ の環境をサポートしています。
+
+下の Org mode の断片は:
+
+#+begin_src org
+  \begin{equation}
+  \label{eq:0}
+  C = W\log_{2} (1+\mathrm{SNR})
+  \end{equation}
+#+end_src
+
+次のようにエクスポートされます:
+
+\begin{equation}
+\label{eq:1}
+C = W\log_{2} (1+\mathrm{SNR})
+\end{equation}
+
+数式の参照も動きます。
+だから =\ref{eq:1}= は [[ref:eq:1]] としてレンダリングされます
+** コードブロック
+:PROPERTIES:
+:EXPORT_FILE_NAME: source-blocks.ja.md
+:ID:       cdd1ed11-7489-4191-9f44-e2ebd37ac903
+:END:
+
+いくつかのコードの例です:
+
+#+begin_src emacs-lisp
+(message "Hello")
+#+end_src
+
+#+BEGIN_SRC sh 
+ls -al
+#+END_SRC
+
+
+#+CAPTION: Ruby の例
+#+BEGIN_SRC ruby :results output
+print("test")
+#+END_SRC
+
+上の Ruby コードの出力です:
+
+#+RESULTS:
+#+begin_example
+test
+#+end_example
+
+
+** 表
+:PROPERTIES:
+:EXPORT_FILE_NAME: table.ja.md
+:ID:       b97e25ed-2a66-4e73-bf00-8811d320c208
+:END:
+
+これは ([[tab:test1]]):
+
+#+begin_src org
+#+name: tab:test1
+#+caption: 表のテスト
+|---+---+---|
+| a | b | c |
+|---+---+---|
+| 1 | 2 | 3 |
+| 1 | 2 | 3 |
+| 1 | 2 | 3 |
+|---+---+---|
+#+end_src
+
+このように出力されます:
+
+#+name: tab:test1
+#+caption: 表のテスト
+|---+---+---|
+| a | b | c |
+|---+---+---|
+| 1 | 2 | 3 |
+| 1 | 2 | 3 |
+| 1 | 2 | 3 |
+|---+---+---|
+
+** 引用
+:PROPERTIES:
+:ID:       4e58b057-f0ce-49c1-9b26-9c42d0a35b91
+:END:
+
+*** 素の quote ブロック
+:PROPERTIES:
+:ID:       61be53ab-c75d-48dc-8fc1-a2e543df8872
+:END:
+
+素の quote ブロックの出力です。
+
+#+begin_src org
+#+begin_quote :author Shimano
+こんなものですかね。引用は。うまくいきます？
+#+end_quote
+#+end_src
+
+#+begin_quote :author Shimano
+こんなものですかね。引用は。うまくいきます？
+#+end_quote
+
+*** =quote= ショートコードを使う
+:PROPERTIES:
+:ID:       91f1e638-ea2f-437d-b1ab-ecdf277cd9f6
+:END:
+
+**** =quote= ショートコード
+:PROPERTIES:
+:ID:       11808ea9-2da8-4b0c-8ec1-dd3c271d19dd
+:END:
+
+このような =quote= ショートコード を作りました。あ
+
+#+begin_src html
+{{- $author := .Get "author" -}}
+{{- $width := .Get "width" -}}
+<div class="w3-panel w3-card-4 w3-light-grey"
+  {{ if eq $width ""}}
+     style="width:50%"
+  {{ else }}
+     style="width:{{$width}}"
+  {{ end }}>
+  <i class="fa fa-quote-left w3-large w3-text-red"></i><br>
+  <p class="w3-large">
+    {{ .Inner  }}
+  </p>
+{{ with $author }}
+  <p class="w3-large w3-right">by: {{.}}</p><br>
+{{ end }}
+<i class="fa fa-quote-right w3-large w3-text-red"></i><br>
+</div>
+#+end_src
+
+**** 著者ありの例:
+:PROPERTIES:
+:ID:       106a08d1-08f8-44a0-8963-4983c4206f48
+:END:
+
+#+name: quote-with-authr
+#+caption: 著者ありの引用
+#+begin_src org
+  ,#+HTML: {{% blockquote width="30%" author="shimano" %}}
+  ,#+begin_quotation :author Shimano
+  こんなものですかね。引用は。うまくいきます？
+  ,#+end_quotation
+  ,#+HTML: {{< /blockquote >}}
+#+end_src
+
+これが出力されます:
+
+#+HTML: {{% blockquote width="30%" author="shimano" %}}
+#+begin_quotation :author Shimano
+こんなものですかね。引用は。うまくいきます？
+#+end_quotation
+#+HTML: {{< /blockquote >}}
+
+**** 著者なしの例:
+:PROPERTIES:
+:ID:       d8d84c31-f8b5-4f36-94f9-a69531d8f2d7
+:END:
+
+#+name: quote-wihtout-author
+#+begin_src org
+#+HTML: {{% blockquote width="70%" %}}
+#+begin_quotation :author Shimano
+こんなものですかね。引用は。うまくいきます？
+#+end_quotation
+#+HTML: {{< /blockquote >}}
+#+end_src
+
+これが出力されます:
+
+#+HTML: {{% blockquote width="70%" %}}
+#+begin_quotation :author Shimano
+こんなものですかね。引用は。うまくいきます？
+#+end_quotation
+#+HTML: {{< /blockquote >}}
+
+** スペシャルブロック
+:PROPERTIES:
+:ID:       d189f786-28c8-47e8-98f2-bc10fae9aec5
+:END:
+
+Org-mode の中のスペシャルブロックは =<div>= へ変換されます。
+クラスを設定するには、 =#+ATTR_HTML: :class= を設定します。 
+
+この Org-mode のスペシャルブロックは:
+
+#+begin_src org
+#+ATTR_HTML: :class w3-panel w3-blue w3-border
+#+begin_info
+Info 
+
+This is a test.
+#+end_info
+#+end_src
+
+これへと変換されます:
+
+#+ATTR_HTML: :class info w3-card-2 w3-panel w3-blue w3-border
+#+begin_info
+Info 
+
+This is a test.
+#+end_info
+
+#+begin_src org
+#+ATTR_HTML: :class w3-panel w3-yellow w3-border
+#+begin_info
+#+begin_warning
+Warning
+
+This is a test.
+#+end_warning
+#+end_src
+
+#+ATTR_HTML: :class w3-panel w3-card-2 w3-yellow w3-border
+#+begin_warning
+Warning
+
+This is a test.
+#+end_warning
+
+** 例のブロック
+:PROPERTIES:
+:ID:       1f764e23-f725-4eb3-97f2-39fbfc4c0d2f
+:END:
+
+#+begin_src ruby
+p "test"
+#+end_src
+
+#+RESULTS:
+#+begin_example
+test
+#+end_example
+

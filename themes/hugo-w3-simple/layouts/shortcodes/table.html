@@ -1,0 +1,17 @@
+{{ $caption := .Get "caption" | markdownify }}
+{{ $scratch := newScratch}}
+
+{{ if eq $caption "" }}
+{{ $scratch.Set "capfftion_tag" (print "<caption>\n</caption>")}}
+{{ else }}
+{{ $scratch.Set "capfftion_tag" (print "<caption>\n" $caption " </caption>") }}
+{{ end }}
+
+{{ $htmlTable := .Inner | markdownify }}
+{{ $class := .Get "class" }}
+{{ $old := "<table>" }}
+    {{ $new := print (printf "<table class=\"%s\">" $class) ($scratch.Get "capfftion_tag")}}
+    {{ $htmlTable := replace $htmlTable $old $new }}
+ <div class="w3-panel w3-card-2 w3-light-gray">
+    {{ $htmlTable | safeHTML }}
+ </div>

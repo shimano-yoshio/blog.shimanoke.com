@@ -1,0 +1,299 @@
+#+begin_src emacs-lisp 
+      (defun org-blackfriday-table (table contents info)
+        "Transcode TABLE element into Blackfriday Markdown format.
+
+      CONTENTS is contents of the table.  INFO is a plist holding
+      contextual information."
+        ;; (message "[ox-bf-table DBG] In contents: %s" contents)
+        (let* ((rows (org-element-map table 'table-row 'identity info))
+               (no-header (= (length rows) 1)) ;No header if table has just 1 row
+               (table-ref (org-blackfriday--get-reference table))
+               (table-anchor (if table-ref
+                                 (format "<a id=\\\"%s\\\"></a>" table-ref)
+                               ""))
+               (caption (org-export-get-caption table))
+               table-num
+               (caption-html (if (not caption)
+                                 ""
+                               (let ((caption-prefix (org-blackfriday--translate 'table info))
+                                     (caption-str
+                                      (org-html-convert-special-strings ;Interpret em-dash, en-dash, etc.
+                                       (org-export-data-with-backend caption 'html info))))
+                                 (setq table-num (org-export-get-ordinal
+                                                  table info
+                                                  nil #'org-html--has-caption-p))
+                                 (format (concat "%s:"
+                                                 " %s"
+                                                 )
+                                         (if table-ref ;Hyperlink the table prefix + number
+                                             (format "<a href=\\\"#%s\\\">%s %s</a>"
+                                                     table-ref caption-prefix table-num)
+                                           (format "%s: %s"
+                                                   caption-prefix table-num))
+                                         caption-str))))
+               (attr (org-export-read-attribute :attr_html table))
+               ;; At the moment only the `class' attribute is supported in
+               ;; #+attr_html above tables.
+               (table-class-user (plist-get attr :class))
+               (table-class-auto (concat "table-"
+                                         (if table-num
+                                             (format "%d" table-num)
+                                           "nocaption")))
+               (table-class (or table-class-user
+                                table-class-auto))
+               ;; If user has specified multiple classes for the table
+               ;; (space-separated), use only the first class in that list
+               ;; to specifying the styling in the <style> tag.
+               (table-class-this (car (split-string table-class)))
+               ;; https://www.w3schools.com/css/css_table.asp
+               (css-props (org-export-read-attribute :attr_css table))
+               (css-props-str (org-blackfriday--make-css-property-string css-props))
+               (table-pre "")
+               (table-post "")
+               (tbl (replace-regexp-in-string "\n\n" "\n" contents)))
+
+          (when (org-string-nw-p css-props-str)
+            (setq table-pre (format "<style>.%s table { %s }</style>\n\n"
+                                    table-class-this css-props-str)))
+          ;; Export user-specified table class explicitly.
+          (when (or (org-string-nw-p table-class-user)
+                    (org-string-nw-p css-props-str))
+            (setq table-pre (concat table-pre
+                                    (format "<div class=\"ox-hugo-table %s\">\n" table-class)
+                                    "<div></div>\n\n"))) ;See footnote 1
+          (when (org-string-nw-p table-pre)
+            (setq table-post (concat "\n"
+                                     "</div>\n")))
+
+          ;; If the table has only 1 row, do *not* make it a header row..
+          ;; instead create an empty header row.
+          ;; For 1-row, tbl would look like this at this point:
+          ;;
+          ;;   | a | b |
+          ;;   |---|---|
+          ;;
+          ;; Below will convert that to:
+          ;;
+          ;;   |   |   |
+          ;;   |---|---|
+          ;;   | a | b |
+          (when no-header
+            (string-match "\\`\\(.*\\)\n\\(.*\\)\n\\'" tbl)
+            (let* ((row-1 (match-string-no-properties 1 tbl))
+                   (hrule (match-string-no-properties 2 tbl))
+                   (dummy-header (replace-regexp-in-string "[-:]" " " hrule)))
+              (setq tbl (concat dummy-header "\n" hrule "\n" row-1))))
+          ;; (message "[ox-bf-table DBG] Tbl:\n%s" tbl)
+          (concat "{{< table class=\"w3-table-all w3-card-4\" caption=\""
+                  table-anchor
+                  caption-html
+                  "\">}}\n" 
+                  tbl
+                  "{{< /table >}}"
+    )))
+#+end_src
+#+begin_src emacs-lisp
+     (setq org-blackfriday--code-block-num-backticks 3)
+     ;;;; Src Block
+     (defun org-blackfriday-src-block (src-block _contents info)
+       "Transcode SRC-BLOCK element into Blackfriday Markdown format.
+
+     INFO is a plist used as a communication channel."
+       (let* ((lang (org-element-property :language src-block))
+              (code (org-export-format-code-default src-block info))
+              (parent-element (org-export-get-parent src-block))
+              (parent-type (car parent-element))
+              (num-backticks-in-code (when (string-match "^[[:blank:]]*\\(`\\{3,\\}\\)" code)
+                                       (length (match-string-no-properties 1 code))))
+              backticks)
+         ;; In order to show the code-fence backticks in a code-fenced code
+         ;; block, you need to have the wrapping code fence to have at
+         ;; least 1 more backtick in the fence compared to those in the
+         ;; being-wrapped code fence. This example will explain better:
+         ;;
+         ;;   ````md
+         ;;   ```emacs-lisp
+         ;;   (message "Hello")
+         ;;   ```
+         ;;   ````
+         ;;(when (and (numberp num-backticks-in-code)
+         ;;           (<= org-blackfriday--code-block-num-backticks num-backticks-in-code))
+         ;;  (setq org-blackfriday--code-block-num-backticks (1+ num-backtifffffcks-in-code)))
+         (setq backticks (make-string org-blackfriday--code-block-num-backticks ?`))
+         ;; (message "[ox-bf src-block DBG]")
+         ;; (message "ox-bf [dbg] code: %s" code)
+         ;; (message "[ox-bf src-block DBG] parent type: %S" parent-type)
+         (setq code (org-blackfriday--issue-239-workaround code parent-type))
+         ;; Hugo's shorcode escape
+         (setq code (replace-regexp-in-string "{{<" "{{</*" code))
+         (setq code (replace-regexp-in-string ">}}" "*/>}}" code))
+         (setq code (replace-regexp-in-string "{{%" "{{%/*" code))
+         (setq code (replace-regexp-in-string "%}}" "*/%}}" code))
+         (prog1
+             (format "%s%s\n%s%s" backticks lang code backticks)
+           (when (equal 'quote-block parent-type)
+             ;; If the current code block is inside a quote block, future
+             ;; example/code blocks (especially the ones outside this quote
+             ;; block) will require higher number of backticks.  Workaround
+             ;; for https://github.com/russross/blackfriday/issues/407.
+;;            (setq org-blackfriday--code-block-num-bacnnnnnnkticks
+;;                   (1+ org-blackfriday--code-block-num-backticks))
+                   ))))
+
+#+end_src
+#+begin_src emacs-lisp
+  ;;;; Source Blocks
+  (defun org-hugo-src-block (src-block _contents info)
+    "Convert SRC-BLOCK element to Hugo-compatible Markdown.
+
+  The Markdown style triple-backquoted code blocks are created if:
+    - If the HUGO_CODE_FENCE property is set to a non-nil value
+      (default),
+    - *AND* if none of the Hugo \"highlight\" shortcode features
+      are needed (see below).
+
+  The code block is wrapped in Hugo \"highlight\" shortcode (See
+  https://gohugo.io/content-management/syntax-highlighting) if one
+  of the above conditions is false.
+
+  Note that even with the default non-nil value of HUGO_CODE_FENCE,
+  the user *needs* to set the `pygmentsCodeFences' variable to
+  `true' in their Hugo site's config, otherwise syntax highlighting
+  will not work in the generated fenced code blocks!
+
+  Hugo \"highlight\" shortcode features:
+    - Code blocks with line numbers (if the -n or +n switch is used)
+    - Highlight certains lines in the code block (if the :hl_lines
+      parameter is used)
+
+  CONTENTS is nil.  INFO is a plist used as a communication
+  channel."
+    (let* ((lang (org-element-property :language src-block))
+           (parameters-str (org-element-property :parameters src-block))
+           (parameters (org-babel-parse-header-arguments parameters-str))
+           (is-fm-extra (cdr (assoc :front_matter_extra parameters)))
+           (fm-format (plist-get info :hugo-front-matter-format)))
+      ;; (message "ox-hugo src [dbg] lang: %S" lang)
+      ;; (message "ox-hugo src [dbg] is-fm-extra: %S" is-fm-extra)
+      (if (and is-fm-extra
+               (member lang '("toml" "yaml")))
+          (progn
+            ;; The fm-extra src block lang and user-set fm-format have to
+            ;; be the same.  Else. that src block is completely discarded.
+            (when (string= lang fm-format)
+              (let ((fm-extra (org-export-format-code-default src-block info)))
+                ;; (message "ox-hugo src [dbg] fm-extra: %S" fm-extra)
+                (plist-put info :fm-extra fm-extra)))
+            ;; Do not export the `:front_matter_extra' TOML/YAML source
+            ;; blocks in Markdown body.
+            nil)
+        (let* (;; See `org-element-src-block-parser' for all SRC-BLOCK properties.
+               (number-lines (org-element-property :number-lines src-block)) ;Non-nil if -n or +n switch is used
+               (hl-lines (cdr (assoc :hl_lines parameters)))
+               (hl-lines (cond
+                          ((stringp hl-lines)
+                           (replace-regexp-in-string "," " " hl-lines)) ;"1,3-4" -> "1 3-4"
+                          ((numberp hl-lines)
+                           (number-to-string hl-lines))))
+               (src-ref (org-blackfriday--get-reference src-block))
+               (src-anchor (if src-ref
+                               (format "<a id=\\\"%s\\\"></a>" src-ref)
+                             ""))
+               (caption (org-export-get-caption src-block))
+               (caption-html (if (not caption)
+                                 ""
+                               (let* ((src-block-num (org-export-get-ordinal
+                                                      src-block info
+                                                      nil #'org-html--has-caption-p))
+                                      (caption-prefix (org-blackfriday--translate 'src-block info))
+                                      (caption-str
+                                       (org-html-convert-special-strings ;Interpret em-dash, en-dash, etc.
+                                        (org-export-data-with-backend caption 'html info))))
+                                 (format (concat "%s: "
+                                                 "%s"
+                                                 )
+                                         (if src-ref ;Hyperlink the code snippet prefix + number
+                                             (format "<a href=\\\"#%s\\\">%s %s</a>"
+                                                     src-ref caption-prefix src-block-num)
+                                           (format "%s %s"
+                                                   caption-prefix src-block-num))
+                                         caption-str))))
+               content
+               ret)
+          ;; (message "ox-hugo src [dbg] number-lines: %S" number-lines)
+          ;; (message "ox-hugo src [dbg] parameters: %S" parameters)
+          (setq content
+                (cond
+                 ;; If both number-lines and hl-lines are nil
+                 ;; , AND if :hugo-code-fence is non-nil (which is, by default).
+                 ((and (null number-lines)
+                       (null hl-lines)
+                       (org-hugo--plist-get-true-p info :hugo-code-fence))
+                  (let ((content1 (org-blackfriday-src-block src-block nil info)))
+                    (when (and org-hugo-langs-no-descr-in-code-fences
+                               (member (intern lang) org-hugo-langs-no-descr-in-code-fences))
+                      ;; When using Pygments, with the pygmentsCodeFences
+                      ;; options enabled in Hugo, `org' is not recognized as a
+                      ;; "language", because Pygments does not have a lexer for
+                      ;; Org.
+                      ;; Issue on Pygments repo:
+                      ;; https://bitbucket.org/birkenfeld/pygments-main/issues/719/wishlist-support-org
+                      ;; So attempt to do below:
+                      ;;   ```org
+                      ;;   # org comment
+                      ;;   ```
+                      ;; will not result in a <code> tag wrapped block in HTML.
+                      ;;
+                      ;; So override the language to be an empty string in such cases.
+                      ;;
+                      ;; *Note* that this issue does NOT exist if using Chroma,
+                      ;; which is the default syntax highlighter after Hugo
+                      ;; v0.28.
+                      (setq content1 (replace-regexp-in-string (concat "\\`\\(```+\\)" lang) "\\1" content1)))
+                    (setq content1 (org-hugo--escape-hugo-shortcode content1 lang))
+                    content1))
+                 ;; If number-lines is non-nil
+                 ;; , or if hl-lines is non-nil
+                 ;; , or if :hugo-code-fence is nil
+                 (t
+                  (let ((code (org-export-format-code-default src-block info))
+                        (linenos-str "")
+                        (hllines-str "")
+                        ;; Formatter string where the first arg si linenos-str and
+                        ;; second is hllines-str.
+                        (highlight-args-str "%s%s"))
+                    (when (or number-lines
+                              hl-lines)
+                      (setq highlight-args-str " \"%s%s\""))
+                    (when number-lines
+                      (let ((linenostart-str (progn
+                                               ;; Extract the start line number of the code block
+                                               (string-match "\\`\\s-*\\([0-9]+\\)\\s-\\{2\\}" code)
+                                               (match-string-no-properties 1 code))))
+                        (setq linenos-str (format "linenos=table, linenostart=%s" linenostart-str)))
+                      ;; Remove Org-inserted numbers from the beginning of each
+                      ;; line as the Hugo highlight shortcode will be used instead
+                      ;; of literally inserting the line numbers.
+                      (setq code (replace-regexp-in-string "^\\s-*[0-9]+\\s-\\{2\\}" "" code)))
+                    (when hl-lines
+                      (setq hllines-str (concat "hl_lines=" hl-lines))
+                      (when number-lines
+                        (setq hllines-str (concat ", " hllines-str))))
+                    (setq code (org-hugo--escape-hugo-shortcode code lang))
+                    (format "{{< highlight %s%s >}}\n%s{{< /highlight >}}\n"
+                            lang
+                            (format highlight-args-str linenos-str hllines-str)
+                            code)))))
+          (setq ret (concat 
+                     "{{< codeblock caption=\""
+                     src-anchor 
+                     caption-html
+                     "\" >}}\n"
+                     content 
+                     "\n{{< /codeblock>}}"
+
+                     ))
+  ;;        (setq ret (org-blackfriday--div-wrap-maybe src-block ret))
+          ret))))
+#+end_src
+

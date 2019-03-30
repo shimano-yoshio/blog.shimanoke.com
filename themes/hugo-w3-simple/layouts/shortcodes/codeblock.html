@@ -1,0 +1,11 @@
+{{ $htmlcodeblock := .Inner | markdownify }}
+{{ $caption := .Get "caption"  | markdownify }}
+{{ $lang := replace (substr (index (findRE "```(.*)\n" .Inner 1) 0) 3) "\n" ""}}
+<div class="w3-panel w3-card w3-pale-blue">
+    {{ if eq $caption ""}}
+    {{ else }}
+    <span class="code-title"> {{ $caption}} </span>
+    {{ end }}
+    <span class="code-lang">({{ $lang}})</span>
+    {{ $htmlcodeblock }}
+</div>

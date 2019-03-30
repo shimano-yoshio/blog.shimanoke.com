@@ -1,0 +1,147 @@
+baseurl = "https://example.com/"
+languageCode = "en-us"
+defaultContentLanguage = "en" # en / zh-CN / ... (This field determines which i18n file to use)
+title = "Get out of your door"
+theme = "hugo-w3-simple"
+disqusShortname = ""      # disqus_shortname
+googleAnalytics = ""      # UA-XXXXXXXX-X
+#gridstyle use 3 column. so should be 3,6,9,12,15....
+paginate = 3
+# has chinese/japanese/korean ? 
+hasCJKLanguage = true
+
+# ハイライトオプション
+# See https://gohugo.io/content-management/syntax-highlighting/
+pygmentsCodeFences = true # Enable syntax highlighting with GitHub flavoundred code fences
+# pygmentsUseClasses = true # Use CSS classes to format highlighted code
+pygmentsCodefencesGuessSyntax = true
+# pygmentsOptions = "linenos=table"
+# Pygment のスタイル
+pygmentsStyle = "monokai"
+# pygmentsStyle = "perldoc"
+# pygmentsStyle = "manni"
+
+
+[languages.en]
+weight = 0
+languageName = "English"
+contentDir = "content/english"
+[languages.en.params]
+      authorinfo = "<h4>Authored By Yoshio Shimano</h4>"
+      licenseinfo = "<p class=\"w3-small\">John Doe, a good man living on the earth, loving making website with hugo. This article is licensed under a <a rel=\"license\" href=\"https://creativecommons.org/licenses/by/4.0/\" class=\"w3-text-white\">Creative Commons Attribution 4.0 International License</a>.</p>"
+      logotext = "HUGO W3 SIMPLE" # logo text
+      isso_baseurl=""  #if you want to use isso as comment system,set your isso js baseurl here. It is like "https://isso.yourwebsite.com/" or "https://yourwebsite.com/isso/"
+      isso_langcode="en"
+      cookie_info = "This website uses cookies to ensure you get the best experience on our website. [Learn more](/privacy-policy/)"
+   
+[[languages.en.menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+[[languages.en.menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 3
+[[languages.en.menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 4
+
+[[languages.en.menu.main]]
+    name = "All Posts"
+    url = "/allposts/"
+    weight = 5
+[[languages.en.menu.main]]
+    name = "Japanese"
+    url = "/ja/"
+    weight = 7
+
+[languages.ja]
+weight = 10
+languageName = "日本語"
+contentDir = "content/japanese"
+
+[languages.ja.params]
+      authorinfo = "<h4>Authored By Yoshio Shimano</h4>"
+      licenseinfo = "<p class=\"w3-small\">John Doe, a good man living on the earth, loving making website with hugo. This article is licensed under a <a rel=\"license\" href=\"https://creativecommons.org/licenses/by/4.0/\" class=\"w3-text-white\">Creative Commons Attribution 4.0 International License</a>.</p>"
+      logotext = "Get Out of Your Door" # logo text
+      isso_baseurl=""  #if you want to use isso as comment system,set your isso js baseurl here. It is like "https://isso.yourwebsite.com/" or "https://yourwebsite.com/isso/"
+      isso_langcode="en"
+      cookie_info = "This website uses cookies to ensure you get the best experience on our website. [Learn more](/privacy-policy/)"
+   
+[[languages.ja.menu.main]]
+    name = "About"
+    url = "/ja/about/"
+    weight = 2
+[[languages.ja.menu.main]]
+    name = "カテゴリ"
+    url = "/ja/categories/"
+    weight = 3
+[[languages.ja.menu.main]]
+    name = "タグ"
+    url = "/ja/tags/"
+    weight = 4
+
+[[languages.ja.menu.main]]
+    name = "全てのポスト"
+    url = "/ja/allposts/"
+    weight = 5
+[[languages.ja.menu.main]]
+    name = "English"
+    url = "/en/"
+    weight = 6
+
+
+[params]
+    summary_length = 100
+    welcomemessage = false #if set true. The home page will display the content of _index.md 
+    authorandlicense = false
+    #if authorandlicense set true, this one must be set too
+    authorimgurl = "" 
+#    authorimgurl = "https://raw.githubusercontent.com/jesselau76/hugo-w3-simple/master/exampleSite/images/johndoe.jpg" 
+    
+    relatedPosts = true
+    backtotop = true
+    lazyload = true
+    #if set true, lazy load images on websites asynchronously
+    # — that is, after the above-the-fold content is fully loaded, or even conditionally, only when they appear in the browser's viewport.
+    glowlogo = true # if want logo to have glowing style, set true.
+    scrollindicator = true # if need scroll indicator on the top, set true
+    # list post with sortable all list style. If false then gridstyle or simple style
+    allliststyle = false
+    gridstyle = true  # list post with grid style. If false then simple list
+    #display reading time
+    readingtime = true
+    # display first picture as thumbnail
+    # if no thumbnail set. For gridstyle only
+    firstpic = true
+    socialshare = true
+    socialicon = true
+    googletranslate = true
+    #If true, it will only display search button but real search function is not included in example site because it need server-side app. To see the demo please visit https://jesselau.com
+    searchfunction = true 
+    description = ""
+    onesignalid = ""  #one signal push app id
+    # adsenseid="ca-pub-123456789"
+    allowads = true
+    logotext = "HUGO W3 SIMPLE" # logo text
+    footer = "&copy; [Yoshio Shimano](https://shimanoke.com) 2019 | [Github](https://github.com/shimano-yoshio) | [Twitter](https://twitter.com/johndoe)  | [RSS](/index.xml)"
+
+
+[params.social]
+    # Set your social account here, if you don't have some accounts just comment them
+    a-envelope = "mailto:shimano.yoshio at gmail.com"
+    b-stack-overflow ="https://stackoverflow.com/users/12345678/john-doe"
+    c-twitter = "https://twitter.com/johndoe"
+    d-facebook = "https://www.facebook.com/yoshio.shimano"
+    e-github = "https://github.com/shimano-yoshio"
+#    f-youtube = "https://www.youtube.com/channel/12345678"
+    g-linkedin = "https://www.linkedin.com/johndoe"
+#    h-google = "https://plus.google.com/12345678"
+    i-github = "https://github.com/johndoe"
+#    j-weibo = "https://weibo.com" 
+#    k-weixin = "http://localhost:1313" 
+    l-tumblr = "https://www.tumblr.com/blog/johndoe"
+    m-instagram = "https://instagram.com/johndoe"
+    n-gitlab = "https://gitlab.com/johndoe"
+    o-pinterest = "https://www.pinterest.com/johndoe/"
