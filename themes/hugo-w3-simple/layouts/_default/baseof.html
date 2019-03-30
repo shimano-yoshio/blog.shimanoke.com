@@ -192,7 +192,7 @@ function scrollFunction() {
   <!-- TOC -->
     {{ if not .IsHome }}
     {{ if and (ge (len .TableOfContents) 100) (ne .Params.toc "false")  }}
-    
+
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
         document.getElementById("toc").style.display = "block";
     } else {
