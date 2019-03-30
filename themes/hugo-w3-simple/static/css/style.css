@@ -56,7 +56,10 @@ a:hover {
     text-align: left;
 
 }
-
+code,kbd,pre,samp{
+    font-family: "Courier New", Consolas, monospace;
+    font-size:1rem
+}
 
 .w3-code{
     width:auto;
