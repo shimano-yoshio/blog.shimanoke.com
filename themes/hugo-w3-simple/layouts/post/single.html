@@ -5,11 +5,13 @@
     <button class="w3-button w3-teal w3-xlarge">&#9776;</button>
     <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
 
-<h3 class="w3-center">{{T "toc"}} </h3>
-            {{.TableOfContents}}
-      </div>
-      </div>
-    {{ end }}
+        <h3 class="w3-center">{{T "toc"}} </h3>
+        {{.TableOfContents}}
+    </div>
+</div>
+
+
+      {{ end }}
 
   <div class="w3-content w3-card-4" >
     <!-- post-header -->
@@ -175,26 +177,34 @@
       </div>
 
       <script>
-      function closeOverlay() {
-        document.getElementById("allowads").style.width = "0%";
-        document.getElementById("wrapads").style.height="1px";
-      }
+       function closeOverlay() {
+           document.getElementById("allowads").style.width = "0%";
+           document.getElementById("wrapads").style.height="1px";
+       }
 
-      function detectads() {
-      var h = document.getElementById("wrapads").clientHeight;
+       function detectads() {
+           var h = document.getElementById("wrapads").clientHeight;
 
-      if (h==0){ document.getElementById("allowads").style.width = "100%";
-      }
-      }
-      
+           if (h==0){ document.getElementById("allowads").style.width = "100%";
+           }
+       }
+       
 
-     
-      
+       
+       
       </script>
 
-  {{- end -}}
+      {{- end -}}
 
 
+      <script>
+       function w3_open() {
+           document.getElementById("toc").style.display = "block";
+       }
+       function w3_close() {
+           document.getElementById("toc").style.display = "none";
+       }
+      </script>
 
 
 {{- end }}

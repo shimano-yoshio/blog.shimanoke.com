@@ -38,20 +38,16 @@
         {{ end }}
         
       </div>
-    
 
-   
     <footer id="footer" >
       {{ partial "footer.html" . }}
     </footer>
-    
 
-    
   </div>
 <!-- cookie bar -->
   {{ with .Site.Params.cookie_info }} 
   <div id="cookiebar" class="w3-bar w3-top w3-black w3-border   " >
-  
+
   <span class="w3-bar-item w3-small">{{ . | markdownify  }}</span>
   <span onclick="gotitcookiebar()"
   class="w3-button w3-small w3-green w3-right">{{ T "gotit" }}</span>
