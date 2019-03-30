@@ -51,6 +51,7 @@ a:hover {
 
 /* code */
 .code-title{
+    font-family:monospace,monospace;
     font-weight: 600;
     color: blue;
     text-align: left;
@@ -496,4 +497,9 @@ dt {
 dd {
     display: block;
     margin-inline-start: 40px;
+}
+
+.highlight{
+    font-family:monospace,monospace;
+
 }
