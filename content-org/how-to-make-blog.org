@@ -1,0 +1,40 @@
+#+title: このブログの作りかた
+#+author: Yoshio Shimano
+#+STARTUP: indent
+#+OPTIONS: H:6 num:t
+#+hugo_type: post
+#+hugo_type: post
+#+hugo_base_dir: ..
+#+hugo_section: japanese/posts
+#+hugo_auto_set_lastmod: t
+#+options: creator:nil author:t
+#+LANGUAGE: ja
+
+* サイトの作成
+:PROPERTIES:
+:ID:       a3740834-c3ca-46e4-acc5-b2dfac21086e
+:END:
+
+* Github への登録
+:PROPERTIES:
+:ID:       b0e3b84f-1a03-470e-b158-9a547bb7f0e5
+:END:
+
+
+#+begin_src sh
+git remote add origin https://github.com/shimano-yoshio/gfmyc.git
+git push -u origin master
+#+end_src
+
+* Netlify で新しいサイトを作成する
+:PROPERTIES:
+:ID:       6b0f4559-4310-4b97-8e2d-d906e1addbce
+:END:
+
+
+* Netlify での確認
+:PROPERTIES:
+:ID:       5635c014-f1b8-4d5b-9f02-129c8be12682
+:END:
+
+- https://quizzical-kirch-258bfa.netlify.com/ja/
