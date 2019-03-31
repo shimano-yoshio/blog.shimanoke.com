@@ -32,9 +32,24 @@ git push -u origin master
 :END:
 
 
+
 * Netlify での確認
 :PROPERTIES:
 :ID:       5635c014-f1b8-4d5b-9f02-129c8be12682
 :END:
 
 - https://quizzical-kirch-258bfa.netlify.com/ja/
+
+* お名前.com でドメインを取得する
+:PROPERTIES:
+:ID:       83d5b24b-484d-4618-8db5-0cd3af607a11
+:END:
+
+- shimanoke.com
+
+を取得しました。
+
+* DNS 設定
+:PROPERTIES:
+:ID:       7a480eaa-5ee1-49f4-8057-4f158c4eebe3
+:END:
