@@ -6,7 +6,7 @@ theme = "hugo-w3-simple"
 disqusShortname = "blog-shimanoke-com"      # disqus_shortname
 googleAnalytics = ""      # UA-XXXXXXXX-X
 #gridstyle use 3 column. so should be 3,6,9,12,15....
-paginate = 3
+paginate = 10
 # has chinese/japanese/korean ? 
 hasCJKLanguage = true
 
