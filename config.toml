@@ -88,9 +88,14 @@ contentDir = "content/japanese"
     url = "/ja/allposts/"
     weight = 5
 [[languages.ja.menu.main]]
+    name = "文書"
+    url = "/ja/docs/"
+    weight = 6
+
+[[languages.ja.menu.main]]
     name = "English"
     url = "/en/"
-    weight = 6
+    weight = 7
 
 
 [params]

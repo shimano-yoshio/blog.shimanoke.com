@@ -1,7 +1,7 @@
 {{ define "main" -}}
 <div class="w3-content w3-card-4" >
   {{if not .IsHome }}
-    <h1 class="w3-center">{{ .Title | markdownify }}</h1>
+    <h1  class="w3-center w3-text-blue" style="text-shadow:1px 1px 0 #444">{{ .Title | markdownify }}</h1>
   {{ end }}
 {{ $paginator := .Paginate (where .Data.Pages.ByLastmod.Reverse "Section" "!=" "") }}
   {{ if  .Site.Params.allliststyle }}
