@@ -47,8 +47,11 @@
 
 <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}" />
 <script src="/js/myscript.js">
-        </script>
+</script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script src="{{ "mathjax-config.js" | absURL }}"></script>
+
 
 <!-- One Signal Push -->
 {{ with .Site.Params.onesignalid }}

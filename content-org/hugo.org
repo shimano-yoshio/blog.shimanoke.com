@@ -1,14 +1,50 @@
 #+title: Hugo を使う
 #+author: Yoshio Shimano
-#+STARTUP: indent
-#+OPTIONS: H:6 num:t
-#+hugo_type: post
-#+hugo_type: 
-#+hugo_base_dir: ..
-#+hugo_section: japanese/posts
+# 出版した日付
+#+date: 2019-03-31
+# 更新日を自動的につける
 #+hugo_auto_set_lastmod: t
-#+options: creator:nil author:t
-#+LANGUAGE: en
+# 見出しをレベル 6 まで出す
+#+OPTIONS: H:6 num:t
+#+STARTUP: indent
+#+hugo_type: post
+# 出力するディレクトリ
+#+hugo_base_dir: ..
+# 出版するファイル名
+#+hugo_section: japanese/posts
+#+OPTIONS: creator:nil author:t
+#+LANGUAGE: ja
+# Hugo のタグ
+# Hugo のタグ
+#+hugo_tags: Hugo ox-hugo
+# Hugo のカテゴリー
+#+hugo_categories: Hugo
+
+# ドキュメントクラスの指定
+#+LATEX_CLASS: jsbook
+# ドキュメントクラスのオプションの指定
+# dvipdfmx ドライバはここで指定する
+#+LATEX_CLASS_OPTIONS: [dvipdfmx,a4j,14pt,uplatex,openany]
+
+# カスタムスタイルの読み込み
+#+LATEX_HEADER: \usepackage{coco-jsbook}
+
+# タイトルページで表示される情報
+# ファイルのバージョン
+#+LATEX_HEADER: \FileVersion{1.0}
+# コピーライト保有者
+#+LATEX_HEADER: \CopyrightAuthor{島野善雄}
+# コピーライトが発生した年
+#+LATEX_HEADER: \CopyrightYear{2019}
+# 機密レベル
+#+LATEX_HEADER: \ConfidentialLevel{機密情報ではない}
+# タイトルページに表示する画像
+# #+LATEX_HEADER: \TitlePicture{images/story-zapfino-crop.pdf}
+
+# はじまり
+# テキストの色を少し白くする
+#+LATEX: \color{Black!95!White}
+
 * はじめに
 :PROPERTIES:
 :EXPORT_FILE_NAME: _index.ja.md
@@ -45,7 +81,7 @@ Org-mode のファイルを Markdown に変換しています。
 やりたいことはほとんどできます。
 
 それでも、自分の好みの機能がないので、 ox-hugo をカスタマイズして
-使っています。
+使っています。uh
 * ox-hugo でのプリアンブルの設定方法
 :PROPERTIES:
 :ID:       91f6c028-eb4a-4ef7-aa22-5c89b7f385ab
@@ -78,9 +114,13 @@ Org-mode のファイルを Markdown に変換しています。
 
 次に変換されます:
 
+#+ATTR_LATEX: :width 0.5\textwidth :placement {p}
 #+ATTR_HTML: :alt test :width 25%
 #+caption: Reddit Icon
+[[file:reddit.svg]]
 
+
+#+latex: \newpage
 
 ** Babel
 :PROPERTIES:
@@ -103,6 +143,7 @@ Org-mode の中でプログラミング言語を書くことができます。
 
 このように変換されます:
 
+#+ATTR_LATEX: :width 0.5\textwidth :placement {h}
 #+name: fig:first
 #+caption: Ditaa の出力
 #+RESULTS:
@@ -129,14 +170,15 @@ LaTeX formatted equation: \( E = -J \sum_{i=1}^N s_i s_{i+1} \)
 これは Hugo がレンダリングする HTML の中でこのように見えます:
 
 LaTeX formatted equation: \( E = -J \sum_{i=1}^N s_i s_{i+1 }\)
-*** $\LaTeX$ の数式
+*** \LaTeX の数式
 :PROPERTIES:
 :ID:       a818c83d-6650-4866-b23a-bada526e7e19
 :END:
-=ox-hugo= は $\LaTeX$ の環境をサポートしています。
+=ox-hugo= は \LaTeX の環境をサポートしています。
 
 下の Org mode の断片は:
 
+#+name: latex-example
 #+begin_src org
   \begin{equation}
   \label{eq:0}
@@ -151,8 +193,10 @@ LaTeX formatted equation: \( E = -J \sum_{i=1}^N s_i s_{i+1 }\)
 C = W\log_{2} (1+\mathrm{SNR})
 \end{equation}
 
-数式の参照も動きます。
-だから =\ref{eq:1}= は [[ref:eq:1]] としてレンダリングされます
+=\ref{eq:1}= は \ref{eq:1} へと変換されます。
+
+
+
 ** コードブロック
 :PROPERTIES:
 :EXPORT_FILE_NAME: source-blocks.ja.md
@@ -188,7 +232,7 @@ test
 :EXPORT_FILE_NAME: table.ja.md
 :ID:       b97e25ed-2a66-4e73-bf00-8811d320c208
 :END:
-
+#+index: table
 これは ([[tab:test1]]):
 
 #+begin_src org

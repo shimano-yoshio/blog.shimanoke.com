@@ -1,7 +1,10 @@
 +++
 title = "Hugo を使う"
 author = ["Yoshio Shimano"]
-lastmod = 2019-03-28T13:41:53+09:00
+date = 2019-03-31
+lastmod = 2019-04-01T17:44:01+09:00
+tags = ["Hugo", "ox-hugo"]
+categories = ["Hugo"]
 type = "post"
 draft = false
 +++
@@ -14,7 +17,7 @@ draft = false
 <div class="ox-hugo-toc toc">
 <div></div>
 
-<div class="heading">Table of Contents</div>
+<div class="heading">&#30446;&#27425;</div>
 
 - <span class="section-num">1</span> [はじめに](#はじめに)
     - <span class="section-num">1.1</span> [なぜ Hugo を使うのか？](#なぜ-hugo-を使うのか)
@@ -25,7 +28,7 @@ draft = false
     - <span class="section-num">3.2</span> [Babel](#babel)
     - <span class="section-num">3.3</span> [数式](#数式)
         - <span class="section-num">3.3.1</span> [インライン数式](#インライン数式)
-        - <span class="section-num">3.3.2</span> [\\(\LaTeX\\) の数式](#latex--の数式)
+        - <span class="section-num">3.3.2</span> [\LaTeX の数式](#latex-の数式)
     - <span class="section-num">3.4</span> [コードブロック](#コードブロック)
     - <span class="section-num">3.5</span> [表](#表)
     - <span class="section-num">3.6</span> [引用](#引用)
@@ -64,7 +67,7 @@ Org-mode のファイルを Markdown に変換しています。
 やりたいことはほとんどできます。
 
 それでも、自分の好みの機能がないので、 ox-hugo をカスタマイズして
-使っています。
+使っています。uh
 
 
 ## <span class="section-num">2</span> ox-hugo でのプリアンブルの設定方法 {#ox-hugo-でのプリアンブルの設定方法}
@@ -99,7 +102,7 @@ num::t
 
 次に変換されます:
 
-{{< figure src="/ox-hugo/reddit.svg" alt="test" caption="Figure 1: Reddit Icon" width="25%" >}}
+{{< figure src="/ox-hugo/reddit.svg" alt="test" caption="&#22259;1:  Reddit Icon" width="25%" >}}
 
 
 ### <span class="section-num">3.2</span> Babel {#babel}
@@ -122,9 +125,9 @@ Org-mode の中でプログラミング言語を書くことができます。
 
 このように変換されます:
 
-<a id="org702f9fe"></a>
+<a id="orgcebdc66"></a>
 
-{{< figure src="/ox-hugo/hello-world.png" caption="Figure 2: Ditaa の出力" >}}
+{{< figure src="/ox-hugo/hello-world.png" caption="&#22259;2:  Ditaa の出力" >}}
 
 
 ### <span class="section-num">3.3</span> 数式 {#数式}
@@ -145,13 +148,13 @@ LaTeX formatted equation: \( E = -J \sum_{i=1}^N s_i s_{i+1} \)
 LaTeX formatted equation: \\( E = -J \sum\_{i=1}^N s\_i s\_{i+1 }\\)
 
 
-#### <span class="section-num">3.3.2</span> \\(\LaTeX\\) の数式 {#latex--の数式}
+#### <span class="section-num">3.3.2</span> \LaTeX の数式 {#latex-の数式}
 
-`ox-hugo` は \\(\LaTeX\\) の環境をサポートしています。
+`ox-hugo` は \LaTeX の環境をサポートしています。
 
 下の Org mode の断片は:
 
-{{< codeblock caption="" >}}
+{{< codeblock caption="<a id=\"code-snippet--latex-example\"></a>" >}}
 ```org
 \begin{equation}
 \label{eq:0}
@@ -167,8 +170,7 @@ C = W\log_{2} (1+\mathrm{SNR})
 C = W\log\_{2} (1+\mathrm{SNR})
 \end{equation}
 
-数式の参照も動きます。
-だから `\ref{eq:1}` は [eq:1](#eq:1) としてレンダリングされます
+`\ref{eq:1}` は \ref{eq:1} へと変換されます。
 
 
 ### <span class="section-num">3.4</span> コードブロック {#コードブロック}
@@ -187,7 +189,7 @@ ls -al
 ```
 {{< /codeblock>}}
 
-{{< codeblock caption="Code Snippet 1: Ruby の例" >}}
+{{< codeblock caption="ソースコード 1: Ruby の例" >}}
 ```ruby
 print("test")
 ```
@@ -220,7 +222,7 @@ test
 
 このように出力されます:
 
-{{< table class="w3-table-all w3-card-4" caption="<a id=\"table--tab:test1\"></a><a href=\"#table--tab:test1\">Table 1</a>: 表のテスト">}}
+{{< table class="w3-table-all w3-card-4" caption="<a id=\"table--tab:test1\"></a><a href=\"#table--tab:test1\">&#34920; 1</a>: 表のテスト">}}
 | a | b | c |
 |---|---|---|
 | 1 | 2 | 3 |
@@ -279,7 +281,7 @@ test
 
 ##### <span class="section-num">3.6.2.2</span> 著者ありの例: {#著者ありの例}
 
-{{< codeblock caption="<a id=\"code-snippet--quote-with-authr\"></a><a href=\"#code-snippet--quote-with-authr\">Code Snippet 2</a>: 著者ありの引用" >}}
+{{< codeblock caption="<a id=\"code-snippet--quote-with-authr\"></a><a href=\"#code-snippet--quote-with-authr\">ソースコード 2</a>: 著者ありの引用" >}}
 ```org
 #+HTML: {{%/* blockquote width="30%" author="shimano" */%}}
 #+begin_quotation :author Shimano
