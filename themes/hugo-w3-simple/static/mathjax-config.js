@@ -1,5 +1,5 @@
 window.MathJax = {
-    displayAlign: "center",
+    displayAlign: "left",
     displayIndent: "0em",
     "HTML-CSS": { scale: 100,
                   linebreaks: { automatic: "false" },

@@ -13,8 +13,8 @@
 # 出版するファイル名
 #+hugo_section: japanese/posts
 #+OPTIONS: creator:nil author:t
+#+OPTIONS: toc:nil
 #+LANGUAGE: ja
-# Hugo のタグ
 # Hugo のタグ
 #+hugo_tags: Hugo ox-hugo
 # Hugo のカテゴリー
@@ -31,7 +31,7 @@
 
 # タイトルページで表示される情報
 # ファイルのバージョン
-#+LATEX_HEADER: \FileVersion{1.0}
++LATEX_HEADER: \FileVersion{1.0}
 # コピーライト保有者
 #+LATEX_HEADER: \CopyrightAuthor{島野善雄}
 # コピーライトが発生した年
@@ -193,7 +193,7 @@ LaTeX formatted equation: \( E = -J \sum_{i=1}^N s_i s_{i+1 }\)
 C = W\log_{2} (1+\mathrm{SNR})
 \end{equation}
 
-=\ref{eq:1}= は \ref{eq:1} へと変換されます。
+=\ref{eq:1}= は \ref{eq:1} へと変換されます<。
 
 
 

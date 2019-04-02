@@ -3,16 +3,51 @@
 #+STARTUP: indent
 #+OPTIONS: H:6 num:t
 #+hugo_type: post
-#+hugo_type: post
 #+hugo_base_dir: ..
-#+hugo_section: japanese/posts
+#+hugo_section: japanese/docs
 #+hugo_auto_set_lastmod: t
 #+options: creator:nil author:t
+#+DESCRIPTION: このブログの作成方法です。
 #+LANGUAGE: ja
+#+hugo_tags: Hugo Github Disqus
 
-* サイトの作成
+* この文書について
 :PROPERTIES:
-:ID:       a3740834-c3ca-46e4-acc5-b2dfac21086e
+:ID:       d7cec813-dbc1-49a6-9f8c-468765bc7ba3
+:END:
+
+** 動作環境
+:PROPERTIES:
+:ID:       4dc0f5ab-dda8-4dcd-aabd-ef2deb9c2fb3
+:END:
+
+#+caption: 動作環境
+#+name: tab:environment
+| OS       | Ubuntu 18.10 |
+| Hugo     | v0.55.0-DEV  |
+| Emacs    | 25.22        |
+| Org-mode | 9.2.2        |
+
+
+
+
+* Hugo サイトの作成
+:PROPERTIES:
+:ID:       171f5844-80b4-4fa4-b24e-1369e546defc
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: 
+:END:
+
+
+#+caption: 新しい Hugo サイトの作成
+#+name: create-new-hugo-site
+#+begin_src sh
+hugo new site blog.shimanoke.com
+#+end_src
+
+* テーマのクローン
+:PROPERTIES:
+:ID:       667bdec9-2af5-4be6-b985-78fcbb5d8031
 :END:
 
 * Github への登録
@@ -20,7 +55,24 @@
 :ID:       b0e3b84f-1a03-470e-b158-9a547bb7f0e5
 :END:
 
+Github で =gfmyc.git= というレポジトリを作成し、
+そこにこの Hugo プロジェクトをプッシュします
 
+** Git レポジトリの初期化
+:PROPERTIES:
+:ID:       40472bd0-6e46-45a2-a785-00fc38c5e8a6
+:END:
+
+#+begin_src sh
+git init
+git add -A
+git commit -m "Initial commit"
+#+end_src
+
+** Github へのプッシュ
+:PROPERTIES:
+:ID:       dcecea3d-be83-49cf-b23d-a7b816d4345e
+:END:
 #+begin_src sh
 git remote add origin https://github.com/shimano-yoshio/gfmyc.git
 git push -u origin master
@@ -52,4 +104,14 @@ git push -u origin master
 * DNS 設定
 :PROPERTIES:
 :ID:       7a480eaa-5ee1-49f4-8057-4f158c4eebe3
+:END:
+
+** お名前.com 側の設定
+:PROPERTIES:
+:ID:       6658bce4-ebd4-46b0-b569-1df016bb23cf
+:END:
+
+** Netlify 側の設定
+:PROPERTIES:
+:ID:       1d84256f-e4cb-4bca-912f-e6e08ace53d5
 :END:

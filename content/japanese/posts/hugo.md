@@ -1,8 +1,9 @@
 +++
-title = "Hugo を使う"
+title = "ox-Hugo を使う"
 author = ["Yoshio Shimano"]
-date = 2019-03-31
-lastmod = 2019-04-01T17:44:01+09:00
+description = "Org-mode の中から Hugo を使う方法です。"
+date = 2019-03-30T00:00:00+09:00
+lastmod = 2019-04-02T10:53:08+09:00
 tags = ["Hugo", "ox-hugo"]
 categories = ["Hugo"]
 type = "post"
@@ -96,13 +97,13 @@ num::t
 ```org
 #+ATTR_HTML: :alt test :width 25%
 #+caption: Reddit Icon
-[[file:reddit.svg]]
+[[file:images/Org-mode-unicorn.svg]]
 ```
 {{< /codeblock>}}
 
 次に変換されます:
 
-{{< figure src="/ox-hugo/reddit.svg" alt="test" caption="&#22259;1:  Reddit Icon" width="25%" >}}
+{{< figure src="/ox-hugo/Org-mode-unicorn.svg" alt="test" caption="&#22259;1:  Reddit Icon" width="25%" >}}
 
 
 ### <span class="section-num">3.2</span> Babel {#babel}
@@ -125,7 +126,7 @@ Org-mode の中でプログラミング言語を書くことができます。
 
 このように変換されます:
 
-<a id="orgcebdc66"></a>
+<a id="orgb5fc8ca"></a>
 
 {{< figure src="/ox-hugo/hello-world.png" caption="&#22259;2:  Ditaa の出力" >}}
 
@@ -170,7 +171,7 @@ C = W\log_{2} (1+\mathrm{SNR})
 C = W\log\_{2} (1+\mathrm{SNR})
 \end{equation}
 
-`\ref{eq:1}` は \ref{eq:1} へと変換されます。
+`\ref{eq:1}` は \ref{eq:1} へと変換されます<。
 
 
 ### <span class="section-num">3.4</span> コードブロック {#コードブロック}

@@ -82,21 +82,21 @@
 <div class="w3-container wraptext w3-white">
   {{ T "postsdate"}}: <code> {{ .Date.Format "2006-01-02 15:04" }} </code><br>
   {{ T "postsmodified"}}: <code> {{ .Lastmod.Format "2006-01-02 15:04" }} </code><br>
-  <p>
-    {{ with .Description }}
-      {{ $.Scratch.Set "summary" (markdownify .) }}
-    {{ else }}
-      {{ $.Scratch.Set "summary" ((delimit (findRE "(<p.*?>(.|\n)*?</p>\\s*)+" .Content) "[&hellip;] ") | plainify | truncate (default 200 .Site.Params.summary_length) (default " &hellip;" .Site.Params.text.truncated ) | replaceRE "&amp;" "&" | safeHTML) }}
-    {{ end }}
-    {{ $.Scratch.Get "summary" }}
+    <p>
+        {{ partial "summary_minus_toc.html" . }}
+        <!--    {{ with .Description }}
+             {{ $.Scratch.Set "summary" (markdownify .) }}
+             {{ else }}
+             {{ $.Scratch.Set "summary" ((delimit (findRE "(<p.*?>(.|\n)*?</p>\\s*)+" .Content) "[&hellip;] ") | plainify | truncate (default 200 .Site.Params.summary_length) (default " &hellip;" .Site.Params.text.truncated ) | replaceRE "&amp;" "&" | safeHTML) }}  
+             {{ end }}
+             {{ $.Scratch.Get "summary" }}-->
     </p>
-
-                      </div>
-                      <div class="w3-container wraptext w3-white">
-                          {{ if gt (len .Summary) 10000000 }}
-                          <code> {{ .Date.Format "2006-01-02 15:04" }} </code>
-                          <p>{{substr .Summary 0 200 }}...</p>
-                          {{ end }}
+    </div>
+    <div class="w3-container wraptext w3-white">
+        {{ if gt (len .Summary) 10000000 }}
+           <code> {{ .Date.Format "2006-01-02 15:04" }} </code>
+           <p>{{substr .Summary 0 200 }}...</p>
+        {{ end }}
                       </div>
                       <footer >
                           <a href="{{ .URL }}"><button class="w3-button w3-blue w3-block w3-hover-green">{{ T "readMore" }}</button></a>
