@@ -11,7 +11,6 @@
 /content-org/hugo.ilg
 /content-org/hugo.ind
 /content-org/hugo.listing
-*.html
 /content-org/hugo.tex
 /content-org/_minted-hugo/1DB4783041D304B63842AD73716EBF612879D26098CA931430E77728B8360CD5.pygtex
 /content-org/_minted-hugo/223BD4756F7085C70DAA9CF713D1CA4DA3C6899A292DE0E86AE0A325895AAC37.pygtex
@@ -34,3 +33,7 @@
 /content-org/hugo.synctex(busy)
 /content-org/_minted-hugo/monokai.pygstyle
 /content-org/auto/hugo.el
+/content-org/svg-inkscape/reddit_svg-tex.eps
+/content-org/svg-inkscape/reddit_svg-tex.eps_tex
+/content/japanese/docs/how-to-make-blog.md
+/content/japanese/docs/use-ox-hugo.md
