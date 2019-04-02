@@ -1,10 +1,11 @@
-#+title: Hugo を使う
+#+title: ox-Hugo を使う
 #+author: Yoshio Shimano
 # 出版した日付
-#+date: 2019-03-31
+#+date: [2019-03-30 Sat]
 # 更新日を自動的につける
 #+hugo_auto_set_lastmod: t
 # 見出しをレベル 6 まで出す
+#+DESCRIPTION: Org-mode の中から Hugo を使う方法です。
 #+OPTIONS: H:6 num:t
 #+STARTUP: indent
 #+hugo_type: post
@@ -31,7 +32,7 @@
 
 # タイトルページで表示される情報
 # ファイルのバージョン
-+LATEX_HEADER: \FileVersion{1.0}
+#+LATEX_HEADER: \FileVersion{1.0}
 # コピーライト保有者
 #+LATEX_HEADER: \CopyrightAuthor{島野善雄}
 # コピーライトが発生した年
@@ -109,7 +110,7 @@ Org-mode のファイルを Markdown に変換しています。
 #+begin_src org
   ,#+ATTR_HTML: :alt test :width 25%
   ,#+caption: Reddit Icon
-  [[file:reddit.svg]]
+  [[file:images/Org-mode-unicorn.svg]]
 #+end_src
 
 次に変換されます:
@@ -117,7 +118,7 @@ Org-mode のファイルを Markdown に変換しています。
 #+ATTR_LATEX: :width 0.5\textwidth :placement {p}
 #+ATTR_HTML: :alt test :width 25%
 #+caption: Reddit Icon
-[[file:reddit.svg]]
+[[file:images/Org-mode-unicorn.svg]]
 
 
 #+latex: \newpage

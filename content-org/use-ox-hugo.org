@@ -1,0 +1,271 @@
+#+title: ox-hugo を使う
+#+author: Yoshio Shimano
+# 出版した日付
+#+date: 2019-03-31
+# 更新日を自動的につける
+#+hugo_auto_set_lastmod: t
+# 見出しをレベル 6 まで出す
+#+OPTIONS: H:6 num:t
+#+STARTUP: indent
+#+hugo_type: post
+# 出力するディレクトリ
+#+hugo_base_dir: ..
+# 出版するファイル名
+#+hugo_section: japanese/docs
+#+OPTIONS: creator:nil author:t
+#+OPTIONS: toc:nil
+#+LANGUAGE: ja
+# Hugo のタグ
+#+hugo_tags: Hugo ox-hugo
+# Hugo のカテゴリー
+#+hugo_categories: Hugo ox-hugo
+
+# ドキュメントクラスの指定
+#+LATEX_CLASS: jsbook
+# ドキュメントクラスのオプションの指定
+# dvipdfmx ドライバはここで指定する
+#+LATEX_CLASS_OPTIONS: [dvipdfmx,a4j,14pt,uplatex,openany]
+
+# カスタムスタイルの読み込み
+#+LATEX_HEADER: \usepackage{coco-jsbook}
+
+# タイトルページで表示される情報
+# ファイルのバージョン
+#+LATEX_HEADER: \FileVersion{1.0}
+# コピーライト保有者
+#+LATEX_HEADER: \CopyrightAuthor{島野善雄}
+# コピーライトが発生した年
+#+LATEX_HEADER: \CopyrightYear{2019}
+# 機密レベル
+#+LATEX_HEADER: \ConfidentialLevel{機密情報ではない}
+# タイトルページに表示する画像
+# #+LATEX_HEADER: \TitlePicture{images/story-zapfino-crop.pdf}
+
+# はじまり
+# テキストの色を少し白くする
+#+LATEX: \color{Black!95!White}
+
+
+* ox-hugo の中で LaTeX の数式への参照を使う
+:PROPERTIES:
+:ID:       ba7e8113-305f-4bfe-b709-6ed60b68aacc
+:EXPORT_DATE: 2019-04-02
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: use-latex-ref-in-ox-hugo
+:EXPORT_OPTIONS: toc:nil num:nil
+:END:
+
+ox-hugo の中で LaTeX の数式を書いて、それを参照することができるはずですが、
+そのままでは動きません。
+
+#+begin_src org
+\begin{equation}
+\label{eq:01}
+\y = ax + b
+\end{equation}
+#+end_src
+
+と書くと、次が出力されます:
+
+\begin{equation}
+\label{eq:01}
+\y = ax + b
+\end{equation}
+
+ここで式(\ref{eq:02})を参照します。
+以下の設定をしない場合は式(\ref{eq:02})を参照できません。
+
+=static/mathjax-config.js= を次の内容で作成してください
+（ox-hugo の test からコピーしました）:
+
+#+caption: static/mathjax-config.js
+#+begin_src javascript
+window.MathJax = {
+    displayAlign: "center",
+    displayIndent: "0em",
+    "HTML-CSS": { scale: 100,
+                  linebreaks: { automatic: "false" },
+                  webFont: "TeX"
+                },
+    SVG: {scale: 100,
+          linebreaks: { automatic: "false" },
+          font: "TeX"},
+    NativeMML: {scale: 100},
+    TeX: { equationNumbers: {autoNumber: "AMS"},
+           MultLineWidth: "85%",
+           TagSide: "right",
+           TagIndent: ".8em"
+         }
+};
+#+end_src
+
+これを Javasctipt を使うテンプレートの中で呼びだします:
+
+#+begin_src html
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+<script src="{{ "mathjax-config.js" | absURL }}"></script>
+#+end_src
+
+参照してみます:
+
+\begin{equation}
+\label{eq:02}
+\y = ax + b
+\end{equation}
+
+ここで式(\ref{eq:01})を参照します。
+
+* 目次の制御
+:PROPERTIES:
+:ID:       fbe1c45a-8b5b-41bf-bb36-260714018c26
+:END:
+** ox-hugo が出力する目次を Summary の中に出力させない
+:PROPERTIES:
+:ID:       26ff1060-6020-4b99-89ee-670d0fa2dac5
+:EXPORT_DATE: 2019-04-02
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: dont-insert-org-toc-into-summary
+:EXPORT_OPTIONS: toc:nil num:nil
+:END:
+
+ox-hugo が出力される目次が、 Summary の中に
+表示されてしまいます。
+それを防ぐための方法です。
+
+*** ファイルのコピー
+:PROPERTIES:
+:ID:       b93699d2-1406-4c7e-9254-97e3f8db3cf2
+:END:
+-  [[https://github.com/kaushalmodi/hugo-bare-min-theme/blob/master/layouts/partials/summary_minus_toc.html][=summary_minus_toc.html=]] 
+
+から、テーマの =layouts/partials= ディレクトリへコピーします。
+=summary_minus_toc.html= はこのような内容です:
+
+#+caption: layouts/partials/summary_minus_toc.html
+#+name: list: summary_minus_toc
+#+begin_src html
+{{- with .Description -}}
+    {{- . | markdownify | printf "<p>%s</p>" | safeHTML -}}
+{{- else -}}
+    {{- $summary_has_org_toc := substr .Content 0 30 | findRE "[\".]ox-hugo-toc" -}}
+    {{- if $summary_has_org_toc -}}
+        {{- $content_splits := split .RawContent "<!--endtoc-->" -}} <!-- Need to use .RawContent as we will be parsing for 'more' comment later. -->
+        <!-- If Org TOC is present, the special comment endtoc would also be present.
+             In that case, output only the part *after* that comment as Summary. -->
+        {{- $summary_raw := index $content_splits 1 -}}
+        {{- $summary_splits := split $summary_raw "<!--more-->" -}}
+        {{- if eq (len $summary_splits) 2 -}}
+            {{- index $summary_splits 0 | markdownify -}}
+        {{- else -}}
+            {{- $summary_raw | markdownify | truncate 300 -}}
+        {{- end -}}
+    {{- else -}}
+        <!-- Print the whole Summary if endtoc special comment is not found. -->
+        {{- .Summary |  printf "<p>%s</p>" | safeHTML -}}
+    {{- end -}}
+{{- end -}}
+#+end_src
+
+生の HTML が出るのは嫌なので、少し改造します:
+
+#+caption: 変更した summary_minus_toc.html
+#+begin_src html
+{{- with .Description -}}
+    {{- . | markdownify | printf "<p>%s</p>" | safeHTML -}}
+{{- else -}}
+    {{- $summary_has_org_toc := substr .Content 0 30 | findRE "[\".]ox-hugo-toc" -}}
+    {{- if $summary_has_org_toc -}}
+        {{- $content_splits := split .RawContent "<!--endtoc-->" -}} <!-- Need to use .RawContent as we will be parsing for 'more' comment later. -->
+        <!-- If Org TOC is present, the special comment endtoc would also be present.
+             In that case, output only the part *after* that comment as Summary. -->
+        {{- $summary_raw := index $content_splits 1 -}}
+        {{- $summary_splits := split $summary_raw "<!--more-->" -}}
+        {{- if eq (len $summary_splits) 2 -}}
+            {{- index $summary_splits 0 | markdownify -}}
+        {{- else -}}
+            {{- $summary_raw | markdownify | plainify | truncate 300 -}}
+        {{- end -}}
+    {{- else -}}
+        <!-- Print the whole Summary if endtoc special comment is not found. -->
+        {{- .Summary |  printf "<p>%s</p>" | safeHTML -}}
+    {{- end -}}
+{{- end -}}
+#+end_src
+
+#+begin_src html
+{{- $summary_raw | markdownify | truncate 300 -}}
+#+end_src
+
+を
+#+begin_src html
+{{- $summary_raw | markdownify | plainify | truncate 300 -}}
+#+end_src
+
+に変更しただけです。
+
+これはこのように動きます:
+- =#+DESCRIPTION:= があれば、それが使われます
+- ox-hugo が目次を作成していたら（=ox-hugo-toc= というクラスがあれば）、
+  それを削除し、 Summary とします。
+
+*** テーマの中での使用方法
+:PROPERTIES:
+:ID:       367780a2-399b-4f42-8ab1-242cc0c24ce8
+:END:
+次のようにして、 Summary を埋め込むテンプレートの中で
+使ってください:
+
+#+caption: テーマの中での使用方法
+#+begin_src html
+{{ partial "summary_minus_toc.html" . }}
+#+end_src
+
+** ox-hugo に目次を作成させないようにする
+:PROPERTIES:
+:ID:       f54a41f9-c239-45a2-8815-3032ee7fd343
+:EXPORT_DATE: 2019-04-02
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: disable-ox-hugo-generated-toc
+:EXPORT_OPTIONS: toc:nil num:nil
+:END:
+
+ox-hugo はデフォルトで目次を生成します。
+それを止めるには、  =org-hugo-export-with-toc= を =nil= に設定します。
+
+#+caption: ox-hugo に目次を作成させないようにする
+#+name: disable-ox-hugo-generated-toc
+#+begin_src emacs-lisp
+(setq org-hugo-export-with-toc t)
+#+end_src
+* Details と summary
+:PROPERTIES:
+:ID:       eb4ec044-dc61-43de-b04f-b4a08e73fa4c
+:EXPORT_DATE: 2019-04-02
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: details-and-summary
+:EXPORT_OPTIONS: toc:t num:nil
+:END:
+
+#+begin_details
+ox-hugo を使って Details と Summary を書く方法です。
+#+end_details
+
+#+begin_src org
+#+begin_details
+#+begin_summary
+これは Summary
+#+end_summary
+これは detail
+#+end_details
+#+end_src
+
+
+
+#+begin_details
+#+begin_summary
+これは Summary
+#+end_summary
+これは detail
+#+end_details
+
+

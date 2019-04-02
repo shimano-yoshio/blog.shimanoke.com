@@ -2,6 +2,7 @@
 title: "このブログで使うことができる文法"
 date: 2011-03-06T16:01:23+09:00
 lastmod: 2019-03-26T10:01:23+09:00
+description: "このブログで使うことができる Markdownの文法です"
 type: post
 draft: false
 tags: ["preview", "shortcodes", "tag-6", "hugo" ]

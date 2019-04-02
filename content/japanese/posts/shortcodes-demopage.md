@@ -1,12 +1,11 @@
----
+j---
 author: admin
 date: 2018-11-09T07:26:15+13:00
 draft: false
 title: Hugo W3 Simple テーマショートコードデモ
 type: post
-url: /w3-simple-shortcodes-demo/
 w3codecolor: true
-categories:
+ategories:
 - Website Programming
 tags:
 - hugo
@@ -15,14 +14,11 @@ tags:
 この記事はこれらのショートコードのデモです。
 <!--more-->
 <hr>
-
 ## Info ショートコード
 We can easily display 簡単に表示することができます
 info 情報を
 with this code below 
 on markdown file  Markdown のファイル上で
-
-
 
 {{< colorcode title="Code for info shortcodes">}}  
 {{&lt; info  &gt;}}<br>  

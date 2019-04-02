@@ -1,0 +1,227 @@
+#+TITLE: 文書作成ツールとしての Org mode
+#+LANGUAGE: ja
+#+AUTHOR: 島野 善雄
+#+EMAIL: shimano.yoshio@jp.fujitsu.com
+#+OPTIONS: author:t prop:nil <:nil H:7
+#+OPTIONS: toc:4 creator:nil timestamp:nil email:t  todo:nil pri:nil tags:nil
+#+DESCRIPTION: LaTeX Tips
+#+KEYWORDS:  Ubuntu Linux LaTeX
+#+EXCLUDE_TAGS: noexport
+#+STARTUP: indent
+
+
+# 図目次の出力
+#+LATEX: \listoffigures
+#+TOC: figure
+# 表目次の出力
+#+TOC: tables 
+
+# HTML Setting
+#+INFOJS_OPT: view:showall
+# #+INCLUDE: "~/Org/Templates/setup/theme-bigblow.setup" 
+#+INCLUDE: "~/Org/Templates/setup/theme-readtheorg.setup" 
+
+# ドキュメントクラスの指定
+#+LATEX_CLASS: jsbook
+# ドキュメントクラスのオプションの指定
+#+LATEX_CLASS_OPTIONS: [a4j,12pt,openany,uplatex]
+# カスタムスタイルの読み込み
+#+LATEX_HEADER: \usepackage{shimano}
+
+# ファイルのバージョン
+#+LATEX_HEADER: \FileVerjou{1.0}
+
+# tcolorbox でのプログラムリスト出力
+# #+LATEX: \tcblistof[\chapter*]{box}{プログラムリスト}
+
+# 本文はじまり
+#+LATEX: \mainmatter
+
+
+* はじめに
+:PROPERTIES:
+:ID:       1c8bb918-2364-4389-b6ca-611e85d42910
+:END:
+
+
+** この文書の内容
+:PROPERTIES:
+:ID:       f4256b3c-f3f2-42ac-b95a-e1e1a232c15c
+:END:
+
+この文書では、文章作成ツールとしての Org mode の使用方法を説明します。
+
+
+* Org mode から \LaTeX へのエクスポート                        :RefileTarget:
+:PROPERTIES:
+:ID:       ff725324-57ef-4abc-8196-9575237fcbb7
+:END:
+#+INDEX: \LaTeX
+
+
+
+** Org mode  LaTeX エクスポート参考文献
+:PROPERTIES:
+:ID:       a3faa33c-a399-44b4-aa06-2f3aa024de66
+:END:
+
+- [[https://emacs.stackexchange.com/questions/26179/change-org-mode-table-style-just-for-latex-export][Change org-mode table style just for LaTeX export - Emacs Stack Exchange]]
+- [[https://stackoverflow.com/questions/50573322/org-mode-how-to-use-custom-command-when-exporting-figures][emacs - org-mode how to use custom command when exporting figures - Stack Overflow]]
+- [[https://tex.stackexchange.com/questions/348286/org-mode-latex-pdf-centering-side-by-side-images][graphics - Org-mode, LaTeX, PDF & centering side by side images - TeX - LaTeX Stack Exchange]]
+
+
+* TODO Org mode を使ったブログの作成                           :RefileTarget:
+:PROPERTIES:
+:ID:       89bcc2e1-0f83-4da4-ac8c-70a0feda3048
+:END:
+* Org mode から HTML へのエクスポート                          :RefileTarget:
+:PROPERTIES:
+:ID:       5e926432-e79d-4f32-b4e1-a0781730406e
+:END:
+#+INDEX: HTML
+
+
+* TODO org-ref を使った参考文献管理
+DEADLINE: <2019-03-11 月>
+:PROPERTIES:
+:ID:       ab88baf5-3be4-402e-8b90-c97940de2318
+:END:
+
+
+- [[https://org-technology.com/posts/org-ref.html][Emacs の org-ref で文献参照・相互参照のリンクを挿入する | org-技術]]
+- [[https://github.com/jkitchin/org-ref][jkitchin/org-ref: org-mode modules for citations, cross-references, bibliographies in org-mode and useful bibtex tools to go with it.]]
+
+
+* Bittex の参考文献のあつめかた
+:PROPERTIES:
+:ID:       cad3b8b3-dfbf-4a12-9e48-8070b4957ec1
+:END:
+** TODO Amazon から Bibtex エントリへ
+DEADLINE: <2019-03-11 月>
+:PROPERTIES:
+:ID:       95a83787-ccb8-49b2-be45-18927dad13d2
+:END:
+
+
+- [[http://lead.to/amazon/jp/search/use.htm][Amazonのカスタマイズ検索（Lead2Amazon）]]
+- [[http://lead.to/amazon/jp/][Lead2Amazon:日本語]]
+
+** TODO Web から Bibtex エントリへ
+DEADLINE: <2019-03-11 月>
+:PROPERTIES:
+:ID:       552591a8-d8ce-4cff-9f6f-82467a0e6c57
+:END:
+
+- [[https://chrome.google.com/webstore/detail/bibtex-entry-from-url/mgpmgkhhbjgkpnanlmlhibjfgpdpgjec][BibTeX entry from URL - Chrome ウェブストア]]
+
+
+表示中の Web ページを Bibtex エントリに変換してくれます
+
+#+begin_src latex
+@misc{BibTeXen88:online,
+author = {},
+title = {BibTeX entry from URL - Chrome ウェブストア},
+howpublished = {\url{https://chrome.google.com/webstore/detail/bibtex-entry-from-url/mgpmgkhhbjgkpnanlmlhibjfgpdpgjec}},
+month = {},
+year = {},
+note = {(Accessed on 03/11/2019)}
+}
+#+end_src
+
+* NEXT Org mode から Microsoft Word へのエクスポート           :RefileTarget:
+DEADLINE: <2019-04-07 日>
+:PROPERTIES:
+:ID:       6c1f9d9b-fea5-415d-8779-f7103db21c28
+:END:
+:CLOCK:
+CLOCK: [2018-11-22 木 09:07]--[2018-11-22 木 09:14] =>  0:07
+:END:
+
+変換には Pandoc を使います。
+- [[https://github.com/kawabata/ox-pandoc][GitHub - kawabata/ox-pandoc: Another org-mode exporter via pandoc.]]
+- [[http://nenono.hatenablog.com/entry/2015/02/10/173516][実務に使うプレーンテキスト→Microsoft Word変換、あるいはPandocを使い始めた話 - 技術memo]]
+- [[http://peccu.hatenablog.com/entry/2015/05/12/000000][pandocで利用するテンプレートを指定する(org-modeからWord(docx)ファイルを作成してPagesで開くと幸せ) - @peccul is peccu]]
+- [[https://taipapamotohus.com/post/org-mode_paper_4/][Emacsのorg-modeで論文を書く（その4：pandocを利用してorg-modeからword {docx}を文献付きでexportする） | A perfect autumn day]]
+
+
+** Pandoc のインストール
+:PROPERTIES:
+:ID:       7d83b461-0e28-4b30-be05-b1914f6e63af
+:END:
+次のコマンドを使ってインストールします:
+
+#+BEGIN_SRC sh  :eval no
+conda install pandoc
+#+END_SRC
+
+
+
+** テンプレート作成
+:PROPERTIES:
+:ID:       2cc674a7-d36e-469d-882a-303ee3491f77
+:END:
+- [[https://qiita.com/sky_y/items/5fd5c9568ea550b1d7af][ドキュメント変換ツールPandoc：ユーザーズガイドを熟読して分かったマニアックな使い方 - Qiita]]
+- [[https://shaunakelly.com/word/styles/modifyastyle.html][How to modify styles in Microsoft Word | ShaunaKelly.com]]
+
+
+@andoc --print-default-data-file reference.docx > reference.docx
+* TODO EPUB エクスポート
+DEADLINE: <2019-03-11 月>
+:PROPERTIES:
+:ID:       57e3a479-bef8-4b50-8b38-eae426901094
+:END:
+
+- [[https://github.com/ofosos/ox-epub][GitHub - ofosos/ox-epub: Org mode epub export]]
+* TODO Beamer エクスポート
+:PROPERTIES:
+:ID:       f8f3ded5-e280-4d2b-a355-82507959d87e
+:END:
+
+- [[https://github.com/fniessen/refcard-org-beamer][GitHub - fniessen/refcard-org-beamer: Org Beamer reference card]]
+- [[https://ryogan.org/blog/2016/01/06/emacs-org-mode-%25E3%2581%25AE-beamer-export-%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%2584%25E3%2581%25A6%25E5%25B0%2591%25E3%2581%2597/][Emacs Org Mode の Beamer Export について少し | 澍法雨]]
+- [[https://qiita.com/htlsne/items/70cbb488e7a87cd9e228][LaTeX Beamerの&quot;Beamerらしく&quot;ないおすすめテーマ集 - Qiita]]
+
+
+
+
+
+* Org mode のエクスポートの一般的な参考文献
+:PROPERTIES:
+:ID:       bb2d3476-5fad-410c-b9f9-337679d0cedd
+:END:
+
+- [[https://orgmode.org/worg/exporters/filter-markup.html][Marking Up Elements to be Exported]]
+- [[https://orgmode.org/worg/dev/org-export-reference.html][Org Export Reference Documentation]]
+
+
+* TODO ox-epub
+DEADLINE: <2019-03-21 木>
+:PROPERTIES:
+:LOCATION: Home
+:Added:    [2019-01-09 水 10:22]
+:ID:       461a5ec4-c78a-4117-a0fb-48766c5a4101
+:END:
+:CLOCK:
+CLOCK: [2019-01-09 水 10:22]--[2019-01-09 水 10:23] =>  0:01
+:END:
+
+- [[https://github.com/ofosos/ox-epub][GitHub - ofosos/ox-epub: Org mode epub export]]
+
+* 付録
+:PROPERTIES:
+:ID:       cf09331c-1e75-4422-a8b0-55d104dce35e
+:END:
+#+LATEX: \appendix
+** 後書き
+:PROPERTIES:
+:ID:       eb66cb65-8f29-44c1-b2fb-425f56486dc9
+:END:
+
+後書きを書きます
+
+
+#+INCLUDE: "~/Org/Templates/latex_bit_index.org" 
+# 奥付
+# #+INCLUDE: "~/Org/MyWriting/EngineerHandobook/okuzuke.org" 
+
+

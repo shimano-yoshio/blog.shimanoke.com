@@ -1,0 +1,1661 @@
+#+TITLE: GTD ツールとしての Org mode
+#+LANGUAGE: ja
+#+AUTHOR: 島野 善雄
+#+EMAIL: shimano.yoshio@jp.fujitsu.com
+#+OPTIONS: author:t prop:nil <:nil H:7
+#+OPTIONS: toc:4 creator:nil timestamp:nil email:t  todo:nil pri:nil tags:nil
+#+DESCRIPTION: LaTeX Tips
+#+KEYWORDS:  Org-mode GTD
+#+EXCLUDE_TAGS: noexport
+#+STARTUP: indent
+
+
+# 図目次の出力
+#+LATEX: \listoffigures
+#+TOC: figure
+# 表目次の出力
+#+TOC: tables 
+
+# HTML Setting
+#+INFOJS_OPT: view:showall
+# #+INCLUDE: "~/Org/Templates/setup/theme-bigblow.setup" 
+#+INCLUDE: "~/Org/Templates/setup/theme-readtheorg.setup" 
+
+# ドキュメントクラスの指定
+#+LATEX_CLASS: jsbook
+# ドキュメントクラスのオプションの指定
+#+LATEX_CLASS_OPTIONS: [a4j,12pt,openany,uplatex]
+# カスタムスタイルの読み込み
+#+LATEX_HEADER: \usepackage{shimano}
+
+# ファイルのバージョン
+#+LATEX_HEADER: \FileVerjou{1.0}
+
+# tcolorbox でのプログラムリスト出力
+# #+LATEX: \tcblistof[\chapter*]{box}{プログラムリスト}
+
+# 本文はじまり
+#+LATEX: \mainmatter
+
+
+* はじめに
+:PROPERTIES:
+:ID:       902c3a0e-d955-4a80-93cc-c3636f22f25c
+:END:
+
+** Org mode を使って GTD を実践する
+:PROPERTIES:
+:ID:       687d4640-d32f-4ee1-bae9-de6024e6d47a
+:END:
+- [[https://ja.wikipedia.org/wiki/Getting_Things_Done][Getting Things Done - Wikipedia]]
+  
+
+GTDの特徴
+従来のタイムマネジメント（時間管理手法）では、
+優先順位や仕事の計画を立てることが強調されてきたが、
+実際の仕事の場は年々複雑化し、
+せっかく立てた計画や優先順位は次々に割り込んでくる仕事のために破綻しがちである。
+計画の破綻や、計画を立てることすらできない多忙な状態の中、
+頭の中にすべき仕事を山ほど抱え込んでストレスは増大し、仕事はますます苦痛になり進まなくなる。
+
+アレンは他のタイムマネジメントのプロたちと違い、仕事の優先順位をつけることを強調しない。
+そのかわり、状況に応じたタスクリストを作るよう勧めている
+（例としてかけるべき電話のリスト、
+市内へ出て回る先のリスト）。また新しい仕事が飛び込んできた場合、2分以内でできるようなものならばすぐ済ませるべきだとも説いている。仕事すべてがリストに書き出され把握できているのでない状態で考えた優先順位はむしろ不正確であまり役に立たない。
+
+GTDは、やらなければならない仕事に関する情報を蓄え、追跡し、思い出すことを、簡単にするにはどうすればよいかという心理学的基礎に基づいている。アレンは、ある活動を行う際にわれわれがぶつかる「心理的障害」の多くは、非効率な「フロント＝エンド」式計画（例えば、どんなプロジェクトでも、何を達成すべきか、そのためには何をすべきかを、情報収集してまず最初に明らかにしなければならない）のために引き起こされるという。彼によればもっとも実際的な方法は、まず何をしてどこまで達成すべきかを全部考え、そのあと一連の行動を計画なしで自動的に行うことだという。
+
+またアレンは、われわれの頭や心理にある「思い出すシステム」は非効率で、その時その場所ですべきことを思い出すことはめったにないという。よって、「信頼できるシステム」の文脈にしたがって、すべき仕事を紙や電子機器に書き出して蓄積した「次の行動リスト」はわれわれの心を外側から支援する役割を果たし、われわれが正しいときに正しいことを思い出すことを確実にしてくれる。アレンによって説明されるGTDには、仕事の流れを円滑にする助けとなる個人の仕事管理のコツや方法が詳述されている。
+
+何よりGTDで求められるのは、仕事・ビジネスを遂行する上で行わなければならない作業を明確化し、それを逐次処理で貫徹することにある。例えば途中経過で失敗した場合、その後のスケジュールが総崩れを起こすのは良くない傾向である。これを予防する上で、先回りしてリカバリーポイント（失地回復の場）を要所要所に設け、スケジュール管理することなどが挙げられる。
+
+道具
+
+ブログ「43Folders」の管理人・作家であるマーリン・マン（Merlin Mann）が提唱した「ヒップスターPDA」。PDA（携帯情報端末）という名だが、デジタル機器ではなく、クリップで留めた普通の紙片の束である。PDAとは、ここでは「Parietal Disgorgement Aid」（脳内からの情報吐き出し補助具）の略
+普通、安価な紙、クリップ、手帳などを使用する。ヒップスターPDAというツール（紙片の束をクリップで留めただけのもの）は自作できる。手帳やPalmなどのPDA、Wikiなどのソフトウェアや、Evernoteをはじめとするドキュメント管理用のさまざまなウェブサービスを使用してもよい。
+
+システム
+GTDは次の5つのステップで構成され、これを1週間など一区切りごとに繰り返す[1]。
+
+収集：頭の中にある「やらなければならないこと」「気になっていること（問題）」を紙などに書き出す。作業中のメモ書きなども参照して、問題点を出していく。
+処理：書き出した内容を、手順に添って、分類しリスト化する。
+整理：リストを自身がスケジュール管理に使っているツール（PDAやシステム手帳など）に入れ込む。
+見直し：自分の状況や状態でそれらが可能かどうか見直し、検討する。
+実行：リストアップした「出来ること」を順次片付ける。
+こういった作業を行うための手順の見直しをステップを追って行うことで、「あれもしなくちゃいけないし、これもやらなきゃいけないし…」といった混乱した状況から脱して、着実に作業を進めて行くのがGTDである。こういった手法は、一見仕事が連続した作業の繰り返しで「ここからここまでが1単位」という見通しがなかなか立て難い状況で役立つとされている。
+
+収集
+追いかけなければならない仕事や覚えておくべき仕事、取り掛かっている途中の仕事（公私問わず）をすべて残らず書き出し、「バケット」の中に集める。「バケット」は紙、メモ帳、PDA、パソコン、現実の整理箱やパソコン画面上の電子メールの整理箱でもかまわない。すべき仕事に関する雑然とした想念を頭から全部追い出し、これらメモ帳や整理箱やパソコンなどに記録し、整理できる状態にする。「バケット」の中身は、週に最低一度は整理して空にする必要がある。
+
+処理
+書き出してバケットに投げ込んだ仕事を分類し、厳密なワークフローによって各リストへと分ける作業である。
+
+まず整理箱のトップやメモ用紙などの最初にある仕事から「処理」をはじめる。
+処理する仕事は一度に一個だけ。
+整理箱には絶対にどんな仕事も戻さない。
+処理の開始。整理箱にあるその仕事は、行動をおこすべきものかどうか、考えることが処理の内容である。
+YES。行動すべき
+すぐやる。（2分以内でできる場合）
+複雑なものは、計画を立てて行うことにし、計画は定期的に見直す。「プロジェクト」のリストへ。
+複雑でないもので、自分でしなくてもいいものは人に任せる。任せたら「連絡待ち」のリストへ。
+複雑ではないが今すぐしなくてもよいものは後でする。「カレンダー」のリストへ。
+複雑ではなく今すぐしたほうがよいものは、今やっている仕事の次に着手する。「次のアクション」のリストへ。
+NO。今行動しなくてよい
+資料としてファイルにしまうものは、「資料」リストへ。
+いつかやる仕事としてあたためておくものは、「いつかする」リストへ。
+不要なものは捨てて忘れる。ゴミ箱へ。
+この処理の際に、「するのに2分とかからない仕事は、今すぐ行う」という「2分ルール」がある。「2分」とは目安で、その仕事を後へ延ばすためにリストやメモを書いたりするのにかかる時間くらいのことである。2分くらいでできそうな細かい仕事は、いまこの場でリストから早めに消してすっきりさせる必要がある。
+
+整理
+残っている仕事に常に注意を払うために使う「リスト」には、以下のようなものがある。バケットにある仕事は処理によってこの「リスト」へ仕分けされ、このリストを常時追跡しながら仕事をこなしてゆく。
+
+次のアクション
+注意をしなければならない仕事それぞれについて、取るべき次のアクション（その仕事の最初の一歩）は何かを決める。たとえば、もし仕事が「プロジェクトレポートを書く」ならば、次のアクションは「Aさんにミーティングの時間について電子メールを打つ」か、「Bさんに電話してレポートに必要な内容を聞く」などとなる。仕事完了までにこなすステップや行動はいろいろあるが、その最初にすべきことは必ずあるはずで、これを「次のアクション」リストに入れ、今やっている仕事の次から次へと行う。
+さらにこれらは起こす行動の状況に応じて分類したほうがよい。例えば、「オフィスでする」「電話する」「店でする」など。
+プロジェクト
+プライベートや仕事での「オープン・ループ」の中で、一回以上の物理的動作が必要な、複雑な仕事は「プロジェクト」になる。これらは常に追跡し、定期的に見直す。プロジェクトに関する「次のアクション」は後回しになり、随時進めていく。
+連絡待ち
+誰かに仕事や「次のアクション」を任せる場合、あるいはプロジェクトを進めるにあたり何か外部の出来事が起こるのを待たねばならない場合、これらは追跡できる状態にし、随時任せた仕事が終わったか、外部で出来事が起きたか、見直すこととする。
+いつかやる
+いつかやりたいが今しなくていいものはここに入れる。「将来に備え中国語を勉強」「ダイビングのために休暇をとる」など。
+カレンダー
+カレンダーも約束や仕事の追跡のために重要である。しかし、アレンは、カレンダーは「ハード・ランドスケープ」と彼が名づけた仕事のためにとっておくべきだと勧めている。ハード・ランドスケープは、ある決まった締め切りまでに絶対にすべき仕事や、時間や場所が決まってしまった会議や約束のことである。すべき仕事はカレンダーではなく、次のアクションリストに書かれるべきである。
+GTDの鍵になるものはファイリングシステムである。ファイリングは簡単で、単純で、楽しく苦痛にならないシステムでなければならない。紙1枚に書いたものでも、見直すために必要なら、これまで作ったフォルダに属さないものならば新しいフォルダを作る必要がある。アレンの推薦するものはアルファベット順の単純なファイリングシステムであるが、情報の貯蔵や見直しができるだけ簡単で早く済むものならどういったものでもよい。
+
+見直し
+
+「43Folders」の例
+アクションや覚えておくべきもののリストは、毎日や毎週あるいは随時など、見直すことがなければ役に立たない。リストを見直して、やり忘れているものがあればすぐ着手したほうがよい。またある特定の時点で十分な時間とエネルギーがある場合、リストの中から何が今もっともすべきことかを決定し、すぐやるほうがよい。ただし、ぐずぐず先延ばししがちな人ならば、リストの中の簡単なものから手をつけて後に大変なものが残りがちである。この解決のためには、リストの上から機械的に順番に着手するようにしたほうがいい。
+
+GTDでは、最低週に一度、残っているアクションやプロジェクト、連絡待ちなどの仕事の進捗や要不要を評価し、新しく入った仕事や次に来る出来事などを次々収集・処理・整理してリストに加え、常に新しい状態にしなければならない。
+
+アレンは「備忘録」をつくり、毎週頭の中から仕事やプロジェクトの記憶をすっきり整理してしまうことを勧めている。これは12か月分と31日分の43個のフォルダからなるもので、毎日その日の日付のフォルダを開けて仕事をこなして空にし、空になったフォルダは次の月のフォルダの中に入れるというものである。
+
+実行
+どのようなリストやシステムも、それを作ることばかりに時間をかけ、実際の仕事を行わないようでは意味がない。以上の方法で頭をすっきりさせ、とらなければならないアクションをとることを、簡単に、単純に、楽しいものにできた場合、先伸ばししがちな傾向は少なくなり、「オープン・ループ」のあまりの多さに圧倒されてげんなりすることも少なくなるであろう。
+
+
+1. 収集：頭の中にある「やらなければならないこと」「気になっていること（問題）」を紙などに書き出す。作業中のメモ書きなども参照して、問題点を出していく。
+処理：書き出した内容を、手順に添って、分類しリスト化する。
+整理：リストを自身がスケジュール管理に使っているツール（PDAやシステム手帳など）に入れ込む。
+見直し：自分の状況や状態でそれらが可能かどうか見直し、検討する。
+実行：リストアップした「出来ること」を順次片付ける。
+
+1. 収集: 頭の中にある「気になること」を全て抽出します。
+   - Org mode の「Capture」を使用
+2. 処理: 収集した内容を、
+
+
+
+* Org mode を使ってみよう                                      :RefileTarget:
+:PROPERTIES:
+:ID:       c47dc8c6-91fa-4541-b7e4-440cba0574ec
+:END:
+#+INDEX: Org mode!きほん@基本
+
+この章では, Org-mode の基本的な機能を説明していきます.
+Org mode にはとてもたくさんの機能があるので、全てを一度に覚えようとはしないでください。
+
+
+** Org-mode のすすめ                                           :RefileTarget:
+:PROPERTIES:
+:ID:       516226cf-cebb-40e1-949f-426a572c2a73
+:END:
+:CLOCK:
+CLOCK: [2013-03-22 金 13:50]--[2013-03-22 金 14:06] =>  0:16
+CLOCK: [2013-02-07 木 11:05]--[2013-02-07 木 11:09] =>  0:04
+CLOCK: [2013-01-31 木 14:54]--[2013-01-31 木 14:58] =>  0:04
+CLOCK: [2012-04-12 木 13:17]--[2012-04-12 木 13:22] =>  0:05
+:END:
+
+みなさんはタスク管理ツールは何を使っていますか?
+紙の手帳ですか? Outlook ですか? 私は Org-mode をお勧めします。
+
+
+ - Org mode の何が良いのか?
+   - TODO をコンテキストの中で管理することができる.
+   - 様々なフォーマットでにエクスポートすることができる
+   - ドキュメントの中でプログラムを実行することができる
+     - ドキュメントの中で Ruby や Python などのプログラムを実行して、ドキュメントの中に挿入することができます。
+     - Jupyter や Mathematica のノートのようです。
+ - Org mode でできること
+   - Todo 管理
+   - プロジェクト管理
+     - 私はプロジェクト管理とタスク管理は同じツールを使うのだと思っていましたが、
+       一般的には
+   - ドキュメントの内部でプログラムを書き、それを実行すること
+     - 例えば、ドキュメントの中で試験仕様書を書き、かつ、それを実行し、報告書としてまとめることができます。
+
+
+
+*** コンテキストの中の Todo
+:PROPERTIES:
+:ID:       a00d1c02-21c4-4ec3-8b6e-412bb4a9366f
+:END:
+#+INDEX: コンテキスト
+#+INDEX: TODO
+
+
+一般的な TODO アプリケーションでは、 TODO アイテムはプロジェクトのコンテキストとは
+浮いています。一般的には、TODO 管理ツールとプロジェクト管理ツールが別になっているようです。
+しかしなるべくツールは少なくしたいものです。
+
+一方で Org mode の中では、プロジェクトのコンテキストの中で TODO を管理することができます。
+タスクは何らかのプロジェクトに属しているはずです。そのプロジェクトのコンテキストの中で、
+タスクは管理されるべきです。
+このように Org mode では、プロジェクトの中で TODO を管理することができます。
+
+しかしこの方法では通常は TODO はコンテキストの中に埋もれてしまいます。
+Todo リストだけを見るということが大変です。
+つまり Org mode で TODO を管理すると、あらゆるところに TODO アイテムが散らばります。
+それを一つにまとめて表示してくれる Org mode の機能が、アジェンダビューです。
+
+
+
+*** Org-mode でできること
+:PROPERTIES:
+:ID:       a64bd780-cef8-4f63-866b-0a3ebed5999c
+:END:
+
+
+- Org-mode は何に使えますか?
+  - プロジェクト・タスク管理ツールとして
+  - 文書作成ツールとして
+  - プログラミング環境として
+
+**** プロジェクト・タスク管理ツールとしての Org-mode
+:PROPERTIES:
+:ID:       bea3af88-097c-4b84-b5d9-17de3a12bd0b
+:END:
+「プロジェクトというコンテキストの中でタスクを管理することができる」
+
+**** 文書作成ツールとしての Org-mode
+:PROPERTIES:
+:ID:       75bef145-de8d-4000-9e90-870d2230718b
+:END:
+
+Org-mode のファイルは, さまざまなフォーマットにエクスポートすることができます。
+例えばこの本は Org mode で書き、PDF へエクスポートしています。
+
+**** プログラミング環境としての Org-mode
+:PROPERTIES:
+:ID:       463b8232-73a8-4c60-af21-035b3a804c3b
+:END:
+Org-mode の中でプログラムを書き, それを実行することができます.
+
+こんなことができるエディタは他にはないでしょう.
+
+*** Org-mode に向いている人と向いていない人
+:PROPERTIES:
+:ID:       c1680cf9-cf21-47c9-bd31-f382135393a7
+:END:
+
+- 向いている人
+  - Emacs が好きな人
+  - 何でも Emacs の中でやりたい私のような人間にはうってつけです.
+- 向いていない人
+  - Emacs が嫌いな人
+  - GUI が良い人
+
+*** Org-mode の良いところと悪いところ
+:PROPERTIES:
+:ID:       4a1234d8-e80a-40da-ae4f-8cf89fe083bb
+:END:
+
+- 良いところ
+  - 無料
+  - 全てがプレインテキスト
+    - バージョンコントロールシステムで使いやすいです.
+    - 他のシステムへの移行が比較的簡単です.
+- 悪いところ
+  - 重い
+    - Emacs は重いです。
+  - GUI ではない
+  - 表示機能が弱い
+    - タスクの表示機能はありますが, テキストベースであり, Google カレンダーのようなグラフィカルな表示方法はありません.
+  - 良い iPhone 用のアプリケーションがない。
+
+*** 私の Org-mode の使いかた
+:PROPERTIES:
+:ID:       3c2f3cc3-ba5c-4084-a37b-979baf373eb9
+:END:
+私の Org-mode の使い方の一例です.
+
+  - 全てが Org-mode の中へ
+  - GTD に Org-mode を使用
+    - 基本的にはデビッド・アレン氏の GTD にのっとって作業を行なっています.
+  - プロジェクト管理
+  - 文書作成
+    - HTML へ変換
+    - LaTeX へ変換
+  - 少し長いメールを書く時に
+  - プログラム作成
+  - プログラムの文書作成
+
+*** ブラウザから Org mode のフォーマットで URL をコピーする         :@Home:
+:PROPERTIES:
+:LOCATION: Home
+:Added:    [2018-04-11 水 08:54]
+:ID:       9d9fc344-fb2e-454b-9b5f-cbc71617f821
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2018-04-13 金 19:52]
+:END:
+
+-  [[https://orgmode.org/manual/Protocols.html][The Org Manual: Protocols]]
+
+#+BEGIN_SRC emacs-lisp
+  (require 'org-protocol)
+#+END_SRC
+
+#+BEGIN_EXAMPLE
+gconftool-2 -s /desktop/gnome/url-handlers/org-protocol/command '/usr/bin/emacsclient -n %s' --type String
+gconftool-2 -s /desktop/gnome/url-handlers/org-protocol/enabled --type Boolean true
+#+END_EXAMPLE
+
+#+BEGIN_SRC javascript
+javascript:location.href='org-protocol:///store-link?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title)
+#+END_SRC
+
+*** Yasnippet を使って Org mode のスニペットを作る                  :@Home:
+:PROPERTIES:
+:LOCATION: Home
+:Added:    [2019-01-11 金 09:18]
+:ID:       8fde7482-1de3-4f6e-950e-67778c5094a5
+:END:
+:LOGBOOK:
+- State "DONE"       from "NEXT"       [2019-01-11 金 13:14]
+:END:
+:CLOCK:
+CLOCK: [2019-01-11 金 14:56]--[2019-01-11 金 17:20] =>  2:24
+CLOCK: [2019-01-11 金 12:41]--[2019-01-11 金 13:14] =>  0:33
+CLOCK: [2019-01-11 金 09:18]--[2019-01-11 金 09:19] =>  0:01
+:END:
+
+- [[http://keisanbutsuriya.hateblo.jp/entry/2015/12/12/181028][Emacsでyasnippetを使う - 計算物理屋の研究備忘録]]
+
+
+Spacemacs では設定済みでした。
+
+
+
+** 見出しの書き方
+:PROPERTIES:
+:ID:       437ebf4f-bb23-4c74-90bd-af9953966aac
+:END:
+#+INDEX: Org mode!セクション
+
+見出しは一番左の, 一つ以上のアスタリスクで始まります.
+
+#+NAME: example-of-org-headline
+#+CAPTION: Org mode の見出しの例
+#+BEGIN_SRC org :eval no
+  ,* 見出し1
+  ,* 見出し 2
+  ,** 見出し 2-2
+  ,** 見出し 2-3
+  ,*** 見出し 2-3-1
+#+END_SRC
+
+*** 見出しの折り畳み
+:PROPERTIES:
+:ID:       a127e9e7-2a65-45bf-9b72-541e01c43914
+:END:
+:CLOCK:
+- State "DONE"       from "NEXT"       [2013-03-05 火 15:20]
+CLOCK: [2013-03-05 火 15:16]--[2013-03-05 火 15:20] =>  0:04
+:END:
+
+見出しはアウトラインの階層構造を作ります.
+
+このアウトラインを TAB キーと S-TAB キーを使って、 折り畳んだり(隠したり), 拡げたりすることができます.
+
+Org-mode の見出しの中での移動コマンド一覧です。
+
+- =C-c C-n=, =outline-next-visible-heading= :: 次の見出し.
+- =C-c C-p=, =outline-previous-visible-heading= :: 前の見出し.
+- =C-c C-f=, =org-forward-same-level= :: 同じレベルの次の見出し.
+- =C-c C-b=, =org-backward-same-level= :: 同じレベルの前の見出し.
+- =C-c C-u=, =outline-up-heading= :: 逆向きに, より高い見出し.
+- =C-c C-j=, =org-goto= :: 現在のアウトラインの可視性を変更することなく, 異なる場所にジャンプします.
+   一時的バッファの中にドキュメント構造を表示し, そこで
+   目的地を見つけるために次のキーを使うことができます:
+
+** リスト
+:PROPERTIES:
+:ID:       54e3300d-e0a7-48ca-853f-62ec2de9e8a9
+:END:
+#+INDEX: Org mode!リスト
+#+INDEX: Org mode!かじょうがき@箇条書き
+
+
+HTML を同じように, Org mode は 3 つの種類のリストを提供しています。
+
+- [[id:5420b11e-36bb-480a-8571-a041b2386df8][順序なしリスト]]
+- [[id:1ade75a5-1e63-4288-bbff-ad247cf5268d][番号つきリスト]]
+- [[id:38c2ba75-0580-4d3b-b70c-90f665f6482a][説明つきリスト]]
+
+です。
+
+*** 順序なしリスト
+:PROPERTIES:
+:ID:       5420b11e-36bb-480a-8571-a041b2386df8
+:END:
+
+まずは順序なしリストです.
+順序なしリストは =-= で始まります.
+
+次のように書くと, 
+
+#+NAME: list:list-in-org
+#+CAPTION: Org mode の中のリストの例
+#+BEGIN_SRC org
+  - test1
+  - test2
+    - test 2-1
+    - test 2-2
+#+END_SRC
+
+このように出力されます.
+
+- test1
+- test2
+  - test 2-1
+  - test 2-2
+*** 番号つきリスト
+:PROPERTIES:
+:ID:       1ade75a5-1e63-4288-bbff-ad247cf5268d
+:END:
+
+*** 説明つきリスト
+:PROPERTIES:
+:ID:       38c2ba75-0580-4d3b-b70c-90f665f6482a
+:END:
+
+** 文字の強調
+:PROPERTIES:
+:ID:       7f1c05ec-fe37-4282-8ad7-79314620c7a8
+:END:
+
+- *ボールド*
+- /italic/
+- +打ち消し線+
+- =そのまま=
+
+** タグ
+:PROPERTIES:
+:ID:       4b2d2873-4d40-4015-8a1f-8c1d0127fdd1
+:END:
+
+*** タグの書き方
+:PROPERTIES:
+:ID:       4ddb8c09-c30a-4b64-8ebd-fcd0a3b1e12b
+:END:
+
+*** コンテキストによるタグづけ
+:PROPERTIES:
+:ID:       651bd9ad-8fab-40cb-932f-7fb1c1c5449b
+:END:
+
+- @Office
+- @Home
+
+*** 役割り
+:PROPERTIES:
+:ID:       ad55962f-bca9-4d1a-8dff-9b8b1a477f90
+:END:
+
+- 7 つの習慣
+
+** 数式
+:PROPERTIES:
+:ID:       4431d3bc-da77-425d-8f87-c91806d95e07
+:END:
+#+index: Org mode!すうしき@数式
+
+Org mode の文書の中では、
+\LaTeX の数式をそのまま書くことができます。
+
+このように書くと
+
+#+NAME: list:math-in-org
+#+CAPTION: Org mode の中の数式の例
+#+BEGIN_SRC org
+  \[ y = a x^{2} + b \] 
+#+END_SRC
+
+次のように出力されます.
+
+\[ y = a x^{2} + b \]
+
+*** シンボル
+:PROPERTIES:
+:ID:       b54ac649-012c-49fa-9c27-abcc46599f3b
+:END:
+#+index: Org mode!シンボル
+
+シンボルもそのまま書くことができます。
+
+: \LaTeX
+
+\LaTeX \alpha
+
+*** 数式
+:PROPERTIES:
+:ID:       173bd3e5-1098-437f-ac8d-77d42a98c468
+:END:
+
+: \( y = x^2 \)
+
+\( y = x^2 \)
+
+
+The mass of the sun is \(M_sun = 1.989 x 10^{30}\) kg. 
+The radius of
+the sun is \(R_{sun} = 6.96 x 10^8 m\).
+
+** 締め切り/スケジュール
+:PROPERTIES:
+:ID:       301d101b-19cd-44fe-8cfa-224247bd5cf3
+:END:
+#+INDEX: Org mode!しめきり@締め切り
+#+INDEX: Org mode!スケジュール
+*** 締め切りの追加
+:PROPERTIES:
+:ID:       4226738b-d26e-40b1-aab3-a8b3431666e9
+:END:
+- /C-c d/ :: 締め切りをつける
+*** スケジュール情報の追加
+:PROPERTIES:
+:ID:       78914991-143f-4668-8a13-bf8859564b20
+:END:
+
+- /C-c l/ :: スケジュールをつける
+
+#+NAME: schedule-in-org
+#+CAPTION: スケジュールの例
+#+BEGIN_SRC org
+  ,* TODO テスト
+    SCHEDULED: <2016-08-25 Thu>
+#+END_SRC
+
+** アジェンダの表示
+:PROPERTIES:
+:ID:       4fb875ee-0be3-4695-a722-72914ab54dfd
+:END:
+#+INDEX: Org mode!アジェンダ
+
+** 表
+:PROPERTIES:
+:ID:       2a1021d2-442c-491a-8395-8bed11176cb9
+:END:
+*** Org-mode の表の中の移動コマンド一覧
+:PROPERTIES:
+:ID:       456d5f94-e259-44fb-a1b2-845e9a9725cc
+:END:
+
+表の中での移動コマンドの一覧です.
+
+- =C-c C-c=, =org-table-align= :: カーソルを移動することなく, 表を再整列します.
+- =TAB=, =org-table-next-field= :: 表を再整列し, 次のフィールドへ移動します.
+                                   必要であれば新しい行を作ります.
+- =S-@key{TAB}=, =org-table-previous-field= :: 再整列し, 前のフィールドに移動します.
+- =RET=, =org-table-next-row= :: 表を再整列し, 次の行へ移動します.
+                                 必要であれば新しい行を作ります.
+                                 行の始めか終わりでは, @key{RET} はまだ NEWLINE を行うので, 表を分割するためにそれを使うことができます.
+- =M-a=, =org-table-beginning-of-field= :: 現在の表のフィールドの始めか, 前のフィールド上に移動します.
+- =M-e=, =org-table-end-of-field= :: 現在の表のフィールドの終わりか, 次のフィールド上に移動します.
+
+*** Org-mode の表の中の編集コマンド一覧
+:PROPERTIES:
+:ID:       d2d979fb-9134-454b-8a8d-3de141d59f32
+:END:
+:LOGBOOK:
+- State "TODO"       from "DONE"       [2016-09-05 Mon 15:43]
+:END:
+:CLOCK:
+- State "DONE"       from "NEXT"       [2013-03-05 火 15:16]
+CLOCK: [2013-03-05 火 15:11]--[2013-03-05 火 15:16] =>  0:05
+:END:
+
+- =M-left=,=M-right=, =org-table-move-column-left=,  =org-table-move-column-right= ::
+  現在の列を左/右に移動します.
+- =M-S-left=, =org-table-delete-column= :: 現在の列をキルします.
+- =M-S-right=, =org-table-insert-column= :: カーソルの場所の左側に新しい列を挿入します.
+- =M-up=, =M-down=, =org-table-move-row-up=, =org-table-move-row-down= :: 
+  現在の行を上/下へ移動します.
+- =M-S-up=, =org-table-kill-row= :: 現在の行か水平線をキルします.
+- =M-S-down=, =org-table-insert-row= :: 現在の行の上に新しい行を挿入します.
+  前置引数といっしょだと, その行は現在の行の下に作られます.
+- =C-c -=, =org-table-insert-hline= ::
+   現在の行の下に水平線を挿入します.前置引数といっしょだと, その行は現在の行の上に作られます.
+- =C-c RET=, =org-table-hline-and-move= :: 現在の行の下に水平線を挿入し, 
+  その行の下の行の中にカーソルを移動します.
+- =C-c ^,org-table-sort-lines= :: 
+  リージョンの中の表の行をソートします. ポイントの場所がソートに対して使われる列を示し, 行の範囲は, 一番近い水平分割行の間の範囲です.
+  ポイントが最初の列の前にあれば, ソートする列を求めてプロンプトが出ます.
+  アクティブなリージョンがあれば, マークが最初の行とソートする列を指定し, 
+  一方でポイントは, ソートに含められる最後の行の中にあるべきです.
+  このコマンドは, ソートの種類を求めて(アルファベット順, 数値順, 時間順)プロンプトを出します.
+  前置引数といっしょに呼ばれる時には, 
+  アルファベット順のソートは大文字と小文字を区別します.
+
+
+*** 表の例
+:PROPERTIES:
+:ID:       b7cedd67-054f-4839-9488-b7d292c261f5
+:END:
+#+INDEX: Org mode!ひょう@表
+
+#+CAPTION: 表の例
+| 日              | 体重 | 体脂肪率 |
+|-----------------+------+----------|
+| [2013-10-08 火] | 70.1 |     20.1 |
+| [2013-10-09 水] | 70.1 |     20.1 |
+|-----------------+------+----------|
+
+** 図の挿入
+:PROPERTIES:
+:ID:       7dc45ab1-cdca-4879-92fe-fd6d5d596e15
+:END:
+
+: [[file:test.jpg]]
+
+とします.
+
+[[fig:ex-1]] を見てください.
+
+#+NAME: fig:ex-1
+#+CAPTION: 写真の例
+#+ATTR_LATEX: :width 5cm :options angle=90
+[[file:test.jpg]]
+
+** 索引
+:PROPERTIES:
+:ID:       6da24bda-34c8-4a2b-a175-c92f2111ae22
+:END:
+#+INDEX: Org mode!さくいん@索引
+
+** Todo の追加
+:PROPERTIES:
+:ID:       cf3eae6d-7c6a-418b-ab04-30da96827eda
+:END:
+
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keywords
+  '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
+#+END_SRC
+
+- =!= は, その状態に入る時に, タイムスタンプが記録されることを意味します.
+- =/!= は, その状態から抜ける時に, 抜けた後の状態が, タイムスタンプを記録するように設定されていない時だけに, 
+  タイムスタンプが記録されることを意味します.
+- =@= は, その状態に入る時に, ノートが記録されることを意味します.
+
+** Capture
+:PROPERTIES:
+:ID:       075c24c4-7733-4229-8595-4f0a9c27d346
+:END:
+#+index: Org mode!Capture
+*** テンプレートの作成方法
+:PROPERTIES:
+:ID:       8797389c-f4da-45ef-8eb5-bf107a44ef4d
+:END:
+
+** Babel
+:PROPERTIES:
+:ID:       c5af000e-a87a-4d30-9193-0b58bdf9763f
+:END:
+
+
+Org mode では, 文書内でプログラムを実行することができます.
+さらにそのプログラムの結果を別のプログラムの入力として使用することができます.
+
+
+*** Ruby
+:PROPERTIES:
+:ID:       93259d82-fa3f-40f1-b38c-4ce186017960
+:END:
+
+#+NAME: ruby-code-example-1
+#+CAPTION: Ruby コードの例
+#+BEGIN_SRC ruby :export both :results value
+p  "test"
+#+END_SRC
+
+#+results:
+: test
+
+
+*** ditaa
+:PROPERTIES:
+:ID:       fe1b8674-b9fb-4094-8cfe-1e7ed8603312
+:END:
+
+#+NAME: ditaa-in-org-1
+#+CAPTION: Org mode の中での ditaa の例
+#+begin_src ditaa :file ditaa_example1.png :cache yes :export both
+  /-----------------\
+  | Summer Triangle |
+  | cBLU            |
+  | o ベガ          |
+  | o Deneb         |
+  | o Altair        |
+  \-----------------/
+#+end_src
+
+
+このような結果が得られます.
+
+#+CAPTION: ditaa の例
+#+NAME: ditaa-example1
+#+ATTR_LaTeX: :width 3cm
+#+RESULTS[bdd8332951ddf1b20889b6a5a48f13a9dbf43170]: ditaa-in-org-1
+[[file:ditaa_example1.png]]
+
+
+** 文章構造(マークアップ)
+:PROPERTIES:
+:ID:       9fa403d0-dfaf-44ba-8e79-cbb4fc9ef58a
+:END:
+
+このセクションでは, 文書構造の書きかた, つまりマークアップを説明してい
+きます.
+
+
+** タイムスタンプ
+:PROPERTIES:
+:ID:       a54fc0e3-4fc6-48a5-837d-94bcca805f21
+:END:
+
+*** タイムスタンプはどこにでも現われることができます
+:PROPERTIES:
+:ID:       6882a709-2e69-499f-bae8-38eebbbd1418
+:END:
+
+*** アクティブなタイムスタンプ
+:PROPERTIES:
+:ID:       3d9490a3-5e92-45eb-9f36-4f3d26db05f0
+:END:
+
+「アクティブ」なタイムスタンプは, アジェンダの中で, このタイムスタンプを含む見出しを表示させます.
+*** 非アクティブなタイムスタンプ
+:PROPERTIES:
+:ID:       80df5e6d-b685-42cf-95b4-853ea93a8cd1
+:END:
+
+ 「非アクティブ」なタイムスタンプは, アジェンダの中で, このタイムスタンプを含む見出しを表示させ *ません*.
+:PROPERTIES:
+:ID:       8e67fc90-e263-4f57-900e-5da63d3f39aa
+:END:
+
+C-c C-d でカレンダーが開くので, マウスなどで日付を選択します.
+*** SCHEDULE
+:PROPERTIES:
+:ID:       1ecbe0da-327f-45f6-b143-82dcb2616db6
+:END:
+
+
+C-c C-s でカレンダーが開くので, マウスなどで日付を選択します.
+
+*** 時間の範囲
+:PROPERTIES:
+:ID:       afe94eae-c959-4b9c-9fb2-f370ee6ce896
+:END:
+
+*** リピーター
+:PROPERTIES:
+:ID:       dcc76964-04d8-4654-99a0-9e6bbb5ffb18
+:END:
+
+** habit
+:PROPERTIES:
+:ID:       1283193c-fbe9-4c8c-8957-aa092e6bef9e
+:END:
+
+** プロパティ
+:PROPERTIES:
+:ID:       f891acb0-4d62-4376-b38b-f0b2b3fc0c0a
+:END:
+
+
+*** プロパティの設定方法
+:PROPERTIES:
+:ID:       7cd1535d-2407-41af-8a79-4eacb2f2d959
+:END:
+
+
+C-c C-x p とすると, プロパティ名が聞かれるので, 
+その後にプロパティの値を入れます.
+
+工数見積もりを例に, プロパティの設定を練習してみましょう.
+
+*** 工数見積もり
+:PROPERTIES:
+:ID:       7292dab7-1707-4f8b-b6b7-b90827a01916
+:END:
+
+
+
+*** コラムビュー
+:PROPERTIES:
+:ID:       46ebe77d-bb4a-4e3a-a37d-deffc9c9e434
+:END:
+
+** クロック
+:PROPERTIES:
+:ID:       eb3c9b03-10b1-488c-a93c-bc0815ef092e
+:END:
+
+
+
+- 作業を始める時 クロックインします
+- 作業をやめる時, 中断する時にクロックアウトします
+
+
+*** 工数見積もりと, 実際に作業にかかった時間との比較
+:PROPERTIES:
+:ID:       f2f7b1a5-6e34-44e1-b34d-00aa2bcfbbb1
+:END:
+
+**** コラムビューの使用
+:PROPERTIES:
+:ID:       9ee6476b-4b9a-44b0-bc31-27106e474141
+:END:
+
+
+- C-c C-x C-c
+コラムビューは主にプロパティを便利に編集するために使われます.
+
+
+
+
+** アジェンダ
+:PROPERTIES:
+:ID:       04c790dd-2fb4-4fba-aebd-ac9d23d2ccd1
+:END:
+
+
+私はアジェンダがないと Org-mode を使う気にはなりません.
+
+私が朝コンピュータを立ち上げて, Emacs を立ち上げて, まず最初に実行する
+コマンドがアジェンダです.
+
+Org-mode はコンテキストの中に TODO アイテムを散りばめます.
+このため, Org-mode の TODO アイテムはいくつものファイルの中に
+散らばって存在し, TODO を一目で把握することが困難になります.
+これを補償する機能が, アジェンダビューです.
+
+このアジェンダが, Org-mode を他のツールとは異なるものにしていると, 私
+は考えています.
+
+*** アジェンダディスパッチャ
+:PROPERTIES:
+:ID:       b55f337d-4b62-41d1-ac49-1e90fabff854
+:END:
+
+アジェンダには「アジェンダディスパッチャ」を通してアクセスします.
+
+- C-a a :: 実際のアジェンダを選択するための, アジェンダディスパッチャ
+           を立ち上げます. この後で, 実際のアジェンダを選択するためのキーを入力します.
+
+
+
+
+*** 組み込みのアジェンダ
+:PROPERTIES:
+:ID:       7f3dfd02-587f-4992-96b3-423b937bbb94
+:END:
+**** 週ごと/一日ごとのアジェンダ
+:PROPERTIES:
+:ID:       b4f9d362-d321-4432-9222-40e42f569795
+:END:
+
+: C-c a a
+
+一日, 一週間分のタスクがついた, カレンダーページです.
+
+**** グローバル TODO リスト
+:PROPERTIES:
+:ID:       306b17c8-ef2f-4cc6-968b-b50b5dd403dc
+:END:
+
+: C-c a t
+全ての終了していないアクションアイテムを表示します.
+一般的な TODO リストと同じように, TODO リストをリストします.
+
+**** タグとプロパティへのマッチ
+:PROPERTIES:
+:ID:       40979ff9-471d-4ab5-9018-15395c172257
+:END:
+細かい検索がついた構造化された情報
+**** タイムライン
+:PROPERTIES:
+:ID:       7cd30bdb-72c7-49b4-a4de-d0dcf58caf35
+:END:
+一つのファイルに対する時間でソートされたビュー
+**** 検索ビュー
+:PROPERTIES:
+:ID:       f5e40b83-9b46-465b-a8b5-0858cd1c5684
+:END:
+C-c a /
+
+テキストに対して検索することによってエントリーを見つける
+**** スタックしたプロジェクト
+:PROPERTIES:
+:ID:       50022c54-9261-4787-990e-e589651dba61
+:END:
+: C-a #
+
+レビューする必要があるプロジェクトを見つけるためのアジェンダです.
+
+これについては, GTD についてのセクションで説明します.
+
+
+*** NEXT アジェンダの中のコマンド一覧
+:PROPERTIES:
+:ID:       54d54a68-8da1-4291-8147-65b6e2ce0a3a
+:END:
+:CLOCK:
+CLOCK: [2013-03-22 金 14:06]--[2013-03-22 金 14:37] =>  0:31
+:END:
+:PROPERTIES:
+:ID:       f920b5a9-48a5-4b6b-9ea7-8749244e30b9
+:END:
+** Org-mode への時間つきタイムスタンプの挿入
+:PROPERTIES:
+:ID:       dacc759b-1b56-4011-a8e6-cba1c250f73a
+:END:
+
+- C-u C-! :: 時間つきの, アクティブなタイムスタンプを挿入
+- C-u C-. :: 時間つきの, 非アクティブなタイムスタンプを挿入
+
+
+** エクスポート
+:PROPERTIES:
+:ID:       f709ecc7-7903-497b-8461-8d77c9951241
+:END:
+
+
+*** HTML エクスポート
+:PROPERTIES:
+:ID:       84d7c9f3-eddb-4f22-9f94-bfe140d7c65e
+:END:
+
+
+*** \LaTeX エクスポート
+:PROPERTIES:
+:ID:       b30b6627-1b15-45bb-b676-deab2b7b752e
+:END:
+
+
+
+*** Org mode のエクスポート設定                              :RefileTarget:
+:PROPERTIES:
+:ID:       349f2954-6482-4eee-8adf-ede58214d428
+:END:
+
+**** Org mode で目次を任意の場所に出力する
+:PROPERTIES:
+:ID:       caeaaf22-3aee-471d-805d-e525f860a297
+:END:
+#+INDEX: もくじ@目次
+
+デフォルトでは, 一番最初の見出しの前に目次が出力されます.
+しかし, 任意の場所に目次を出力したいことがあります.
+このセクションではその方法を説明します.
+
+まず, デフォルトの目次の出力を停止します.
+
+
+#+BEGIN_SRC org
+  ,#+OPTIONS: toc:nil
+#+END_SRC
+
+次に任意の場所に, 
+
+#+BEGIN_SRC org
+  ,#+TOC: headlines 3
+#+END_SRC
+
+と書きます.
+
+**** Org の iCal エクスポートの設定
+:PROPERTIES:
+:ID:       4026dd6a-c7f5-4f20-8f1b-d579d0dee275
+:END:
+:LOGBOOK:
+- State "DONE"       from "NEXT"       [2013-06-10 月 16:47]
+:END:
+:CLOCK:
+CLOCK: [2013-06-10 月 14:53]--[2013-06-10 月 16:37] =>  1:44
+:END:
+
+#+NAME: ical-export-setting
+#+CAPTION: iCal エクスポートの設定
+#+BEGIN_SRC emacs-lisp :eval no-export
+  ;; iCal の説明文
+  (setq org-icalendar-combined-description "OrgMode のスケジュール出力")
+  (setq org-export-exclude-tags "noexport")
+  (setq org-export-with-tasks 'todo)
+  ;; DONE になった TODO は出力対象から除外する
+  (setq org-icalendar-include-todo t)
+  (setq org-icalendar-include-body 100) ;; 本体に出す文字の制限
+  (setq org-icalendar-use-scheduled '(event-if-todo))
+  (setq org-icalendar-use-deadline '(event-if-todo))
+  ;;  (setq org-icalendar-use-deadline '(event-if-todo event-if-not-todo todo-due))
+  (setq org-icalendar-store-UID t)
+  (setq org-icalendar-combined-agenda-file "~/Dropbox/Calendars/Org.ics") ;; 全部まとめて一つのファイルへ出力
+#+END_SRC
+
+**** エクスポート出力に CREATOR 情報を出力しない
+:PROPERTIES:
+:ID:       3417296f-ffc6-4938-aa23-eeb0d3563992
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2016-09-01 Thu 12:14]
+:END:
+
+#+NAME: export-option-creator
+#+CAPTION: エクスポート出力に CREATOR 情報を出力しない
+#+BEGIN_SRC org
+#+OPTIONS: creator:nil
+#+END_SRC
+
+*** Org mode での \LaTeX エクスポート                        :RefileTarget:
+:PROPERTIES:
+:ID:       c0c62795-29c3-4d81-9ec6-95b221241022
+:END:
+
+**** Org mode のエクスポートで番号なしの章を出力する
+:PROPERTIES:
+:ID:       bc567823-11c2-4c45-9929-0c9f5405bf61
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2016-09-01 Thu 17:21]
+:END:
+
+次のプロパティを見出しにいれます.
+
+#+NAME: org-section-without-number
+#+CAPTION: Org mode で番号なしの章を出力する
+#+BEGIN_SRC org
+:PROPERTIES:
+:UNNUMBERED: t
+:END:
+#+END_SRC
+
+**** Org mode で hypersetup を出力させない
+:PROPERTIES:
+:ID:       52b5cf34-e1d2-43e2-a812-c9a55458ed92
+:END:
+#+INDEX: hyperref
+#+INDEX: hypersetup
+
+#+NAME: no-hypersetup-in-org
+#+CAPTION: Org mode で hypersetup を出力させない
+#+BEGIN_SRC emacs-lisp
+(setq org-latex-with-hyperref nil)
+#+END_SRC
+
+**** Org mode の hypersetup の出力をカスタマイズ
+:PROPERTIES:
+:ID:       f3044d33-f37e-470c-9fdc-26b2a4008a03
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2016-09-01 Thu 15:44]
+:END:
+#+INDEX: org-latex-hyperref-template 
+
+Org mode の hypersetup の出力をカスタマイズします.
+
+- org-latex-hyperref-template という変数をカスタマイズします
+
+#+NAME: org-latex-hyperref-template
+#+CAPTION: org-latex-hyperref-template の設定
+#+BEGIN_SRC emacs-lisp :tangle yes
+  (setq org-latex-hyperref-template 
+  "\\hypersetup{
+   bookmarks=true,
+   bookmarksnumbered=true,
+   colorlinks=true,
+   setpagesize=false,
+   linkcolor=blue,
+   citecolor=blue,
+   backref,
+   pdfauthor={%a},
+   pdftitle={%t},
+   pdfkeywords={%k},
+   pdfsubject={%d},
+   pdfcreator={%c}, 
+   pdflang={%L}}
+  ")
+#+END_SRC
+
+: (setq org-latex-hyperref-template nil)
+
+とすると, hypersetup を出力しません.
+
+#+NAME: escape-with-org-latex-hyperref-template
+#+CAPTION: org-latex-hyperref-template で使うことができるエスケープシーケンス
+#+ATTR_LaTeX: :placement [H]
+|------------+------------------------------------|
+| シーケンス | 意味                               |
+|------------+------------------------------------|
+| %a         | AUTHOR キーワード                  |
+| %t         | TITLE キーワード                   |
+| %s         | SUBTITLE キーワード                |
+| %k         | KEYWORDS 行                        |
+| %d         | DESCRIPTION 行                     |
+| %c         | CREATOR 行                         |
+| %l         | Language キーワード                |
+| %L         | 大文字にされた Language キーワード |
+| %D         | DATE キーワード                    |
+|------------+------------------------------------|
+
+**** Org mode の LaTeX エクスポートで, 表や図のフロートの場所を指定する
+:PROPERTIES:
+:ID:       88a666ed-f17b-477d-8d2c-1221bc5380b3
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2016-09-01 Thu 15:54]
+:END:
+#+INDEX: フロート
+
+#+NAME: org-latex-export-float
+#+CAPTION: Org mode の LaTeX エクスポートでフロートの場所を指定する
+#+BEGIN_SRC org
+  ,#+ATTR_LATEX: :placement [H]
+#+END_SRC
+
+**** Org mode のソースの \LaTeX エクスポートで tcolorbox を使う
+:PROPERTIES:
+:LOCATION: Office
+:Added: [2016-08-26 Fri 09:07]
+:ID:       31e825dd-85d3-4eff-a775-950a0037fe77
+:END:
+:LOGBOOK:
+- State "DONE"       from "NEXT"       [2016-08-26 Fri 17:38]
+:END:
+:CLOCK:
+CLOCK: [2016-08-26 Fri 15:44]--[2016-08-26 Fri 17:38] =>  1:54
+CLOCK: [2016-08-26 Fri 11:36]--[2016-08-26 Fri 12:36] =>  1:00
+:END:
+
+org-latex-custom-lang-environments をカスタマイズするよ良さそうです.
+
+***** org-latex-custom-lang-environments のカスタマイズ
+:PROPERTIES:
+:ID:       bdb54449-cb7d-4320-bccb-caaeb8bd0544
+:END:
+
+- %s :: フォーマットされたソース
+- %c :: キャプション
+- %f :: フロート属性
+- %l :: 適切なラベル
+- %o :: LaTeX の属性
+
+#+NAME: customize-org-latex-custom-lang-environments
+#+CAPTION: org-latex-custom-lang-environments のカスタマイズ
+#+BEGIN_SRC org
+  (require 'ox-latex)
+  (add-to-list 'org-latex-packages-alist '("chapter" "minted")) ; chapter: 数式のラベルを章単位に
+  (setq org-latex-listings 'minted)
+  (setq org-latex-minted-options
+        '(("frame" "lines") ("linenos=false")))
+#+END_SRC
+
+キャプションに余計な括弧がでるので, org-latex-src-block を再定義しました.
+
+#+NAME: redifine-org-latex-src-block
+#+CAPTIOIN: org-latex-src-block の再定義
+#+BEGIN_SRC emacs-lisp :tangle yes
+  (defun org-latex-src-block (src-block _contents info)
+    "Transcode a SRC-BLOCK element from Org to LaTeX.
+  CONTENTS holds the contents of the item.  INFO is a plist holding
+  contextual information."
+    (when (org-string-nw-p (org-element-property :value src-block))
+      (let* ((lang (org-element-property :language src-block))
+         (caption (org-element-property :caption src-block))
+         (caption-above-p (org-latex--caption-above-p src-block info))
+             (label (org-element-property :name src-block))
+         (custom-env (and lang
+                  (cadr (assq (intern lang)
+                      org-latex-custom-lang-environments))))
+         (num-start (org-export-get-loc src-block info))
+         (retain-labels (org-element-property :retain-labels src-block))
+         (attributes (org-export-read-attribute :attr_latex src-block))
+         (float (plist-get attributes :float))
+         (listings (plist-get info :latex-listings)))
+        (cond
+         ;; Case 1.  No source fontification.
+         ((not listings)
+      (let* ((caption-str (org-latex--caption/label-string src-block info))
+             (float-env
+          (cond ((string= "multicolumn" float)
+                 (format "\\begin{figure*}[%s]\n%s%%s\n%s\\end{figure*}"
+                     (plist-get info :latex-default-figure-position)
+                     (if caption-above-p caption-str "")
+                     (if caption-above-p "" caption-str)))
+                (caption (concat
+                  (if caption-above-p caption-str "")
+                  "%s"
+                  (if caption-above-p "" (concat "\n" caption-str))))
+                (t "%s"))))
+        (format
+         float-env
+         (concat (format "\\begin{verbatim}\n%s\\end{verbatim}"
+                 (org-export-format-code-default src-block info)))))
+
+
+
+      )
+         ;; Case 2.  Custom environment.
+         (custom-env
+      (let (
+  (caption-str (org-export-data caption info))
+  ;          (caption-str (org-latex--caption/label-string src-block info))
+                (formatted-src (org-export-format-code-default src-block info)))
+            (if (string-match-p "\\`[a-zA-Z0-9]+\\'" custom-env)
+            (message "test")
+
+            (message "%s" caption)
+            (message "%s" caption-str)
+            (format "\\begin{%s}\n%s\\end{%s}\n"
+                custom-env
+                (concat (and caption-above-p caption-str)
+                    formatted-src
+                    (and (not caption-above-p) caption-str))
+                custom-env)
+          (format-spec custom-env
+               `((?s . ,formatted-src)
+                 (?c . ,caption-str)
+                 (?f . ,float)
+                 (?l . ,(org-latex--label src-block info))
+                 (?o . ,(or (plist-get attributes :options) "")))))))
+         ;; Case 3.  Use minted package.
+         ((eq listings 'minted)
+      (let* ((caption-str (org-latex--caption/label-string src-block info))
+             (float-env
+          (cond
+           ((string= "multicolumn" float)
+            (format "\\begin{listing*}\n%s%%s\n%s\\end{listing*}"
+                (if caption-above-p caption-str "")
+                (if caption-above-p "" caption-str)))
+           (caption
+            (concat (if caption-above-p caption-str "")
+                "%s"
+                (if caption-above-p "" (concat "\n" caption-str))))
+           (t "%s")))
+             (options (plist-get info :latex-minted-options))
+             (body
+          (format
+           "\\begin{minted}[%s]{%s}\n%s\\end{minted}"
+           ;; Options.
+           (concat
+            (org-latex--make-option-string
+             (if (or (not num-start) (assoc "linenos" options))
+                 options
+               (append
+                `(("linenos")
+              ("firstnumber" ,(number-to-string (1+ num-start))))
+                options)))
+            (let ((local-options (plist-get attributes :options)))
+              (and local-options (concat "," local-options))))
+           ;; Language.
+           (or (cadr (assq (intern lang)
+                   (plist-get info :latex-minted-langs)))
+               (downcase lang))
+           ;; Source code.
+           (let* ((code-info (org-export-unravel-code src-block))
+              (max-width
+               (apply 'max
+                  (mapcar 'length
+                      (org-split-string (car code-info)
+                                "\n")))))
+             (org-export-format-code
+              (car code-info)
+              (lambda (loc _num ref)
+                (concat
+                 loc
+                 (when ref
+               ;; Ensure references are flushed to the right,
+               ;; separated with 6 spaces from the widest line
+               ;; of code.
+               (concat (make-string (+ (- max-width (length loc)) 6)
+                            ?\s)
+                   (format "(%s)" ref)))))
+              nil (and retain-labels (cdr code-info)))))))
+        ;; Return value.
+        (format float-env body)))
+         ;; Case 4.  Use listings package.
+         (t
+      (let ((lst-lang
+             (or (cadr (assq (intern lang)
+                     (plist-get info :latex-listings-langs)))
+             lang))
+            (caption-str
+             (when caption
+           (let ((main (org-export-get-caption src-block))
+                 (secondary (org-export-get-caption src-block t)))
+             (if (not secondary)
+                 (format "{%s}" (org-export-data main info))
+               (format "{[%s]%s}"
+                   (org-export-data secondary info)
+                   (org-export-data main info))))))
+            (lst-opt (plist-get info :latex-listings-options)))
+        (concat
+         ;; Options.
+         (format
+          "\\lstset{%s}\n"
+          (concat
+           (org-latex--make-option-string
+            (append
+             lst-opt
+             (cond
+          ((and (not float) (plist-member attributes :float)) nil)
+          ((string= "multicolumn" float) '(("float" "*")))
+          ((and float (not (assoc "float" lst-opt)))
+           `(("float" ,(plist-get info :latex-default-figure-position)))))
+             `(("language" ,lst-lang))
+             (if label `(("label" ,label)) '(("label" " ")))
+             (if caption-str `(("caption" ,caption-str)) '(("caption" " ")))
+             `(("captionpos" ,(if caption-above-p "t" "b")))
+             (cond ((assoc "numbers" lst-opt) nil)
+               ((not num-start) '(("numbers" "none")))
+               (t `(("firstnumber" ,(number-to-string (1+ num-start)))
+                ("numbers" "left"))))))
+           (let ((local-options (plist-get attributes :options)))
+             (and local-options (concat "," local-options)))))
+         ;; Source code.
+         (format
+          "\\begin{lstlisting}\n%s\\end{lstlisting}"
+          (let* ((code-info (org-export-unravel-code src-block))
+             (max-width
+              (apply 'max
+                 (mapcar 'length
+                     (org-split-string (car code-info) "\n")))))
+            (org-export-format-code
+             (car code-info)
+             (lambda (loc _num ref)
+           (concat
+            loc
+            (when ref
+              ;; Ensure references are flushed to the right,
+              ;; separated with 6 spaces from the widest line of
+              ;; code
+              (concat (make-string (+ (- max-width (length loc)) 6) ?\s)
+                  (format "(%s)" ref)))))
+             nil (and retain-labels (cdr code-info))))))))))))
+#+END_SRC
+
+
+Org mode の src ブロックのエクスポート環境を Programlist にします.
+
+#+NAME: change-src-block-export
+#+CAPTION: src ブロックエクスポートする環境の変更
+#+BEGIN_SRC emacs-lisp
+  (setq org-latex-custom-lang-environments
+        '((org "\\begin{programlist}[label={%l}]{org}{%c}\n%s\\end{Programlist}")
+          (emacs-lisp "\\begin{programlist}[label={%l}]{lisp}{%c}\n%s\\end{Programlist}")
+          (sh "\\begin{programlist}[label={%l}]{shell}{%c}\n%s\\end{Programlist}")
+          (ditaa "\\begin{programlist}[label={%l}]{text}{%c}\n%s\\end{Programlist}")))
+#+END_SRC
+
+
+#+NAME: org-source-export
+#+CAPTION: \LaTeX での Org mode のソースの例
+#+BEGIN_SRC org
+- test
+#+END_SRC
+
+***** verbaim を変更する
+:PROPERTIES:
+:ID:       fa14cbb8-45fc-4b4b-8c1a-895aefdad6c8
+:END:
+
+- [[http://qiita.com/kawabata@github/items/1b56ec8284942ff2646b][org-mode で日本語 LaTeX を出力する方法 - Qiita]]
+
+#+NAME: change-verbatim
+#+CAPTION: verbaim の変更
+#+BEGIN_SRC emacs-lisp :tangle yes
+  ;; "verbatim" → "Verbatim" 置換
+  (defun my-org-latex-filter-fancyvrb (text backend _info)
+    "Convert begin/end{verbatim} to begin/end{Verbatim}.
+  Allows use of the fancyvrb latex package."
+    (when (or (org-export-derived-backend-p backend 'beamer)
+              (org-export-derived-backend-p backend 'latex))
+      (replace-regexp-in-string
+       "\\\\\\(begin\\|end\\){verbatim}[frame=single, numbers=left]"
+       "\\\\\\1{Verbatim}" text)))
+  (add-to-list 'org-export-filter-final-output-functions
+               'my-org-latex-filter-fancyvrb)
+#+END_SRC
+
+**** Org mode の \LaTeX エクスポートで latexmk を使う
+:PROPERTIES:
+:ID:       dc62a097-0306-4e08-8feb-98bfe43491fe
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2016-09-01 Thu 11:19]
+:END:
+#+INDEX: latexmk
+
+*Org PDF LaTeX Output* buffer の出力で, \LaTeX のコンパイルの全ての出力が出ません.
+具体的には, dvipdfmx の結果しかでてきません.
+
+変数 org-latex-pdf-process のドキュメント文字列を読むと, このプロセスは
+あまり賢くないので, latexmk などのツールを使えとなっています.
+
+そこで latexmk を使うように変更します.
+
+***** latexmk の設定 
+:PROPERTIES:
+:ID:       3e48b4a4-2fef-4442-9b88-47bbc69b91f9
+:END:
+#+INDEX: .latexmkrc
+
+latexmk を使用すると, 面倒な \LaTeX のコンパイルを自動化してくれます.
+
+- [[http://ryogan.org/blog/2015/12/28/mac-os-x-el-capitan-%25E3%2581%25AB-latex-%25E3%2582%25A4%25E3%2583%25B3%25E3%2582%25B9%25E3%2583%2588%25E3%2583%25BC%25E3%2583%25AB/][Mac OS X El Capitan に LaTeX インストール | 澍法雨]]
+- [[http://qiita.com/tdrk/items/16f31e45826c57bce412][latexmk の薦め - Qiita]]
+
+を参考にしました.
+
+~/.latexmkrc で設定します。
+
+#+NAME: dot.latexmkrc-example
+#+CAPTION: ~/.latexmkrc の例
+#+BEGIN_SRC sh
+$latex  = 'uplatex -src-specials -shell-escape -synctex=1 -interaction=nonstopmode';
+$pdflatex  = 'uplatex -src-specials  -shell-escape -interaction=nonstopmode';
+$bibtex = 'upbibtex';
+$dvipdf  = 'dvipdfmx %O -o %D %S';
+$makeindex  = '/usr/bin/mendex  -r -c -g -s dot.ist -p any';
+$pdf_previewer = 'xdg-open %O %S';
+$pdf_mode = 3;
+$pdf_update_method = 0;
+#+END_SRC
+
+
+***** org-latex-pdf-process の設定
+:PROPERTIES:
+:ID:       7c947136-65e5-4c8a-9142-8b3df91440b6
+:END:
+#+INDEX: org-latex-pdf-process
+
+Org mode $\to$ \LaTeX $\to$ PDF の処理で、latexmk を使うように, 
+org-latex-pdf-process を設定します。
+
+#+NAME: org-latex-pdf-process-with-latexmk
+#+CAPTION: org-latex-pdf-process の設定
+#+BEGIN_SRC emacs-lisp :tangle yes
+(setq org-latex-pdf-process '("latexmk %f"))
+#+END_SRC
+
+
+***** \LaTeX ファイルのコンパイル
+:PROPERTIES:
+:ID:       7c0045cc-1851-4d0d-bf1b-77c2aabbc879
+:END:
+
+うまく *Org PDF LaTeX Output* バッファにログが出力されました.
+
+**** Org mode の\LaTeX エクスポートの後にログファイルなどを削除しない
+:PROPERTIES:
+:ID:       83ca181e-7c09-46a9-9c94-829941aa3b01
+:END:
+LaTeX エクスポートの後に aux ファイルなどが削除されてしまいます.
+
+
+#+NAME: do-not-remove-files-after-latex-export
+#+CAPTION: \LaTeX エクスポートの後にログファイルなどを削除しない
+#+BEGIN_SRC emacs-lisp
+(setq org-latex-remove-logfiles nil)
+#+END_SRC
+
+
+とすると, コンパイルの後にログファイルなどを削除しないようになります.
+
+**** Org mode の \LaTeX エクスポートで, シェルの出力をを tcolorbox で出力するようにする
+:PROPERTIES:
+:ID:       9019c889-eadf-4722-9bb6-161f99980bbb
+:END:
+:LOGBOOK:
+- State "DONE"       from "NEXT"       [2016-08-29 Mon 13:12]
+:END:
+:CLOCK:
+CLOCK: [2016-08-29 Mon 11:49]--[2016-08-29 Mon 12:31] =>  0:42
+CLOCK: [2016-08-29 Mon 11:44]--[2016-08-29 Mon 11:49] =>  0:05
+:END:
+#+INDEX: tcolorbox
+
+シェル出力をかっこうよくします.
+
+Org mode のヘッダーで, このような tcblisting 環境を定義しておきます.
+
+#+NAME: shelloutput-env 
+#+CAPTION: Org-mode での設定
+#+BEGIN_SRC org
+  ,#+LATEX_HEADER: \newtcblisting{shelloutput}{colback=black,colupper=white,colframe=yellow!75!black,
+  ,#+LATEX_HEADER:     title=シェル出力,
+  ,#+LATEX_HEADER:     fonttitle=\bfseries,
+  ,#+LATEX_HEADER:     listing only,
+  ,#+LATEX_HEADER:     listing engine=minted,breakable,
+  ,#+LATEX_HEADER:     minted language=sh, minted style=monokai
+  ,#+LATEX_HEADER:   }
+#+END_SRC
+
+#+NAME: source-of-babel
+#+CAPTION: Babel のソース
+#+BEGIN_SRC org
+  ,#+CAPTION: ls の例
+  ,#+BEGIN_SRC sh  :results value verbatim
+  ls -al ~/tmp
+#+END_SRC
+
+このソースコードの中で C-c C-c を押すと, 以下の結果が得られます.
+
+#+NAME: result-of-babel
+#+CAPTION: 結果
+#+BEGIN_SRC org
+  ,#+results:
+  ,#+begin_example
+  合計 648
+  drwxrwxr-x  5 shimano shimano   4096  8 月 25 15:04 .
+  drwxr-xr-x 49 shimano shimano   4096  8 月 29 12:03 ..
+  drwxrwxr-x  2 shimano shimano   4096  8 月 19 13:57 auto
+  -rw-rw-r--  1 shimano shimano   4364  8 月 19 13:48 enumitem.aux
+  -rw-rw-r--  1 shimano shimano 111296  8 月 19 13:48 enumitem.dvi
+  -rw-rw-r--  1 shimano shimano  17588  8 月 19 13:48 enumitem.log
+  -rw-rw-r--  1 shimano shimano   1948  8 月 19 13:48 enumitem.out
+  -rw-rw-r--  1 shimano shimano 264924  8 月 19 13:48 enumitem.pdf
+  -rw-rw-r--  1 shimano shimano 151795  8 月 19 13:48 enumitem.synctex.gz
+  -rw-rw-r--  1 shimano shimano  71514  8 月 19 13:57 enumitem.tex
+  drwxrwxr-x  8 shimano shimano   4096  8 月 25 15:25 pygments-main
+  drwxrwxr-x  3 shimano shimano   4096  8 月 19 13:42 titlesec
+  ,#+end_example
+#+END_SRC
+
+#+NAME: change-latex-env
+#+CAPTION: LaTeX の環境を変更する
+#+BEGIN_SRC org
+  ,#+ATTR_LATEX: :environment shelloutput
+  ,#+results:
+  ,#+begin_example
+  合計 648
+  drwxrwxr-x  5 shimano shimano   4096  8 月 25 15:04 .
+  drwxr-xr-x 49 shimano shimano   4096  8 月 29 12:03 ..
+  drwxrwxr-x  2 shimano shimano   4096  8 月 19 13:57 auto
+  -rw-rw-r--  1 shimano shimano   4364  8 月 19 13:48 enumitem.aux
+  -rw-rw-r--  1 shimano shimano 111296  8 月 19 13:48 enumitem.dvi
+  -rw-rw-r--  1 shimano shimano  17588  8 月 19 13:48 enumitem.log
+  -rw-rw-r--  1 shimano shimano   1948  8 月 19 13:48 enumitem.out
+  -rw-rw-r--  1 shimano shimano 264924  8 月 19 13:48 enumitem.pdf
+  -rw-rw-r--  1 shimano shimano 151795  8 月 19 13:48 enumitem.synctex.gz
+  -rw-rw-r--  1 shimano shimano  71514  8 月 19 13:57 enumitem.tex
+  drwxrwxr-x  8 shimano shimano   4096  8 月 25 15:25 pygments-main
+  drwxrwxr-x  3 shimano shimano   4096  8 月 19 13:42 titlesec
+  ,#+end_example
+#+END_SRC
+
+#+NAME: example-of-ls
+#+CAPTION: ls の例
+#+BEGIN_SRC sh  :results value verbatim
+ls -al ~/tmp
+#+END_SRC
+
+#+NAME: results-of-ls-al
+#+ATTR_LATEX: :environment shelloutput
+#+results:
+#+begin_example
+  合計 648
+  drwxrwxr-x  5 shimano shimano   4096  8 月 25 15:04 .
+  drwxr-xr-x 49 shimano shimano   4096  8 月 29 12:03 ..
+  drwxrwxr-x  2 shimano shimano   4096  8 月 19 13:57 auto
+  -rw-rw-r--  1 shimano shimano   4364  8 月 19 13:48 enumitem.aux
+  -rw-rw-r--  1 shimano shimano 111296  8 月 19 13:48 enumitem.dvi
+  -rw-rw-r--  1 shimano shimano  17588  8 月 19 13:48 enumitem.log
+  -rw-rw-r--  1 shimano shimano   1948  8 月 19 13:48 enumitem.out
+  -rw-rw-r--  1 shimano shimano 264924  8 月 19 13:48 enumitem.pdf
+  -rw-rw-r--  1 shimano shimano 151795  8 月 19 13:48 enumitem.synctex.gz
+  -rw-rw-r--  1 shimano shimano  71514  8 月 19 13:57 enumitem.tex
+  drwxrwxr-x  8 shimano shimano   4096  8 月 25 15:25 pygments-main
+  drwxrwxr-x  3 shimano shimano   4096  8 月 19 13:42 titlesec
+#+end_example
+
+**** Org mode の \LaTeX エクスポートで表に枠をつける
+:PROPERTIES:
+:ID:       4d95f340-6607-4ff7-878c-4aec9bbe7d97
+:END:
+#+INDEX: ひょう@表
+
+#+CAPTION: 枠ありの表にする
+#+BEGIN_SRC org
+#+ATTR_LATEX: :align |c|c| :placement [H]
+|------------+------------------------------------|
+| シーケンス | 意味                               |
+|------------+------------------------------------|
+| %a         | AUTHOR キーワード                  |
+| %t         | TITLE キーワード                   |
+| %s         | SUBTITLE キーワード                |
+| %k         | KEYWORDS 行                        |
+| %d         | DESCRIPTION 行                     |
+| %c         | CREATOR 行                         |
+| %l         | Language キーワード                |
+| %L         | 大文字にされた Language キーワード |
+| %D         | DATE キーワード                    |
+|------------+------------------------------------|
+#+END_SRC
+
+これはこのように出力されます.
+
+#+CAPTION: 結果の枠ありの表
+#+ATTR_LATEX: :align |c|c| :placement [H]
+|------------+------------------------------------|
+| シーケンス | 意味                               |
+|------------+------------------------------------|
+| %a         | AUTHOR キーワード                  |
+| %t         | TITLE キーワード                   |
+| %s         | SUBTITLE キーワード                |
+| %k         | KEYWORDS 行                        |
+| %d         | DESCRIPTION 行                     |
+| %c         | CREATOR 行                         |
+| %l         | Language キーワード                |
+| %L         | 大文字にされた Language キーワード |
+| %D         | DATE キーワード                    |
+|------------+------------------------------------|
+
+**** Org mode -> \LaTeX エクスポートをバッチ処理する
+:PROPERTIES:
+:ID:       1fc1da96-33df-41f1-b9d9-feaf2f443f5b
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2016-09-02 Fri 11:43]
+:END:
+
+- http://emacs.stackexchange.com/questions/10392/export-an-org-mode-file-as-a-pdf-via-command-line
+
+を参考にしました
+
+: emacs -u "$(id -un)" --batch --eval '(load user-init-file)' OriginalEngineearHandobook.org  -f org-latex-export-to-pdf
+
+できましたが, 遅いです.
+
+**** Org mode から \LaTeX を介して PDF ファイルを作る時のコマンドの設定
+:PROPERTIES:
+:ID:       25280316-1d4d-4c93-971b-0305701d1217
+:END:
+
+#+BEGIN_SRC emacs-lisp
+(setq org-latex-pdf-process '("platex %b" "mendex %b" "platex %b" "dvipdfmx %b"))
+#+END_SRC
+
+
+
+** Org mode の参考文献                                        :RefileTarget:
+:PROPERTIES:
+:ID:       2bef3a82-bb7f-476c-a0c2-3fdf97b1fdf8
+:END:
+
+- [[http://doc.norang.ca/org-mode.html][Org Mode - Organize Your Life In Plain Text!]] :  Org mode の参考になります。
+
