@@ -2,7 +2,7 @@
 title = "ox-hugo の中で LaTeX の数式への参照を使う"
 author = ["Yoshio Shimano"]
 date = 2019-04-02
-lastmod = 2019-04-03T14:18:50+09:00
+lastmod = 2019-04-03T20:31:37+09:00
 tags = ["Hugo", "ox-hugo"]
 categories = ["Hugo", "ox-hugo"]
 type = "post"

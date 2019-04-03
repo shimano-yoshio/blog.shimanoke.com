@@ -2,7 +2,7 @@
 title = "このブログについて"
 author = ["Yoshio Shimano"]
 date = 2019-04-03
-lastmod = 2019-04-03T17:51:05+09:00
+lastmod = 2019-04-03T20:30:46+09:00
 type = "page"
 draft = false
 +++

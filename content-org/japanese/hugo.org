@@ -10,7 +10,7 @@
 #+STARTUP: indent
 #+hugo_type: post
 # 出力するディレクトリ
-#+hugo_base_dir: ..
+#+hugo_base_dir: ../..
 # 出版するファイル名
 #+hugo_section: japanese/posts
 #+OPTIONS: creator:nil author:t
@@ -19,7 +19,7 @@
 # Hugo のタグ
 #+hugo_tags: Hugo ox-hugo
 # Hugo のカテゴリー
-#+hugo_categories: Hugo
+#+hugo_categories: Hugo Org-mode
 
 # ドキュメントクラスの指定
 #+LATEX_CLASS: jsbook

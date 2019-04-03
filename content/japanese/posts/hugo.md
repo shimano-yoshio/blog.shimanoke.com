@@ -3,48 +3,12 @@ title = "ox-Hugo を使う"
 author = ["Yoshio Shimano"]
 description = "Org-mode の中から Hugo を使う方法です。"
 date = 2019-03-30T00:00:00+09:00
-lastmod = 2019-04-02T10:53:08+09:00
+lastmod = 2019-04-03T20:41:10+09:00
 tags = ["Hugo", "ox-hugo"]
-categories = ["Hugo"]
+categories = ["Hugo", "Org-mode"]
 type = "post"
 draft = false
 +++
-
-<style>
-  .ox-hugo-toc ul {
-    list-style: none;
-  }
-</style>
-<div class="ox-hugo-toc toc">
-<div></div>
-
-<div class="heading">&#30446;&#27425;</div>
-
-- <span class="section-num">1</span> [はじめに](#はじめに)
-    - <span class="section-num">1.1</span> [なぜ Hugo を使うのか？](#なぜ-hugo-を使うのか)
-    - <span class="section-num">1.2</span> [なぜ ox-hugo を使うのか？](#なぜ-ox-hugo-を使うのか)
-- <span class="section-num">2</span> [ox-hugo でのプリアンブルの設定方法](#ox-hugo-でのプリアンブルの設定方法)
-- <span class="section-num">3</span> [このサイトでで使える記法](#このサイトでで使える記法)
-    - <span class="section-num">3.1</span> [図](#図)
-    - <span class="section-num">3.2</span> [Babel](#babel)
-    - <span class="section-num">3.3</span> [数式](#数式)
-        - <span class="section-num">3.3.1</span> [インライン数式](#インライン数式)
-        - <span class="section-num">3.3.2</span> [\LaTeX の数式](#latex-の数式)
-    - <span class="section-num">3.4</span> [コードブロック](#コードブロック)
-    - <span class="section-num">3.5</span> [表](#表)
-    - <span class="section-num">3.6</span> [引用](#引用)
-        - <span class="section-num">3.6.1</span> [素の quote ブロック](#素の-quote-ブロック)
-        - <span class="section-num">3.6.2</span> [`quote` ショートコードを使う](#quote-ショートコードを使う)
-            - <span class="section-num">3.6.2.1</span> [`quote` ショートコード](#quote-ショートコード)
-            - <span class="section-num">3.6.2.2</span> [著者ありの例:](#著者ありの例)
-            - <span class="section-num">3.6.2.3</span> [著者なしの例:](#著者なしの例)
-    - <span class="section-num">3.7</span> [スペシャルブロック](#スペシャルブロック)
-    - <span class="section-num">3.8</span> [例のブロック](#例のブロック)
-
-</div>
-<!--endtoc-->
-
-
 
 ## <span class="section-num">1</span> はじめに {#はじめに}
 
@@ -126,7 +90,7 @@ Org-mode の中でプログラミング言語を書くことができます。
 
 このように変換されます:
 
-<a id="orgb5fc8ca"></a>
+<a id="org4186721"></a>
 
 {{< figure src="/ox-hugo/hello-world.png" caption="&#22259;2:  Ditaa の出力" >}}
 

@@ -10,7 +10,7 @@
 #+STARTUP: indent
 #+hugo_type: post
 # 出力するディレクトリ
-#+hugo_base_dir: ..
+#+hugo_base_dir: ../..
 # 出版するファイル名
 #+hugo_section: japanese/docs
 #+OPTIONS: creator:nil author:t

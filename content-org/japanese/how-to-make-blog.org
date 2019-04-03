@@ -3,7 +3,7 @@
 #+STARTUP: indent
 #+OPTIONS: H:6 num:t
 #+hugo_type: post
-#+hugo_base_dir: ..
+#+hugo_base_dir: ../..
 #+hugo_section: japanese/docs
 #+hugo_auto_set_lastmod: t
 #+options: creator:nil author:t

@@ -9,7 +9,7 @@
 #+OPTIONS: toc:1
 #+STARTUP: indent
 # 出力するディレクトリ
-#+hugo_base_dir: ..
+#+hugo_base_dir: ../..
 # 出版するファイル名
 #+hugo_section: /japanese/
 #+Options: creator:nil author:t

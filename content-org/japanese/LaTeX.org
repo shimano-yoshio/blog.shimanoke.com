@@ -1,0 +1,1695 @@
+#+TITLE: LaTeX あれこれ
+#+LANGUAGE: ja
+#+AUTHOR: 島野 善雄
+#+EMAIL: shimano.yoshio@jp.fujitsu.com
+#+OPTIONS: author:t prop:nil <:nil H:7
+#+OPTIONS: toc:4 creator:nil timestamp:nil email:t  todo:nil pri:nil tags:nil
+#+DESCRIPTION: LaTeX Tips
+#+KEYWORDS:  Ubuntu Linux LaTeX
+#+EXCLUDE_TAGS: noexport
+#+STARTUP: indent
+# 図目次の出力
+#+LATEX: \listoffigures
+#+TOC: figure
+# 表目次の出力
+#+TOC: tables 
+
+# HTML Setting
+#+INFOJS_OPT: view:showall
+# #+INCLUDE: "~/Org/Templates/setup/theme-bigblow.setup" 
+#+INCLUDE: "~/Org/Templates/setup/theme-readtheorg.setup" 
+
+# ドキュメントクラスの指定
+#+LATEX_CLASS: jsbook
+# ドキュメントクラスのオプションの指定
+#+LATEX_CLASS_OPTIONS: [a4j,12pt,openany,uplatex]
+# カスタムスタイルの読み込み
+#+LATEX_HEADER: \usepackage{shimano}
+
+# ファイルのバージョン
+#+LATEX_HEADER: \FileVerjou{1.0}
+
+# tcolorbox でのプログラムリスト出力
+# #+LATEX: \tcblistof[\chapter*]{box}{プログラムリスト}
+#+LATEX: \mainmatter
+
+* \LaTeX の一般的な情報                                        :RefileTarget:
+:PROPERTIES:
+:ID:       5450a3ad-b516-42ce-a441-3ecb5de31d9c
+:END:
+** 今さら \LaTeX ですか?
+:PROPERTIES:
+:ID:       18e81e2b-d641-4fb3-ad5c-77b97fddbd3e
+:END:
+
+
+** LaTeX のインストール                                       :RefileTarget:
+:PROPERTIES:
+:ID:       14306fb4-fef3-4b79-a805-44453473ac65
+:END:
+
+
+
+*** \LaTeX 用の環境変数の設定
+:PROPERTIES:
+:ID:       e8450129-87a5-45d0-b1f1-3f01d37ceb41
+:END:
+#+INDEX: かんきょうへんすう@環境変数!\LaTeX
+
+個人用のスタイルファイルや bibtex 関係のファイルを置く場所は, 
+環境変数で指定することができます:
+
+- =TEXINPUTS= :: .sty や .cls を置く場所
+- =BSTINPUTS= :: .bst を置く場所
+- =BIBINPUTS= :: .bib を置く場所
+
+例です.
+
+#+BEGIN_SRC sh :eval no
+export TEXINPUTS="$HOME/texmf/latex//:" 
+export BSTINPUTS= "$HOME/texmf/bibtex/bst//:"
+export BIBINPUTS= "$HOME/texmf/bibtex/bib//:"
+#+END_SRC
+
+最後にスラッシュ二つ重ねておくと，
+そのディレクトリ以下を再帰的に探索します.
+また，最後にコロン(：)を付けないと，
+デフォルトの設定を無視されてしまいます.
+
+
+
+*** 個人用の LaTeX ファイルを置くディレクトリを作成する
+:PROPERTIES:
+:ID:       bd56046c-4291-4cc0-97c1-eb46e8c7b621
+:END:
+:CLOCK:
+- State "DONE"       from "NEXT"       [2014-03-04 火 12:10]
+CLOCK: [2014-03-04 火 12:00]--[2014-03-04 火 12:10] =>  0:10
+CLOCK: [2014-03-04 火 08:37]--[2014-03-04 火 08:40] =>  0:03
+CLOCK: [2014-02-28 金 16:54]--[2014-02-28 金 16:55] =>  0:01
+:END:
+
+- http://hirono-hideki.sblo.jp/article/33830845.html
+
+
+** \LaTeX のチュートリアル
+:PROPERTIES:
+:ID:       7125fbe2-f7ce-49fa-9ab3-238c231d62fd
+:END:
+- [[http://mytexpert.osdn.jp/index.php?%25B9%25A5%25A4%25AD%25B9%25A5%25A4%25ADLaTeX2e][好き好きLaTeX2e - MyTeXpert]]
+* \LaTeX 基礎編                                                :RefileTarget:
+:PROPERTIES:
+:ID:       37819787-e351-479e-bc2d-7353ed10249e
+:END:
+
+
+
+* \LaTeX のコンパイル
+:PROPERTIES:
+:ID:       70bf4933-22a6-4f88-8688-d31308bdd9d9
+:END:
+** upLaTeX, bibtex, mendex を使った \LaTeX 文書のの処理の順番
+:PROPERTIES:
+:LOCATION: Office
+:Added: [2016-08-31 Wed 17:29]
+:ID:       4b76eeda-4fd2-42d5-9cd1-2fe5c824b5b5
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2016-09-01 Thu 10:01]
+:END:
+:CLOCK:
+CLOCK: [2016-08-31 Wed 17:29]--[2016-08-31 Wed 17:30] =>  0:01
+:END:
+
+\LaTeX ファイルを処理して PDF を作成する手順は次のようになります。
+
+1. TeX ファイルをコンパイル (uplatex)
+2. 参考文献 BibTeX 作成 (pbibtex)
+3. TeX コンパイル (uplatex)
+4. 索引 MakeIndex 作成 (mendex)
+5. TeX コンパイル (uplatex)
+6. TeX コンパイル (uplatex)
+7. PDF 作成 (dvipdfmx)
+
+latexmk を使うと楽に処理することができます.
+
+
+** latexmk を使った \LaTeX ファイルのコンパイル
+:PROPERTIES:
+:ID:       8d9854b2-b7b6-4120-b258-590b9a83cce5
+:END:
+
+- [[https://qiita.com/ymfj/items/088fa556c94fc9ab460f][LaTexのコンパイルをLatexmkに統一する]]
+- 
+*** latexmk のインストール
+:PROPERTIES:
+:ID:       f2d64c52-b310-4f4c-9bfa-f37a4919e8e9
+:END:
+
+
+*** latexmk の設定
+:PROPERTIES:
+:ID:       8907f742-68e5-4762-bb7c-5b97e9fe95dd
+:END:
+
+
+#+CAPTION: .latexmkrc の例
+#+NAME: latexmkrc-example
+#+INCLUDE: "~/.latexmkrc" src sh
+
+** latexmk
+:PROPERTIES:
+:ID:       14bd6ca1-893c-4710-acd6-16e63c3c1dc9
+:END:
+- 
+- [[https://texwiki.texjp.org/?Latexmk][Latexmk - TeX Wiki]]
+** latexmake で biblatex を使う
+:PROPERTIES:
+:LOCATION: Office
+:Added: [2018-08-23 木 09:11]
+:ID:       6d5f31da-e134-4b32-b123-2ea7329d55ce
+:END:
+:LOGBOOK:
+- State "DONE"       from "NEXT"       [2018-08-23 木 14:06]
+:END:
+:CLOCK:
+CLOCK: [2018-08-23 木 13:18]--[2018-08-23 木 14:06] =>  0:48
+CLOCK: [2018-08-23 木 09:11]--[2018-08-23 木 09:12] =>  0:01
+:END:
+
+/~/.latexmkrc/ を次のように変更します。
+
+#+BEGIN_SRC sh  :eval no
+$bibtex = 'biber';
+#+END_SRC
+
+
+** 日本語で texinfo を使ってみる                                   :@Office:
+:PROPERTIES:
+:LOCATION: Office
+:Added: [2018-09-04 火 10:22]
+:ID:       a7369611-76b2-4e24-b846-5225f2e2ba5b
+:END:
+:LOGBOOK:
+- State "DONE"       from "NEXT"       [2018-09-04 火 17:42]
+:END:
+:CLOCK:
+CLOCK: [2018-09-04 火 12:50]--[2018-09-04 火 17:39] =>  4:49
+CLOCK: [2018-09-04 火 10:28]--[2018-09-04 火 12:19] =>  1:51
+CLOCK: [2018-09-04 火 10:22]--[2018-09-04 火 10:23] =>  0:01
+:END:
+
+- https://github.com/trueroad/texinfo-sample-jp
+- https://github.com/ikazuhiro/texinfo-sample-jp.git
+
+* 綺麗な文書を作るために
+:PROPERTIES:
+:ID:       466d8bf2-1da4-4674-ad38-ff41c8d39bec
+:END:
+
+- [[https://qiita.com/Ishotihadus/items/bbbb85f54e6a4e7aaac0][イショティハドゥスにキレられないための LaTeX 論文執筆メソッド - Qiita]]
+
+** アルファベット・数字
+:PROPERTIES:
+:ID:       85742867-a498-4d3b-9dbd-b5527a8c57ac
+:END:
+
+- 数字や欧文は半角を使う
+
+
+** 空白
+:PROPERTIES:
+:ID:       df52ab33-bf2f-4aea-9b3f-85d146443090
+:END:
+- 英文を書くときのピリオドの後ろは空白 1 つ
+- 全角の空白は使わない
+** 句読点
+:PROPERTIES:
+:ID:       302d2eef-9d93-4b95-971d-d0bcb937ac90
+:END:
+文書内で統一します。
+
+
+** 括弧類
+:PROPERTIES:
+:ID:       43c7633e-668a-4f59-bb3a-0398ce8def54
+:END:
+
+- 日本語には全角の大括弧
+- 欧文には半角の大括弧
+
+** ？ と !
+:PROPERTIES:
+:ID:       d4af72b8-0642-432c-b048-562b60f612a8
+:END:
+
+* Beamer を使う                                           :RefileTarget:
+:PROPERTIES:
+:LOCATION: Home
+:Added:    [2018-08-31 金 21:00]
+:ID:       1a6215f1-1b1e-442c-aa03-f9ccfe60f869
+:END:
+:LOGBOOK:
+- State "DONE"       from "NEXT"       [2018-09-13 木 17:41]
+:END:
+:CLOCK:
+CLOCK: [2018-09-13 木 14:44]--[2018-09-13 木 17:38] =>  2:54
+CLOCK: [2018-09-03 月 09:19]--[2018-09-03 月 09:20] =>  0:01
+CLOCK: [2018-09-03 月 09:09]--[2018-09-03 月 09:19] =>  0:10
+CLOCK: [2018-09-03 月 09:08]--[2018-09-03 月 09:09] =>  0:01
+CLOCK: [2018-08-31 金 21:01]--[2018-09-03 月 09:08] => 60:07
+CLOCK: [2018-08-31 金 21:00]--[2018-08-31 金 21:01] =>  0:01
+:END:
+
+- [[https://ryogan.org/blog/2016/01/06/emacs-org-mode-%25E3%2581%25AE-beamer-export-%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%2584%25E3%2581%25A6%25E5%25B0%2591%25E3%2581%2597/][Emacs Org Mode の Beamer Export について少し | 澍法雨]]
+- [[https://texwiki.texjp.org/?Beamer][Beamer - TeX Wiki]]
+- [[https://qiita.com/zr_tex8r/items/69e8cc32038ff29f5ac3][今さら人に聞けない「日本語でBeamer」のキホン]]
+- [[https://qiita.com/kyosuu1/items/c1d4eb021c471f6025e8][TeX Beamerのカスタムテーマを作ろう]]
+- [[https://qiita.com/htlsne/items/70cbb488e7a87cd9e228][LaTeX Beamerの"Beamerらしく"ないおすすめテーマ集]]
+- [[https://qiita.com/Kgm1500/items/43b0a358963cc2b796e1][RobotoとNoto Sans CJKを用いて，見やすいBeamerのスライドを作る]]
+- [[http://motchy99.blog.fc2.com/blog-entry-79.html][motchyの備忘録 Beamer のテーマファイル(sty)の置き場所]]
+- [[http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html][Beamer theme gallery]]
+
+* LaTeX で多書体編                                               :RefileTarget:
+:PROPERTIES:
+:ID:       6ff4030a-ef08-4358-a18b-c8cf9992151a
+:END:
+
+- [[https://qiita.com/zr_tex8r/items/9dfeafecca2d091abd02#fn3][upLaTeX文書で源ノ明朝／Noto Serif CJKを簡単に使う方法（最新のdvipdfmxとpxchfonを使用）]]
+- [[https://qiita.com/zr_tex8r/items/15ec2848371ec19d45ed][(u)pLaTeXのデフォルトの日本語フォントを好きなやつに変える方法]]
+- [[http://www.fugenji.org/~thomas/texlive-guide/font.html][日本語フォントの使用に関して]]
+  
+** いろいろなフォント
+:PROPERTIES:
+:ID:       567d2edd-321d-49bc-adbd-9e3ed9562f66
+:END:
+
+- 
+
+** dvipdfmx でヒラギノを使う                                         :@Home:
+:PROPERTIES:
+:LOCATION: Home
+:Added:    [2018-08-07 火 21:32]
+:ID:       e9dcb8a8-71ad-414e-85b9-96f538ed3e33
+:END:
+:CLOCK:
+CLOCK: [2018-08-07 火 21:32]--[2018-08-07 火 21:33] =>  0:01
+:END:
+
+: sudo kanji-config-updmap -sys hiragino
+
+
+#+BEGIN_SRC sh
+ln -fs "/home/shimano/.fonts/ヒラギノ明朝 Pro W3.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMinPro-W3.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ明朝 Pro W6.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMinPro-W6.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ丸ゴ Pro W4.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMaruPro-W4.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ Pro W3.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuPro-W3.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ Pro W6.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuPro-W6.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ Pro W8.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuPro-W8.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ明朝 ProN W3.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMinProN-W3.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ明朝 ProN W6.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMinProN-W6.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ丸ゴ ProN W4.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMaruProN-W4.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ ProN W3.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuProN-W3.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ ProN W6.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuProN-W6.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ ProN W8.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuProN-W8.otf
+#+END_SRC
+
+#+RESULTS:
+
+** dvipdfmx で ipapex をうめこむ
+:PROPERTIES:
+:ID:       47dfc540-9dd5-480a-b199-a1790e337fe0
+:END:
+
+kanji-config-updmap -user ipaex
+kanji-config-updmap -user hiragino
+
+sudo updmap-sys --setoption jaEmbed ipaex
+sudo updmap-sys --setoption jaEmbed hiragino
+
+** dvipdfmxでいろいろな日本語のフォントを使ってみる           :RefileTarget:
+:PROPERTIES:
+:ID:       337af0e7-c9af-4000-80e5-06265cc8760d
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2016-08-25 Thu 17:39]
+:END:
+
+*** フォントの埋め込み設定
+:PROPERTIES:
+:ID:       66c89dc6-2b65-4922-87a7-fc6ca1be36f8
+:END:
+
+#+BEGIN_SRC sh :eval no
+sudo updmap-sys --setoption kanjiEmbed hiragino　（ヒラギノフォントを埋め込む）
+sudo updmap-sys --setoption kanjiEmbed noEmbed  （埋め込まない）*初期設定値*
+sudo updmap-sys --setoption kanjiEmbed ipaex    （IPAexフォントを埋め込む）
+sudo updmap-sys --setoption kanjiEmbed ipa      （IPAフォントを埋め込む）
+sudo updmap-sys --setoption kanjiEmbed ms       （MSフォントを埋め込む）
+sudo updmap-sys --setoption kanjiEmbed yu-osx   （游フォントを埋め込む）
+sudo updmap-sys --setoption kanjiEmbed kozuka   （小塚書体を埋め込む）
+sudo updmap-sys --setoption kanjiEmbed morisawa （モリサワフォントを埋め込む）
+#+END_SRC
+
+*** dvipdfmx でヒラギノを使う                                     :@Office:
+:PROPERTIES:
+:LOCATION: Office
+:Added: [2016-08-01 Mon 13:25]
+:ID:       245d2752-8595-491f-8163-f1b0bb85174d
+:END:
+:LOGBOOK:
+- State "DONE"       from "NEXT"       [2016-08-01 Mon 17:04]
+:END:
+:CLOCK:
+CLOCK: [2016-08-01 Mon 17:00]--[2016-08-01 Mon 17:01] =>  0:01
+CLOCK: [2016-08-01 Mon 13:26]--[2016-08-01 Mon 17:00] =>  3:34
+:END:
+#+INDEX: \LaTeX!ヒラギノ
+
+- https://texwiki.texjp.org/?TeX%20Live%2FMac#i9febc9b
+
+
+#+BEGIN_SRC sh :eval no
+sudo mkdir -p /usr/local/texlive/texmf-local/fonts/opentype/hiragino/
+cd /usr/local/texlive/texmf-local/fonts/opentype/hiragino/
+sudo ln -s "/home/shimano/.fonts/ヒラギノ明朝 Pro W3.otf" ./HiraMinPro-W3.otf
+sudo ln -s "/home/shimano/.fonts/ヒラギノ明朝 Pro W6.otf" ./HiraMinPro-W6.otf
+sudo ln -s "/home/shimano/.fonts/ヒラギノ丸ゴ Pro W4.otf" ./HiraMaruPro-W4.otf
+sudo ln -s "/home/shimano/.fonts/ヒラギノ角ゴ Pro W3.otf" ./HiraKakuPro-W3.otf
+sudo ln -s "/home/shimano/.fonts/ヒラギノ角ゴ Pro W6.otf" ./HiraKakuPro-W6.otf
+sudo ln -s "/home/shimano/.fonts/ヒラギノ角ゴ Std W8.otf" ./HiraKakuStd-W8.otf
+
+sudo mktexlsr
+#+END_SRC
+
+ヒラギノのNシリーズ（JIS X 0213:2004に対応した字形）を
+利用する場合（upLaTeX には, 
+=\usepackage[uplatex,jis2004]{otf}= とすれば使えます。
+
+#+BEGIN_SRC sh :eval no
+sudo ln -s "/home/shimano/.fonts/ヒラギノ明朝 ProN W3.otf" ./HiraMinProN-W3.otf
+sudo ln -s "/home/shimano/.fonts/ヒラギノ明朝 ProN W6.otf" ./HiraMinProN-W6.otf
+sudo ln -s "/home/shimano/.fonts/ヒラギノ丸ゴ ProN W4.otf" ./HiraMaruProN-W4.otf
+sudo ln -s "/home/shimano/.fonts/ヒラギノ角ゴ ProN W3.otf" ./HiraKakuProN-W3.otf
+sudo ln -s "/home/shimano/.fonts/ヒラギノ角ゴ ProN W6.otf" ./HiraKakuProN-W6.otf
+sudo ln -s "/home/shimano/.fonts/ヒラギノ角ゴ StdN W8.otf" ./HiraKakuStdN-W8.otf
+sudo mktexlsr
+sudo updmap-sys --setoption kanjiEmbed hiragino
+#+END_SRC
+
+
+#+BEGIN_SRC sh 
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ Std W8.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuStd-W8.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ明朝 ProN W3.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMinProN-W3.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ明朝 ProN W6.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMinProN-W6.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ丸ゴ ProN W4.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMaruProN-W4.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ ProN W3.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuProN-W3.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ ProN W6.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuProN-W6.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ StdN W8.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuStdN-W8.otf
+#+END_SRC
+
+#+RESULTS:
+
+
+*** 小塚フォントを Ubuntu に入れて, LaTeX から使う                  :@Home:
+:PROPERTIES:
+:LOCATION: Home
+:Added:    [2016-08-03 Wed 08:38]
+:ID:       cbcc1e32-84de-4b88-aecf-4be5fc189458
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2016-08-03 Wed 11:29]
+:END:
+:CLOCK:
+CLOCK: [2016-08-03 Wed 08:38]--[2016-08-03 Wed 08:39] =>  0:01
+:END:
+
+- http://www.fugenji.org/~thomas/texlive-guide/font_setup.html が参考になります.
+
+**** 小塚フォントのファイルのコピー
+:PROPERTIES:
+:ID:       e1f3ef96-cc5c-47ad-af36-ea7a8a989bf4
+:END:
+:LOGBOOK:
+- State "DONE"       from "NEXT"       [2016-08-03 Wed 10:46]
+:END:
+:CLOCK:
+CLOCK: [2016-08-03 Wed 10:25]--[2016-08-03 Wed 10:28] =>  0:03
+CLOCK: [2016-08-03 Wed 09:35]--[2016-08-03 Wed 09:36] =>  0:01
+CLOCK: [2016-08-03 Wed 09:04]--[2016-08-03 Wed 09:35] =>  0:31
+CLOCK: [2016-08-03 Wed 08:55]--[2016-08-03 Wed 09:03] =>  0:08
+:END:
+***** Windows 上で小塚フォントのファイルがある場所
+:PROPERTIES:
+:ID:       17a6fe7b-e9aa-4675-bd6f-c39cb7b3f4fe
+:END:
+
+Windows 上で, 次のファイルをインストールすると, 
+
+- http://www.adobe.com/support/downloads/detail.jsp?ftpID=5877
+
+フォントが
+
+- =C:\Program Files\Adobe\Acrobat Reader DC\Resource\CIDFont=
+
+にインストールされます. これを Ubunbtu にコピーします.
+
+***** Ubuntu へのファイルのコピー
+:PROPERTIES:
+:ID:       6f400506-4b16-46e0-9985-b5b5e3e45f68
+:END:
+
+: ~/.fonts 
+
+以下にフォントを追いていますので, そこに
+
+- KozGoPr6N-Medium.otf
+- KozMinPr6N-Regular.otf
+
+の 2 つをコピーしました.
+
+**** TeX Live への小塚フォントの登録
+:PROPERTIES:
+:ID:       8282c5bb-72bb-45dd-befe-c7381670127f
+:END:
+:LOGBOOK:
+- State "DONE"       from "NEXT"       [2016-08-03 Wed 11:29]
+:END:
+:CLOCK:
+CLOCK: [2016-08-03 Wed 10:28]--[2016-08-03 Wed 11:29] =>  1:01
+:END:
+#+INDEX: こづかふぉんと@小塚フォント
+
+#+BEGIN_SRC sh :eval no
+sudo mkdir -p /usr/local/texlive/texmf-local/fonts/opentype/kozuka/
+cd /usr/local/texlive/texmf-local/fonts/opentype/kozuka/
+sudo ln -fs /home/shimano/.fonts/KozGoPr6N-Medium.otf ./KozGoPro-Regular.otf
+sudo ln -fs /home/shimano/.fonts/KozMinPr6N-Regular.otf ./KozMinPro-Regular.otf
+sudo mktexlsr 
+sudo updmap-sys --setoption kanjiEmbed kozuka 
+#+END_SRC
+
+*** 游明朝体・游ゴシック体をMac OS XのLaTeXで使う                 :@Office:
+:PROPERTIES:
+:LOCATION: Office
+:Added: [2016-08-03 Wed 10:04]
+:ID:       98b715ae-d940-4b5d-a000-26aa9afc0b20
+:END:
+:LOGBOOK:
+- State "DONE"       from "NEXT"       [2016-08-03 Wed 11:57]
+:END:
+:CLOCK:
+CLOCK: [2016-08-03 Wed 11:36]--[2016-08-03 Wed 11:57] =>  0:21
+CLOCK: [2016-08-03 Wed 10:04]--[2016-08-03 Wed 10:05] =>  0:01
+:END:
+
+- [[http://tandoori.hatenablog.com/entry/20131117/1384696037][游明朝体・游ゴシック体をMac OS XのLaTeXで使う]]
+
+**** フォントの設置
+:PROPERTIES:
+:ID:       c409951d-6fb6-45d7-8c28-ba40d4685b3f
+:END:
+
+#+BEGIN_SRC sh :eval no
+sudo mkdir /usr/local/texlive/texmf-local/fonts/opentype/yu-osx
+cd /usr/local/texlive/texmf-local/fonts/opentype/yu-osx
+sudo ln -fs "/home/shimano/.fonts/Yu Gothic Bold.otf" YuGo-Bold.otf
+sudo ln -fs "/home/shimano/.fonts/Yu Gothic Medium.otf" YuGo-Medium.otf
+sudo ln -fs "/home/shimano/.fonts/Yu Mincho Demibold.otf" YuMin-Demibold.otf
+sudo ln -fs "/home/shimano/.fonts/Yu Mincho Medium.otf" YuMin-Medium.otf
+sudo mktexlsr
+sudo updmap-sys --setoption kanjiEmbed yu-osx
+#+END_SRC
+
+
+** LuaLaTeX
+:PROPERTIES:
+:ID:       ee4e9eb4-1872-4c0b-ac3c-a2e47448934b
+:END:
+- [[https://meltingrabbit.com/blog/article/2017080201/][【LuaTeX】LuaTeXテンプレート - 溶けかけてるうさぎ - BLOG]]
+** 書体を変更する (LuaLaTeX)
+:PROPERTIES:
+:ID:       f660dcb5-a850-44b1-988d-0da4445563b7
+:END:
+- [[https://qiita.com/hmikisato/items/673a910d5b02f3b1dca6][技術書典5の執筆環境棚卸し、あるいはLaTeXで「入稿に適した」PDFを吐く話 - Qiita]]
+
+本文ゴシック体、sans-serif体: 源真ゴシック
+本文明朝体、serif体: 源流明朝
+等幅フォント: Fira Mono
+数式フォント: newtx
+
+#+BEGIN_SRC latex
+\usepackage[T1]{fontenc}
+\usepackage{newtxmath}
+\usepackage[no-math,match]{luatexja-fontspec}
+\setmainfont[Ligatures=TeX,RawFeature=-palt,BoldFont=GenRyuMinJP Bold]{GenRyuMinJP TTF Regular}
+\setmainjfont[BoldFont=GenRyuMinJP Bold]{GenRyuMinJP TTF Regular}
+\setsansfont[Ligatures=TeX,BoldFont=Gen Shin Gothic Bold]{Gen Shin Gothic Regular}
+\setsansjfont[BoldFont=Gen Shin Gothic Bold]{Gen Shin Gothic Regular}
+\setmonofont{FiraMono}
+#+END_SRC
+
+
+** プロポーショナルフォントを使う (LuaLaTeX)
+:PROPERTIES:
+:ID:       06abdff2-dfb2-4e5a-9796-7209555b21a8
+:END:
+- [[https://qiita.com/zr_tex8r/items/0512dd43e9806483013a][TeXでつくるプロポーショナル組日本語文書 - Qiita]]
+- [[https://medium.com/text-is-saved/lua-la-texja%25E3%2581%25A7%25E7%25B4%25B0%25E3%2581%2584%25E3%2583%2595%25E3%2582%25A9%25E3%2583%25B3%25E3%2583%2588%25E3%2582%2592%25E4%25BD%25BF%25E3%2581%258A%25E3%2581%2586-1a09015d838e][lua(la)texjaで細いフォントを使おう – text-is-saved – Medium]]
+
+** 本文をゴシック体で組版する (LuaLaTeX)
+:PROPERTIES:
+:ID:       ed5a035e-24e0-4549-881a-10121b24406c
+:END:
+
+
+* NEXT jsclass 用のスタイルファイルを作る
+DEADLINE: <2019-03-kkk12 火>
+:PROPERTIES:
+:ID:       5b9d3357-ca49-498c-9e71-15dfd0d6abbc
+:END:
+:CLOCK:
+CLOCK: [2019-02-28 木 13:47]--[2019-02-28 木 17:37] =>  3:50
+CLOCK: [2019-02-28 木 09:21]--[2019-02-28 木 12:14] =>  2:53
+CLOCK: [2019-02-25 月 17:57]--[2019-02-25 月 18:06] =>  0:09
+CLOCK: [2019-02-25 月 12:47]--[2019-02-25 月 17:53] =>  5:06
+CLOCK: [2019-02-25 月 09:47]--[2019-02-25 月 12:17] =>  2:30
+:END:
+
+
+* 索引(index)関連                                              :RefileTarget:
+:PROPERTIES:
+:ID:       9d625539-ac15-4a5b-8145-474f500363bb
+:END:
+** mendex の使い方
+:PROPERTIES:
+:ID:       62b6f071-f079-41a0-849e-b3fc5968c614
+:END:
+#+INDEX: mendex
+
+*** 索引の名前「索引」を変更する
+:PROPERTIES:
+:ID:       94def0ea-36f5-4297-8667-2afc79d7e059
+:END:
+
+#+BEGIN_SRC latex  :exports code :eval none
+\renewcommand{\indexname}{索引}
+#+END_SRC
+
+*** 索引のスタイルの変更方法                                      :@Office:
+:PROPERTIES:
+:ID:       e9d7198b-451b-43b6-97ab-9e139f7c33c1
+:END:
+:LOGBOOK:
+- State "DONE"       from "NEXT"       [2016-09-01 Thu 13:28]
+:END:
+:CLOCK:
+CLOCK: [2016-08-30 Tue 18:14]--[2016-08-30 Tue 18:15] =>  0:01
+CLOCK: [2016-08-30 Tue 17:22]--[2016-08-30 Tue 18:14] =>  0:52
+CLOCK: [2016-08-30 Tue 17:01]--[2016-08-30 Tue 17:22] =>  0:21
+:END:
+#+INDEX: mendex!さくいんすたいる@索引スタイル
+#+INDEX: mendex
+#+INDEX: mendex!ist ファイル
+
+- [[http://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/etc03.html][makeidx.sty: LaTeX パッケージ]] を参考にしました.
+
+ist ファイルを格納するディレクトリを作成します.
+
+#+CAPTION: texmf/makeindex の作成
+#+NAME: make-texmf-makeindex
+#+BEGIN_SRC shellinput :tangle no
+mkidr -p texmf/makeindex
+#+END_SRC
+
+
+そのディレクトリの中に line.ist という次の内容のファイルを作成します.
+
+#+NAME: example-of-ist-file
+#+CAPTION: ist ファイルの例(line.ist)
+#+BEGIN_SRC latex :exports code :eval none
+preamble
+"\n\\begin{theindex}\n"
+postamble
+"\n\n \\end{theindex}\n"
+item_x0   "\n\\item "
+item_x1   "\n \\subitem "
+item_x2   "\n  \\subsubitem "
+delim_0   "\\hfill "
+delim_1   "\\hfill "
+delim_2   "\\hfill "
+%
+% mendex
+lethead_prefix
+"\\hbox to \\linewidth{\\hfill\\gtfamily\\bfseries "
+lethead_suffix
+"\\hfill}\\par\n\\nopagebreak\n"
+lethead_flag       1
+symbol             "記号／数字"
+letter_head        2
+% makeindex
+heading_prefix
+"{\\vbox{\\hbox to \\linewidth{\\gtfamily\\bfseries "
+heading_suffix
+"\\ \\hskip\\fill}\\vskip1pt\\hrule}}\\nopagebreak\n"
+headings_flag      1
+#+END_SRC
+
+#+NAME: mendex-with-ist-example
+#+CAPTION: mendex の処理方法
+#+BEGIN_SRC shellinput :tangle no
+mendex -r -c -g -s line.ist -p any OriginalEngineearHandobook.idx
+#+END_SRC
+
+* BibTeX 関連                                                  :RefileTarget:
+:PROPERTIES:
+:ID:       10dbeb49-c6c6-47fa-8f5d-f7fd7bf6abb1
+:END:
+
+- [[https://chrome.google.com/webstore/detail/bibtex-entry-from-url/mgpmgkhhbjgkpnanlmlhibjfgpdpgjec][BibTeX entry from URL - Chrome ウェブストア]]
+
+
+** JabRef を使う
+:PROPERTIES:
+:ID:       2b8303be-e1a9-4250-b528-03a9c52439bf
+:END:
+:LOGBOOK:
+- State "DONE"       from "NEXT"       [2016-09-02 Fri 16:24]
+:END:
+:CLOCK:
+CLOCK: [2016-09-02 Fri 16:01]--[2016-09-02 Fri 16:24] =>  0:23
+:END:
+
+- https://www.jabref.org/
+- http://askubuntu.com/questions/721378/how-to-properly-install-latest-jabref
+
+https://www.fosshub.com/JabRef.html/JabRef_3.6.jar をダウンロードします.
+
+ダウンロードした jar ファイルを
+
+: mv JabRef_3.6.jar ~/.emacs.d/bin 
+
+: java -jar .emacs.d/bin/JabRef_3.6.jar
+
+java -Dhttp.proxyHost=http://rep.proxy.nic.fujitsu.com -Dhttp.proxyUser=shimano.yoshio%40jp.fujitsu.com -Dhttp.proxyPassword=9503861970 -Dhttp.proxyPort=8080 -jar .emacs.d/bin/JabRef_3.6.jar
+
+Proxy が有効になりません. まあ,いっか.
+
+
+** bibtex のスタイルファイルを変更する                             :@Office:
+:PROPERTIES:
+:ID:       c7b39ca3-d5fe-429d-bc2d-68c56a9f8087
+:END:
+:LOGBOOK:
+- State "DONE"       from "NEXT"       [2016-09-06 Tue 15:02]
+:END:
+:CLOCK:
+CLOCK: [2016-09-06 Tue 14:15]--[2016-09-06 Tue 15:02] =>  0:47
+:END:
+
+- https://texwiki.texjp.org/?%E6%96%87%E7%8C%AE%E5%BC%95%E7%94%A8
+- [[http://shirotakeda.org/ja/tex-ja/jecon-ja.html#_4][jecon.bst: 経済学用BibTeXスタイルファイル]]
+
+を参考にしました。
+
+- https://github.com/ShiroTakeda/jecon-bst/releases
+
+から最新のファイルをダウンロードします。
+
+- jecon.bst
+- customization/jecon_*.bst 
+
+を
+
+- ~/texmf/bibtex/bst
+
+にコピーします。
+
+jecon_b.bst を shimano.bst にコピーし、 自分の好みに合うように変更しました。
+
+
+** Amazon から bibtex のデータをとりだす方法
+:PROPERTIES:
+:ID:       b11e0e75-6503-400b-9344-e6f18d6e7778
+:END:
+
+*** 問題点
+:PROPERTIES:
+:ID:       6c033bf4-1c44-4fb7-b2f4-6303e3ecf55b
+:END:
+
+bibtex データベースは便利ですが、データを入れるのが面倒です。
+bibtex データをなんとかして自動でとってきたいと思います。
+
+*** 解決方法
+:PROPERTIES:
+:ID:       6d3194db-1b4b-4417-9ff5-e162a3c857cd
+:END:
+
+- [[http://lead.to/amazon/jp/][Lead2Amazon]]
+
+を使うと簡単に書籍のデータを bibtex 形式でとりだすことができます。
+
+
+
+
+
+
+* LaTeX のみかけを変更する
+:PROPERTIES:
+:ID:       239206a0-606d-4adb-bd24-fa4190c93092
+:END:
+
+** LaTeX レイアウト参考資料
+:PROPERTIES:
+:ID:       493ffb67-b43f-4a61-bc19-4129fb7679f8
+:END:
+- [[https://www.w3.org/TR/jlreq/ja/][日本語組版処理の要件（日本語版）]]
+  jlreq はこれを元に作られています。
+- [[https://neruko3114.tumblr.com/post/135502471180/latex%25E3%2581%25A7%25E6%2589%2580%25E6%259C%259B%25E3%2581%25AE%25E3%2583%25AC%25E3%2582%25A4%25E3%2582%25A2%25E3%2582%25A6%25E3%2583%2588%25E3%2582%2592%25E5%25AE%259F%25E8%25A3%2585%25E3%2581%2599%25E3%2582%258B-1][偶像 • LaTeXで所望のレイアウトを実装する (1)]]
+
+
+
+** LaTeX の箇条書きのみためを改善する
+:PROPERTIES:
+:ID:       8723dccd-6f22-4734-a63a-1722feaf8df1
+:END:
+:LOGBOOK:
+- State "DONE"       from "NEXT"       [2016-09-06 Tue 14:14]
+:END:
+:CLOCK:    
+CLOCK: [2016-09-06 Tue 13:28]--[2016-09-06 Tue 14:14] =>  0:46
+CLOCK: [2016-09-06 Tue 11:32]--[2016-09-06 Tue 12:39] =>  1:07
+- State "DONE"       from "NEXT"       [2015-01-07 水 11:33]
+CLOCK: [2015-01-07 水 09:07]--[2015-01-07 水 11:33] =>  2:26
+:END:      
+#+INDEX: \LaTeX!かじょうがき@箇条書き
+
+標準の \LaTeX のリスト環境は見栄えが少し悪いので少し改善します。
+enumite.sty を使って見栄えを変更します。
+
+- [[http://mytexpert.sourceforge.jp/index.php?plugin%3Drelated&page%3D%25B9%25A5%25A4%25AD%25B9%25A5%25A4%25ADLaTeX2e%252F%25BD%25E9%25B5%25E9%25CA%25D4][Backlinks for: 好き好きLaTeX2e/初級編 - MyTeXpert]] が参考になります.
+- [[http://ctan.org/pkg/enumitem][CTAN: Package enumitem]] が良いようです.
+- [[http://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/enumitem.html][enumitem.sty: LaTeX パッケージ]] が詳しい.
+
+
+*** enumitem.sty を使う
+:PROPERTIES:
+:ID:       4a28a0a0-5abf-43b1-8a9f-73fb7d8c0bd1
+:END:
+
+- [[https://ctan.org/pkg/enumitem][CTAN: Package enumitem]]
+
+
+enumitem.sty を使うには、次のものを \LaTeX のプリアンブルに入れます。
+
+#+NAME: use-enuitem-sty
+#+CAPTION: enumitem.sty を使う
+#+BEGIN_SRC latex :exports code :eval no
+% 箇条書きの変更
+\usepackage{enumitem}
+% ネストのレベルの設定
+\setlistdepth{20}
+#+END_SRC
+
+*** アイテムリスト
+:PROPERTIES:
+:ID:       4105b6fa-2ed2-4ef7-9ea9-d656d233cdc1
+:END:
+itemize 環境を再定義します。
+
+#+BEGIN_SRC latex :exports code :eval none
+\renewlist{itemize}{itemize}{20}
+\setlist[itemize]{label=\textbullet, labelindent=2\parindent, leftmargin=0.5cm}
+#+END_SRC
+
+- アイテム 1
+  - アイテム 1-1
+- アイテム 2
+  - アイテム 2-1
+
+*** 番号つきリスト
+:PROPERTIES:
+:ID:       af82626e-6064-43dc-81ac-bc0bd4c0ba4b
+:END:
+enumerate 環境を再定義します。
+
+#+CAPTION: enumerate 環境の再定義
+#+BEGIN_SRC latex :exports code :eval none
+\renewlist{enumerate}{enumerate}{20}
+\setlist[enumerate]{leftmargin=!, label=\arabic*, itemindent=!, labelsep=!, labelwidth=!, labelindent=2\parindent}
+#+END_SRC
+
+1. アイテム 1
+   1. アイテム 1-1
+   2. アイテム 1-2
+2. アイテム 2
+3. アイテム 3
+
+*** 説明つきリスト
+:PROPERTIES:
+:ID:       da8d3e39-e9a0-44c2-8f7f-28674381322f
+:END:
+
+
+desctiption 環境を再定義します。
+
+#+CAPTION: desctiption 環境の再定義
+#+BEGIN_SRC latex :exports code :eval none
+\renewlist{description}{itemize}{20}
+\setlist[description]{font=\sffamily\bfseries, style=multiline, leftmargin=3cm, labelindent=2\parindent}
+#+END_SRC
+
+- desc 1 :: exp
+- desc 2 :: exp
+
+
+オプションのパラメータの意味は次のとおりです。
+
+
+- style :: 説明つきリストのスタイルを設定します
+- standard :: 標準の \LaTeX のスタイルに似ています
+- nextline :: 
+- leftmargin :: 左がわの余白
+
+うまく行ったようです。
+
+
+
+** TODO 行間の空きを設定する
+DEADLINE: <2019-04-05 Fri>
+:PROPERTIES:
+:ID:       516863da-696d-4532-bc35-31a6dca57ff2
+:END:
+:LOGBOOK:
+- State "TODO"       from "DONE"       [2019-04-01 月 09:21]
+- State "DONE"       from "TODO"       [2019-02-10 日 12:26]
+:END:
+
+- [[http://www27.cs.kobe-u.ac.jp/~masa-n/misc/cmc/j-kiso2001/iabasic/jlshort/node45.html][7.3 スペース]]
+
+
+\linespread{1.3} 
+
+** セクションの最初の段落をインデントする
+:PROPERTIES:
+:ID:       899d0b16-9d4d-4246-8d54-1e50d21f5a24
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2019-02-10 日 12:26]
+:END:
+
+- [[https://texwiki.texjp.org/?%25E8%258B%25B1%25E8%25AA%259E%25E6%2596%2587%25E3%2581%25AE%25E4%25BD%2593%25E8%25A3%2581][英語文の体裁 - TeX Wiki]]
+
+を参考にしました。
+
+プリアンブルに次をいれます。
+
+#+begin_src latex
+\usepackage{indentfirst}
+#+end_src
+
+** 段落のインデントをなくす
+:PROPERTIES:
+:ID:       21d86582-9fd1-472f-a60a-4c3d30bac28c
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2019-02-10 日 12:26]
+:END:
+
+- [[http://www27.cs.kobe-u.ac.jp/~masa-n/misc/cmc/j-kiso2001/iabasic/jlshort/node45.html][7.3 スペース]]
+
+
+*** 一時的に変更する
+:PROPERTIES:
+:ID:       eb0502eb-bf4b-4429-bec3-82be3eb300ef
+:END:
+
+*** 文書全体に適用する
+:PROPERTIES:
+:ID:       aaefb62c-95be-4b86-9d8d-16e465202684
+:END:
+
+\setlength{\parindent}{0pt} 
+
+
+** 段落間の空きを設定する
+:PROPERTIES:
+:ID:       70e877d7-f089-45a0-adb1-e6a890fff1cf
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2019-02-10 日 12:27]
+:END:
+#+index: parskip
+段落間のインデントをなくすと、段落の間の区別ができなくなります。
+そこで、段落の間の空きを広くします。
+
+- [[http://www27.cs.kobe-u.ac.jp/~masa-n/misc/cmc/j-kiso2001/iabasic/jlshort/node45.html][7.3 スペース]]
+
+を参考にしました。
+
+段落間の空きは =parskip= で設定します。
+
+#+begin_src latex
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+#+end_src
+
+** TODO emph を蛍光ペンでひいたようなスタイルにする
+DEADLINE: <2019-04-06 Sat>
+:PROPERTIES:
+:ID:       c99fc610-41aa-4ced-912a-421093bc42f1
+:END:
+:LOGBOOK:
+- State "TODO"       from "DONE"       [2019-04-01 月 09:21]
+- State "DONE"       from "NEXT"       [2019-02-12 火 13:49]
+:END:
+:CLOCK:
+CLOCK: [2019-02-12 火 12:46]--[2019-02-12 火 13:49] =>  1:03
+CLOCK: [2019-02-12 火 10:35]--[2019-02-12 火 12:17] =>  1:42
+:END:
+
+- [[http://doratex.hatenablog.jp/entry/20171219/1513609345][行分割可能な \fbox をつくる - TeX Alchemist Online]]
+
+を参考にしました。
+
+=uline--.sty= をいただいてきます。
+
+
+#+begin_src latex
+\uline[background,color={[rgb]{1,1,0.4}},width=5pt,position=1pt]{蛍光ペン}で
+\uline[background,color={[rgb]{1,0.4,1}},width=1zw,position=.38zw]{塗ってみよう}
+#+end_src
+
+** 独自のスタイルファイルの作成
+:PROPERTIES:
+:ID:       6997cf12-b398-4eee-a889-127e5ce7e289
+:END:
+私はこのような自分用のスタイルファイルを作成して使用しています。
+
+#+CAPTION: 独自のスタイルファイルの例
+#+NAME: shimano-sty
+#+INCLUDE: "~/texmf/latex/shimano/shimano.sty" example
+
+*** スタイルファイルを作成する                                    :@Office:
+:PROPERTIES:
+:ID:       e90c6e8c-42f1-423a-b8e3-c571a6ca5ef3
+:END:
+:LOGBOOK:
+- State "DONE"       from              [2016-09-07 Wed 10:20]
+:END:
+:CLOCK:
+CLOCK: [2016-09-02 Fri 16:42]--[2016-09-02 Fri 17:34] =>  0:52
+:END:
+
+- =~/texmf/latex/shimano=
+
+という名前のスタイルファイルを作成します。
+
+: mkdir -p ~/texmf/latex/shimano
+
+*** 表紙を変更する
+:PROPERTIES:
+:ID:       4a18d23a-dc6f-45e4-aede-1d117b071ca6
+:END:
+:CLOCK:
+CLOCK: [2016-09-06 Tue 17:00]--[2016-09-06 Tue 17:40] =>  0:40
+:END:
+
+#+NAME: change-latex-titepage-style
+#+CAPTION: 表紙のスタイルの変更
+#+BEGIN_SRC latex  :exports code :eval none
+\def\FileVerjou#1{\gdef\@FileVerjou{#1}}
+
+% \contact{Author's Address}, \FileVerj{<verison>}
+% 後記の titlepage 環境に必要
+\global\let\@contact\@empty
+\def\contact#1{\gdef\@contact{#1}}
+\global\let\@version\@empty
+
+% 表紙ページのスタイルの変更
+\renewcommand{\maketitle}{%
+  \begin{titlepage}%
+    \parindent=0pt%
+    \let\footnotesize\small%
+    \let\footnoterule\relax%
+    \let\footnote\thanks%
+    \null\vskip3zw%
+    \hbox to \fullwidth{%
+        \huge\bfseries\@title\hfill}\par\vskip\fboxsep
+    \hrule height 1ex\par\vskip\fboxsep
+    \hbox to \fullwidth{\hfill{\large\@author}}\par
+    \hbox to \fullwidth{\hfill{\large 第{\@FileVerjou}版}}\par
+    \hbox to \fullwidth{\hfill{\large\@date}}\par
+    \vfill
+    \ifx\@contact\@empty\@thanks\vfil\null%
+    \else\vfill\@contact\vskip 3ex\fi%
+  \end{titlepage}%
+\setcounter{footnote}{0}%
+\thispagestyle{empty}
+\vspace*{\fill}
+{\hfil Copyright {\copyright} 2016 Fujitsu Co.\hfil}\\
+\begin{quotation}
+
+\end{quotation}
+\begin{quotation}
+本文章に記載されている企業，団体の名前や製品名等は
+それぞれの権利帰属者の商標または商標登録であり所有物です．
+本文章では{\texttrademark}及び{\textregistered}は明記し
+ていません．
+\end{quotation}}%
+#+END_SRC
+
+*** shellinput 環境
+:PROPERTIES:
+:ID:       defa3d55-5d53-416c-bcd7-a9ed28e2fdf6
+:END:
+
+#+BEGIN_SRC latex :exports code :eval none
+\begin{shellinput}
+ls -al
+\end{shellinput}
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT latex
+\begin{shellinput}
+ls -al
+\end{shellinput}
+#+END_EXPORT
+
+
+
+*** shelloutput 環境
+:PROPERTIES:
+:ID:       2f793328-0c82-489f-85a2-c6a76d51ac28
+:END:
+
+シェルの出力を表現する環境です。
+
+#+CAPTION: shelloutput の使用例
+#+BEGIN_SRC latex :exports code :eval none
+  \begin{shelloutput}[shelloutput の使用例]
+  合計 40
+  4 drwxr-xr-x 10 shimano shimano 4096  5月 19 09:57 .
+  4 drwxr-xr-x 13 shimano shimano 4096  5月 30 12:44 ..
+  4 drwxr-xr-x  2 shimano shimano 4096 11月 30 14:55 BBQManual
+  4 drwxr-xr-x  8 shimano shimano 4096  5月 30 15:28 EngineerHandobook
+  4 drwxr-xr-x  3 shimano shimano 4096 11月 30 14:55 GitHubFlow
+  4 drwxrwxr-x  4 shimano shimano 4096  5月 30 11:50 Ionic-Josh
+  4 drwxr-xr-x  3 shimano shimano 4096 11月 30 14:55 MakeAmpEnvironment
+  4 drwxr-xr-x  3 shimano shimano 4096 11月 30 14:55 MakeVMWithVagrantAndChef
+  4 drwxr-xr-x  3 shimano shimano 4096 11月 30 14:55 OrgBook
+  4 drwxrwxr-x  4 shimano shimano 4096 12月  8 12:33 UseEmacs
+  \end{shelloutput}
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT latex
+\begin{shelloutput}[shelloutput の使用例]
+合計 40
+4 drwxr-xr-x 10 shimano shimano 4096  5月 19 09:57 .
+4 drwxr-xr-x 13 shimano shimano 4096  5月 30 12:44 ..
+4 drwxr-xr-x  2 shimano shimano 4096 11月 30 14:55 BBQManual
+4 drwxr-xr-x  8 shimano shimano 4096  5月 30 15:28 EngineerHandobook
+4 drwxr-xr-x  3 shimano shimano 4096 11月 30 14:55 GitHubFlow
+4 drwxrwxr-x  4 shimano shimano 4096  5月 30 11:50 Ionic-Josh
+4 drwxr-xr-x  3 shimano shimano 4096 11月 30 14:55 MakeAmpEnvironment
+4 drwxr-xr-x  3 shimano shimano 4096 11月 30 14:55 MakeVMWithVagrantAndChef
+4 drwxr-xr-x  3 shimano shimano 4096 11月 30 14:55 OrgBook
+4 drwxrwxr-x  4 shimano shimano 4096 12月  8 12:33 UseEmacs
+\end{shelloutput}
+#+END_EXPORT
+
+
+
+*** marker 環境
+:PROPERTIES:
+:ID:       05cde917-8dcc-481a-a9a8-e847b335e1cb
+:END:
+
+#+BEGIN_SRC latex :exports code :eval none
+\begin{marker}
+注意書き環境
+\end{marker}
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXPORT latex
+\begin{marker}
+ls -al
+\end{marker}
+#+END_EXPORT
+
+
+** enumerate
+:PROPERTIES:
+:ID:       4878d639-015d-4dd8-8767-83924d8d3432
+:END:
+- [[https://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/enumitem.html][enumitem.sty: LaTeX パッケージ]]
+
+** TODO xcolor を使って色をつける
+:PROPERTIES:
+:ID:       891c5bbe-55fc-435d-a05f-6f2348a56ba7
+:END:
+- [[http://konoyonohana.blog.fc2.com/blog-entry-97.html][天地有情 {LaTeX} xcolor --- xcolor 使い方]]
+
+** tcolorbox 関連                                             :RefileTarget:
+:PROPERTIES:
+:ID:       7f4a196d-8263-41f2-bd77-33394cbd57fa
+:END:
+#+INDEX: tcolorbox
+
+- [[https://ubutun.blogspot.com/2016/06/tcolorbox.html][うぶつん: tcolorboxを使った定理環境]]
+- [[http://konoyonohana.blog.fc2.com/blog-entry-61.html][天地有情 tcolorbox.sty を使ってみた]]
+- [[http://texmedicine.hatenadiary.jp/entry/2015/12/17/000339][tcolorboxの基本 - 物理とTeXに関する話題]]
+- [[http://texmedicine.hatenadiary.jp/entry/2015/11/08/122447][TeXユーザの集い2015 発表スライド - 物理とTeXに関する話題]]
+  - [[http://www.geocities.jp/texmedicine/][あざらしの保管庫]] : 上のスタイルファイルです。
+
+*** tclorbox を使ったボックスの例
+:PROPERTIES:
+:ID:       f0fcd1de-2b38-4a60-a5d1-90649a0a5df7
+:END:
+*** tcolorbox の例
+:PROPERTIES:
+:ID:       37e9eb36-341c-4259-9f79-06f1f0068ade
+:END:
+
+#+NAME: tcolorbox-example
+#+CAPTION: tcolorbox の例
+#+BEGIN_SRC latex :exports code :eval none
+  \begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=私の綺麗な見出し]
+  これは別の \textbf{tcolorbox} です.
+  \tcblower
+  ここで, ボックスの下側の部分が見えます.
+  \end{tcolorbox}
+#+END_SRC
+
+#+results:
+#+BEGIN_EXPORT latex
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=私の綺麗な見出し]
+これは別の \textbf{tcolorbox} です.
+\tcblower
+ここで, ボックスの下側の部分が見えます.
+\end{tcolorbox}
+#+END_EXPORT
+
+*** tcolorbox を使ったプログラムリストの表示
+:PROPERTIES:
+:ID:       a4b42736-1a01-47bb-8882-84d7d816b5e9
+:END:
+
+
+
+*** TODO tcolorbox のプログラムリストの目次の表記を変更する
+:PROPERTIES:
+:ID:       95775a1d-115f-4a7e-9ccb-1edc1e3ff777
+:END:
+:CLOCK:
+CLOCK: [2017-05-29 月 13:18]--[2017-05-29 月 16:08] =>  2:50
+:END:
+
+#+BEGIN_SRC latex  :exports code :eval none
+  % リスト目次の先頭に番号を出さない
+  \makeatletter
+  \def\tcb@addcontentsline#1#2{%
+    \ifx\kvtcb@listentry\@empty%
+      \ifx\kvtcb@title\@empty%
+        \ifx\tcbtitletext\@empty%
+          \addcontentsline{#1}{#2}{{\ignorespaces\kvtcb@savedelimiter}}%
+        \else%
+          \addcontentsline{#1}{#2}{{\ignorespaces\tcbtitletext}}%
+        \fi%
+      \else%
+        \addcontentsline{#1}{#2}{{\ignorespaces\kvtcb@title}}%
+      \fi%
+    \else%
+      \addcontentsline{#1}{#2}{\kvtcb@listentry}%
+    \fi%
+  }
+  \makeatother
+
+#+END_SRC
+
+*** TODO tclorbox で図と説明をボックスに入れる
+:PROPERTIES:
+:ID:       69cd9500-6d25-436d-8773-496efb97b5aa
+:END:
+
+- [[https://tex.stackexchange.com/questions/340937/tcolorbox-and-figures-adding-description][graphics - tcolorbox and figures - adding description - TeX - LaTeX Stack Exchange]]
+** TODO 章やセクションの見出しを変える（titlesec）
+:PROPERTIES:
+:ID:       3871a582-75a4-4c52-b6b0-6e9d1b3256ab
+:END:
+
+- [[http://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/titlesec.html][titlesec.sty -- Part 1: LaTeX パッケージ]]
+- [[https://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/titlesec2.html][titlesec.sty -- Part 2: LaTeX パッケージ]]
+- [[https://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/titlesec3.html][titlesec.sty -- Part 3: LaTeX パッケージ]]
+- [[http://joban.wp.xdomain.jp/archives/288][titlesecパッケージを使ってみよう | 常磐の雑感]]
+- [[https://qiita.com/kiritex/items/deeec0843caf37b66054][LaTeXでセクションとかのデザインを変える]]
+- [[http://abenori.blogspot.com/2018/05/titlesec.html][にっき♪: titlesec]]
+- [[http://joban.wp.xdomain.jp/archives/288][titlesecパッケージを使ってみよう | 常磐の雑感]]
+
+* LaTeX 用の図の作成                                           :RefileTarget:
+:PROPERTIES:
+:ID:       0e570ade-e347-4511-b0e4-eed624d665a8
+:END:
+
+- [[https://qiita.com/Kto_pi/items/fd050e04d89a80fa2621][ディレクトリ構成図をlatexで作成する方法 - Qiita]]
+
+
+** LibreOffice Draw で作画
+:PROPERTIES:
+:ID:       36de665d-03d4-42b2-988e-0359d78f9ba6
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2019-01-30 水 16:51]
+:END:
+- [[http://grainrigi.hatenablog.com/entry/2017/10/09/010022][LibreOffice DrawでLaTeX文書用の格好良い図を作る - グレインの備忘録]]
+- [[https://qiita.com/arachan@github/items/c8f133522559d6d58377][Drawでネットワーク図作成 - Qiita]]
+- [[https://qiita.com/birdwatcher/items/839356ed0a540121161b][Vector形式できれいな資料づくり - Qiita]]
+- [[http://grainrigi.hatenablog.com/entry/2017/10/09/010022][LibreOffice DrawでLaTeX文書用の格好良い図を作る - グレインの備忘録]]
+
+
+* 縦書き
+:PROPERTIES:
+:ID:       af1ccece-a0c6-4012-9975-e762dcacd174
+:END:
+- [[http://id.fnshr.info/2017/05/20/my-latex-templates-201705/][私家版日本語 LaTeX テンプレート（2017年5月版）｜Colorless Green Ideas]]
+
+に jlreq の縦書きの説明があります。
+
+
+** TODO jlreq で縦書き
+DEADLINE: <2019-04-07 日>
+:PROPERTIES:
+:ID:       344a4bf7-4ebf-40ec-bddc-fdd0ff42c89e
+:END:
+
+-  [[http://www.tug.org/texlive/devsrc/Master/texmf-dist/doc/latex/jlreq/jlreq-ja.html][jlreq]]
+
+** TODO jlreq で多書体
+DEADLINE: <2019-04-26 金>
+:PROPERTIES:
+:ID:       1664ca33-63e2-409e-87a5-2f06893dbb9d
+:END:
+- https://qiita.com/zr_tex8r/items/91ae1dcc9c3afce7fa8c
+
+* 印刷物への出版
+:PROPERTIES:
+:ID:       55c24c15-c09b-49c3-9fc8-85332a683b52
+:END:
+** 印刷用の PDF を作る
+:PROPERTIES:
+:ID:       ad40a469-70df-493f-a3b7-bb62a1953d08
+:END:
+- [[https://qiita.com/hmikisato/items/673a910d5b02f3b1dca6][技術書典5の執筆環境棚卸し、あるいはLaTeXで「入稿に適した」PDFを吐く話 - Qiita]]
+
+
+- PDF を CYMK に変換する必要性がある
+
+* LuaTeX                                                       :RefileTarget:
+:PROPERTIES:
+:ID:       ec93b970-eb82-48c2-8dfe-4780d2aa13eb
+:END:
+
+** LuaLaTeX の参考文献
+:PROPERTIES:
+:ID:       aceb132e-b83f-402f-a828-013a9d5ae791
+:END:
+
+** LuaLaTeX 用のテンプレート
+:PROPERTIES:
+:ID:       b3f62668-cafb-4865-aa18-753f63910dd7
+:END:
+- [[https://gist.github.com/rkmathi/6941a5180b7554ab915d][LuaLaTeX用テンプレ · GitHub]]
+- [[https://gist.github.com/Stauboid/57dbd5cae3529217889f][LuaLaTeX で日本語を最低限使えるようにするテンプレート。Mac を想定 · GitHub]]
+
+** LuaTeX の特徴
+:PROPERTIES:
+:ID:       2344ea36-fc84-41e5-b8b4-2144e575acce
+:END:
+
+
+- 遅い
+** pLaTeX から LuaLaTeX へ
+:PROPERTIES:
+:ID:       142a8a7d-cf2a-493a-be11-5308933ddecb
+:END:
+
+- [[https://qiita.com/zr_tex8r/items/ac9176e4611bf233a3e0][「pLaTeXからLuaLaTeXへの移行」に関するクイズ - Qiita]]
+- [[https://qiita.com/Naughie/items/461d5a3a1cc77394834d][upLaTeXからLuaTeX-jaに移行するのに必要そうなことをまとめた - Qiita]]
+** DONE LuaLaTeX でプロポーショナルフォントを使う
+CLOSED: [2019-03-04 月 09:07] DEADLINE: <2019-03-06 水>
+:PROPERTIES:
+:ID:       799f53b6-7d3e-463f-b802-f5411227b0cc
+:END:
+:LOGBOOK:
+- State "DONE"       from "NEXT"       [2019-03-04 月 09:07]
+:END:
+:CLOCK:
+:END:
+
+- [[https://qiita.com/zr_tex8r/items/0512dd43e9806483013a][TeXでつくるプロポーショナル組日本語文書 - Qiita]]
+- [[https://qiita.com/Kto_pi/items/fd050e04d89a80fa2621][ディレクトリ構成図をlatexで作成する方法 - Qiita]]
+** TODO 游明朝でプロポーショナルで組む
+DEADLINE: <2019-05-01 Wed>
+:PROPERTIES:
+:ID:       7a44a1c6-5a8c-48b1-b5b3-239e7d7a695d
+:END:
+:LOGBOOK:
+- State "TODO"       from "DONE"       [2019-04-01 月 09:22]
+- State "DONE"       from "NEXT"       [2019-02-21 木 17:40]
+:END:
+:CLOCK:
+CLOCK: [2019-02-21 木 12:38]--[2019-02-21 木 12:39] =>  0:01
+CLOCK: [2019-02-21 木 11:48]--[2019-02-21 木 12:37] =>  0:49
+CLOCK: [2019-02-21 木 09:10]--[2019-02-21 木 11:48] =>  2:38
+:END:
+** TODO 源真ゴシックでくむ
+DEADLINE: <2019-05-01 Wed>
+:PROPERTIES:
+:ID:       297f472b-0392-4436-898b-99b32fe51162
+:END:
+:LOGBOOK:
+- State "TODO"       from "DONE"       [2019-04-01 月 09:22]
+- State "DONE"       from "TODO"       [2019-02-21 木 17:41]
+:END:
+
+- [[http://jikasei.me/font/genshin/][源真ゴシック (げんしんゴシック) | 自家製フォント工房]]
+
+からフォントをダウンロードします。
+
+
+** NEXT LuaLaTeX で Biz UD ゴシック体で、プロポーショナルで組む
+DEADLINE: <2019-04-04 Thu>
+:PROPERTIES:
+:ID:       017af18d-5d1d-40a0-b359-bd67b5d19f86
+:END:
+:LOGBOOK:
+- State "TODO"       from "DONE"       [2019-04-01 月 09:21]
+- State "DONE"       from "NEXT"       [2019-02-22 金 17:25] \\
+  よくない
+:END:
+:CLOCK:
+CLOCK: [2019-02-22 金 12:47]--[2019-02-22 金 17:25] =>  4:38
+CLOCK: [2019-02-22 金 09:03]--[2019-02-22 金 12:13] =>  3:10
+CLOCK: [2019-02-21 木 12:40]--[2019-02-21 木 17:35] =>  4:55
+:END:
+
+*** 目的
+:PROPERTIES:
+:ID:       d3716dc5-66a5-4fee-bb1b-ac28bbb74259
+:END:
+
+- UD ゴシックが見やすい。
+- 約物が全角でくまれるのが嫌。
+
+*** Biz+ UD フォントのインストール
+:PROPERTIES:
+:ID:       b115542a-e101-4795-9771-d4b71d571818
+:END:
+
+*** LaTeX
+:PROPERTIES:
+:ID:       4880f113-a7a9-4727-aa18-d8e82503c4bc
+:END:
+
+#+begin_src latex :eval no
+% LuaLaTeX文書; UTF-8
+\documentclass[14pt,a4paper]{ltjsarticle}
+
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[lmr]{mathcomp}
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo,eulervm}
+\usepackage{luatexja-fontspec}
+
+%%------------------------------ macOSの場合
+
+% \setmainfont{BIZ UDPGothic Regular}
+
+\setmainjfont[
+  Script=Default,
+  YokoFeatures={JFM=myprop}, % カスタムのJFMを指定する
+  CharacterWidth=Proportional,
+%  Kerning=On,
+  BoldFont={BIZ UDPGothic:style=Bold},
+  BoldItalicFont={BIZ UDPGothic:style=Bold},
+  ItalicFont={BIZ UDPGothic:style=Bold},
+  BoldSlantedFont={BIZ UDPGothic:style=Bold},
+  BoldItalicFeatures={FakeSlant=0.2},
+  BoldSlantedFeatures={FakeSlant=0.2},
+]{BIZ UDPGothic}
+
+\setsansjfont[
+  Script=Default,
+  YokoFeatures={JFM=myprop}, % カスタムのJFMを指定する
+  CharacterWidth=Proportional,
+%  Kerning=On,
+  BoldFont={BIZ UDPGothic:style=Bold},
+  BoldItalicFont={BIZ UDPGothic:style=Bold},
+  BoldSlantedFont={BIZ UDPGothic:style=Bold},
+  BoldItalicFeatures={FakeSlant=0.2},
+  BoldSlantedFeatures={FakeSlant=0.2},
+  ItalicFont={BIZ UDPGothic:style=Bold},
+]{BIZ UDPGothic}
+
+% 
+% 和欧文間空白を調整する
+% \setxkanjiskip{0.1\zw minus 0.1\zw} % bxjclass
+\ltjsetparameter{xkanjiskip=0.1\zw minus 0.1\zw}
+
+#+end_src
+
+
+** LuaLaTeX でフォント変更
+:PROPERTIES:
+:ID:       87b05341-5a38-4c1e-bf4e-85687b6d948b
+:END:
+
+- [[https://medium.com/text-is-saved/lua-la-texja%25E3%2581%25A7%25E7%25B4%25B0%25E3%2581%2584%25E3%2583%2595%25E3%2582%25A9%25E3%2583%25B3%25E3%2583%2588%25E3%2582%2592%25E4%25BD%25BF%25E3%2581%258A%25E3%2581%2586-1a09015d838e][lua(la)texjaで細いフォントを使おう – text-is-saved – Medium]]
+- [[https://hacks.menhera.org/61/latex%25E3%2581%25A7%25E5%25AE%259F%25E7%258F%25BE%25E3%2581%2599%25E3%2582%258Bmaterial-design/][LaTeXで実現するMaterial Design – メンヘラ.org HACKS]]
+
+
+* Pygment
+:PROPERTIES:
+:ID:       4ad862b0-3ffa-4a7d-b84e-9f3b5200b245
+:END:
+
+私は LaTeX でのソースハイライト用に minted パッケージを使っています。
+minted は Pygment を使います。
+
+
+- [[http://blog.yjl.im/2015/08/pygments-styles-gallery.html#7a6d-igor][YJL: Pygments styles gallery]]
+
+
+
+* PDFLaTeX                                                     :RefileTarget:
+:PROPERTIES:
+:ID:       c8f7f93f-35eb-415e-bfe2-e97df78d0b07
+:END:
+#+INDEX: PDFLaTeX
+
+主に PDFLaTeX で日本語を使う方法です。
+
+** pdfTeX で日本語を使う
+:PROPERTIES:
+:ID:       2cf10f67-e6c7-4806-80ce-cfd8bab9173b
+:END:
+:LOGBOOK:  
+- State "DONE"       from "TODO"       [2015-03-10 火 17:31]
+:END:      
+:CLOCK:    
+CLOCK: [2015-03-10 火 10:14]--[2015-03-10 火 10:15] =>  0:01
+:END:      
+
+- [[http://oku.edu.mie-u.ac.jp/~okumura/texwiki/?pdfTeX][pdfTeX - TeX Wiki]]
+- [[http://oku.edu.mie-u.ac.jp/~okumura/texwiki/?LaTeX-CJK][LaTeX-CJK - TeX Wiki]]
+
+*** ! Package keyval Error: pdflatex undefined. のエラーが発生する場合は BXjscls を最新版にアップデートします．
+:PROPERTIES:
+:ID:       ce4212a7-7803-4fb9-bc55-956c1da9578f
+:END:
+
+- https://github.com/zr-tex8r/BXjscls
+
+からダウンロードします.
+
+[[http://www.ctan.org/tex-archive/language/japanese/BX/bxjscls][- CTAN: tex-archive/language/japanese/BX/bxjscls]]
+
+からのファイルは古くてだめでした.
+
+: unzip bxjscls.zip 
+: cp -r bxjscls ~/.texmf/latex/
+
+: sudo apt-get install texlive-fonts-extra
+: sudo apt-get install fonts-ipaexfont
+
+*** サンプルソース
+:PROPERTIES:
+:ID:       f3405118-71eb-4f8c-bba6-5c5f5a7104e0
+:END:
+
+#+BEGIN_SRC latex :exports code :eval none
+  \documentclass[pdflatex,a4paper,12pt,jadriver=standard]{bxjsarticle}
+  \usepackage[pdftex]{graphicx}
+  \usepackage{tikz}
+  \usepackage{amsmath,amssymb}
+  \usepackage{newtxtext,newtxmath}
+  \title{pdfTeX テスト}
+  \begin{document}
+  \maketitle
+  \section{日本語を扱う}
+  吾輩は猫である。名前はまだ無い。
+
+  どこで生れたかとんと見当がつかぬ。
+  何でも薄暗いじめじめした所で
+  ニャーニャー泣いていた事だけは記憶している。
+  吾輩はここで始めて人間というものを見た。
+
+  \section{TiKz で図形を描く}
+  \begin{tikzpicture}
+  \shade[ball color=white] (0,0) circle (3ex) ;
+  \shade[ball color=red ] (1,0) circle (3ex) ;
+  \shade[ball color=blue ] (2,0) circle (3ex) ;
+  \end{tikzpicture}
+
+  \section{数式を書いてみる}
+  \[ \left( \int_0^\infty \frac{\sin x}{\sqrt{x}} dx \right)^2=
+  \sum_{k=0}^\infty \frac{(2k)!}{2^{2k}(k!)^2} \frac{1}{2k+1}=
+  \prod_{k=1}^\infty \frac{4k^2}{4k^2 -1}= \frac{\pi}{2} \]
+
+  \section{表を作成する}
+  \centering{%
+  \begin{tabular}{lrr}
+  \hline 品名 & 単価(円) & 個数
+  \\ \hline りんご & 100 & 5
+  \\ みかん & 50 & 10
+  \\ マンゴ & 300 & 8
+  \\ \hline
+  \end{tabular}}
+
+  \section{画像を取り込む}
+  \centering{%
+  \includegraphics[width=3cm,clip] {./bxjs01.png}}
+  \end{document}
+
+#+END_SRC
+
+
+
+* LaTeX フォント                                               :RefileTarget:
+:PROPERTIES:
+:ID:       b27381f4-78a4-4bc1-9146-13ef0cb850df
+:END:
+
+** いろいろなフォント
+:PROPERTIES:
+:ID:       a54877fb-8360-4c12-991d-add06e7e525c
+:END:
+
+
+- [[https://github.com/adobe-fonts/source-han-serif/blob/master/README-JP.md][source-han-serif/README-JP.md at master · adobe-fonts/source-han-serif · GitHub]] :: 
+     源ノ明朝（げんのみんちょう）
+- [[https://github.com/adobe-fonts/source-han-sans/blob/master/README-JP.md][source-han-sans/README-JP.md at master · adobe-fonts/source-han-sans · GitHub]] ::
+     源ノ角ゴシック（げんのかくごしっく）
+- [[https://github.com/adobe-fonts/source-han-code-jp/blob/master/README-JP.md][source-han-code-jp/README-JP.md at master · adobe-fonts/source-han-code-jp · GitHub]] ::
+    Source Han Code JP（源ノ角ゴシック Code JP 
+- [[https://github.com/ButTaiwan/gensen-font][GitHub - ButTaiwan/gensen-font: A free font family derived from Source Han Sans.]] ::
+     源泉丸ゴシック
+- [[http://jikasei.me/font/mgenplus/][Mgen+ (ムゲンプラス) | 自家製フォント工房]]
+  Mgen+ (ムゲンプラス) は、フリーフォントである「M+ OUTLINE FONTS」をベースに、これに含まれない漢字・記号のグリフを「源ノ角ゴシック (Noto Sans CJK / Source Han Sans の日本語部分」で補うことで、さらに豊富な漢字や記号を使えるようにした合成フォントです。
+
+** TODO [[https://qiita.com/zr_tex8r/items/9dfeafecca2d091abd02][upLaTeX文書で源ノ明朝／Noto Serif CJKを簡単に使う方法（最新のdvipdfmxとpxchfonを使用） - Qiita]]
+:PROPERTIES:
+:ID:       c3a1ddd7-62b1-4675-bc47-396422a9bbc6
+:END:
+* LaTeX ネタ                                                   :RefileTarget:
+:PROPERTIES:
+:ID:       37c3cb39-878c-4a43-bc18-513aa466aed0
+:END:
+- [[http://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/colortbl.html][colortbl.sty: LaTeX パッケージ]]
+- [[https://tex.stackexchange.com/questions/1319/showcase-of-beautiful-typography-done-in-tex-friends][big list - Showcase of beautiful typography done in TeX & friends - TeX - LaTeX Stack Exchange]]
+- [[https://qiita.com/Ishotihadus/items/bbbb85f54e6a4e7aaac0][イショティハドゥスにキレられないための LaTeX 論文執筆メソッド]]
+- [[https://qiita.com/suigin/items/10960e516f2d44f6b6de][アカデミックヤクザにキレられないためのLaTeX論文執筆メソッド]]
+- [[https://qiita.com/zr_tex8r/items/6f0b88c5838c42241457][LaTeX で「部分的な縦書き」 - Qiita]]
+
+
+
+** luajitlatex を有効にする
+:PROPERTIES:
+:ID:       148ca538-f836-4799-ad2e-01821f0a8a12
+:END:
+
+/var/lib/texmf/fmtutil.cnf-TEXLIVEDIST
+の
+
+luajitlatex luajittex language.dat,language.dat.lua lualatex.ini
+
+行のコメントをはずす。
+
+早くなりません。
+
+** LuaLaTeX を使ってみる
+:PROPERTIES:
+:ID:       ce901784-c021-48e5-9196-f6659aa25572
+:END:
+:CLOCK:
+CLOCK: [2019-01-18 金 10:52]--[2019-01-18 金 11:27] =>  0:35
+CLOCK: [2019-01-18 金 09:47]--[2019-01-18 金 10:50] =>  1:03
+:END:
+
+
+結論 : LuaLaTeX は遅すぎて使いものにならない。
+
+もう少しあがいてみる。
+
+curl -LsSf https://raw.githubusercontent.com/tats-u/enable-luajitlatex/master/enable-luajitlatex.sh | sudo PATH="$PATH" sh
+
+
+** TODO 源ノ明朝/源ノ角ゴシックをLuaLaTeXで使用する
+:PROPERTIES:
+:ID:       439ee4dc-23d1-4f58-a3e3-0f4491b4e8b7
+:END:
+- [[https://jb102.blogspot.com/2017/04/11-luatex.html][源ノ明朝/源ノ角ゴシックをLuaLaTeXで使用する (Windows)]]
+
+* 付録
+:PROPERTIES:
+:ID:       cf09331c-1e75-4422-a8b0-55d104dce35e
+:END:
+#+LATEX: \appendix
+
+** \LaTeX のインストール
+:PROPERTIES:
+:ID:       a229109e-cf28-4fb8-831b-a91ee892d92e
+:END:
+
+この章では \LaTeX  のインストール方法を説明します。
+
+*** Ubuntu 18.10 へのインストール
+:PROPERTIES:
+:ID:       cd006d4f-eaf1-49d3-89cb-8e0f86a9a77d
+:END:
+
+
+** \LaTeX の参考文献                                          :RefileTarget:
+:PROPERTIES:
+:ID:       2662e6bc-eea5-454e-87d4-84b647aca762
+:END:
+- [[http://ichiro-maruta.blogspot.jp/2013/03/latex.html?m=1][Ichiro Maruta Homepage: 使ってはいけない LaTeX のコマンド・パッケージ・作法]] ::
+- http://mytexpert.osdn.jp/index.php?%B9%A5%A4%AD%B9%A5%A4%ADLaTeX2e :: 少し古い
+     ですが，とても役に立ちます。
+
+** 後書き
+:PROPERTIES:
+:ID:       eb66cb65-8f29-44c1-b2fb-425f56486dc9
+:END:
+
+後書きを書きます
+
+
+#+INCLUDE: "~/Org/Templates/latex_bit_index.org" 
+# 奥付
+
+
