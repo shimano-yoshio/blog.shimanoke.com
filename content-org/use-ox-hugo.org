@@ -5,7 +5,8 @@
 # 更新日を自動的につける
 #+hugo_auto_set_lastmod: t
 # 見出しをレベル 6 まで出す
-#+OPTIONS: H:6 num:t
+#+OPTIONS: H:6 num:nil
+#+OPTIONS: toc:1
 #+STARTUP: indent
 #+hugo_type: post
 # 出力するディレクトリ
@@ -13,12 +14,14 @@
 # 出版するファイル名
 #+hugo_section: japanese/docs
 #+OPTIONS: creator:nil author:t
-#+OPTIONS: toc:nil
 #+LANGUAGE: ja
 # Hugo のタグ
 #+hugo_tags: Hugo ox-hugo
 # Hugo のカテゴリー
 #+hugo_categories: Hugo ox-hugo
+#+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
+#+INFOJS_OPT: view:info toc:nil
+
 
 # ドキュメントクラスの指定
 #+LATEX_CLASS: jsbook
@@ -52,7 +55,7 @@
 :EXPORT_DATE: 2019-04-02
 :EXPORT_HUGO_SECTION: japanese/posts
 :EXPORT_FILE_NAME: use-latex-ref-in-ox-hugo
-:EXPORT_OPTIONS: toc:nil num:nil
+:EXPORT_OPTIONS: toc:nil num:t
 :END:
 
 ox-hugo の中で LaTeX の数式を書いて、それを参照することができるはずですが、
@@ -226,17 +229,43 @@ ox-hugo が出力される目次が、 Summary の中に
 :EXPORT_DATE: 2019-04-02
 :EXPORT_HUGO_SECTION: japanese/posts
 :EXPORT_FILE_NAME: disable-ox-hugo-generated-toc
-:EXPORT_OPTIONS: toc:nil num:nil
+:EXPORT_OPTIONS: toc:nil num:nil 
 :END:
 
 ox-hugo はデフォルトで目次を生成します。
 それを止めるには、  =org-hugo-export-with-toc= を =nil= に設定します。
+また、 =org-html-use-infojs= が =t= だと、 *常に* 目次が
+出力されてしまうので、 =nil= に設定しておきます。
 
 #+caption: ox-hugo に目次を作成させないようにする
 #+name: disable-ox-hugo-generated-toc
 #+begin_src emacs-lisp
-(setq org-hugo-export-with-toc t)
+(setq org-hugo-export-with-toc nil)
+(setq org-html-use-infojs nil)
 #+end_src
+
+各サブツリーで次のようにすると、目次は出力されません:
+
+#+begin_src org
+:EXPORT_OPTIONS: toc:nil
+#+end_src
+
+各サブツリーで次のようにすると、目次が出力されます:
+
+#+begin_src org
+:EXPORT_OPTIONS: toc:t
+#+end_src
+
+もしくは、次のようにすると、指定したレベルまでの目次が出ます:
+
+#+begin_src org
+:EXPORT_OPTIONS: toc:1
+#+end_src
+
+
+
+
+
 * Details と summary
 :PROPERTIES:
 :ID:       eb4ec044-dc61-43de-b04f-b4a08e73fa4c

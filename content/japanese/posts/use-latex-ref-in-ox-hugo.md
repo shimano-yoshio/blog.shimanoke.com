@@ -2,17 +2,16 @@
 title = "ox-hugo の中で LaTeX の数式への参照を使う"
 author = ["Yoshio Shimano"]
 date = 2019-04-02
-lastmod = 2019-04-02T12:41:29+09:00
+lastmod = 2019-04-03T14:18:50+09:00
 tags = ["Hugo", "ox-hugo"]
-categories = ["Hugo"]
+categories = ["Hugo", "ox-hugo"]
 type = "post"
 draft = false
+thumbnail = "images/org-to-hugo.svg"
 +++
 
 ox-hugo の中で LaTeX の数式を書いて、それを参照することができるはずですが、
 そのままでは動きません。
-
-(setq org-hugo-export-with-toc t)
 
 {{< codeblock caption="" >}}
 ```org
@@ -67,7 +66,7 @@ window.MathJax = {
 ```
 {{< /codeblock>}}
 
-参照してみます:お
+参照してみます:
 
 \begin{equation}
 \label{eq:02}

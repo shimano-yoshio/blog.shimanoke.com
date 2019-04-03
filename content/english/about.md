@@ -1,12 +1,31 @@
----
-author: admin
-date: 2018-11-10 00:28:38+00:00
-draft: false
-title: About W3 Simple
-type: page
-url: /about/
----
++++
+title = "About this blog"
+author = ["Yoshio Shimano"]
+date = 2019-04-03
+lastmod = 2019-04-03T17:58:03+09:00
+type = "page"
+draft = false
++++
 
-  
-  
-W3 Simple is a Hugo theme written by [Jesse Lau](https://jesselau.com/) . The main motivation for writing this theme was to provide a really minimal theme with W3 CSS included.
+## About this blog {#about-this-blog}
+
+Hugo etc...
+
+
+## Environment {#environment}
+
+{{< table class="w3-table-all w3-card-4" caption="">}}
+| Software   | Version     |
+|------------|-------------|
+| Virtualbox | 6.0.4       |
+| Ubuntu     | 18.10       |
+| Emacs      | 25.22       |
+| Go         | go1.10.4    |
+| Hugo       | v0.55.0-DEV |
+| Org-mode   | 9.2.2       |
+{{< /table >}}
+
+
+## Thanks {#thanks}
+
+Thank you for reading my poor English!

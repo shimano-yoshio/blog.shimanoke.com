@@ -2,34 +2,17 @@
 title = "ox-hugo を使う"
 author = ["Yoshio Shimano"]
 date = 2019-03-31
-lastmod = 2019-04-02T12:42:51+09:00
+lastmod = 2019-04-03T13:46:06+09:00
 tags = ["Hugo", "ox-hugo"]
-categories = ["Hugo"]
+categories = ["Hugo", "ox-hugo"]
 type = "post"
 draft = false
 +++
 
-<style>
-  .ox-hugo-toc ul {
-    list-style: none;
-  }
-</style>
-<div class="ox-hugo-toc toc">
-<div></div>
-
-<div class="heading">&#30446;&#27425;</div>
-
-- <span class="section-num">1</span> [ox-hugo の中で LaTeX の数式への参照を使う](#ox-hugo-の中で-latex-の数式への参照を使う)
-- <span class="section-num">2</span> [ox-hugo が出力する目次を Summary の中に出力させない](#ox-hugo-が出力する目次を-summary-の中に出力させない)
-    - <span class="section-num">2.1</span> [ファイルのコピー](#ファイルのコピー)
-    - <span class="section-num">2.2</span> [テーマの中での使用方法](#テーマの中での使用方法)
-
-</div>
-<!--endtoc-->
+.0}
 
 
-
-## <span class="section-num">1</span> ox-hugo の中で LaTeX の数式への参照を使う {#ox-hugo-の中で-latex-の数式への参照を使う}
+## ox-hugo の中で LaTeX の数式への参照を使う {#ox-hugo-の中で-latex-の数式への参照を使う}
 
 ox-hugo の中で LaTeX の数式を書いて、それを参照することができるはずですが、
 そのままでは動きません。
@@ -87,7 +70,7 @@ window.MathJax = {
 ```
 {{< /codeblock>}}
 
-参照してみます:お
+参照してみます:
 
 \begin{equation}
 \label{eq:02}
@@ -97,14 +80,17 @@ window.MathJax = {
 ここで式(\ref{eq:01})を参照します。
 
 
-## <span class="section-num">2</span> ox-hugo が出力する目次を Summary の中に出力させない {#ox-hugo-が出力する目次を-summary-の中に出力させない}
+## 目次の制御 {#目次の制御}
+
+
+### ox-hugo が出力する目次を Summary の中に出力させない {#ox-hugo-が出力する目次を-summary-の中に出力させない}
 
 ox-hugo が出力される目次が、 Summary の中に
 表示されてしまいます。
 それを防ぐための方法です。
 
 
-### <span class="section-num">2.1</span> ファイルのコピー {#ファイルのコピー}
+#### ファイルのコピー {#ファイルのコピー}
 
 -   [`summary_minus_toc.html`](https://github.com/kaushalmodi/hugo-bare-min-theme/blob/master/layouts/partials/summary%5Fminus%5Ftoc.html)
 
@@ -186,7 +172,7 @@ ox-hugo が出力される目次が、 Summary の中に
     それを削除し、 Summary とします。
 
 
-### <span class="section-num">2.2</span> テーマの中での使用方法 {#テーマの中での使用方法}
+#### テーマの中での使用方法 {#テーマの中での使用方法}
 
 次のようにして、 Summary を埋め込むテンプレートの中で
 使ってください:
@@ -196,3 +182,46 @@ ox-hugo が出力される目次が、 Summary の中に
 {{ partial "summary_minus_toc.html" . }}
 ```
 {{< /codeblock>}}
+
+
+### ox-hugo に目次を作成させないようにする {#ox-hugo-に目次を作成させないようにする}
+
+ox-hugo はデフォルトで目次を生成します。
+それを止めるには、  `org-hugo-export-with-toc` を `nil` に設定します。
+
+{{< codeblock caption="<a id=\"code-snippet--disable-ox-hugo-generated-toc\"></a><a href=\"#code-snippet--disable-ox-hugo-generated-toc\">ソースコード 5</a>: ox-hugo に目次を作成させないようにする" >}}
+```emacs-lisp
+(setq org-hugo-export-with-toc nil)
+```
+{{< /codeblock>}}
+
+しかしうまく動きません。
+
+
+## Details と summary {#details-と-summary}
+
+<details>
+<p class="details">ox-hugo を使って Details と Summary を書く方法です。
+</p>
+</details>
+
+{{< codeblock caption="" >}}
+```org
+#+begin_details
+#+begin_summary
+これは Summary
+#+end_summary
+これは detail
+#+end_details
+```
+{{< /codeblock>}}
+
+<details>
+<summary>
+これは Summary
+</summary>
+<p class="details">
+
+これは detail
+</p>
+</details>

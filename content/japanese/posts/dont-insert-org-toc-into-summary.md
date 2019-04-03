@@ -1,23 +1,14 @@
 +++
 title = "ox-hugo が出力する目次を Summary の中に出力させない"
 author = ["Yoshio Shimano"]
-date = 2019-03-31
-lastmod = 2019-04-02T11:30:09+09:00
+date = 2019-04-02
+lastmod = 2019-04-03T14:18:51+09:00
 tags = ["Hugo", "ox-hugo"]
+categories = ["Hugo", "ox-hugo"]
 type = "post"
 draft = false
+thumbnail = "images/org-to-hugo.svg"
 +++
-
-<div class="ox-hugo-toc toc">
-<div></div>
-
-<div class="heading">&#30446;&#27425;</div>
-
-- [ファイルのコピー](#ファイルのコピー)
-- [テーマの中での使用方法](#テーマの中での使用方法)
-
-</div>
-<!--endtoc-->
 
 ox-hugo が出力される目次が、 Summary の中に
 表示されてしまいます。
