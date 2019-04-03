@@ -2,7 +2,7 @@
 title = "ox-hugo が出力する目次を Summary の中に出力させない"
 author = ["Yoshio Shimano"]
 date = 2019-04-02
-lastmod = 2019-04-03T20:31:39+09:00
+lastmod = 2019-04-03T21:25:46+09:00
 tags = ["Hugo", "ox-hugo"]
 categories = ["Hugo", "ox-hugo"]
 type = "post"

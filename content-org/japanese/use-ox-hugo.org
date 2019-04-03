@@ -38,15 +38,6 @@
 # コピーライト保有者
 #+LATEX_HEADER: \CopyrightAuthor{島野善雄}
 # コピーライトが発生した年
-#+LATEX_HEADER: \CopyrightYear{2019}
-# 機密レベル
-#+LATEX_HEADER: \ConfidentialLevel{機密情報ではない}
-# タイトルページに表示する画像
-# #+LATEX_HEADER: \TitlePicture{images/story-zapfino-crop.pdf}
-
-# はじまり
-# テキストの色を少し白くする
-#+LATEX: \color{Black!95!White}
 
 
 * ox-hugo の中で LaTeX の数式への参照を使う
@@ -55,7 +46,7 @@
 :EXPORT_DATE: 2019-04-02
 :EXPORT_HUGO_SECTION: japanese/posts
 :EXPORT_FILE_NAME: use-latex-ref-in-ox-hugo
-:EXPORT_OPTIONS: toc:nil num:t
+:EXPORT_OPTIONS: toc:nil num:nil
 :END:
 
 ox-hugo の中で LaTeX の数式を書いて、それを参照することができるはずですが、

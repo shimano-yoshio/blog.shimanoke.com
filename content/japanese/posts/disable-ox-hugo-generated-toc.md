@@ -2,7 +2,7 @@
 title = "ox-hugo に目次を作成させないようにする"
 author = ["Yoshio Shimano"]
 date = 2019-04-02
-lastmod = 2019-04-03T20:31:40+09:00
+lastmod = 2019-04-03T21:25:47+09:00
 tags = ["Hugo", "ox-hugo"]
 categories = ["Hugo", "ox-hugo"]
 type = "post"

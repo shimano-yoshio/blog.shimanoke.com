@@ -1,8 +1,8 @@
 +++
-title = "ox-hugo の中で LaTeX の数式への参照を使う"
+title = "Reference to LaTeX math in ox-hugo"
 author = ["Yoshio Shimano"]
 date = 2019-04-02
-lastmod = 2019-04-03T21:25:46+09:00
+lastmod = 2019-04-03T21:23:06+09:00
 tags = ["Hugo", "ox-hugo"]
 categories = ["Hugo", "ox-hugo"]
 type = "post"
@@ -10,8 +10,10 @@ draft = false
 thumbnail = "images/org-to-hugo.svg"
 +++
 
-ox-hugo の中で LaTeX の数式を書いて、それを参照することができるはずですが、
-そのままでは動きません。
+In Org-mode, you can reference LaTeX math, with `\ref{eq:1}`,
+but in ox-hugo it does not work by default.
+
+This math sinippet:
 
 {{< codeblock caption="" >}}
 ```org
@@ -22,20 +24,20 @@ ox-hugo の中で LaTeX の数式を書いて、それを参照することが�
 ```
 {{< /codeblock>}}
 
-と書くと、次が出力されます:
+puroduce this:
 
 \begin{equation}
 \label{eq:01}
 \y = ax + b
 \end{equation}
 
-ここで式(\ref{eq:02})を参照します。
-以下の設定をしない場合は式(\ref{eq:02})を参照できません。
+Here I referece Eq. \ref{eq:02} (`Eq(\ref{eq:02}`).
+Without the settings below, this reference does not work.
 
-`static/mathjax-config.js` を次の内容で作成してください
-（ox-hugo の test からコピーしました）:
+Make `static/mathjax-config.js` as follows
+(take from ox-hugo's test site):
 
-{{< codeblock caption="ソースコード 1: static/mathjax-config.js" >}}
+{{< codeblock caption="Code Snippet 1: static/mathjax-config.js" >}}
 ```javascript
 window.MathJax = {
     displayAlign: "center",
@@ -57,7 +59,8 @@ window.MathJax = {
 ```
 {{< /codeblock>}}
 
-これを Javasctipt を使うテンプレートの中で呼びだします:
+And call it from a template which calls Javasctipt
+(like layouts/partial/header.html):
 
 {{< codeblock caption="" >}}
 ```html
@@ -66,11 +69,20 @@ window.MathJax = {
 ```
 {{< /codeblock>}}
 
-参照してみます:
+Lets' reference some equations.
+
+{{< codeblock caption="" >}}
+```org
+\begin{equation}
+\label{eq:02}
+\y = ax + b
+\end{equation}
+```
+{{< /codeblock>}}
 
 \begin{equation}
 \label{eq:02}
 \y = ax + b
 \end{equation}
 
-ここで式(\ref{eq:01})を参照します。
+Here, referencing Eq. \ref{eq:01}.

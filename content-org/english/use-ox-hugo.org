@@ -23,17 +23,19 @@
 #+INFOJS_OPT: view:info toc:nil
 
 
-* ox-hugo の中で LaTeX の数式への参照を使う
+* Reference to LaTeX math in ox-hugo
 :PROPERTIES:
 :ID:       ba7e8113-305f-4bfe-b709-6ed60b68aacc
 :EXPORT_DATE: 2019-04-02
-:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_HUGO_SECTION: english/posts
 :EXPORT_FILE_NAME: use-latex-ref-in-ox-hugo
-:EXPORT_OPTIONS: toc:nil num:t
+:EXPORT_OPTIONS: toc:nil num:nil
 :END:
 
-ox-hugo の中で LaTeX の数式を書いて、それを参照することができるはずですが、
-そのままでは動きません。
+In Org-mode, you can reference LaTeX math, with =\ref{eq:1}=,
+but in ox-hugo it does not work by default.
+
+This math sinippet:
 
 #+begin_src org
 \begin{equation}
@@ -42,18 +44,19 @@ ox-hugo の中で LaTeX の数式を書いて、それを参照することが�
 \end{equation}
 #+end_src
 
-と書くと、次が出力されます:
+puroduce this:
 
 \begin{equation}
 \label{eq:01}
 \y = ax + b
 \end{equation}
 
-ここで式(\ref{eq:02})を参照します。
-以下の設定をしない場合は式(\ref{eq:02})を参照できません。
+Here I referece Eq. \ref{eq:02} (=Eq(\ref{eq:02}=).
+Without the settings below, this reference does not work.
 
-=static/mathjax-config.js= を次の内容で作成してください
-（ox-hugo の test からコピーしました）:
+Make =static/mathjax-config.js= as follows
+(take from ox-hugo's test site):
+
 
 #+caption: static/mathjax-config.js
 #+begin_src javascript
@@ -76,21 +79,31 @@ window.MathJax = {
 };
 #+end_src
 
-これを Javasctipt を使うテンプレートの中で呼びだします:
+
+And call it from a template which calls Javasctipt
+(like layouts/partial/header.html):
 
 #+begin_src html
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 <script src="{{ "mathjax-config.js" | absURL }}"></script>
 #+end_src
 
-参照してみます:
+Lets' reference some equations.
+
+#+begin_src org
+\begin{equation}
+\label{eq:02}
+\y = ax + b
+\end{equation}
+#+end_src
+
 
 \begin{equation}
 \label{eq:02}
 \y = ax + b
 \end{equation}
 
-ここで式(\ref{eq:01})を参照します。
+Here, referencing Eq. \ref{eq:01}.
 
 * TOC in ox-hugo
 :PROPERTIES:
@@ -250,13 +263,13 @@ ox-hugo はデフォルトで目次を生成します。
 
 
 
-* Details と summary
+* Details and summary
 :PROPERTIES:
-:ID:       eb4ec044-dc61-43de-b04f-b4a08e73fa4c
-:EXPORT_DATE: 2019-04-02
+:EXPORT_DATE: 2019-04-03
 :EXPORT_HUGO_SECTION: japanese/posts
 :EXPORT_FILE_NAME: details-and-summary
 :EXPORT_OPTIONS: toc:t num:nil
+:ID:       b0cf174c-c3a8-4fce-9aac-578b3307c37e
 :END:
 
 #+begin_details
