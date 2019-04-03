@@ -1,0 +1,54 @@
+#+title: About this blog
+#+author: Yoshio Shimano
+# 出版した日付
+#+date: 2019-04-03
+# 更新日を自動的につける
+#+hugo_auto_set_lastmod: t
+# 見出しをレベル 6 まで出す
+#+OPTIONS: H:6 num:nil
+#+OPTIONS: toc:1
+#+STARTUP: indent
+# 出力するディレクトリ
+#+hugo_base_dir: ../..
+# 出版するファイル名
+#+hugo_section: /english/
+#+Options: creator:nil author:t
+#+LANGUAGE: ja
+#+hugo_type: page
+
+* About this blog
+:PROPERTIES:
+:ID:       8367af7b-35c4-4719-be7e-0825940f02d1
+:EXPORT_DATE: 2019-04-03
+:EXPORT_FILE_NAME: about
+:EXPORT_OPTIONS: toc:nil num:nil
+:END:
+
+** About this blog
+:PROPERTIES:
+:ID:       126658dc-1605-455f-b3c1-40f0756a2bb0
+:END:
+
+Hugo etc...
+
+** Environment
+:PROPERTIES:
+:ID:       06d945ed-46ce-46fc-9110-072e1e9c422d
+:END:
+
+|------------+-------------|
+| Software   | Version
+|------------+-------------|
+| Virtualbox |       6.0.4 |
+| Ubuntu     |       18.10 |
+| Emacs      |       25.22 |
+| Go         |    go1.10.4 |
+| Hugo       | v0.55.0-DEV |
+| Org-mode   |       9.2.2 |
+|------------+-------------|
+
+** Thanks
+:PROPERTIES:
+:ID:       af88b3c5-366d-4ae6-b28c-b9421b8e9097
+:END:
+Thank you for reading my poor English!

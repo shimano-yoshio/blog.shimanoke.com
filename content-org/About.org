@@ -1,0 +1,52 @@
+#+title: このブログについて
+#+author: Yoshio Shimano
+# 出版した日付
+#+date: 2019-04-03
+# 更新日を自動的につける
+#+hugo_auto_set_lastmod: t
+# 見出しをレベル 6 まで出す
+#+OPTIONS: H:6 num:nil
+#+OPTIONS: toc:1
+#+STARTUP: indent
+# 出力するディレクトリ
+#+hugo_base_dir: ..
+# 出版するファイル名
+#+hugo_section: /japanese/
+#+Options: creator:nil author:t
+#+LANGUAGE: ja
+#+hugo_type: page
+
+* このブログについて
+:PROPERTIES:
+:ID:       2b831d5a-4d0c-4b00-9c5d-d7ce7309bcd4
+:EXPORT_DATE: 2019-04-03
+:EXPORT_FILE_NAME: about
+:EXPORT_OPTIONS: toc:nil num:nil
+:END:
+
+** このブログについて
+:PROPERTIES:
+:ID:       bea7dd64-c24a-4d1f-abd2-c7698d95440c
+:END:
+
+Hugo とかいろいろです。
+
+** 使用環境
+:PROPERTIES:
+:ID:       fb18303e-73d6-4979-ab99-67a629bb0c11
+:END:
+
+このブログは Hugo を使って作成されています。
+しかし使用しているマークアップは Markdown ではなく、
+ox-hugo 経由で Org-mode を使用しています。
+
+|------------+-------------|
+| ソフト     |  バージョン |
+|------------+-------------|
+| Virtualbox |       6.0.4 |
+| Ubuntu     |       18.10 |
+| Emacs      |       25.22 |
+| Go         |    go1.10.4 |
+| Hugo       | v0.55.0-DEV |
+| Org-mode   |       9.2.2 |
+|------------+-------------|
