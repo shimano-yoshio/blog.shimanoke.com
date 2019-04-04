@@ -4,7 +4,7 @@ defaultContentLanguage = "en" # en / zh-CN / ... (This field determines which i1
 title = "Get out of your door"
 theme = "hugo-w3-simple"
 disqusShortname = "blog-shimanoke-com"      # disqus_shortname
-googleAnalytics = ""      # UA-XXXXXXXX-X
+googleAnalytics = "UA-137701354-1"      # UA-XXXXXXXX-X
 #gridstyle use 3 column. so should be 3,6,9,12,15....
 paginate = 10
 # has chinese/japanese/korean ? 
@@ -136,7 +136,7 @@ contentDir = "content/japanese"
 
 [params.social]
     # Set your social account here, if you don't have some accounts just comment them
-#     a-envelope = "mailto:shimano.yoshio at gmail.com"
+    a-envelope = "mailto:shimano.yoshio at gmail.com"
 #   b-stack-overflow ="https://stackoverflow.com/users/12345678/john-doe"
 #    c-twitter = "https://twitter.com/johndoe"
 #    d-facebook = "https://www.facebook.com/yoshio.shimano"

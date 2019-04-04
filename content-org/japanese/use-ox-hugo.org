@@ -16,7 +16,8 @@
 #+OPTIONS: creator:nil author:t
 #+LANGUAGE: ja
 # Hugo のタグ
-#+hugo_tags: Hugo ox-hugo
+#+filetags: Hugo ox-hugo
+# #+hugo_tags: Hugo ox-hugo
 # Hugo のカテゴリー
 #+hugo_categories: Hugo ox-hugo
 #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
@@ -39,6 +40,56 @@
 #+LATEX_HEADER: \CopyrightAuthor{島野善雄}
 # コピーライトが発生した年
 
+* Org-mode から Markdownへのマークアップの変換 :CSS:
+:PROPERTIES:
+:EXPORT_DATE: 2019-04-04
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: from-org-to-markdown
+:EXPORT_OPTIONS: toc:nil num:nil
+:ID:       91c8c28c-690b-498b-abea-1d6b3f40bb40
+:END:
+
+ox-hugo の中で、
+強調や等幅などのマークアップが、 Org-mode から Markdown へ変更される方法です。
+
+#+caption: Org-mode から Markdownへのマークアップの変換
+|--------------------+-------------------------------------------------------------------------+----------------------------------|
+| Org                | Markdown                                                                | HTML                             |
+|--------------------+-------------------------------------------------------------------------+----------------------------------|
+| =*bold*=           | =**bold**=                                                              | *bold ボールド*                  |
+| =/italics/=        | =_italics_=                                                             | /italics イタリック/             |
+| ==monospace==      | =`monospace`=                                                           | =monospace 等幅=                 |
+| =~key-binding~=    | =`key-binding`=                                                         | ~key-binding キーバインディング~ |
+|                    | - =org-hugo-use-code-for-kbd= が nil であれば[デフォルト]               |                                  |
+| =~key-binding~=    | =<kbd>key-binding</kbd>=                                                |                                  |
+|                    | - =org-hugo-use-code-for-kbd= nil でなければ                            |                                  |
+|                    | - =<kbd>= タグを特別にレンダリングするには *CSS* が必用                 |                                  |
+| =+strike-through+= | =~~strike-through~~=                                                    | +strike-through 打ち消し線+      |
+| =_underline_=      | =<span class = "underline">underline</span>=                            | _underline 下線_                 |
+|                    | - 下線としてこの =underline= クラスをレンダリングするには  *CSS* が必用 |                                  |
+|--------------------+-------------------------------------------------------------------------+----------------------------------|
+
+=org-hugo-use-code-for-kbd= を =t= に設定し:
+
+#+begin_src emacs-lisp
+(setq org-hugo-use-code-for-kbd t)
+#+end_src
+
+このような CSS を追加しました:
+
+#+begin_src css
+kbd {
+    padding: 0.2rem 0.4rem;
+    font-size: 87.5%;
+    color: #fff;
+    background-color: #212529;
+    border-radius: 0.2rem;
+}
+
+.underline{
+    text-decoration: underline;
+}
+#+end_src
 
 * ox-hugo の中で LaTeX の数式への参照を使う
 :PROPERTIES:

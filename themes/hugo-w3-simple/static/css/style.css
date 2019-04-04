@@ -56,7 +56,7 @@ a:hover {
     text-align: left;
 
 }
-code,kbd,samp{
+code, samp{
     width:auto;
     font-family: "Courier New", Consolas, monospace;
     overflow-x:auto;
@@ -510,3 +510,14 @@ dd {
     margin-inline-start: 40px;
 }
 
+kbd {
+    padding: 0.2rem 0.4rem;
+    font-size: 87.5%;
+    color: #fff;
+    background-color: #212529;
+    border-radius: 0.2rem;
+}
+
+.underline{
+    text-decoration: underline;
+}
