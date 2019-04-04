@@ -2,7 +2,7 @@
 title = "Details と summary"
 author = ["Yoshio Shimano"]
 date = 2019-04-02
-lastmod = 2019-04-03T21:25:47+09:00
+lastmod = 2019-04-04T20:31:53+09:00
 tags = ["Hugo", "ox-hugo"]
 categories = ["Hugo", "ox-hugo"]
 type = "post"

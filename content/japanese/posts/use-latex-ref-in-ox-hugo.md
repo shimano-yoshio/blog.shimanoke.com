@@ -2,7 +2,7 @@
 title = "ox-hugo の中で LaTeX の数式への参照を使う"
 author = ["Yoshio Shimano"]
 date = 2019-04-02
-lastmod = 2019-04-03T21:25:46+09:00
+lastmod = 2019-04-04T20:32:06+09:00
 tags = ["Hugo", "ox-hugo"]
 categories = ["Hugo", "ox-hugo"]
 type = "post"
@@ -17,7 +17,7 @@ ox-hugo の中で LaTeX の数式を書いて、それを参照することが�
 ```org
 \begin{equation}
 \label{eq:01}
-\y = ax + b
+y = ax + b
 \end{equation}
 ```
 {{< /codeblock>}}
@@ -26,7 +26,7 @@ ox-hugo の中で LaTeX の数式を書いて、それを参照することが�
 
 \begin{equation}
 \label{eq:01}
-\y = ax + b
+y = ax + b
 \end{equation}
 
 ここで式(\ref{eq:02})を参照します。

@@ -1,17 +1,20 @@
 window.MathJax = {
     displayAlign: "left",
-    displayIndent: "0em",
-    "HTML-CSS": { scale: 100,
+    displayIndent: "10em",
+    "HTML-CSS": { scale: 300,
+                  availableFonts: [],
+                  preferredFont: "Neo-Euler",
                   linebreaks: { automatic: "false" },
-                  webFont: "TeX"
+                  webFont: "Neo-Euler",
+                  mtextFontInherit: true
                 },
     SVG: {scale: 100,
           linebreaks: { automatic: "false" },
-          font: "TeX"},
+          font: "Neo-Euler"},
     NativeMML: {scale: 100},
     TeX: { equationNumbers: {autoNumber: "AMS"},
-           MultLineWidth: "85%",
-           TagSide: "right",
+           MultLineWidth: "100%",
+           TagSide: "lef",
            TagIndent: ".8em"
          }
 };

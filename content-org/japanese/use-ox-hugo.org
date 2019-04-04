@@ -106,7 +106,7 @@ ox-hugo の中で LaTeX の数式を書いて、それを参照することが�
 #+begin_src org
 \begin{equation}
 \label{eq:01}
-\y = ax + b
+y = ax + b
 \end{equation}
 #+end_src
 
@@ -114,7 +114,7 @@ ox-hugo の中で LaTeX の数式を書いて、それを参照することが�
 
 \begin{equation}
 \label{eq:01}
-\y = ax + b
+y = ax + b
 \end{equation}
 
 ここで式(\ref{eq:02})を参照します。
