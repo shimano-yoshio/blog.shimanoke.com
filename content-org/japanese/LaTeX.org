@@ -2,36 +2,26 @@
 #+LANGUAGE: ja
 #+AUTHOR: 島野 善雄
 #+EMAIL: shimano.yoshio@jp.fujitsu.com
-#+OPTIONS: author:t prop:nil <:nil H:7
-#+OPTIONS: toc:4 creator:nil timestamp:nil email:t  todo:nil pri:nil tags:nil
-#+DESCRIPTION: LaTeX Tips
-#+KEYWORDS:  Ubuntu Linux LaTeX
-#+EXCLUDE_TAGS: noexport
+# 出版した日付
+#+date: 2019-03-31
+# 更新日を自動的につける
+#+hugo_auto_set_lastmod: t
+# 見出しをレベル 6 まで出す
+#+OPTIONS: H:6 num:nil
+#+OPTIONS: toc:1
 #+STARTUP: indent
-# 図目次の出力
-#+LATEX: \listoffigures
-#+TOC: figure
-# 表目次の出力
-#+TOC: tables 
-
-# HTML Setting
-#+INFOJS_OPT: view:showall
-# #+INCLUDE: "~/Org/Templates/setup/theme-bigblow.setup" 
-#+INCLUDE: "~/Org/Templates/setup/theme-readtheorg.setup" 
-
-# ドキュメントクラスの指定
-#+LATEX_CLASS: jsbook
-# ドキュメントクラスのオプションの指定
-#+LATEX_CLASS_OPTIONS: [a4j,12pt,openany,uplatex]
-# カスタムスタイルの読み込み
-#+LATEX_HEADER: \usepackage{shimano}
-
-# ファイルのバージョン
-#+LATEX_HEADER: \FileVerjou{1.0}
-
-# tcolorbox でのプログラムリスト出力
-# #+LATEX: \tcblistof[\chapter*]{box}{プログラムリスト}
-#+LATEX: \mainmatter
+#+hugo_type: post
+# 出力するディレクトリ
+#+hugo_base_dir: ../..
+# 出版するファイル名
+#+hugo_section: japanese/docs
+#+OPTIONS: creator:nil author:t
+#+LANGUAGE: ja
+# Hugo のタグ
+#+filetags: LaTeX
+# Hugo のカテゴリー
+#+hugo_categories: LaTeX
+#+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
 
 * \LaTeX の一般的な情報                                        :RefileTarget:
 :PROPERTIES:
@@ -876,10 +866,13 @@ desctiption 環境を再定義します。
 
 
 
-** TODO 行間の空きを設定する
-DEADLINE: <2019-04-05 Fri>
+** 行間の空きを設定する
 :PROPERTIES:
-:ID:       516863da-696d-4532-bc35-31a6dca57ff2
+:EXPORT_DATE: 2019-04-05
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: change-line-spacde
+:EXPORT_OPTIONS: toc:nil num:nil
+:ID:       44f1a02b-09e7-4634-bd68-9345c09afa8e
 :END:
 :LOGBOOK:
 - State "TODO"       from "DONE"       [2019-04-01 月 09:21]
@@ -954,10 +947,14 @@ DEADLINE: <2019-04-05 Fri>
 \setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
 #+end_src
 
-** TODO emph を蛍光ペンでひいたようなスタイルにする
+** LaTeX の emph を蛍光ペンでひいたようなスタイルにする
 DEADLINE: <2019-04-06 Sat>
 :PROPERTIES:
-:ID:       c99fc610-41aa-4ced-912a-421093bc42f1
+:EXPORT_DATE: 2019-04-05
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: change-latex-emph
+:EXPORT_OPTIONS: toc:nil num:nil
+:ID:       44f1a02b-09e7-4634-bd68-9345c09afa8e
 :END:
 :LOGBOOK:
 - State "TODO"       from "DONE"       [2019-04-01 月 09:21]
@@ -968,17 +965,57 @@ CLOCK: [2019-02-12 火 12:46]--[2019-02-12 火 13:49] =>  1:03
 CLOCK: [2019-02-12 火 10:35]--[2019-02-12 火 12:17] =>  1:42
 :END:
 
-- [[http://doratex.hatenablog.jp/entry/20171219/1513609345][行分割可能な \fbox をつくる - TeX Alchemist Online]]
+最近の HTML でみかけるように、 LaTeX での強調強調の文が
+蛍光マーカーで線を引かれたようにします。
+LaTeX の =\emph= コマンドを再定義します。
 
-を参考にしました。
+- 日本語 :: ゴシック太字
+- 欧文 :: イタリック太字
+- 塗り :: 黄色で、文字の半分まで
 
-=uline--.sty= をいただいてきます。
+というようになるように、 =\emph= コマンドを変更します。
 
+=uline--.sty= を使います。
+=uline--.sty= は標準パッケージではないので、
+
+- [[https://github.com/doraTeX/breakfbox][GitHub - doraTeX/breakfbox]]
+
+からダウンロードしてください。
+
+=emph= コマンドの再定義方法です:
+
+#+name: redefine-emph
+#+caption: =emph= コマンドの再定義
+#+begin_src latex :tangle coco-jsbook.sty
+\usepackage[usetype1]{uline--}
+
+\renewcommand{\emph}[1]{%
+{\sffamily\bfseries\itshape%
+  \uline[
+    background,
+    color={[rgb]{1,1,0.0}},
+    width=0.8em,position=1pt]{#1}}}
+#+end_src
+
+これを使うとこの Org-mode は:
+
+#+name: chaged-emph-example
+#+caption: 強調の例
+#+begin_src org
+/強調の行です。 This is emph/ 。うまくいくかな？
+#+end_src
+
+このように LaTeX へ変換されます:
 
 #+begin_src latex
-\uline[background,color={[rgb]{1,1,0.4}},width=5pt,position=1pt]{蛍光ペン}で
-\uline[background,color={[rgb]{1,0.4,1}},width=1zw,position=.38zw]{塗ってみよう}
+\emph{強調の行です。 This is emph} 。うまくいくかな？
 #+end_src
+
+これは LaTeX で次のようにタイプセットされます:
+
+#+caption: LaTeX での例
+[[file:images/latex-emph-sample.png]]
+
 
 ** 独自のスタイルファイルの作成
 :PROPERTIES:

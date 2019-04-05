@@ -21,6 +21,7 @@
 # Hugo のカテゴリー
 #+hugo_categories: Hugo ox-hugo
 #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
+
 #+INFOJS_OPT: view:info toc:nil
 
 
