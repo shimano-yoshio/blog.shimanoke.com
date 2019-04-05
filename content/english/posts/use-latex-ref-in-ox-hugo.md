@@ -2,7 +2,7 @@
 title = "Reference to LaTeX math in ox-hugo"
 author = ["Yoshio Shimano"]
 date = 2019-04-02
-lastmod = 2019-04-05T13:48:20+09:00
+lastmod = 2019-04-06T06:35:17+09:00
 tags = ["Hugo", "ox-hugo"]
 categories = ["Hugo", "ox-hugo"]
 type = "post"

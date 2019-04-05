@@ -2,7 +2,7 @@
 title = "From Org-mode marukup to Markdown"
 author = ["Yoshio Shimano"]
 date = 2019-04-05
-lastmod = 2019-04-05T14:05:46+09:00
+lastmod = 2019-04-06T06:35:16+09:00
 tags = ["Hugo", "ox-hugo"]
 categories = ["Hugo", "ox-hugo"]
 type = "post"

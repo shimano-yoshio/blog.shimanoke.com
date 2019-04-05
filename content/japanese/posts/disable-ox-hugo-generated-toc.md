@@ -2,7 +2,7 @@
 title = "ox-hugo に目次を作成させないようにする"
 author = ["Yoshio Shimano"]
 date = 2019-04-02
-lastmod = 2019-04-03T21:25:47+09:00
+lastmod = 2019-04-06T06:35:20+09:00
 tags = ["Hugo", "ox-hugo"]
 categories = ["Hugo", "ox-hugo"]
 type = "post"
@@ -15,7 +15,7 @@ ox-hugo はデフォルトで目次を生成します。
 また、 `org-html-use-infojs` が `t` だと、 **常に** 目次が
 出力されてしまうので、 `nil` に設定しておきます。
 
-{{< codeblock caption="<a id=\"code-snippet--disable-ox-hugo-generated-toc\"></a><a href=\"#code-snippet--disable-ox-hugo-generated-toc\">ソースコード 1</a>: ox-hugo に目次を作成させないようにする" >}}
+{{< codeblock caption="<a id=\"code-snippet--disable-ox-hugo-generated-toc\"></a><a href=\"#code-snippet--disable-ox-hugo-generated-toc\">Code Snippet 1</a>: ox-hugo に目次を作成させないようにする" >}}
 ```emacs-lisp
 (setq org-hugo-export-with-toc nil)
 (setq org-html-use-infojs nil)

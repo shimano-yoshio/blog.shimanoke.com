@@ -1021,7 +1021,7 @@ desctiption 環境を再定義します。
 :PROPERTIES:
 :EXPORT_DATE: 2019-04-05
 :EXPORT_HUGO_SECTION: japanese/posts
-:EXPORT_FILE_NAME: change-line-spacde
+:EXPORT_FILE_NAME: change-line-space
 :EXPORT_OPTIONS: toc:nil num:nil
 :ID:       44f1a02b-09e7-4634-bd68-9345c09afa8e
 :END:

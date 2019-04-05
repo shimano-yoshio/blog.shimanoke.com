@@ -2,7 +2,7 @@
 title = "Do not put TOC in Summary"
 author = ["Yoshio Shimano"]
 date = 2019-04-03
-lastmod = 2019-04-03T20:55:37+09:00
+lastmod = 2019-04-06T06:35:18+09:00
 tags = ["Hugo", "ox-hugo"]
 categories = ["Hugo", "ox-hugo"]
 type = "post"

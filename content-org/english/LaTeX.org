@@ -1,0 +1,92 @@
+#+title: LaTeX Tips
+#+author: Yoshio Shimano
+# 出版した日付
+#+date: 2019-04-03
+# 更新日を自動的につける
+#+hugo_auto_set_lastmod: t
+# 見出しをレベル 6 まで出す
+#+OPTIONS: H:6 num:nil
+#+OPTIONS: toc:1
+#+STARTUP: indent
+#+hugo_type: post
+# 出力するディレクトリ
+#+hugo_base_dir: ../..
+# 出版するファイル名
+#+hugo_section: english/docs
+#+OPTIONS: creator:nil author:t
+#+LANGUAGE: en
+# Hugo tags
+#+hugo_tags: LaTeX
+# Hugo categories
+#+hugo_categories: LaTeX
+#+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
+
+* Change LaTeX emph with line marker style
+DEADLINE: <2019-04-06 Sat>
+:PROPERTIES:
+:EXPORT_DATE: 2019-04-05
+:EXPORT_HUGO_SECTION: english/posts
+:EXPORT_FILE_NAME: change-latex-emph
+:EXPORT_OPTIONS: toc:nil num:nil
+:ID:       a726b23f-b3f6-4a83-afd6-1d610e8fdfcb
+:END:
+:LOGBOOK:
+- State "TODO"       from "DONE"       [2019-04-01 月 09:21]
+- State "DONE"       from "NEXT"       [2019-02-12 火 13:49]
+:END:
+:CLOCK:
+CLOCK: [2019-02-12 火 12:46]--[2019-02-12 火 13:49] =>  1:03
+CLOCK: [2019-02-12 火 10:35]--[2019-02-12 火 12:17] =>  1:42
+:END:
+
+Lets change LaTeX emph command to look with line markers.
+
+We redefine LaTeX =\emph= like this.
+
+- Japanese :: Gothic, Bold
+- Other :: Italic, Bold
+- Maker :: Yellow
+
+We use =uline--.sty=.
+Because =uline--.sty= is not a standar LaTeX style,
+please download from this site:
+
+- [[https://github.com/doraTeX/breakfbox][GitHub - doraTeX/breakfbox]]
+
+This howo to redefine the =emph= command:
+
+#+name: redefine-emph
+#+caption: Redefine =emph=
+#+begin_src latex :tangle coco-jsbook.sty
+\usepackage[usetype1]{uline--}
+
+\renewcommand{\emph}[1]{%
+{\sffamily\bfseries\itshape%
+  \uline[
+    background,
+    color={[rgb]{1,1,0.0}},
+    width=0.8em,position=1pt]{#1}}}
+#+end_src
+
+With this, this Org-mode snippet:
+
+#+name: chaged-emph-example
+#+caption: 強調の例
+#+begin_src org
+/強調の行です。 This is emph/ 。うまくいくかな？
+#+end_src
+
+converts to LaTeX like this:
+
+#+begin_src latex
+\emph{強調の行です。 This is emph} 。うまくいくかな？
+#+end_src
+
+This will be typese in LaTeX like this:
+
+#+caption: LaTeX Sample
+[[file:~/Dropbox/blog.shimanoke.com/content-org/japanese/images/latex-emph-sample.png]] 
+
+
+
+
