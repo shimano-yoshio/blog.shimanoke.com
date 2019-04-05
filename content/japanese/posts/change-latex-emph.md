@@ -3,12 +3,11 @@ title = "LaTeX の emph を蛍光ペンでひいたようなスタイルにす�
 author = ["島野 善雄"]
 date = 2019-04-05
 expiryDate = 2019-04-06T00:00:00+09:00
-lastmod = 2019-04-05T16:32:10+09:00
+lastmod = 2019-04-05T16:34:33+09:00
 tags = ["LaTeX"]
 categories = ["LaTeX"]
 type = "post"
 draft = false
-thumbnail = "images/org-to-hugo.svg"
 +++
 
 最近の HTML でみかけるように、 LaTeX での強調強調の文が

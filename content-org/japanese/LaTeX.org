@@ -21,7 +21,7 @@
 #+filetags: LaTeX
 # Hugo のカテゴリー
 #+hugo_categories: LaTeX
-#+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
+# #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
 
 * \LaTeX の一般的な情報                                        :RefileTarget:
 :PROPERTIES:
