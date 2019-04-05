@@ -22,6 +22,61 @@
 #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
 #+INFOJS_OPT: view:info toc:nil
 
+* From Org-mode marukup to Markdown
+:PROPERTIES:
+:EXPORT_DATE: 2019-04-05
+:EXPORT_HUGO_SECTION: english/posts
+:EXPORT_FILE_NAME: from-org-to-markdown
+:EXPORT_OPTIONS: toc:nil num:nil
+:ID:       91c8c28c-690b-498b-abea-1d6b3f40bb40
+:END:
+
+Here are how ox-hugo convert markups (like bold, mono)
+in Org to Markdown.
+
+
+#+caption: From Org-mode to Markdown
+|--------------------+-------------------------------------------------+------------------|
+| Org                | Markdown                                        | HTML             |
+|--------------------+-------------------------------------------------+------------------|
+| =*bold*=           | =**bold**=                                      | *bold*           |
+| =/italics/=        | =_italics_=                                     | /italics/        |
+| ==monospace==      | =`monospace`=                                   | =monospace=      |
+| =~key-binding~=    | =`key-binding`=                                 | ~key-binding~    |
+|                    | - if =org-hugo-use-code-for-kbd=  nil [Default] |                  |
+| =~key-binding~=    | =<kbd>key-binding</kbd>=                        |                  |
+|                    | - if =org-hugo-use-code-for-kbd= is not nil     |                  |
+|                    | - To render =<kbd>= tag, needs *CSS*            |                  |
+| =+strike-through+= | =~~strike-through~~=                            | +strike-through+ |
+| =_underline_=      | =<span class = "underline">underline</span>=    | _underline_      |
+|                    | - to render this as underline, *CSS* is needed  |                  |
+|--------------------+-------------------------------------------------+------------------|
+
+I have sdet 
+=org-hugo-use-code-for-kbd= to =t= :
+
+
+#+caption: Use <kbd> for key-binding
+#+begin_src emacs-lisp
+(setq org-hugo-use-code-for-kbd t)
+#+end_src
+
+And add CSS styles like this:
+
+#+begin_src css
+kbd {
+    padding: 0.2rem 0.4rem;
+    font-size: 87.5%;
+    color: #fff;
+    background-color: #212529;
+    border-radius: 0.2rem;
+}
+
+.underline{
+    text-decoration: underline;
+}
+#+end_src
+
 
 * Reference to LaTeX math in ox-hugo
 :PROPERTIES:
