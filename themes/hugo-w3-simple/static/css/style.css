@@ -1,15 +1,19 @@
 body
 {
-    font-family: sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue,Hiragino Kaku Gothic ProN","メイリオ",meiryo,sans-serif;
+    font-size: 16px;
+    color: #333;
     background-color:#000;
     width: 100%;
+    line-height: 1.625;
 }
 
-body,p
+p
 {
-  font-size: 18px;
+  font-size: 1.6rem;
   font-weight: 400;
-  font-family: sans-serif;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
 }
 
 .w3-allerta {
@@ -17,9 +21,18 @@ body,p
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: sans-serif;
     font-weight: 600;
+    font: 2rem;
     margin: 10px 0;
+}
+
+h2{
+    padding: .6em;
+    border-radius: .5em;
+    position: relative;
+    background: #039be5;
+    color: #fff;
+
 }
 hr {
   border-top: 1px dashed black;
@@ -50,28 +63,42 @@ a:hover {
   }
 
 /* code */
-.code-title{
+.code-title, .code-lang{
     font-weight: 600;
     color: blue;
     text-align: left;
-
+    font-size: 1.2rem;
 }
-code, samp{
+
+code{
     width:auto;
     font-family: "Courier New", Consolas, monospace;
     overflow-x:auto;
-    font-size: 1rem;
+    font-size: 1.6rem;
+    font-weight: 600;
 }
+
+.highlight{
+    font-family: "Courier New", Consolas, monospace;
+    overflow-x:auto;
+    font-size: 1.2rem;
+}
+
+.highlight code{
+    font-family: "Courier New", Consolas, monospace;
+    overflow-x:auto;
+    font-size: 1.2rem;
+}
+
 
 pre,samp{
     width: auto;
     font-family: "Courier New", Consolas, monospace;
     overflow-x:auto;
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding: 1rem 1rem 1rem 1rem ;
 }
 
-font-size:1rem
 
 .w3-code{
     width:auto;
@@ -393,8 +420,6 @@ text-decoration: underline;
 
 /* glowing logo */
 .glow {
-  
-  
   -webkit-animation: glow 2s ease-in-out infinite alternate;
   -moz-animation: glow 2s ease-in-out infinite alternate;
   animation: glow 2s ease-in-out infinite alternate;
@@ -508,6 +533,10 @@ dt {
 dd {
     display: block;
     margin-inline-start: 40px;
+}
+
+ul{
+    font-size: 1.6rem;
 }
 
 kbd {
