@@ -501,13 +501,37 @@ position: fixed;
 }
 
 figcaption{
-    font-weight: 600;
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
     text-align: center;
 }
 
 figure{
-    width: 70%;
+    width: 90%;
     background-color: #dddddd;
+    margin-top: 20px;
+    margin-left:auto;
+    margin-right:auto;
+    background: #f5faff;
+    border: solid 2px #668ad8;
+    border-top-color: rgb(102, 138, 216);
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-right-color: rgb(102, 138, 216);
+    border-right-style: solid;
+    border-right-width: 2px;
+    border-bottom-color: rgb(102, 138, 216);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-left-color: rgb(102, 138, 216);
+    border-left-style: solid;
+    border-left-width: 2px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
 }
 
 

@@ -23,6 +23,157 @@
 #+hugo_categories: LaTeX
 # #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
 
+* LaTeX の emph を蛍光ペンでひいたようなスタイルにする
+DEADLINE: <2019-04-06 Sat>
+:PROPERTIES:
+:EXPORT_DATE: 2019-04-05
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: change-latex-emph
+:EXPORT_OPTIONS: toc:nil num:nil
+:ID:       44f1a02b-09e7-4634-bd68-9345c09afa8e
+:END:
+:LOGBOOK:
+- State "TODO"       from "DONE"       [2019-04-01 月 09:21]
+- State "DONE"       from "NEXT"       [2019-02-12 火 13:49]
+:END:
+:CLOCK:
+CLOCK: [2019-02-12 火 12:46]--[2019-02-12 火 13:49] =>  1:03
+CLOCK: [2019-02-12 火 10:35]--[2019-02-12 火 12:17] =>  1:42
+:END:
+
+最近の HTML でみかけるように、 LaTeX での強調強調の文が
+蛍光マーカーで線を引かれたようにします。
+LaTeX の =\emph= コマンドを再定義します。
+
+- 日本語 :: ゴシック太字
+- 欧文 :: イタリック太字
+- 塗り :: 黄色で、文字の半分まで
+
+というようになるように、 =\emph= コマンドを変更します。
+
+=uline--.sty= を使います。
+=uline--.sty= は標準パッケージではないので、
+
+- [[https://github.com/doraTeX/breakfbox][GitHub - doraTeX/breakfbox]]
+
+からダウンロードしてください。
+
+=emph= コマンドの再定義方法です:
+
+#+name: redefine-emph
+#+caption: =emph= コマンドの再定義
+#+begin_src latex :tangle coco-jsbook.sty
+\usepackage[usetype1]{uline--}
+
+\renewcommand{\emph}[1]{%
+{\sffamily\bfseries\itshape%
+  \uline[
+    background,
+    color={[rgb]{1,1,0.0}},
+    width=0.8em,position=1pt]{#1}}}
+#+end_src
+
+これを使うとこの Org-mode は:
+
+#+name: chaged-emph-example
+#+caption: 強調の例
+#+begin_src org
+/強調の行です。 This is emph/ 。うまくいくかな？
+#+end_src
+
+このように LaTeX へ変換されます:
+
+#+begin_src latex
+\emph{強調の行です。 This is emph} 。うまくいくかな？
+#+end_src
+
+これは LaTeX で次のようにタイプセットされます:
+
+#+caption: LaTeX での例
+[[file:images/latex-emph-sample.png]]
+
+
+
+
+
+* LaTeX ページのヘッダーとフッターの変更
+:PROPERTIES:
+:EXPORT_DATE: 2019-04-06
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: change-latex-footer-and-header
+:EXPORT_OPTIONS: toc:t num:nil
+:ID:       ca0c527d-6814-47c3-ba42-d1cd57155622
+:END:
+
+LaTeX ページのヘッダーとフッターを変更します。
+
+** ConfidentialLevel の定義
+:PROPERTIES:
+:ID:       6d3832c5-3882-412d-8e5f-84d0cbd07622
+:END:
+
+まず、これを出力するための変数 =ConfidentialLevel= を定義します:
+
+[[file:images/latex-confidential-sample.png]]
+
+
+#+caption: ConfidentialLevel の定義
+#+name: define-confidentaill-level
+#+begin_src latex :tangle coco-jsbook.sty
+\global\let\@ConfidentialLevel\@empty
+\def\ConfidentialLevel#1{\gdef\@ConfidentialLevel{#1}}
+#+end_src
+
+LaTeX 文書のプリアンブルの中で、次のように定義してください。
+
+#+begin_src latex
+\ConfidentialLevel{Confidential}
+#+end_src
+
+Org-mode の場合は次のようにします:
+
+#+begin_src org
+#+LATEX_HEADER: \ConfidentialLevel{Confidential}
+#+end_src
+
+
+これは定義されていなければ出力されません。
+
+** =fancyhdr= パッケージを使った、ヘッダーとフッターを変更
+:PROPERTIES:
+:ID:       dae125f4-da06-4a99-a024-3e521eb9c0f3
+:END:
+次に =fancyhdr= パッケージを使って、ヘッダーとフッターを変更します。
+
+#+caption: ヘッダーとフッターの変更
+#+name: change-header-and-footer
+#+begin_src latex
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable,skins,raster,listings}
+\tcbuselibrary{external}
+\setlength{\footskip}{10truemm}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\rightmark}{}
+\rhead{}{\leftmark}
+\rfoot{% フッター右側に「部外秘」を出力
+    \ifx\@ConfidentialLevel\@empty
+    \else
+      \tcbox[colback=white,colframe=red,size=small,on line]{
+        \textcolor{red}{\sffamily \bfseries {\@ConfidentialLevel}}
+    }\fi%
+  }
+\cfoot{\thepage}% フッター中央にページ番号を出力
+#+end_src
+
+これがタイプセットされます:
+
+#+caption: LaTeX でのタイプセットの例
+[[file:images/latex-header-footer-sample.png]]
+
+
+
 * \LaTeX の一般的な情報                                        :RefileTarget:
 :PROPERTIES:
 :ID:       5450a3ad-b516-42ce-a441-3ecb5de31d9c
@@ -946,75 +1097,6 @@ desctiption 環境を再定義します。
 #+begin_src latex
 \setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
 #+end_src
-
-** LaTeX の emph を蛍光ペンでひいたようなスタイルにする
-DEADLINE: <2019-04-06 Sat>
-:PROPERTIES:
-:EXPORT_DATE: 2019-04-05
-:EXPORT_HUGO_SECTION: japanese/posts
-:EXPORT_FILE_NAME: change-latex-emph
-:EXPORT_OPTIONS: toc:nil num:nil
-:ID:       44f1a02b-09e7-4634-bd68-9345c09afa8e
-:END:
-:LOGBOOK:
-- State "TODO"       from "DONE"       [2019-04-01 月 09:21]
-- State "DONE"       from "NEXT"       [2019-02-12 火 13:49]
-:END:
-:CLOCK:
-CLOCK: [2019-02-12 火 12:46]--[2019-02-12 火 13:49] =>  1:03
-CLOCK: [2019-02-12 火 10:35]--[2019-02-12 火 12:17] =>  1:42
-:END:
-
-最近の HTML でみかけるように、 LaTeX での強調強調の文が
-蛍光マーカーで線を引かれたようにします。
-LaTeX の =\emph= コマンドを再定義します。
-
-- 日本語 :: ゴシック太字
-- 欧文 :: イタリック太字
-- 塗り :: 黄色で、文字の半分まで
-
-というようになるように、 =\emph= コマンドを変更します。
-
-=uline--.sty= を使います。
-=uline--.sty= は標準パッケージではないので、
-
-- [[https://github.com/doraTeX/breakfbox][GitHub - doraTeX/breakfbox]]
-
-からダウンロードしてください。
-
-=emph= コマンドの再定義方法です:
-
-#+name: redefine-emph
-#+caption: =emph= コマンドの再定義
-#+begin_src latex :tangle coco-jsbook.sty
-\usepackage[usetype1]{uline--}
-
-\renewcommand{\emph}[1]{%
-{\sffamily\bfseries\itshape%
-  \uline[
-    background,
-    color={[rgb]{1,1,0.0}},
-    width=0.8em,position=1pt]{#1}}}
-#+end_src
-
-これを使うとこの Org-mode は:
-
-#+name: chaged-emph-example
-#+caption: 強調の例
-#+begin_src org
-/強調の行です。 This is emph/ 。うまくいくかな？
-#+end_src
-
-このように LaTeX へ変換されます:
-
-#+begin_src latex
-\emph{強調の行です。 This is emph} 。うまくいくかな？
-#+end_src
-
-これは LaTeX で次のようにタイプセットされます:
-
-#+caption: LaTeX での例
-[[file:images/latex-emph-sample.png]]
 
 
 ** 独自のスタイルファイルの作成
