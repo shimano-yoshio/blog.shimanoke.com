@@ -1,8 +1,8 @@
 +++
-title = "Details and summary"
+title = "Details と summary"
 author = ["Yoshio Shimano"]
-date = 2019-04-03
-lastmod = 2019-04-06T06:35:21+09:00
+date = 2019-04-02
+lastmod = 2019-04-06T06:44:06+09:00
 tags = ["Hugo", "ox-hugo"]
 categories = ["Hugo", "ox-hugo"]
 type = "post"

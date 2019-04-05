@@ -321,7 +321,7 @@ ox-hugo はデフォルトで目次を生成します。
 * Details and summary
 :PROPERTIES:
 :EXPORT_DATE: 2019-04-03
-:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_HUGO_SECTION: english/posts
 :EXPORT_FILE_NAME: details-and-summary
 :EXPORT_OPTIONS: toc:t num:nil
 :ID:       b0cf174c-c3a8-4fce-9aac-578b3307c37e
