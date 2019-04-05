@@ -2,7 +2,7 @@
 title = "Reference to LaTeX math in ox-hugo"
 author = ["Yoshio Shimano"]
 date = 2019-04-02
-lastmod = 2019-04-03T21:23:06+09:00
+lastmod = 2019-04-05T13:48:20+09:00
 tags = ["Hugo", "ox-hugo"]
 categories = ["Hugo", "ox-hugo"]
 type = "post"
@@ -19,16 +19,16 @@ This math sinippet:
 ```org
 \begin{equation}
 \label{eq:01}
-\y = ax + b
+y = ax + b
 \end{equation}
 ```
 {{< /codeblock>}}
 
-puroduce this:
+this puroduces this:
 
 \begin{equation}
 \label{eq:01}
-\y = ax + b
+y = ax + b
 \end{equation}
 
 Here I referece Eq. \ref{eq:02} (`Eq(\ref{eq:02}`).
@@ -75,7 +75,7 @@ Lets' reference some equations.
 ```org
 \begin{equation}
 \label{eq:02}
-\y = ax + b
+y = ax + b
 \end{equation}
 ```
 {{< /codeblock>}}

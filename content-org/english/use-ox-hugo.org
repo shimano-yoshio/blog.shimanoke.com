@@ -40,15 +40,15 @@ This math sinippet:
 #+begin_src org
 \begin{equation}
 \label{eq:01}
-\y = ax + b
+y = ax + b
 \end{equation}
 #+end_src
 
-puroduce this:
+this puroduces this:
 
 \begin{equation}
 \label{eq:01}
-\y = ax + b
+y = ax + b
 \end{equation}
 
 Here I referece Eq. \ref{eq:02} (=Eq(\ref{eq:02}=).
@@ -93,7 +93,7 @@ Lets' reference some equations.
 #+begin_src org
 \begin{equation}
 \label{eq:02}
-\y = ax + b
+y = ax + b
 \end{equation}
 #+end_src
 
