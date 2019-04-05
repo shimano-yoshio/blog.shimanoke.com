@@ -2,7 +2,7 @@
 title = "From Org-mode marukup to Markdown"
 author = ["Yoshio Shimano"]
 date = 2019-04-05
-lastmod = 2019-04-05T14:02:34+09:00
+lastmod = 2019-04-05T14:05:46+09:00
 tags = ["Hugo", "ox-hugo"]
 categories = ["Hugo", "ox-hugo"]
 type = "post"
@@ -29,10 +29,10 @@ in Org to Markdown.
 |                    | - to render this as underline, **CSS** is needed |                                          |
 {{< /table >}}
 
-I have sdet
+I have set
 `org-hugo-use-code-for-kbd` to `t` :
 
-{{< codeblock caption="" >}}
+{{< codeblock caption="Code Snippet 1: Use &lt;kbd&gt; for key-binding" >}}
 ```emacs-lisp
 (setq org-hugo-use-code-for-kbd t)
 ```

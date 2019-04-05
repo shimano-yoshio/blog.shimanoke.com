@@ -52,7 +52,7 @@ in Org to Markdown.
 |                    | - to render this as underline, *CSS* is needed  |                  |
 |--------------------+-------------------------------------------------+------------------|
 
-I have sdet 
+I have set 
 =org-hugo-use-code-for-kbd= to =t= :
 
 
