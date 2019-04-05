@@ -2,12 +2,11 @@
 title = "Change LaTeX emph with line marker style"
 author = ["Yoshio Shimano"]
 date = 2019-04-05T06:40:00+09:00
-lastmod = 2019-04-06T07:10:44+09:00
+lastmod = 2019-04-06T07:13:09+09:00
 tags = ["LaTeX"]
 categories = ["LaTeX"]
 type = "post"
 draft = false
-thumbnail = "images/org-to-hugo.svg"
 +++
 
 Lets change LaTeX emph command to look with line markers.
