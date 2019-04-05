@@ -24,7 +24,7 @@
 * Change LaTeX emph with line marker style
 DEADLINE: <2019-04-06 Sat>
 :PROPERTIES:
-:EXPORT_DATE: 2019-04-05
+:EXPORT_DATE: 2019-04-05 06:40
 :EXPORT_HUGO_SECTION: english/posts
 :EXPORT_FILE_NAME: change-latex-emph
 :EXPORT_OPTIONS: toc:nil num:nil
@@ -42,7 +42,6 @@ CLOCK: [2019-02-12 火 10:35]--[2019-02-12 火 12:17] =>  1:42
 Lets change LaTeX emph command to look with line markers.
 
 We redefine LaTeX =\emph= like this.
-
 - Japanese :: Gothic, Bold
 - Other :: Italic, Bold
 - Maker :: Yellow

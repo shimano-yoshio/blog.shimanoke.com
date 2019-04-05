@@ -1,9 +1,9 @@
 +++
 title = "Change LaTeX emph with line marker style"
 author = ["Yoshio Shimano"]
-date = 2019-04-05
+date = 2019-04-05T06:40:00+09:00
 expiryDate = 2019-04-06T00:00:00+09:00
-lastmod = 2019-04-06T06:33:05+09:00
+lastmod = 2019-04-06T07:08:52+09:00
 tags = ["LaTeX"]
 categories = ["LaTeX"]
 type = "post"
