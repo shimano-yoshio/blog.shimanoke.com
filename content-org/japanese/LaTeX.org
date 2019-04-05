@@ -93,7 +93,7 @@ LaTeX の =\emph= コマンドを再定義します。
 
 * LaTeX ページのヘッダーとフッターの変更
 :PROPERTIES:
-:EXPORT_DATE: 2019-04-06
+:EXPORT_DATE: 2019-04-06 06:40
 :EXPORT_HUGO_SECTION: japanese/posts
 :EXPORT_FILE_NAME: change-latex-footer-and-header
 :EXPORT_OPTIONS: toc:t num:nil

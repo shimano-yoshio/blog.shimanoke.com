@@ -1,8 +1,8 @@
 +++
 title = "LaTeX ページのヘッダーとフッターの変更"
 author = ["島野 善雄"]
-date = 2019-04-06
-lastmod = 2019-04-06T07:03:48+09:00
+date = 2019-04-06T06:40:00+09:00
+lastmod = 2019-04-06T07:06:52+09:00
 tags = ["LaTeX"]
 categories = ["LaTeX"]
 type = "post"
