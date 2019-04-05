@@ -2,7 +2,7 @@
 title = "LaTeX ページのヘッダーとフッターの変更"
 author = ["島野 善雄"]
 date = 2019-04-06
-lastmod = 2019-04-06T06:51:27+09:00
+lastmod = 2019-04-06T07:00:50+09:00
 tags = ["LaTeX"]
 categories = ["LaTeX"]
 type = "post"

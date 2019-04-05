@@ -24,17 +24,12 @@
 # #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
 
 * LaTeX の emph を蛍光ペンでひいたようなスタイルにする
-DEADLINE: <2019-04-06 Sat>
 :PROPERTIES:
 :EXPORT_DATE: 2019-04-05
 :EXPORT_HUGO_SECTION: japanese/posts
 :EXPORT_FILE_NAME: change-latex-emph
 :EXPORT_OPTIONS: toc:nil num:nil
 :ID:       44f1a02b-09e7-4634-bd68-9345c09afa8e
-:END:
-:LOGBOOK:
-- State "TODO"       from "DONE"       [2019-04-01 月 09:21]
-- State "DONE"       from "NEXT"       [2019-02-12 火 13:49]
 :END:
 :CLOCK:
 CLOCK: [2019-02-12 火 12:46]--[2019-02-12 火 13:49] =>  1:03

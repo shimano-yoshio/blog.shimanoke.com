@@ -2,8 +2,7 @@
 title = "LaTeX の emph を蛍光ペンでひいたようなスタイルにする"
 author = ["島野 善雄"]
 date = 2019-04-05
-expiryDate = 2019-04-06T00:00:00+09:00
-lastmod = 2019-04-06T06:33:34+09:00
+lastmod = 2019-04-06T07:00:29+09:00
 tags = ["LaTeX"]
 categories = ["LaTeX"]
 type = "post"
