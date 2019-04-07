@@ -2,7 +2,7 @@
 title = "Details and summary"
 author = ["Yoshio Shimano"]
 date = 2019-04-03
-lastmod = 2019-04-06T06:43:47+09:00
+lastmod = 2019-04-07T14:39:09+09:00
 tags = ["Hugo", "ox-hugo"]
 categories = ["Hugo", "ox-hugo"]
 type = "post"
@@ -11,7 +11,7 @@ thumbnail = "images/org-to-hugo.svg"
 +++
 
 <details>
-<p class="details">ox-hugo を使って Details と Summary を書く方法です。
+<p class="details">Howt write "Details" and "Summary" in ox-hugo.
 </p>
 </details>
 
@@ -19,19 +19,19 @@ thumbnail = "images/org-to-hugo.svg"
 ```org
 #+begin_details
 #+begin_summary
-これは Summary
+This is aSummary.
 #+end_summary
-これは detail
+This is a detail.
 #+end_details
 ```
 {{< /codeblock>}}
 
 <details>
 <summary>
-これは Summary
+This is Summary.
 </summary>
 <p class="details">
 
-これは detail
+This is a detail.
 </p>
 </details>

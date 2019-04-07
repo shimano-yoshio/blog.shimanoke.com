@@ -328,25 +328,23 @@ ox-hugo はデフォルトで目次を生成します。
 :END:
 
 #+begin_details
-ox-hugo を使って Details と Summary を書く方法です。
+Howt write "Details" and "Summary" in ox-hugo.
 #+end_details
 
 #+begin_src org
 #+begin_details
 #+begin_summary
-これは Summary
+This is aSummary.
 #+end_summary
-これは detail
+This is a detail.
 #+end_details
 #+end_src
 
-
-
 #+begin_details
 #+begin_summary
-これは Summary
+This is Summary.
 #+end_summary
-これは detail
+This is a detail.
 #+end_details
 
 
