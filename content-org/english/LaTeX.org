@@ -21,6 +21,92 @@
 #+hugo_categories: LaTeX
 # #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
 
+* Add "Confidential" mark to a LaTeX footer
+:PROPERTIES:
+:EXPORT_DATE: 2019-04-07
+:EXPORT_HUGO_SECTION: english/posts
+:EXPORT_FILE_NAME: change-latex-footer-and-header
+:EXPORT_OPTIONS: toc:t num:nil
+:ID:       52e2065a-20f9-4ad6-b0c3-5e454ddf4c8c
+:END:
+
+Let' add "Confidential" mark to a LaTeX footer.
+
+
+** Define =ConfidentialLevel= variable
+:PROPERTIES:
+:ID:       d10090a1-7c5f-4bd3-b5e0-9cc61c7c12b5
+:END:
+
+First, we define tha variable =ConfidentialLevel= to 
+show this
+
+[[file:~/Dropbox/blog.shimanoke.com/content-org/japanese/images/latex-confidential-sample.png]]
+
+
+#+caption: Define ConfidentialLevel
+#+name: define-confidentaill-level
+#+begin_src latex :tangle coco-jsbook.sty
+\global\let\@ConfidentialLevel\@empty
+\def\ConfidentialLevel#1{\gdef\@ConfidentialLevel{#1}}
+#+end_src
+
+Define this variable in a LaTeX document preamble like this:
+
+#+begin_src latex
+\ConfidentialLevel{Confidential}
+#+end_src
+
+In a Org-mode document, define like this:
+
+#+begin_src org
+#+LATEX_HEADER: \ConfidentialLevel{Confidential}
+#+end_src
+
+Chagen it to anything you like.
+If not defined, it will not be displayed.
+
+** Change a LaTeX footer
+:PROPERTIES:
+:ID:       04396b5c-86c7-43ab-8917-ef7f942f30e4
+:END:
+
+Next, to change a LaTeX fotter,
+we use =fancyhdr= package and tcolorbox package:
+
+
+#+caption: Change a LaTeX header and footer
+#+name: change-header-and-footer
+#+begin_src latex
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable,skins,raster,listings}
+\tcbuselibrary{external}
+\setlength{\footskip}{10truemm}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\rightmark}{}
+\rhead{}{\leftmark}
+\rfoot{
+    \ifx\@ConfidentialLevel\@empty
+    \else
+      \tcbox[colback=white,colframe=red,size=small,on line]{
+        \textcolor{red}{\sffamily \bfseries {\@ConfidentialLevel}}
+    }\fi%
+  }
+\cfoot{\thepage}% print the page number in tha center of the footer
+#+end_src
+
+In a LaTeX documet, this will be typeset:
+
+#+caption: Sample of LaTeX
+[[file:~/Dropbox/blog.shimanoke.com/content-org/japanese/images/latex-header-footer-sample.png]]
+
+
+- the centre of a footer :: a page numer
+- the right side of a footer :: "Confidential" mark
+
+
 * Change LaTeX emph with line marker style
 :PROPERTIES:
 :EXPORT_DATE: 2019-04-05 06:40
