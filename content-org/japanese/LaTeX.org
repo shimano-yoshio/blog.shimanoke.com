@@ -23,6 +23,201 @@
 #+hugo_categories: LaTeX
 # #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
 
+* LaTeX のプログラムリストを tcolorbox を使って出力する
+:PROPERTIES:
+:EXPORT_DATE: 2019-04-09
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: output-latex-code-with-tcolorbox
+:EXPORT_OPTIONS: toc:t num:t
+:ID:       9c61220d-82df-436b-b573-fc0bbeca2ff3
+:END:
+
+tcolorbox パッケージを使うと、
+箱にはいった環境を比較的簡単に作ることができます
+tcolorbox のドキュメントを見るには次のコマンドを使用してください:
+いろいろな例がのっています（英文です）。
+
+#+begin_src sh
+texdoc tcolorbox
+#+end_src
+
+ここでは tcolorbox を使った、プログラムリストの表示を
+紹介します。
+
+** tcolorbox の設定
+:PROPERTIES:
+:ID:       90381c45-51dc-4bca-be38-4a90ae3bf264
+:END:
+まず tcolorbox の設定を行ないます:
+
+#+name: tcolorbox-settings
+#+caption: tcolorbox 設定
+#+begin_src latex :tangle coco-jsbook.sty
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable,skins,raster,listings}
+\tcbuselibrary{external}
+\tcbuselibrary{minted} % プログラムリスト用に minted を使う
+\tcbEXTERNALIZE
+#+end_src
+
+** programlist 環境
+:PROPERTIES:
+:ID:       bdd28e0c-d605-4a53-babe-c2156c1c688b
+:END:
+プログラムリストを出力する programlist 環境を
+作成します。
+
+#+index: programlist
+#+name: programlist
+#+caption:  プログラムリスト用環境 =programlist=
+#+begin_src latex :tangle coco-jsbook.sty
+\newtcblisting[
+auto counter,
+number within=chapter,
+list inside=box]{programlist}[3][]{
+listing engine=minted,% リスト環境は minted
+minted style=monokai,% 使用するテーマ
+minted language=#2, % 使用する言語
+minted options={fontsize=\small,
+                breaklines,% 途中で改行する
+                breakanywhere},%
+title={\sffamily\bfseries リスト \thetcbcounter #3},
+#1,% ラベル
+breakable,%
+colback=black!90!white,
+colupper=white,
+colframe=blue!75!white,
+listing only,%
+left=0mm,
+enhanced,%
+  }%
+#+end_src
+
+** programlist 環境の例
+:PROPERTIES:
+:ID:       6980b96c-1061-4949-acc7-ea7c1ceca1dd
+:END:
+
+programlist 環境は
+このようにして使います（Org-mode のマニュアルからの例）:
+
+#+begin_src latex
+\begin{programlist}[label={prog-exam1}]{lisp}{: Emacs Lisp の例}(defun org-xor (a b)
+"Exclusive or."
+(if a (not b) b))
+\end{programlist}
+#+end_src
+
+このように出力されます:
+
+#+caption: programlist 環境の出力例
+[[file:images/programlit-example1.png]]
+
+** Org-mode から programlist 環境を使う
+
+この programlist 環境を、 Org-mode の LaTeX エクスポートから
+使う設定です。
+
+
+*** programlist 環境を使うための Org-mode の設定
+:PROPERTIES:
+:ID:       64bedb36-b6cc-46bb-b5a2-7ed678d68e25
+:END:
+
+Org-mode の =src= ブロックを LaTeX の
+programlist 環境に変換するための設定です。
+
+次のものを Emacs の初期化ファイルに入れてください:
+
+#+CAPTION: ソースコードの LaTeX 環境への変換
+#+BEGIN_SRC emacs-lisp
+  (setq org-latex-custom-lang-environments
+        '(
+          (c "\\begin{programlist}[label={%l}]{c}{: %c}%s\\end{programlist}")
+          (ditaa "\\begin{programlist}[label={%l}]{text}{: %c}%s\\end{programlist}")
+          (emacs-lisp "\\begin{programlist}[label={%l}]{lisp}{: %c}%s\\end{programlist}")
+          (ruby "\\begin{programlist}[label={%l}]{ruby}{: %c}%s\\end{programlist}")
+          (latex "\\begin{programlist}[label={%l}]{latex}{: %c}%s\\end{programlist}")
+          (lua "\\begin{programlist}[label={%l}]{lua}{: %c}%s\\end{programlist}")
+          (java "\\begin{programlist}[label={%l}]{java}{: %c}%s\\end{programlist}")
+          (javascript "\\begin{programlist}[label={%l}]{javascript}{: %c}%s\\end{programlist}")
+          (json "\\begin{programlist}[label={%l}]{json}{: %c}%s\\end{programlist}")
+          (plantuml "\\begin{programlist}[label={%l}]{text}{: %c}%s\\end{programlist}")
+          (maxima "\\begin{programlist}[label={%l}]{text}{: %c}%s\\end{programlist}")
+          (ipython "\\begin{programlist}[label={%l}]{python}{: %c}%s\\end{programlist}")
+          (python "\\begin{programlist}[label={%l}]{python}{: %c}%s\\end{programlist}")
+          (perl "\\begin{programlist}[label={%l}]{perl}{: %c}%s\\end{programlist}")
+          (html "\\begin{programlist}[label={%l}]{html}{: %c}%s\\end{programlist}")
+          (org "\\begin{programlist}[label={%l}]{text}{: %c}%s\\end{programlist}")
+          (typescript "\\begin{programlist}[label={%l}]{typescript}{: %c}%s\\end{programlist}")
+          (scss "\\begin{programlist}[label={%l}]{scss}{: %c}%s\\end{programlist}")
+          (sh "\\begin{programlist}[label={%l}]{shell}{: %c}%s\\end{programlist}")
+          (shellinput "\\begin{shellinput}[%c]%s\\end{shellinput}")
+          (shelloutput "\\begin{shelloutput}[%c]%s\\end{shelloutput}")
+          ))
+#+END_SRC
+
+必用であれば言語を追加してください。
+
+*** mystyle.sty の作成
+:PROPERTIES:
+:ID:       6fccc277-c285-4a6d-b52c-8c425516aea6
+:END:
+
+Org-mode のファイルの中で programlist の設定を書くのは
+面倒くさいので、
+定義を格納する =mystyle.sty= を
+次の内容で作成します。
+
+#+caption: mystyle.sty
+#+begin_src latex
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable,skins,raster,listings}
+\tcbuselibrary{external}
+\tcbuselibrary{minted} % プログラムリスト用に minted を使う
+\tcbEXTERNALIZE
+\newtcblisting[
+auto counter,
+number within=chapter,
+list inside=box]{programlist}[3][]{
+listing engine=minted,% リスト環境は minted
+minted style=monokai,% 使用するテーマ
+minted language=#2, % 使用する言語
+minted options={fontsize=\small,
+                breaklines,% 途中で改行する
+                breakanywhere},%
+title={\sffamily\bfseries リスト \thetcbcounter #3},
+#1,% ラベル
+breakable,%
+colback=black!90!white,
+colupper=white,
+colframe=blue!75!white,
+listing only,%
+left=0mm,
+enhanced,%
+  }%
+#+end_src
+
+*** Org-mode のファイルの設定
+:PROPERTIES:
+:ID:       a2eb392e-9f05-447d-8047-aea02004e957
+:END:
+
+次に Org-mode のファイルの設定です。
+
+#+caption: Org-mode のファイルの設定
+#+begin_src org
+# ドキュメントクラスの指定
+#+LATEX_CLASS: jsbook
+# ドキュメントクラスのオプションの指定
+#+LATEX_CLASS_OPTIONS: [dvipdfmx,a4j,uplatex,openany]
+# カスタムスタイルの読み込み
+#+LATEX_HEADER: \usepackage{mystyle}
+#+end_src
+
+以上で色つきの箱にはいったプログラムリストが
+Org-mode から LaTeX にエクスポートされるはずです。
+
 * LaTeX の emph を蛍光ペンでひいたようなスタイルにする
 :PROPERTIES:
 :EXPORT_DATE: 2019-04-05
