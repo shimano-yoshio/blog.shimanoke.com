@@ -1,22 +1,22 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 {{ if .IsPage }}
-<meta http-equiv="Cache-Control" content="public" />
+  <meta http-equiv="Cache-Control" content="public" />
 {{else}}
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
+  <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+
+
 {{ end }} 
 {{ "<!-- Enable responsiveness on mobile devices -->" | safeHTML }}
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-{{ .Hugo.Generator }}
+{{ hugo.Generator }}
 {{ if .IsHome }}
 
-{{ $.Scratch.Set "theTitle" .Site.Title }}
+    {{ $.Scratch.Set "theTitle" .Site.Params.Title }}
 {{else}}
-{{ $.Scratch.Add "theTitle" .Title}}
-{{ $.Scratch.Add "theTitle" " • "}}
-{{ $.Scratch.Add "theTitle" .Site.Title}}
+    {{ $.Scratch.Set "theTitle" .Title}}
+    {{ $.Scratch.Add "theTitle" " • "}}
+
 {{ end }}
 <title>{{ $.Scratch.Get "theTitle" }}</title>
 {{ with .Site.Params.meta.description }}<meta name="description" content="{{ . }}">{{ end }}
@@ -26,10 +26,7 @@
 
 <!-- Permalink & RSSlink -->
 <link rel="canonical" href="{{ .Permalink }}" />
-{{ if .RSSLink -}}
-<link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-<link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
-{{ end -}}
+
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="{{ "/favicon.ico" | relURL }}" type="image/x-icon">
@@ -46,16 +43,11 @@
 <!-- custom css -->
 
 <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}" />
-<script src="/js/myscript.js">
-</script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
-
-<script src="{{ "mathjax-config.js" | absURL }}"></script>
-
 
 <!-- One Signal Push -->
-{{ with .Site.Params.onesignalid }}
-
+{{ with .Site.Params.onesignalid }}        
+      
+      
 	<link rel="manifest" href="{{ "/manifest.json" | relURL }}" />
 	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 	<script>
@@ -68,7 +60,7 @@
 </script>
 {{ end }}
 <!-- Google Adsense -->
-{{ with .Site.Params.adsenseid }}
+{{ with .Site.Params.adsenseid }}        
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({
@@ -78,16 +70,5 @@
 </script>
 {{ end }}
 {{ template "_internal/google_analytics_async.html" . }}
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137701354-1"></script>
-<script>
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('js', new Date());
-
- gtag('config', 'UA-137701354-1');
-</script>
-
 
 
