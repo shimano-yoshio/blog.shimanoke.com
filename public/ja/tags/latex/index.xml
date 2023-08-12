@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Latex on Get out of your door</title>
+    <link>https://blog.shimanoke.com/ja/tags/latex/</link>
+    <description>Recent content in Latex on Get out of your door</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 Apr 2019 00:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="https://blog.shimanoke.com/ja/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>LaTeX ページのヘッダーとフッターの変更</title>
+      <link>https://blog.shimanoke.com/ja/posts/change-latex-footer-and-header/</link>
+      <pubDate>Sat, 06 Apr 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.shimanoke.com/ja/posts/change-latex-footer-and-header/</guid>
+      <description>&amp;#30446;&amp;#27425; ConfidentialLevel の定義 fancyhdr パッケージを使った、ヘッダーとフッターを変更 LaTeX ページのヘッダーとフッターを変更します。 ConfidentialLevel の定義 まず、これを出力するための変数 ConfidentialLevel を</description>
+    </item>
+    
+  </channel>
+</rss>

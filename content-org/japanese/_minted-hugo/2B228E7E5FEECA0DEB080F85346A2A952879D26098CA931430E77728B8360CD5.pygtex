@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGZbs{}begin\PYGZob{}equation\PYGZcb{}
+\PYGZbs{}label\PYGZob{}eq:0\PYGZcb{}
+C = W\PYGZbs{}log\PYGZus{}\PYGZob{}2\PYGZcb{} (1+\PYGZbs{}mathrm\PYGZob{}SNR\PYGZcb{})
+\PYGZbs{}end\PYGZob{}equation\PYGZcb{}
+\end{Verbatim}

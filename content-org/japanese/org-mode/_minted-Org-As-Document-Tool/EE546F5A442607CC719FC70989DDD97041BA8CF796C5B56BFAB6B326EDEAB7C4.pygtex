@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+nwdiag \PYGZob{}
+    network FJWAN \PYGZob{}
+        gateway [address = \PYGZdq{}10.37.138.1\PYGZdq{}];
+    \PYGZcb{}
+    network Subnet\PYGZhy{}5F \PYGZob{}
+        address = \PYGZdq{}10.37.138.0/24\PYGZdq{}
+
+        gateway [address = \PYGZdq{}.1\PYGZdq{}];
+        wathcer [address = \PYGZdq{}.120\PYGZdq{}];
+        gitlab [address = \PYGZdq{}.82\PYGZdq{}];
+        ansible [address = \PYGZdq{}.56\PYGZdq{}];
+        tomcat1 [address = \PYGZdq{}.60\PYGZdq{}];
+        \PYGZcb{}
+    network natnetwork \PYGZob{}
+        address = \PYGZdq{}10.0.2.0/24\PYGZdq{}
+
+        wathcer [address = \PYGZdq{}.101\PYGZdq{}];
+        gitlab [address = \PYGZdq{}.102\PYGZdq{}];
+        ansible [address = \PYGZdq{}.103\PYGZdq{}];
+        tomcat1 [address = \PYGZdq{}.104\PYGZdq{}];
+    \PYGZcb{}
+
+\PYGZcb{}
+\end{Verbatim}

@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+ln \PYGZhy{}fs \PYG{l+s+s2}{\PYGZdq{}/home/shimano/.fonts/ヒラギノ明朝 Pro W3.otf\PYGZdq{}} /home/shimano/texmf/fonts/opentype/hiragino/HiraMinPro\PYGZhy{}W3.otf
+ln \PYGZhy{}fs \PYG{l+s+s2}{\PYGZdq{}/home/shimano/.fonts/ヒラギノ明朝 Pro W6.otf\PYGZdq{}} /home/shimano/texmf/fonts/opentype/hiragino/HiraMinPro\PYGZhy{}W6.otf
+ln \PYGZhy{}fs \PYG{l+s+s2}{\PYGZdq{}/home/shimano/.fonts/ヒラギノ丸ゴ Pro W4.otf\PYGZdq{}} /home/shimano/texmf/fonts/opentype/hiragino/HiraMaruPro\PYGZhy{}W4.otf
+ln \PYGZhy{}fs \PYG{l+s+s2}{\PYGZdq{}/home/shimano/.fonts/ヒラギノ角ゴ Pro W3.otf\PYGZdq{}} /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuPro\PYGZhy{}W3.otf
+ln \PYGZhy{}fs \PYG{l+s+s2}{\PYGZdq{}/home/shimano/.fonts/ヒラギノ角ゴ Pro W6.otf\PYGZdq{}} /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuPro\PYGZhy{}W6.otf
+ln \PYGZhy{}fs \PYG{l+s+s2}{\PYGZdq{}/home/shimano/.fonts/ヒラギノ角ゴ Pro W8.otf\PYGZdq{}} /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuPro\PYGZhy{}W8.otf
+ln \PYGZhy{}fs \PYG{l+s+s2}{\PYGZdq{}/home/shimano/.fonts/ヒラギノ明朝 ProN W3.otf\PYGZdq{}} /home/shimano/texmf/fonts/opentype/hiragino/HiraMinProN\PYGZhy{}W3.otf
+ln \PYGZhy{}fs \PYG{l+s+s2}{\PYGZdq{}/home/shimano/.fonts/ヒラギノ明朝 ProN W6.otf\PYGZdq{}} /home/shimano/texmf/fonts/opentype/hiragino/HiraMinProN\PYGZhy{}W6.otf
+ln \PYGZhy{}fs \PYG{l+s+s2}{\PYGZdq{}/home/shimano/.fonts/ヒラギノ丸ゴ ProN W4.otf\PYGZdq{}} /home/shimano/texmf/fonts/opentype/hiragino/HiraMaruProN\PYGZhy{}W4.otf
+ln \PYGZhy{}fs \PYG{l+s+s2}{\PYGZdq{}/home/shimano/.fonts/ヒラギノ角ゴ ProN W3.otf\PYGZdq{}} /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuProN\PYGZhy{}W3.otf
+ln \PYGZhy{}fs \PYG{l+s+s2}{\PYGZdq{}/home/shimano/.fonts/ヒラギノ角ゴ ProN W6.otf\PYGZdq{}} /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuProN\PYGZhy{}W6.otf
+ln \PYGZhy{}fs \PYG{l+s+s2}{\PYGZdq{}/home/shimano/.fonts/ヒラギノ角ゴ ProN W8.otf\PYGZdq{}} /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuProN\PYGZhy{}W8.otf
+\end{Verbatim}

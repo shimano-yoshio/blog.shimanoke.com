@@ -299,17 +299,18 @@ CLOCK: [2018-09-28 金 14:32]--[2018-09-28 金 17:47] =>  3:15
 #+END_SRC
 
 #+BEGIN_SRC plantuml  :file images/plantuml-sequeqnce1.png
-@startuml
-アリス -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+  @startuml
+  アリス -> Bob: Authentication Request
+  Bob --> アリス: Authentication Response
 
-アリス -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
-@enduml
+  アリス -> Bob: Another authentication Request
+  アリス <-- Bob: another authentication Response
+  @enduml
 #+END_SRC
 
 #+RESULTS:
 [[file:images/plantuml-sequeqnce1.png]]
+
 
 
 **** 応用
@@ -318,7 +319,10 @@ Alice <-- Bob: another authentication Response
 :END:
 - [[https://www.bitwin.ne.jp/blog/?p=360][PlantUMLで業務フロー図をらくらく作成 | ビットウィンのスタッフブログ]]
 
-#+BEGIN_SRC plantuml  :file images/gyoumu1.png
+# #+BEGIN_SRC plantuml  :file images/gyoumu1.png
+
+
+#+BEGIN_SRC plantuml  :file ./images/gyoumu1.png
 :処理１;
 :入力;
 :入力OK;
@@ -327,7 +331,7 @@ Alice <-- Bob: another authentication Response
 #+END_SRC
 
 #+RESULTS:
-[[file:images/gyoumu1.png]]
+[[file:./images/gyoumu1.png]]
 
 
 #+BEGIN_SRC plantuml :file images/gyoumu2.png
@@ -673,7 +677,7 @@ IPython ノートブックのセルフォーマットに制約を受けている
 Org mode と競争することは大変です!
 Org の良いことのいくつかのキーとなる点です:
 
-- 私の意見では、Org のマークアップのほうがMarkdown のマークアップよりも良いです。
+- 私の意見では、Org のマークアップのほうが Markdown のマークアップよりも良いです。
 - Org の構成機能、編集、 ナビゲーション機能は EIN よりもずっと良いです。
 - Org の表...
 - Org は複数のフォーマットへエクスポートすることができます。
@@ -1197,7 +1201,7 @@ Maxima の Org mode サポートはセッションをサポートしていませ
 :PROPERTIES:
 :ID:       62d72d38-1f6a-46a9-bd4d-320e6609fc02
 :END:
-Maximaは完全な範囲の結果の酒類を生成します。
+Maxima は完全な範囲の結果の酒類を生成します。
 
 **** 使用例
 :PROPERTIES:

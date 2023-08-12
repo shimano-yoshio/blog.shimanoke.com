@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Get out of your door</title>
+    <link>https://blog.shimanoke.com/ja/categories/</link>
+    <description>Recent content in Categories on Get out of your door</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://blog.shimanoke.com/ja/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docs</title>
+      <link>https://blog.shimanoke.com/ja/categories/docs/</link>
+      <pubDate>Sun, 06 Mar 2011 16:01:23 +0900</pubDate>
+      
+      <guid>https://blog.shimanoke.com/ja/categories/docs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://blog.shimanoke.com/ja/categories/hugo/</link>
+      <pubDate>Thu, 04 Apr 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.shimanoke.com/ja/categories/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Index</title>
+      <link>https://blog.shimanoke.com/ja/categories/index/</link>
+      <pubDate>Sun, 06 Mar 2011 16:01:23 +0900</pubDate>
+      
+      <guid>https://blog.shimanoke.com/ja/categories/index/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Latex</title>
+      <link>https://blog.shimanoke.com/ja/categories/latex/</link>
+      <pubDate>Sat, 06 Apr 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.shimanoke.com/ja/categories/latex/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Org Mode</title>
+      <link>https://blog.shimanoke.com/ja/categories/org-mode/</link>
+      <pubDate>Sat, 30 Mar 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.shimanoke.com/ja/categories/org-mode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ox Hugo</title>
+      <link>https://blog.shimanoke.com/ja/categories/ox-hugo/</link>
+      <pubDate>Thu, 04 Apr 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.shimanoke.com/ja/categories/ox-hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shortcodes</title>
+      <link>https://blog.shimanoke.com/ja/categories/shortcodes/</link>
+      <pubDate>Sun, 06 Mar 2011 16:01:23 +0900</pubDate>
+      
+      <guid>https://blog.shimanoke.com/ja/categories/shortcodes/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

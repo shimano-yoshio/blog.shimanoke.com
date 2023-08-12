@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/posts/change-latex-footer-and-header/</loc>
+    <lastmod>2019-04-06T06:33:35+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/posts/from-org-to-markdown/</loc>
+    <lastmod>2019-04-04T16:22:15+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.shimanoke.com/posts/from-org-to-markdown/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://blog.shimanoke.com/ja/posts/from-org-to-markdown/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/about/</loc>
+    <lastmod>2019-04-03T20:30:46+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.shimanoke.com/about/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://blog.shimanoke.com/ja/about/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/docs/how-to-make-blog/</loc>
+    <lastmod>2019-04-02T10:46:59+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/posts/details-and-summary/</loc>
+    <lastmod>2019-04-06T06:44:06+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.shimanoke.com/posts/details-and-summary/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://blog.shimanoke.com/ja/posts/details-and-summary/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/posts/dont-insert-org-toc-into-summary/</loc>
+    <lastmod>2019-04-03T21:25:46+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.shimanoke.com/posts/dont-insert-org-toc-into-summary/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://blog.shimanoke.com/ja/posts/dont-insert-org-toc-into-summary/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/posts/disable-ox-hugo-generated-toc/</loc>
+    <lastmod>2019-04-06T06:35:20+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/posts/use-latex-ref-in-ox-hugo/</loc>
+    <lastmod>2019-04-04T20:32:06+09:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.shimanoke.com/posts/use-latex-ref-in-ox-hugo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://blog.shimanoke.com/ja/posts/use-latex-ref-in-ox-hugo/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/docs/use-ox-hugo/</loc>
+    <lastmod>2019-04-03T14:30:15+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/posts/hugo/</loc>
+    <lastmod>2019-04-03T20:41:10+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/posts/shortcodes-demopage/</loc>
+    <lastmod>2018-11-09T07:26:15+13:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.shimanoke.com/w3-simple-shortcodes-demo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://blog.shimanoke.com/ja/posts/shortcodes-demopage/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/posts/my-first-post/</loc>
+    <lastmod>2018-10-07T11:17:14+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/posts/hugo-syntax/</loc>
+    <lastmod>2019-03-26T10:01:23+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/allposts/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.shimanoke.com/allposts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://blog.shimanoke.com/ja/allposts/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/categories/</loc>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.shimanoke.com/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://blog.shimanoke.com/ja/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/tags/css/</loc>
+    <lastmod>2019-04-04T16:22:15+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/tags/disqus/</loc>
+    <lastmod>2019-04-02T10:46:59+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/categories/docs/</loc>
+    <lastmod>2019-03-26T10:01:23+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/</loc>
+    <lastmod>2019-04-06T06:33:35+09:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.shimanoke.com/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://blog.shimanoke.com/ja/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/tags/github/</loc>
+    <lastmod>2019-04-02T10:46:59+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/tags/hugo/</loc>
+    <lastmod>2019-04-04T16:22:15+09:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.shimanoke.com/tags/hugo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://blog.shimanoke.com/ja/tags/hugo/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/categories/hugo/</loc>
+    <lastmod>2019-04-04T16:22:15+09:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.shimanoke.com/categories/hugo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://blog.shimanoke.com/ja/categories/hugo/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/categories/index/</loc>
+    <lastmod>2019-03-26T10:01:23+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/tags/interesting/</loc>
+    <lastmod>2018-10-07T11:17:14+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/tags/latex/</loc>
+    <lastmod>2019-04-06T06:33:35+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/categories/latex/</loc>
+    <lastmod>2019-04-06T06:33:35+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/categories/org-mode/</loc>
+    <lastmod>2019-04-03T20:41:10+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/tags/ox-hugo/</loc>
+    <lastmod>2019-04-04T16:22:15+09:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.shimanoke.com/tags/ox-hugo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://blog.shimanoke.com/ja/tags/ox-hugo/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/categories/ox-hugo/</loc>
+    <lastmod>2019-04-04T16:22:15+09:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.shimanoke.com/categories/ox-hugo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://blog.shimanoke.com/ja/categories/ox-hugo/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/posts/</loc>
+    <lastmod>2019-04-06T06:33:35+09:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.shimanoke.com/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://blog.shimanoke.com/ja/posts/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/tags/preview/</loc>
+    <lastmod>2019-03-26T10:01:23+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/search/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.shimanoke.com/search/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://blog.shimanoke.com/ja/search/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/tags/shortcodes/</loc>
+    <lastmod>2019-03-26T10:01:23+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/categories/shortcodes/</loc>
+    <lastmod>2019-03-26T10:01:23+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/tags/tag-6/</loc>
+    <lastmod>2019-03-26T10:01:23+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/tags/</loc>
+    <lastmod>2019-04-04T16:22:15+09:00</lastmod>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://blog.shimanoke.com/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://blog.shimanoke.com/ja/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://blog.shimanoke.com/ja/docs/</loc>
+    <lastmod>2019-04-02T10:46:59+09:00</lastmod>
+  </url>
+  
+</urlset>

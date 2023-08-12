@@ -19,17 +19,27 @@
 # HTML Setting
 #+INFOJS_OPT: view:showall
 # #+INCLUDE: "~/Org/Templates/setup/theme-bigblow.setup" 
-#+INCLUDE: "~/Org/Templates/setup/theme-readtheorg.setup" 
+# #+INCLUDE: "~/Org/Templates/setup/theme-readtheorg.setup" 
 
 # ドキュメントクラスの指定
 #+LATEX_CLASS: jsbook
 # ドキュメントクラスのオプションの指定
-#+LATEX_CLASS_OPTIONS: [a4j,12pt,openany,uplatex]
+#+LATEX_CLASS_OPTIONS: [a4j,12pt,openany,uplatex,dvipdfmx]
 # カスタムスタイルの読み込み
-#+LATEX_HEADER: \usepackage{shimano}
+# カスタムスタイルの読み込み
+#+LATEX_HEADER: \usepackage{coco-jsbook}
 
+# タイトルページで表示される情報
 # ファイルのバージョン
-#+LATEX_HEADER: \FileVerjou{1.0}
+#+LATEX_HEADER: \FileVersion{1.0}
+# コピーライト保有者
+#+LATEX_HEADER: \CopyrightAuthor{島野善雄}
+# コピーライトが発生した年
+#+LATEX_HEADER: \CopyrightYear{2019}
+# 機密レベル
+#+LATEX_HEADER: \ConfidentialLevel{機密情報ではない}
+# タイトルページに表示する画像
+# #+LATEX_HEADER: \TitlePicture{images/story-zapfino-crop.pdf}
 
 # tcolorbox でのプログラムリスト出力
 # #+LATEX: \tcblistof[\chapter*]{box}{プログラムリスト}
@@ -50,6 +60,159 @@
 :END:
 
 この文書では、文章作成ツールとしての Org mode の使用方法を説明します。
+
+
+
+* Org-mode の中で図を書く
+
+図を描くのではなく、図をテキストで書きます。
+
+
+
+** blockdig を使ったダイアグラムの作成
+#+INDEX:  blockdig
+
+*** blockdig 参考文献
+
+
+
+*** blockdig のインストール
+
+#+NAME: code: install-blockdiag
+#+CAPTION: blockdig のインストール
+#+begin_src sh :eval no
+pip instal blockdiag reportlab 
+#+end_src
+
+
+
+*** blockdiag の例
+
+
+
+#+NAME: code:block-diagram-w-blockdiag-1
+#+BEGIN_SRC blockdiag :exports both :tool blockdiag :type pdf :file figs/blockdiag1_1.pdf 
+blockdiag {
+  // ノードのメトリックスの設定
+  node_width = 200;  // デフォルト値は 128
+  node_height = 100;  // デフォルト値は 40
+
+  // Set span metrix
+  span_width = 240;  // default value is 64
+  span_height = 120;  // default value is 40
+
+  // set default shape
+  default_shape = roundedbox;  // default value is 'box'
+
+  // デフォルトの色の設定
+  default_node_color = lightblue;
+  default_group_color = "#7777FF";
+  default_linecolor = blue;
+  default_textcolor = red;
+
+  甲 -> 乙 [label = "Use long long\nedge label"];
+  甲 -> 丙;
+
+  group {
+    丙;
+  }
+}
+#+END_SRC
+
+#+RESULTS: code:block-diagram-w-blockdiag-1
+[[file:figs/blockdiag1_1.pdf]]
+
+#+NAME: code:block-diagram-w-blockdiag-1-svg
+#+BEGIN_SRC blockdiag :exports both :tool blockdiag :type svg :file figs/blockdiag1_1-svg.svg
+blockdiag {
+  // ノードのメトリックスの設定
+  node_width = 200;  // デフォルト値は 128
+  node_height = 100;  // デフォルト値は 40
+
+  // Set span metrix
+  span_width = 240;  // default value is 64
+  span_height = 120;  // default value is 40
+
+  // set default shape
+  default_shape = roundedbox;  // default value is 'box'
+
+  // デフォルトの色の設定
+  default_node_color = lightblue;
+  default_group_color = "#7777FF";
+  default_linecolor = blue;
+  default_textcolor = red;
+
+  甲 -> 乙 [label = "Use long long\nedge label"];
+  甲 -> 丙;
+
+  group {
+    丙;
+  }
+}
+#+END_SRC
+
+#+RESULTS: code:block-diagram-w-blockdiag-1-svg
+[[file:figs/blockdiag1_1-svg.svg]]
+
+
+
+
+
+*** nwdiag の例
+
+
+
+#+NAME: code:network-diagram-w-blockdiag-1
+#+CAPTION: blockdig を使ったネットワーク図
+#+BEGIN_SRC blockdiag :exports both :tool nwdiag :type pdf :file figs/nwdiag_1.pdf
+nwdiag {
+    network FJWAN {
+        gateway [address = "10.37.138.1"];
+    }
+    network Subnet-5F {
+        address = "10.37.138.0/24"
+ 
+        gateway [address = ".1"];
+        wathcer [address = ".120"];
+        gitlab [address = ".82"];
+        ansible [address = ".56"];
+        tomcat1 [address = ".60"];
+        }
+    network natnetwork {
+        address = "10.0.2.0/24"
+ 
+        wathcer [address = ".101"];
+        gitlab [address = ".102"];
+        ansible [address = ".103"];
+        tomcat1 [address = ".104"];
+    }
+    
+}
+#+END_SRC
+
+#+NAME: fig:network-diagram-w-blockdiag-1
+#+CAPTION: blockdig を使ったネットワーク図
+#+RESULTS: code:network-diagram-w-blockdiag-1
+[[file:figs/nwdiag_1.pdf]]
+
+
+
+
+
+** PlantUML を使う
+
+sudo apt install graphviz
+
+- [[https://plantuml.com/ja/][シンプルなテキストファイルで UML が書ける、オープンソースのツール]]
+
+
+#+BEGIN_SRC plantuml :file figs/plantuml-animal.svg :cmdline -charset UTF-8 
+動物 <|-- 犬
+動物 <|-- 猫
+#+END_SRC
+
+#+RESULTS:
+[[file:figs/plantuml-animal.svg]]
 
 
 * Org mode から \LaTeX へのエクスポート                        :RefileTarget:
@@ -207,6 +370,38 @@ CLOCK: [2019-01-09 水 10:22]--[2019-01-09 水 10:23] =>  0:01
 
 - [[https://github.com/ofosos/ox-epub][GitHub - ofosos/ox-epub: Org mode epub export]]
 
+
+* \LaTeX の設定
+
+
+** カスタムの \LaTeX 関係のファイルを置いておく場所
+
+** dvipdfmx でヒラギノを使う
+
+
+mkdir -p  ~/texmf/fonts/opentype/hiragino
+
+
+#+begin_src sh :eval
+ln -fs "/home/shimano/.fonts/ヒラギノ明朝 Pro W3.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMinPro-W3.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ明朝 Pro W6.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMinPro-W6.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ丸ゴ Pro W4.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMaruPro-W4.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ Pro W3.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuPro-W3.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ Pro W6.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuPro-W6.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ Pro W8.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuPro-W8.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ明朝 ProN W3.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMinProN-W3.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ明朝 ProN W6.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMinProN-W6.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ丸ゴ ProN W4.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMaruProN-W4.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ ProN W3.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuProN-W3.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ ProN W6.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuProN-W6.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ ProN W8.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuProN-W8.otf
+
+#+end_src
+
+#+RESULTS:
+
+
+
 * 付録
 :PROPERTIES:
 :ID:       cf09331c-1e75-4422-a8b0-55d104dce35e
@@ -220,7 +415,7 @@ CLOCK: [2019-01-09 水 10:22]--[2019-01-09 水 10:23] =>  0:01
 後書きを書きます
 
 
-#+INCLUDE: "~/Org/Templates/latex_bit_index.org" 
+# #+INCLUDE: "~/Org/Templates/latex_bit_index.org" 
 # 奥付
 # #+INCLUDE: "~/Org/MyWriting/EngineerHandobook/okuzuke.org" 
 

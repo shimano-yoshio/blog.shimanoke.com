@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGZsh{}+ATTR\PYGZus{}HTML: :class w3\PYGZhy{}panel w3\PYGZhy{}blue w3\PYGZhy{}border
+\PYGZsh{}+begin\PYGZus{}info
+Info
+
+This is a test.
+\PYGZsh{}+end\PYGZus{}info
+\end{Verbatim}

@@ -645,7 +645,6 @@ ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ ProN W6.otf" /home/shimano/texmf
 ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ ProN W8.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuProN-W8.otf
 #+END_SRC
 
-#+RESULTS:
 
 ** dvipdfmx で ipapex をうめこむ
 :PROPERTIES:
@@ -658,7 +657,7 @@ kanji-config-updmap -user hiragino
 sudo updmap-sys --setoption jaEmbed ipaex
 sudo updmap-sys --setoption jaEmbed hiragino
 
-** dvipdfmxでいろいろな日本語のフォントを使ってみる           :RefileTarget:
+** dvipdfmx でいろいろな日本語のフォントを使ってみる           :RefileTarget:
 :PROPERTIES:
 :ID:       337af0e7-c9af-4000-80e5-06265cc8760d
 :END:
@@ -713,7 +712,7 @@ sudo ln -s "/home/shimano/.fonts/ヒラギノ角ゴ Std W8.otf" ./HiraKakuStd-W8
 sudo mktexlsr
 #+END_SRC
 
-ヒラギノのNシリーズ（JIS X 0213:2004に対応した字形）を
+ヒラギノの N シリーズ（JIS X 0213:2004 に対応した字形）を
 利用する場合（upLaTeX には, 
 =\usepackage[uplatex,jis2004]{otf}= とすれば使えます。
 
@@ -820,7 +819,7 @@ sudo mktexlsr
 sudo updmap-sys --setoption kanjiEmbed kozuka 
 #+END_SRC
 
-*** 游明朝体・游ゴシック体をMac OS XのLaTeXで使う                 :@Office:
+*** 游明朝体・游ゴシック体を Mac OS X の LaTeX で使う                 :@Office:
 :PROPERTIES:
 :LOCATION: Office
 :Added: [2016-08-03 Wed 10:04]
@@ -864,8 +863,8 @@ sudo updmap-sys --setoption kanjiEmbed yu-osx
 :END:
 - [[https://qiita.com/hmikisato/items/673a910d5b02f3b1dca6][技術書典5の執筆環境棚卸し、あるいはLaTeXで「入稿に適した」PDFを吐く話 - Qiita]]
 
-本文ゴシック体、sans-serif体: 源真ゴシック
-本文明朝体、serif体: 源流明朝
+本文ゴシック体、sans-serif 体: 源真ゴシック
+本文明朝体、serif 体: 源流明朝
 等幅フォント: Fira Mono
 数式フォント: newtx
 
@@ -1957,7 +1956,7 @@ CLOCK: [2019-01-18 金 09:47]--[2019-01-18 金 10:50] =>  1:03
 curl -LsSf https://raw.githubusercontent.com/tats-u/enable-luajitlatex/master/enable-luajitlatex.sh | sudo PATH="$PATH" sh
 
 
-** TODO 源ノ明朝/源ノ角ゴシックをLuaLaTeXで使用する
+** TODO 源ノ明朝/源ノ角ゴシックを LuaLaTeX で使用する
 :PROPERTIES:
 :ID:       439ee4dc-23d1-4f58-a3e3-0f4491b4e8b7
 :END:

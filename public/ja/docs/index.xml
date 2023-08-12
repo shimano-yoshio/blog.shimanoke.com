@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ドキュメント on Get out of your door</title>
+    <link>https://blog.shimanoke.com/ja/docs/</link>
+    <description>Recent content in ドキュメント on Get out of your door</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 02 Apr 2019 10:46:59 +0900</lastBuildDate>
+    
+	<atom:link href="https://blog.shimanoke.com/ja/docs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>このブログの作りかた</title>
+      <link>https://blog.shimanoke.com/ja/docs/how-to-make-blog/</link>
+      <pubDate>Tue, 02 Apr 2019 10:46:59 +0900</pubDate>
+      
+      <guid>https://blog.shimanoke.com/ja/docs/how-to-make-blog/</guid>
+      <description>.ox-hugo-toc ul { list-style: none; } &amp;#30446;&amp;#27425; 1 この文書について 1.1 動作環境 2 Hugo サイトの作成 3 テーマのクローン 4 Github への登録 4.1 Git レポジトリの初期化 4.2 Github へのプッシュ 5 Netlify で新しいサ</description>
+    </item>
+    
+    <item>
+      <title>ox-hugo を使う</title>
+      <link>https://blog.shimanoke.com/ja/docs/use-ox-hugo/</link>
+      <pubDate>Sun, 31 Mar 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.shimanoke.com/ja/docs/use-ox-hugo/</guid>
+      <description>&amp;#30446;&amp;#27425; ox-hugo の中で LaTeX の数式への参照を使う 目次の制御 Details と summary ox-hugo の中で LaTeX の数式への参照を使う ox-hugo の中で LaTeX の数式を書いて、それを参照することができるはずですが</description>
+    </item>
+    
+  </channel>
+</rss>

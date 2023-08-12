@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>文書作成ツールとしての Org mode</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="島野 善雄">
+<meta name="description" content="LaTeX Tips"
+>
+<meta name="keywords" content="Ubuntu Linux LaTeX">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+
+<script type="text/javascript" src="https://orgmode.org/org-info.js">
+/**
+ *
+ * @source: https://orgmode.org/org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in https://orgmode.org/org-info.js.
+ *
+ * Copyright (C) 2012-2020 Free Software Foundation, Inc.
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in https://orgmode.org/org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "4");
+org_html_manager.set("VIEW", "showall");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<header>
+<h1 class="title">文書作成ツールとしての Org mode</h1>
+</header><nav id="table-of-contents">
+<h2>&#30446;&#27425;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org6255925">1. はじめに</a>
+<ul>
+<li><a href="#org7b3c971">1.1. この文書の内容</a></li>
+</ul>
+</li>
+<li><a href="#org025f5ba">2. Org-mode の中で図を書く</a>
+<ul>
+<li><a href="#org1407ea1">2.1. blockdig を使う</a></li>
+</ul>
+</li>
+<li><a href="#org05b282c">3. Org mode から \LaTeX へのエクスポート</a>
+<ul>
+<li><a href="#org69cf703">3.1. Org mode  LaTeX エクスポート参考文献</a></li>
+</ul>
+</li>
+<li><a href="#org1caf00e">4. Org mode を使ったブログの作成</a></li>
+<li><a href="#org7cb0e72">5. Org mode から HTML へのエクスポート</a></li>
+<li><a href="#org5dcdeda">6. org-ref を使った参考文献管理</a></li>
+<li><a href="#org37e786f">7. Bittex の参考文献のあつめかた</a>
+<ul>
+<li><a href="#org69658f0">7.1. Amazon から Bibtex エントリへ</a></li>
+<li><a href="#org5f2bc0e">7.2. Web から Bibtex エントリへ</a></li>
+</ul>
+</li>
+<li><a href="#orgff4fcb6">8. Org mode から Microsoft Word へのエクスポート</a>
+<ul>
+<li><a href="#orgf38e21a">8.1. Pandoc のインストール</a></li>
+<li><a href="#org53cb6d9">8.2. テンプレート作成</a></li>
+</ul>
+</li>
+<li><a href="#org7831113">9. EPUB エクスポート</a></li>
+<li><a href="#org9611659">10. Beamer エクスポート</a></li>
+<li><a href="#org73aeda6">11. Org mode のエクスポートの一般的な参考文献</a></li>
+<li><a href="#org0260a60">12. ox-epub</a></li>
+<li><a href="#org4367fcc">13. 付録</a>
+<ul>
+<li><a href="#orgc3f8bbe">13.1. 後書き</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+
+
+<div id="outline-container-org6255925" class="outline-2">
+<h2 id="org6255925"><span class="section-number-2">1</span> はじめに</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+
+
+<div id="outline-container-org7b3c971" class="outline-3">
+<h3 id="org7b3c971"><span class="section-number-3">1.1</span> この文書の内容</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+この文書では、文章作成ツールとしての Org mode の使用方法を説明します。
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org025f5ba" class="outline-2">
+<h2 id="org025f5ba"><span class="section-number-2">2</span> Org-mode の中で図を書く</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+図を描くのではなく、図をテキストで書きます。
+</p>
+</div>
+<div id="outline-container-org1407ea1" class="outline-3">
+<h3 id="org1407ea1"><span class="section-number-3">2.1</span> blockdig を使う</h3>
+<div class="outline-text-3" id="text-2-1">
+<div class="org-src-container">
+<pre class="src src-blockdiag">nwdiag {
+    network FJWAN {
+        gateway [address = "10.37.138.1"];
+    }
+    network Subnet-5F {
+        address = "10.37.138.0/24"
+
+        gateway [address = ".1"];
+        wathcer [address = ".120"];
+        gitlab [address = ".82"];
+        ansible [address = ".56"];
+        tomcat1 [address = ".60"];
+        }
+    network natnetwork {
+        address = "10.0.2.0/24"
+
+        wathcer [address = ".101"];
+        gitlab [address = ".102"];
+        ansible [address = ".103"];
+        tomcat1 [address = ".104"];
+    }
+
+}
+</pre>
+</div>
+
+
+<figure>
+<object type="image/svg+xml" data="figs/nwdiag_1.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+
+</figure>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org05b282c" class="outline-2">
+<h2 id="org05b282c"><span class="section-number-2">3</span> Org mode から \LaTeX へのエクスポート</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+
+
+
+<div id="outline-container-org69cf703" class="outline-3">
+<h3 id="org69cf703"><span class="section-number-3">3.1</span> Org mode  LaTeX エクスポート参考文献</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li><a href="https://emacs.stackexchange.com/questions/26179/change-org-mode-table-style-just-for-latex-export">Change org-mode table style just for LaTeX export - Emacs Stack Exchange</a></li>
+<li><a href="https://stackoverflow.com/questions/50573322/org-mode-how-to-use-custom-command-when-exporting-figures">emacs - org-mode how to use custom command when exporting figures - Stack Overflow</a></li>
+<li><a href="https://tex.stackexchange.com/questions/348286/org-mode-latex-pdf-centering-side-by-side-images">graphics - Org-mode, LaTeX, PDF &amp; centering side by side images - TeX - LaTeX Stack Exchange</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org1caf00e" class="outline-2">
+<h2 id="org1caf00e"><span class="section-number-2">4</span> Org mode を使ったブログの作成</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+</div>
+<div id="outline-container-org7cb0e72" class="outline-2">
+<h2 id="org7cb0e72"><span class="section-number-2">5</span> Org mode から HTML へのエクスポート</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+</div>
+
+
+<div id="outline-container-org5dcdeda" class="outline-2">
+<h2 id="org5dcdeda"><span class="section-number-2">6</span> org-ref を使った参考文献管理</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li><a href="https://org-technology.com/posts/org-ref.html">Emacs の org-ref で文献参照・相互参照のリンクを挿入する | org-技術</a></li>
+<li><a href="https://github.com/jkitchin/org-ref">jkitchin/org-ref: org-mode modules for citations, cross-references, bibliographies in org-mode and useful bibtex tools to go with it.</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org37e786f" class="outline-2">
+<h2 id="org37e786f"><span class="section-number-2">7</span> Bittex の参考文献のあつめかた</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org69658f0" class="outline-3">
+<h3 id="org69658f0"><span class="section-number-3">7.1</span> Amazon から Bibtex エントリへ</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li><a href="http://lead.to/amazon/jp/search/use.htm">Amazonのカスタマイズ検索（Lead2Amazon）</a></li>
+<li><a href="http://lead.to/amazon/jp/">Lead2Amazon:日本語</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5f2bc0e" class="outline-3">
+<h3 id="org5f2bc0e"><span class="section-number-3">7.2</span> Web から Bibtex エントリへ</h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li><a href="https://chrome.google.com/webstore/detail/bibtex-entry-from-url/mgpmgkhhbjgkpnanlmlhibjfgpdpgjec">BibTeX entry from URL - Chrome ウェブストア</a></li>
+</ul>
+
+
+<p>
+表示中の Web ページを Bibtex エントリに変換してくれます
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgff4fcb6" class="outline-2">
+<h2 id="orgff4fcb6"><span class="section-number-2">8</span> Org mode から Microsoft Word へのエクスポート</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+変換には Pandoc を使います。
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/kawabata/ox-pandoc">GitHub - kawabata/ox-pandoc: Another org-mode exporter via pandoc.</a></li>
+<li><a href="http://nenono.hatenablog.com/entry/2015/02/10/173516">実務に使うプレーンテキスト→Microsoft Word変換、あるいはPandocを使い始めた話 - 技術memo</a></li>
+<li><a href="http://peccu.hatenablog.com/entry/2015/05/12/000000">pandocで利用するテンプレートを指定する(org-modeからWord(docx)ファイルを作成してPagesで開くと幸せ) - @peccul is peccu</a></li>
+<li><a href="https://taipapamotohus.com/post/org-mode_paper_4/">Emacsのorg-modeで論文を書く（その4：pandocを利用してorg-modeからword {docx}を文献付きでexportする） | A perfect autumn day</a></li>
+</ul>
+</div>
+
+
+<div id="outline-container-orgf38e21a" class="outline-3">
+<h3 id="orgf38e21a"><span class="section-number-3">8.1</span> Pandoc のインストール</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+次のコマンドを使ってインストールします:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">conda install pandoc
+</pre>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org53cb6d9" class="outline-3">
+<h3 id="org53cb6d9"><span class="section-number-3">8.2</span> テンプレート作成</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li><a href="https://qiita.com/sky_y/items/5fd5c9568ea550b1d7af">ドキュメント変換ツールPandoc：ユーザーズガイドを熟読して分かったマニアックな使い方 - Qiita</a></li>
+<li><a href="https://shaunakelly.com/word/styles/modifyastyle.html">How to modify styles in Microsoft Word | ShaunaKelly.com</a></li>
+</ul>
+
+
+<p>
+@andoc &#x2013;print-default-data-file reference.docx &gt; reference.docx
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org7831113" class="outline-2">
+<h2 id="org7831113"><span class="section-number-2">9</span> EPUB エクスポート</h2>
+<div class="outline-text-2" id="text-9">
+<ul class="org-ul">
+<li><a href="https://github.com/ofosos/ox-epub">GitHub - ofosos/ox-epub: Org mode epub export</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9611659" class="outline-2">
+<h2 id="org9611659"><span class="section-number-2">10</span> Beamer エクスポート</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li><a href="https://github.com/fniessen/refcard-org-beamer">GitHub - fniessen/refcard-org-beamer: Org Beamer reference card</a></li>
+<li><a href="https://ryogan.org/blog/2016/01/06/emacs-org-mode-%25E3%2581%25AE-beamer-export-%25E3%2581%25AB%25E3%2581%25A4%25E3%2581%2584%25E3%2581%25A6%25E5%25B0%2591%25E3%2581%2597/">Emacs Org Mode の Beamer Export について少し | 澍法雨</a></li>
+<li><a href="https://qiita.com/htlsne/items/70cbb488e7a87cd9e228">LaTeX Beamerの&amp;quot;Beamerらしく&amp;quot;ないおすすめテーマ集 - Qiita</a></li>
+</ul>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-org73aeda6" class="outline-2">
+<h2 id="org73aeda6"><span class="section-number-2">11</span> Org mode のエクスポートの一般的な参考文献</h2>
+<div class="outline-text-2" id="text-11">
+<ul class="org-ul">
+<li><a href="https://orgmode.org/worg/exporters/filter-markup.html">Marking Up Elements to be Exported</a></li>
+<li><a href="https://orgmode.org/worg/dev/org-export-reference.html">Org Export Reference Documentation</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org0260a60" class="outline-2">
+<h2 id="org0260a60"><span class="section-number-2">12</span> ox-epub</h2>
+<div class="outline-text-2" id="text-12">
+<ul class="org-ul">
+<li><a href="https://github.com/ofosos/ox-epub">GitHub - ofosos/ox-epub: Org mode epub export</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4367fcc" class="outline-2">
+<h2 id="org4367fcc"><span class="section-number-2">13</span> 付録</h2>
+<div class="outline-text-2" id="text-13">
+</div>
+<div id="outline-container-orgc3f8bbe" class="outline-3">
+<h3 id="orgc3f8bbe"><span class="section-number-3">13.1</span> 後書き</h3>
+<div class="outline-text-3" id="text-13-1">
+<p>
+後書きを書きます
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">&#33879;&#32773;: 島野 善雄</p>
+<p class="email">Email: <a href="mailto:shimano.yoshio@jp.fujitsu.com">shimano.yoshio@jp.fujitsu.com</a></p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

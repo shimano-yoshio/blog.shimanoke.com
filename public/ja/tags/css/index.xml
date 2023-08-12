@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Css on Get out of your door</title>
+    <link>https://blog.shimanoke.com/ja/tags/css/</link>
+    <description>Recent content in Css on Get out of your door</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 04 Apr 2019 00:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="https://blog.shimanoke.com/ja/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Org-mode から Markdownへのマークアップの変換</title>
+      <link>https://blog.shimanoke.com/ja/posts/from-org-to-markdown/</link>
+      <pubDate>Thu, 04 Apr 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.shimanoke.com/ja/posts/from-org-to-markdown/</guid>
+      <description>ox-hugo の中で、 強調や等幅などのマークアップが、 Org-mode から Markdown へ変更される方法です。 &amp;#34920;: 1: Org-mode から Markdownへのマークアップの変換 Org Markdown HTML *bold* **bold** bold ボールド</description>
+    </item>
+    
+  </channel>
+</rss>

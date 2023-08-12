@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Org Mode on Get out of your door</title>
+    <link>https://blog.shimanoke.com/ja/categories/org-mode/</link>
+    <description>Recent content in Org Mode on Get out of your door</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 30 Mar 2019 00:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="https://blog.shimanoke.com/ja/categories/org-mode/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ox-Hugo を使う</title>
+      <link>https://blog.shimanoke.com/ja/posts/hugo/</link>
+      <pubDate>Sat, 30 Mar 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://blog.shimanoke.com/ja/posts/hugo/</guid>
+      <description>1 はじめに 1.1 なぜ Hugo を使うのか？ 早い! の一言につきます。 ポストが少ないのであれば、 Hugo のサイトのリビルドは一瞬です。 1.2 なぜ ox-hugo を使うのか？ ox-hugo は Org mode</description>
+    </item>
+    
+  </channel>
+</rss>

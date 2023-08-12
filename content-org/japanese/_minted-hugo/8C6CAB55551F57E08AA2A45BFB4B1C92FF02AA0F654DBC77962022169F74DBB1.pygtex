@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{export} \PYG{n+nv}{GOPATH}\PYG{o}{=}\PYG{n+nv}{\PYGZdl{}HOME}/go
+go get \PYGZhy{}u \PYGZhy{}v github.com/spf13/hugo
+\end{Verbatim}

@@ -1,0 +1,1188 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta http-equiv="Cache-Control" content="public" />
+ 
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.55.0-DEV" />
+
+
+
+
+
+<title>ox-Hugo を使う • Get out of your door</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ox-Hugo を使う"/>
+<meta name="twitter:description" content="Org-mode の中から Hugo を使う方法です。"/>
+
+<meta property="og:title" content="ox-Hugo を使う" />
+<meta property="og:description" content="Org-mode の中から Hugo を使う方法です。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.shimanoke.com/ja/posts/hugo/" />
+<meta property="article:published_time" content="2019-03-30T00:00:00&#43;09:00"/>
+<meta property="article:modified_time" content="2019-04-03T20:41:10&#43;09:00"/>
+
+
+
+<link rel="canonical" href="https://blog.shimanoke.com/ja/posts/hugo/" />
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
+
+<link rel="stylesheet" href="/css/w3.css" />
+
+
+<link rel="stylesheet" href="/css/style.css" />
+<script src="/js/myscript.js">
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script src="https://blog.shimanoke.com/mathjax-config.js"></script>
+
+
+
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-137701354-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137701354-1"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+
+ gtag('config', 'UA-137701354-1');
+</script>
+
+
+
+
+  
+  
+</head>
+<body class="w3-light-grey">
+
+
+    
+    <header id="header">
+         
+        <div class="w3-right ">
+<div class="w3-bar w3-light-grey  ">
+  
+  <span class="w3-bar-item w3-left " id="google_translate_element"></span>
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {
+          pageLanguage: 'en'
+        , layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT
+        , multilanguagePage: true
+      }
+      , 'google_translate_element'
+    );
+  }
+</script>
+<script async src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+  
+       <a href="javascript:void(0)" class="w3-bar-item w3-button w3-hover-green" title="Search" onclick="displaysearch()"><i class="fa fa-search"></i></a>
+  
+      <span class="w3-hide-small">
+        
+        <a href="mailto:shimano.yoshio%20at%20gmail.com" class="w3-bar-item w3-button w3-hover-green"><i class="fa fa-envelope"></i></a>
+        
+        <a href="https://github.com/shimano-yoshio" class="w3-bar-item w3-button w3-hover-green"><i class="fa fa-github"></i></a>
+        
+        <a href="https://github.com/shimano-yoshio" class="w3-bar-item w3-button w3-hover-green"><i class="fa fa-github"></i></a>
+
+      </span>
+  
+</div>
+</div>
+<br>
+  <div class="w3-content">
+  
+  <div class="w3-container w3-center w3-padding-32 w3-hide-small"> 
+      <h1 class="w3-xxxlarge w3-text-blue w3-wide w3-allerta  glow  " style="text-shadow:1px 1px 0 #444" ><u>
+      
+         Get Out of Your Door
+      
+</u></h1>
+      
+    </div>
+    <div class="w3-content w3-center">
+    <div class="w3-bar w3-light-grey w3-border">
+    <a href="/ja/" class="w3-bar-item w3-button w3-large w3-green"><i class="fa fa-home"></i></a>
+    
+      <a href="/ja/about/" class="w3-bar-item w3-button w3-hide-small">About</a>
+    
+      <a href="/ja/categories/" class="w3-bar-item w3-button w3-hide-small">カテゴリ</a>
+    
+      <a href="/ja/tags/" class="w3-bar-item w3-button w3-hide-small">タグ</a>
+    
+      <a href="/ja/allposts/" class="w3-bar-item w3-button w3-hide-small">全てのポスト</a>
+    
+      <a href="/ja/docs/" class="w3-bar-item w3-button w3-hide-small">文書</a>
+    
+      <a href="/en/" class="w3-bar-item w3-button w3-hide-small">English</a>
+    
+   
+    
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="displaymenu()">&#9776;</a>
+  </div>
+
+<div id="mobilemenu" class="w3-bar-block w3-light-grey w3-hide w3-hide-large w3-hide-medium">
+  
+      <a href="/ja/about/" class="w3-bar-item w3-button">About</a>
+      
+      <a href="/ja/categories/" class="w3-bar-item w3-button">カテゴリ</a>
+      
+      <a href="/ja/tags/" class="w3-bar-item w3-button">タグ</a>
+      
+      <a href="/ja/allposts/" class="w3-bar-item w3-button">全てのポスト</a>
+      
+      <a href="/ja/docs/" class="w3-bar-item w3-button">文書</a>
+      
+      <a href="/en/" class="w3-bar-item w3-button">English</a>
+      
+  
+</div>
+</div>
+</div>
+<script>
+function displaymenu() {
+    var x = document.getElementById("mobilemenu");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+
+
+  <div id="searchOverlay" class="overlay w3-hide">
+    <span class="closebtn" onclick="displaysearch()" title="Close Overlay">×</span>
+    <div class="overlay-content">
+        <form action="/search/">
+          <input type="text" placeholder="Search.." name="q">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+  </div>
+
+  <script>
+  function displaysearch() {
+    var x = document.getElementById("searchOverlay");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+      
+  }
+
+ 
+  </script>
+
+  
+
+
+    
+    <hr class="headfoot">
+   
+      
+    </header>
+    
+<div class="w3-content">
+    
+      <div>
+        
+        <div id="content" >
+          
+
+<div id="toc" class="w3-dropdown-click w3-hide-small w3-hide-medium">
+  <button class="w3-button w3-teal w3-xlarge" onclick="toggle_toc()">&#9776;</button>
+ <div id="toc_contents" class="w3-dropdown-content w3-bar-block w3-border " style="right:0">
+
+    <h3 class="w3-center">目次 </h3>
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#はじめに"><span class="section-num">1</span> はじめに</a>
+<ul>
+<li><a href="#なぜ-hugo-を使うのか"><span class="section-num">1.1</span> なぜ Hugo を使うのか？</a></li>
+<li><a href="#なぜ-ox-hugo-を使うのか"><span class="section-num">1.2</span> なぜ ox-hugo を使うのか？</a></li>
+</ul></li>
+<li><a href="#ox-hugo-でのプリアンブルの設定方法"><span class="section-num">2</span> ox-hugo でのプリアンブルの設定方法</a></li>
+<li><a href="#このサイトでで使える記法"><span class="section-num">3</span> このサイトでで使える記法</a>
+<ul>
+<li><a href="#図"><span class="section-num">3.1</span> 図</a></li>
+<li><a href="#babel"><span class="section-num">3.2</span> Babel</a></li>
+<li><a href="#数式"><span class="section-num">3.3</span> 数式</a>
+<ul>
+<li><a href="#インライン数式"><span class="section-num">3.3.1</span> インライン数式</a></li>
+<li><a href="#latex-の数式"><span class="section-num">3.3.2</span> \LaTeX の数式</a></li>
+</ul></li>
+<li><a href="#コードブロック"><span class="section-num">3.4</span> コードブロック</a></li>
+<li><a href="#表"><span class="section-num">3.5</span> 表</a></li>
+<li><a href="#引用"><span class="section-num">3.6</span> 引用</a>
+<ul>
+<li><a href="#素の-quote-ブロック"><span class="section-num">3.6.1</span> 素の quote ブロック</a></li>
+<li><a href="#quote-ショートコードを使う"><span class="section-num">3.6.2</span> <code>quote</code> ショートコードを使う</a>
+<ul>
+<li><a href="#quote-ショートコード"><span class="section-num">3.6.2.1</span> <code>quote</code> ショートコード</a></li>
+<li><a href="#著者ありの例"><span class="section-num">3.6.2.2</span> 著者ありの例:</a></li>
+<li><a href="#著者なしの例"><span class="section-num">3.6.2.3</span> 著者なしの例:</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#スペシャルブロック"><span class="section-num">3.7</span> スペシャルブロック</a></li>
+<li><a href="#例のブロック"><span class="section-num">3.8</span> 例のブロック</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+ </div>
+</div>
+
+
+<div class="w3-content w3-card-4" >
+    
+    <header class="w3-container w3-center w3-padding-32">
+        <h1>ox-Hugo を使う</h1>
+
+        <div >
+            <p>
+                出版日
+                2019-03-30<br>
+                変更日
+                2019-04-03<br>
+                
+                <code> 単語数 1167  </code>
+                <code> 3 mins read </code>
+                
+            </p>
+            <div >
+                
+                <a class="w3-btn w3-small w3-round w3-green" href="/ja/categories/hugo/"> Hugo </a>
+                
+                <a class="w3-btn w3-small w3-round w3-green" href="/ja/categories/org-mode/"> Org-mode </a>
+                
+            </div>
+
+
+        </div>
+    </header>
+
+
+    
+    <div class="w3-container">
+        
+
+
+        
+        
+
+        
+        
+        
+        
+
+<h2 id="はじめに"><span class="section-num">1</span> はじめに</h2>
+
+<h3 id="なぜ-hugo-を使うのか"><span class="section-num">1.1</span> なぜ Hugo を使うのか？</h3>
+
+<blockquote>
+<p>早い!</p>
+</blockquote>
+
+<p>の一言につきます。
+ポストが少ないのであれば、 Hugo のサイトのリビルドは一瞬です。</p>
+
+<h3 id="なぜ-ox-hugo-を使うのか"><span class="section-num">1.2</span> なぜ ox-hugo を使うのか？</h3>
+
+<p>ox-hugo は Org mode から Markdown へのエクスポートバックエンドです。</p>
+
+<p>Hugo は Markdown で書くのが普通ですが、私は Markdown に慣れることが
+できません。そこで、 ox-hugo というパッケージを使って、
+Org-mode のファイルを Markdown に変換しています。
+この ox-hugo というパッケージがなかなか優れもので、
+やりたいことはほとんどできます。</p>
+
+<p>それでも、自分の好みの機能がないので、 ox-hugo をカスタマイズして
+使っています。uh</p>
+
+<h2 id="ox-hugo-でのプリアンブルの設定方法"><span class="section-num">2</span> ox-hugo でのプリアンブルの設定方法</h2>
+
+
+
+
+<div class="w3-panel w3-card w3-pale-blue">
+    
+    <span class="code-title">  </span>
+    
+    <span class="code-lang">(org)</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org"><span style="color:#75715e">#+OPTIONS</span><span style="color:#75715e">: H:6 num:t</span></code></pre></div>
+</div>
+
+
+<dl>
+<dt>H:6</dt>
+<dd>見出しのレベルを 6 まで出力します。</dd>
+<dt>num::t</dt>
+<dd>見出しに番号をつけます。</dd>
+</dl>
+
+<h2 id="このサイトでで使える記法"><span class="section-num">3</span> このサイトでで使える記法</h2>
+
+<h3 id="図"><span class="section-num">3.1</span> 図</h3>
+
+<p>これは:</p>
+
+
+
+
+<div class="w3-panel w3-card w3-pale-blue">
+    
+    <span class="code-title">  </span>
+    
+    <span class="code-lang">(org)</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org"><span style="color:#75715e">#+ATTR_HTML</span><span style="color:#75715e">: :alt test :width 25%</span>
+<span style="color:#75715e">#+caption</span><span style="color:#75715e">: Reddit Icon</span>
+[[<span style="color:#a6e22e">file:images/Org-mode-unicorn.svg</span>]]</code></pre></div>
+</div>
+
+
+<p>次に変換されます:</p>
+
+<figure>
+    <img src="/placeholder.svg" data-src="/ox-hugo/Org-mode-unicorn.svg"
+         alt="test" width="25%"/> <figcaption>
+            <p>&#22259;1:  Reddit Icon</p>
+        </figcaption>
+</figure>
+
+
+<h3 id="babel"><span class="section-num">3.2</span> Babel</h3>
+
+<p>Org-mode の中でプログラミング言語を書くことができます。
+それだけではなく、 Org-mode の中でプログラムを実行することが
+できます。</p>
+
+<p>この Ditaa のプログラムは:</p>
+
+
+
+
+<div class="w3-panel w3-card w3-pale-blue">
+    
+    <span class="code-title">  </span>
+    
+    <span class="code-lang">(ditaa)</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ditaa" data-lang="ditaa">+--------------+
+|              |
+| Hello World! |
+|              |
++--------------+</code></pre></div>
+</div>
+
+
+<p>このように変換されます:</p>
+
+<p><a id="org4186721"></a></p>
+
+<figure>
+    <img src="/placeholder.svg" data-src="/ox-hugo/hello-world.png"
+         alt="&amp;#22259;2:  Ditaa の出力"/> <figcaption>
+            <p>&#22259;2:  Ditaa の出力</p>
+        </figcaption>
+</figure>
+
+
+<h3 id="数式"><span class="section-num">3.3</span> 数式</h3>
+
+<h4 id="インライン数式"><span class="section-num">3.3.1</span> インライン数式</h4>
+
+<p>例えば下の Org mode の断片は:</p>
+
+
+
+
+<div class="w3-panel w3-card w3-pale-blue">
+    
+    <span class="code-title">  </span>
+    
+    <span class="code-lang">(org)</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">LaTeX formatted equation: \( E = -J \sum_{i=1}^N s_i s_{i+1} \)</code></pre></div>
+</div>
+
+
+<p>これは Hugo がレンダリングする HTML の中でこのように見えます:</p>
+
+<p>LaTeX formatted equation: \( E = -J \sum_{i=1}^N s_i s_{i+1 }\)</p>
+
+<h4 id="latex-の数式"><span class="section-num">3.3.2</span> \LaTeX の数式</h4>
+
+<p><code>ox-hugo</code> は \LaTeX の環境をサポートしています。</p>
+
+<p>下の Org mode の断片は:</p>
+
+
+
+
+<div class="w3-panel w3-card w3-pale-blue">
+    
+    <span class="code-title"> <a id="code-snippet--latex-example"></a> </span>
+    
+    <span class="code-lang">(org)</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">\begin{equation}
+\label{eq:0}
+C = W\log_{2} (1+\mathrm{SNR})
+\end{equation}</code></pre></div>
+</div>
+
+
+<p>次のようにエクスポートされます:</p>
+
+<p>\begin{equation}
+\label{eq:1}
+C = W\log_{2} (1+\mathrm{SNR})
+\end{equation}</p>
+
+<p><code>\ref{eq:1}</code> は \ref{eq:1} へと変換されます&lt;。</p>
+
+<h3 id="コードブロック"><span class="section-num">3.4</span> コードブロック</h3>
+
+<p>いくつかのコードの例です:</p>
+
+
+
+
+<div class="w3-panel w3-card w3-pale-blue">
+    
+    <span class="code-title">  </span>
+    
+    <span class="code-lang">(emacs-lisp)</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-emacs-lisp" data-lang="emacs-lisp">(<span style="color:#a6e22e">message</span> <span style="color:#e6db74">&#34;Hello&#34;</span>)</code></pre></div>
+</div>
+
+
+
+
+
+<div class="w3-panel w3-card w3-pale-blue">
+    
+    <span class="code-title">  </span>
+    
+    <span class="code-lang">(sh)</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ls -al</code></pre></div>
+</div>
+
+
+
+
+
+<div class="w3-panel w3-card w3-pale-blue">
+    
+    <span class="code-title"> ソースコード 1: Ruby の例 </span>
+    
+    <span class="code-lang">(ruby)</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">print(<span style="color:#e6db74">&#34;test&#34;</span>)</code></pre></div>
+</div>
+
+
+<p>上の Ruby コードの出力です:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">test</code></pre></div>
+<h3 id="表"><span class="section-num">3.5</span> 表</h3>
+
+<p>これは (<a href="#table--tab:test1">1</a>):</p>
+
+
+
+
+<div class="w3-panel w3-card w3-pale-blue">
+    
+    <span class="code-title">  </span>
+    
+    <span class="code-lang">(org)</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org"><span style="color:#75715e">#+name</span><span style="color:#75715e">: tab:test1</span>
+<span style="color:#75715e">#+caption</span><span style="color:#75715e">: 表のテスト</span>
+<span style="color:#e6db74">|---|---|---|</span>
+<span style="color:#e6db74">| a | b | c |</span>
+<span style="color:#e6db74">|---|---|---|</span>
+<span style="color:#e6db74">| 1 | 2 | 3 |</span>
+<span style="color:#e6db74">| 1 | 2 | 3 |</span>
+<span style="color:#e6db74">| 1 | 2 | 3 |</span>
+<span style="color:#e6db74">|---|---|---|</span></code></pre></div>
+</div>
+
+
+<p>このように出力されます:</p>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+ <div class="w3-panel w3-card-2 w3-light-gray">
+    <table class="w3-table-all w3-card-4"><caption>
+<a id="table--tab:test1"></a><a href="#table--tab:test1">&#34920; 1</a>: 表のテスト </caption>
+<thead>
+<tr>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+
+ </div>
+
+
+<h3 id="引用"><span class="section-num">3.6</span> 引用</h3>
+
+<h4 id="素の-quote-ブロック"><span class="section-num">3.6.1</span> 素の quote ブロック</h4>
+
+<p>素の quote ブロックの出力です。</p>
+
+
+
+
+<div class="w3-panel w3-card w3-pale-blue">
+    
+    <span class="code-title">  </span>
+    
+    <span class="code-lang">(org)</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">#+begin_quote :author Shimano
+こんなものですかね。引用は。うまくいきます？
+#+end_quote</code></pre></div>
+</div>
+
+
+<blockquote>
+<p>こんなものですかね。引用は。うまくいきます？</p>
+</blockquote>
+
+<h4 id="quote-ショートコードを使う"><span class="section-num">3.6.2</span> <code>quote</code> ショートコードを使う</h4>
+
+<h5 id="quote-ショートコード"><span class="section-num">3.6.2.1</span> <code>quote</code> ショートコード</h5>
+
+<p>このような <code>quote</code> ショートコード を作りました。あ</p>
+
+
+
+
+<div class="w3-panel w3-card w3-pale-blue">
+    
+    <span class="code-title">  </span>
+    
+    <span class="code-lang">(html)</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{- $author := .Get &#34;author&#34; -}}
+{{- $width := .Get &#34;width&#34; -}}
+&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;w3-panel w3-card-4 w3-light-grey&#34;</span>
+  <span style="color:#960050;background-color:#1e0010">{{</span> <span style="color:#a6e22e">if</span> <span style="color:#a6e22e">eq</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">width</span> <span style="color:#960050;background-color:#1e0010">&#34;&#34;}}</span>
+     <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width:50%&#34;</span>
+  <span style="color:#960050;background-color:#1e0010">{{</span> <span style="color:#a6e22e">else</span> <span style="color:#960050;background-color:#1e0010">}}</span>
+     <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width:{{$width}}&#34;</span>
+  <span style="color:#960050;background-color:#1e0010">{{</span> <span style="color:#a6e22e">end</span> <span style="color:#960050;background-color:#1e0010">}}</span>&gt;
+  &lt;<span style="color:#f92672">i</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fa fa-quote-left w3-large w3-text-red&#34;</span>&gt;&lt;/<span style="color:#f92672">i</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+  &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;w3-large&#34;</span>&gt;
+    {{ .Inner  }}
+  &lt;/<span style="color:#f92672">p</span>&gt;
+{{ with $author }}
+  &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;w3-large w3-right&#34;</span>&gt;by: {{.}}&lt;/<span style="color:#f92672">p</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+{{ end }}
+&lt;<span style="color:#f92672">i</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fa fa-quote-right w3-large w3-text-red&#34;</span>&gt;&lt;/<span style="color:#f92672">i</span>&gt;&lt;<span style="color:#f92672">br</span>&gt;
+&lt;/<span style="color:#f92672">div</span>&gt;</code></pre></div>
+</div>
+
+
+<h5 id="著者ありの例"><span class="section-num">3.6.2.2</span> 著者ありの例:</h5>
+
+
+
+
+<div class="w3-panel w3-card w3-pale-blue">
+    
+    <span class="code-title"> <a id="code-snippet--quote-with-authr"></a><a href="#code-snippet--quote-with-authr">ソースコード 2</a>: 著者ありの引用 </span>
+    
+    <span class="code-lang">(org)</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org"><span style="color:#75715e">#+HTML</span><span style="color:#75715e">: {{% blockquote width=&#34;30%&#34; author=&#34;shimano&#34; %}}</span>
+#+begin_quotation :author Shimano
+こんなものですかね。引用は。うまくいきます？
+#+end_quotation
+<span style="color:#75715e">#+HTML</span><span style="color:#75715e">: {{&lt; /blockquote &gt;}}</span></code></pre></div>
+</div>
+
+
+<p>これが出力されます:</p>
+
+<div class="w3-panel w3-card-4 w3-light-grey"
+  
+     style="width:30%"
+  >
+  <i class="fa fa-quote-left w3-large w3-text-red"></i><br>
+  <p class="w3-large">
+    <div class="quotation">
+  <div></div>
+
+<p>こんなものですかね。引用は。うまくいきます？</p>
+
+<p></div></p>
+
+  </p>
+
+  <p class="w3-large w3-right">by: shimano</p><br>
+
+<i class="fa fa-quote-right w3-large w3-text-red"></i><br>
+</div>
+
+
+
+<h5 id="著者なしの例"><span class="section-num">3.6.2.3</span> 著者なしの例:</h5>
+
+
+
+
+<div class="w3-panel w3-card w3-pale-blue">
+    
+    <span class="code-title"> <a id="code-snippet--quote-wihtout-author"></a> </span>
+    
+    <span class="code-lang">(org)</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org"><span style="color:#75715e">#+HTML</span><span style="color:#75715e">: {{% blockquote width=&#34;70%&#34; %}}</span>
+#+begin_quotation :author Shimano
+こんなものですかね。引用は。うまくいきます？
+#+end_quotation
+<span style="color:#75715e">#+HTML</span><span style="color:#75715e">: {{&lt; /blockquote &gt;}}</span></code></pre></div>
+</div>
+
+
+<p>これが出力されます:</p>
+
+<div class="w3-panel w3-card-4 w3-light-grey"
+  
+     style="width:70%"
+  >
+  <i class="fa fa-quote-left w3-large w3-text-red"></i><br>
+  <p class="w3-large">
+    <div class="quotation">
+  <div></div>
+
+<p>こんなものですかね。引用は。うまくいきます？</p>
+
+<p></div></p>
+
+  </p>
+
+<i class="fa fa-quote-right w3-large w3-text-red"></i><br>
+</div>
+
+
+
+<h3 id="スペシャルブロック"><span class="section-num">3.7</span> スペシャルブロック</h3>
+
+<p>Org-mode の中のスペシャルブロックは <code>&lt;div&gt;</code> へ変換されます。
+クラスを設定するには、 <code>#+ATTR_HTML: :class</code> を設定します。</p>
+
+<p>この Org-mode のスペシャルブロックは:</p>
+
+
+
+
+<div class="w3-panel w3-card w3-pale-blue">
+    
+    <span class="code-title">  </span>
+    
+    <span class="code-lang">(org)</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org"><span style="color:#75715e">#+ATTR_HTML</span><span style="color:#75715e">: :class w3-panel w3-blue w3-border</span>
+<span style="color:#75715e">#+begin_info</span>
+Info
+
+This is a test.
+<span style="color:#75715e">#+end_info</span></code></pre></div>
+</div>
+
+
+<p>これへと変換されます:</p>
+
+<div class="info w3-card-2 w3-panel w3-blue w3-border info">
+  <div></div>
+
+<p>Info</p>
+
+<p>This is a test.</p>
+
+<p></div></p>
+
+
+
+
+<div class="w3-panel w3-card w3-pale-blue">
+    
+    <span class="code-title">  </span>
+    
+    <span class="code-lang">(org)</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org"><span style="color:#75715e">#+ATTR_HTML</span><span style="color:#75715e">: :class w3-panel w3-yellow w3-border</span>
+#+begin_info
+<span style="color:#75715e">#+begin_warning</span>
+Warning
+
+This is a test.
+<span style="color:#75715e">#+end_warning</span></code></pre></div>
+</div>
+
+
+<div class="w3-panel w3-card-2 w3-yellow w3-border warning">
+  <div></div>
+
+<p>Warning</p>
+
+<p>This is a test.</p>
+
+<p></div></p>
+
+<h3 id="例のブロック"><span class="section-num">3.8</span> 例のブロック</h3>
+
+
+
+
+<div class="w3-panel w3-card w3-pale-blue">
+    
+    <span class="code-title">  </span>
+    
+    <span class="code-lang">(ruby)</span>
+    <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">p <span style="color:#e6db74">&#34;test&#34;</span></code></pre></div>
+</div>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">test</code></pre></div>
+                 
+
+
+        
+    </div>
+
+
+
+
+    <div class="w3-container">
+
+        <div class="w3-container">
+            <hr class = "tag">
+            Tags: 
+            
+            <a class="w3-btn w3-small w3-round w3-green" href="/ja/tags/hugo/">Hugo</a>
+            
+            <a class="w3-btn w3-small w3-round w3-green" href="/ja/tags/ox-hugo/">ox-hugo</a>
+            
+            <hr class = "tag">
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+    
+    
+    
+    
+    <br>  
+</div>
+
+
+
+
+<div class="w3-content" > 
+    <div class="w3-bar w3-section">
+        
+        <a  href="/ja/posts/use-latex-ref-in-ox-hugo/" class="w3-btn w3-text-indigo w3-hover-green">
+            &#10094; ox-hugo の中で LaTeX の数式への参照を使う
+        </a>
+        
+        <a class="w3-btn w3-right w3-text-indigo w3-hover-green" href="/ja/posts/shortcodes-demopage/">
+            Hugo W3 Simple テーマショートコードデモ &#10095;
+        </a>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div id="wrapads">
+    <div class="adBanner">
+
+    </div>
+</div>
+
+<div id="allowads" class="allowads-overlay">
+
+    <div class="allowads-overlay-content">
+        <div class="w3-panel w3-pink w3-large">
+
+
+            <p> We notice you're using an adblocker.  If you like our webite please keep us running by whitelisting this site in your ad blocker. We’re serving quality, related ads only. Thank you!</p>
+
+            <div class="w3-btn w3-green"  onclick="closeOverlay()">I've whitelisted your website.</div><br>
+            <div class="w3-button w3-small"  onclick="closeOverlay()">Not now</div>
+        </div>
+    </div>
+</div>
+
+<script>
+ function closeOverlay() {
+     document.getElementById("allowads").style.width = "0%";
+     document.getElementById("wrapads").style.height="1px";
+ }
+
+ function detectads() {
+     var h = document.getElementById("wrapads").clientHeight;
+
+     if (h==0){ document.getElementById("allowads").style.width = "100%";
+     }
+ }
+
+
+
+
+</script><script>
+    </script>
+        </div>
+        
+          <script>
+  shareurl=encodeURIComponent(location.protocol + '//' + location.host + location.pathname);
+  sharetitle=encodeURIComponent(document.title);
+    
+  </script>
+<div class="icon-bar">
+<script>
+document.write( '<a href="javascript:bookmark();" class="bookmark w3-tooltip"><i class="fa fa-bookmark"></i><span style="position:absolute;left:40px;bottom:18px" class="w3-text w3-small w3-tag w3-round w3-green ">Bookmark this page</span></a> ');
+
+document.write( '<a href="http://www.facebook.com/sharer.php?u='+shareurl+'" onclick="window.open(this.href, \'mywin\',\'left=20,top=20,width=500,height=500,toolbar=1,resizable=0\'); return false;" class="facebook w3-tooltip"><i class="fa fa-facebook "></i><span style="position:absolute;left:40px;bottom:18px" class="w3-text w3-small w3-tag w3-round w3-green">Share to Facebook</span></a> ');
+
+document.write( '<a href="https://twitter.com/share?url='+shareurl+'&amp;text='+sharetitle+'" onclick="window.open(this.href, \'mywin\',\'left=20,top=20,width=500,height=500,toolbar=1,resizable=0\'); return false;" class="twitter w3-tooltip"><i class="fa fa-twitter"></i><span style="position:absolute;left:40px;bottom:18px" class="w3-text w3-small w3-tag w3-round w3-green">Share to Twitter</span></a> ');
+document.write( '<a href="https://plus.google.com/share?url='+shareurl+'" onclick="window.open(this.href, \'mywin\',\'left=20,top=20,width=500,height=500,toolbar=1,resizable=0\'); return false;" class="google w3-tooltip"><i class="fa fa-google"></i><span style="position:absolute;left:40px;bottom:18px" class="w3-text w3-small w3-tag w3-round w3-green">Share to Google Plus</span></a>');
+
+document.write( '<a href="http://www.linkedin.com/shareArticle?mini=true&amp;url='+shareurl+'" onclick="window.open(this.href, \'mywin\',\'left=20,top=20,width=500,height=500,toolbar=1,resizable=0\'); return false;" class="linkedin w3-tooltip"><i class="fa fa-linkedin"></i><span style="position:absolute;left:40px;bottom:18px" class="w3-text w3-small w3-tag w3-round w3-green">Share to Linkedin</span></a>');
+
+</script>
+
+<script>
+function bookmark(){
+
+if ('sidebar' in window && 'addPanel' in window.sidebar) { 
+                window.sidebar.addPanel(location.href,document.title,"");
+            } else if(  false) { 
+                window.external.AddFavorite(location.href,document.title); 
+            } else { 
+                alert('Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') != - 1 ? 'Command/Cmd' : 'CTRL') + ' + D to bookmark this page.');
+            }
+        }
+
+</script>
+</div>
+        
+           
+          
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'blog-shimanoke-com';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+        
+        
+      </div>
+
+    <footer id="footer" >
+      <div class="w3-container w3-center w3-padding-32"> 
+  
+  <hr class="headfoot">
+  <p>Powered by <a href="https://gohugo.io">Hugo</a> | Theme - <a href="https://github.com/jesselau76/hugo-w3-simple">Hugo W3 Simple</a>
+  </p>
+  &copy; <a href="https://shimanoke.com">Yoshio Shimano</a> 2019 | <a href="https://github.com/shimano-yoshio">Github</a> | <a href="https://twitter.com/johndoe">Twitter</a>  | <a href="/index.xml">RSS</a>
+  
+</div>
+
+    </footer>
+
+  </div>
+
+   
+  <div id="cookiebar" class="w3-bar w3-top w3-black w3-border   " >
+
+  <span class="w3-bar-item w3-small">This website uses cookies to ensure you get the best experience on our website. <a href="/privacy-policy/">Learn more</a></span>
+  <span onclick="gotitcookiebar()"
+  class="w3-button w3-small w3-green w3-right">Got it</span>
+   </div>
+
+    
+<script>
+function gotitcookiebar() {
+    var x =document.getElementById("cookiebar");
+    x.style.display = "none";
+var x = document.getElementsByTagName("BODY")[0];
+    x.style.paddingTop = "0px";
+    
+
+}
+
+
+    
+function checkCookie() {
+    var user=getCookie("cookiebardisplayed");
+    if (user == "") {
+      setCookie("cookiebardisplayed","0",365);}
+
+    user=getCookie("cookiebardisplayed");
+    if (user =="0")
+    {
+
+        var x =document.getElementById("cookiebar");
+    x.style.display = "block";
+    var h = document.getElementById('cookiebar').clientHeight;
+    
+    var x = document.getElementsByTagName("BODY")[0];
+    x.style.paddingTop = h+"px";
+    setCookie("cookiebardisplayed","1",365);
+    } 
+    
+}
+function setCookie(cname,cvalue,exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+document.addEventListener('DOMContentLoaded', function() {
+    checkCookie();
+}, false);
+
+</script>   
+
+
+  
+    
+      <div id="backtotop" class="w3-hide-small w3-hide-medium">
+  
+        <button onclick="topFunction()" class="w3-btn w3-red w3-large" style="width:160px">一番上へ
+        &rarr;</button>
+        
+      </div>
+
+      <script>
+        function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+      }
+      </script>
+
+
+    
+ 
+    
+    <script>
+    
+    function isVisible(elem) {
+
+      let coords = elem.getBoundingClientRect();
+
+      let windowHeight = document.documentElement.clientHeight;
+
+      
+      let topVisible = coords.top > 0 && coords.top < windowHeight;
+      let bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
+
+      return topVisible || bottomVisible;
+    }
+
+    
+
+    function showVisible() {
+      for (let img of document.querySelectorAll('img')) {
+        let realSrc = img.dataset.src;
+        if (!realSrc) continue;
+
+        if (isVisible(img)) {
+          
+
+          img.src = realSrc;
+
+          img.dataset.src = '';
+        }
+      }
+      if ( Array.from(document.querySelectorAll('[data-src]')).every(
+        img => img.getAttribute('data-src') === '') ) {
+        window.removeEventListener('scroll', showVisible)
+      }
+
+    }
+
+    window.addEventListener('scroll', showVisible);
+    showVisible();
+  </script>
+
+
+    
+    
+      <div class="progress-container" id="scrollbar">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>  
+
+
+    
+<script>
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  <!-- TOC -->
+    
+    
+
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("toc").style.display = "block";
+    } else {
+        document.getElementById("toc").style.display = "none";
+    }
+    
+    
+    <!-- cookie bar -->
+    
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        var x =document.getElementById("cookiebar");
+        x.style.display = "none";
+        var x = document.getElementsByTagName("BODY")[0];
+        x.style.paddingTop = "0px";
+
+    } 
+    
+<!-- Back to top -->
+    
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("backtotop").style.display = "block";
+    } else {
+        document.getElementById("backtotop").style.display = "none";
+    }
+    
+    <!-- scroll indicator -->
+    
+      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrolled = (winScroll / height) * 100;
+      document.getElementById("progress-bar").style.width = scrolled + "%";
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("scrollbar").style.display = "block";
+        } else {
+            document.getElementById("scrollbar").style.display = "none";
+        }
+    
+
+    
+
+    <!-- allowads -->
+    
+       if (document.body.scrollTop > 2000 || document.documentElement.scrollTop > 2000) {
+          detectads();
+       } 
+
+    
+}
+
+
+</script>
+
+
+
+  
+
+</body>
+</html>

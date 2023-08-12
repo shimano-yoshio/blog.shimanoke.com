@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+blockdiag \PYGZob{}
+  // ノードのメトリックスの設定
+  node\PYGZus{}width = 200;  // デフォルト値は 128
+  node\PYGZus{}height = 100;  // デフォルト値は 40
+
+  // Set span metrix
+  span\PYGZus{}width = 240;  // default value is 64
+  span\PYGZus{}height = 120;  // default value is 40
+
+  // set default shape
+  default\PYGZus{}shape = roundedbox;  // default value is \PYGZsq{}box\PYGZsq{}
+
+  // デフォルトの色の設定
+  default\PYGZus{}node\PYGZus{}color = lightblue;
+  default\PYGZus{}group\PYGZus{}color = \PYGZdq{}\PYGZsh{}7777FF\PYGZdq{};
+  default\PYGZus{}linecolor = blue;
+  default\PYGZus{}textcolor = red;
+
+  甲 \PYGZhy{}\PYGZgt{} 乙 [label = \PYGZdq{}Use long long\PYGZbs{}nedge label\PYGZdq{}];
+  甲 \PYGZhy{}\PYGZgt{} 丙;
+
+  group \PYGZob{}
+    丙;
+  \PYGZcb{}
+\PYGZcb{}
+\end{Verbatim}

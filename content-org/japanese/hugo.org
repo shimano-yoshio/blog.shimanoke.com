@@ -83,6 +83,73 @@ Org-mode のファイルを Markdown に変換しています。
 
 それでも、自分の好みの機能がないので、 ox-hugo をカスタマイズして
 使っています。uh
+
+* Hugo のインストール方法
+:PROPERTIES:
+:ID:       30b9f9e5-f89d-4fbc-982f-8e49fa0a0a30
+:END:
+
+** golang のインストール
+:PROPERTIES:
+:ID:       a968b024-d68a-4a9e-923f-2fe219dd855b
+:END:
+
+Hugo は go 言語で動きます。
+最初に go 言語をインストールします。
+
+- [[https://github.com/golang/go/wiki/Ubuntu][Ubuntu · golang/go Wiki]]
+
+を参考にしました。最新のバージョンをインストールするため、
+PPA を使います。
+
+#+begin_src sh
+sudo add-apt-repository ppa:gophers/archive
+sudo apt update
+sudo apt install golang-1.11-go
+#+end_src
+
+しかしこの方法だと、バイナリが /usr/lib/go-1.11/bin の中にはいってしまいます。
+
+そこで snap を使います:
+
+#+begin_src sh
+sudo snap install --classic go
+#+end_src
+
+/snap/bin にはいります。
+
+#+begin_src sh
+/snap/bin/go version
+#+end_src
+
+#+RESULTS:
+#+begin_example
+go version go1.12.2 linux/amd64
+#+end_example
+
+
+** hugo のインストール
+:PROPERTIES:
+:ID:       e5a860e9-5193-4095-a629-30a4472284f3
+:END:
+
+go 言語がインストールされたら、 hugo をインストールします。
+
+
+#+begin_src sh
+export GOPATH=$HOME/go
+go get -u -v github.com/spf13/hugo
+#+end_src
+
+#+begin_src sh
+hugo version
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Hugo Static Site Generator v0.56.0-DEV linux/amd64 BuildDate: unknown
+#+end_example
+
 * ox-hugo でのプリアンブルの設定方法
 :PROPERTIES:
 :ID:       91f6c028-eb4a-4ef7-aa22-5c89b7f385ab

@@ -1,0 +1,13 @@
+ln -fs "/home/shimano/.fonts/ヒラギノ明朝 Pro W3.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMinPro-W3.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ明朝 Pro W6.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMinPro-W6.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ丸ゴ Pro W4.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMaruPro-W4.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ Pro W3.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuPro-W3.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ Pro W6.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuPro-W6.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ Pro W8.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuPro-W8.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ明朝 ProN W3.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMinProN-W3.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ明朝 ProN W6.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMinProN-W6.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ丸ゴ ProN W4.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraMaruProN-W4.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ ProN W3.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuProN-W3.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ ProN W6.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuProN-W6.otf
+ln -fs "/home/shimano/.fonts/ヒラギノ角ゴ ProN W8.otf" /home/shimano/texmf/fonts/opentype/hiragino/HiraKakuProN-W8.otf
+

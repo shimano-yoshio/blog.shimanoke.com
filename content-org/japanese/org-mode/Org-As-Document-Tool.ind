@@ -1,0 +1,14 @@
+
+\begin{theindex}
+
+  \setcounter{page}{16}
+{\vbox{\hbox to \linewidth{\sffamily\bfseries\gtfamily\small 記号／数字\ \hskip\fill}\vskip1pt\hrule}}\nopagebreak
+
+  \item \LaTeX\dotfill \hyperpage{2}
+
+  \indexspace
+{\vbox{\hbox to \linewidth{\sffamily\bfseries\gtfamily\small H\ \hskip\fill}\vskip1pt\hrule}}\nopagebreak
+
+  \item HTML\dotfill \hyperpage{4}
+
+ \end{theindex}

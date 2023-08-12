@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Language }}">
 <head>
-  
   {{ partial "head.html" . }}
   {{ block "customseo" . }}{{ end }}
   {{ with .Params.customheader }}
@@ -10,17 +9,13 @@
 {{ end }}
 </head>
 <body class="w3-light-grey">
-
-
-    
     <header id="header">
-      {{ block "customheader" . }}   
+      {{ block "customheader" . }}
         {{ partial "header.html" . }}
       {{ end }}
     </header>
-    
+
 <div class="w3-content">
-    
       <div>
         {{ if and .IsHome .Site.Params.welcomemessage }}
           <div class="w3-card-4 w3-container" >
