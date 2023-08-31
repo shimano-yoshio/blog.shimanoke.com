@@ -44,6 +44,7 @@ Zsh はコマンド補完がありますが、peco を使うと、
 ここでコマンドを選択するために Emacs のキーバインディングを
 使うことができます。
 
+
 #+caption: peco を起動した情愛
 [[file:images/peco-samoke.png]]
 
