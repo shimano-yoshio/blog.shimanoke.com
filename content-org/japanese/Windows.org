@@ -1,0 +1,137 @@
+#+TITLE: Ubuntu Mate Tips
+#+LANGUAGE: ja
+#+AUTHOR: 島野 善雄
+#+EMAIL: shimano.yoshio@gmail.com
+# 出版した日付
+#+date: 2023-08-31
+# 更新日を自動的につける
+#+hugo_auto_set_lastmod: t
+# 見出しをレベル 6 まで出す
+#+OPTIONS: H:6 num:nil
+#+OPTIONS: toc:1
+#+STARTUP: indent
+#+hugo_type: post
+# 出力するディレクトリ
+#+hugo_base_dir: ../..
+# 出版するファイル名
+#+hugo_section: japanese/docs
+#+OPTIONS: creator:nil author:t
+#+LANGUAGE: ja
+# Hugo のタグ
+#+filetags: Ubuntu "Ubuntu MATE"
+# Hugo のカテゴリー
+#+hugo_categories: Ubuntu
+# #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
+
+* Minisforum UM773 Lite (Mini PC) レビュー
+:PROPERTIES:
+:EXPORT_DATE: <2023-09-01 Fri>
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: ums773-review
+:EXPORT_OPTIONS: toc:t num:t
+:END:
+
+最近 Minisforum UM773 Lite という Mini PC を買ったので、
+レビューを行ないます。
+
+Lite のほうを買いました。 SE ではないです。 SE のほうが
+桜色で綺麗ですうが、中身がいっしょで、かつ、安いので。
+
+この製品の詳細は以下を参考にしてください。
+
+- [[https://store.minisforum.jp/products/minisforum-um773-lite?variant=43979794415782][Minisforum UM773 Lite AMD Ryzen™ 7 7735HS Mini PC – Minisforum JP]]
+
+** スペック
+
+スペックは以下のとおりです。
+
+- CPU : AMD Ryzen™ 7 7735HS 8 コアと 16 スレッド
+- GPU : AMD Radeon™ 680M Graphics （CPU 内蔵）
+- RAM : DDR5 デュアルチャンネル（ SODIMM スロット x2、メモリ 32GB
+- SSD : SDD 1T
+- モニター出力:
+  - 4K/60Hz HDMI X 2
+  - USB4(8K@60Hz)ポート×1
+
+** パッケージと中身
+
+パッケージの外観です。
+ビールの 350 缶を並べてあります。
+小さいですねえ。
+
+#+caption: UM773 のパッケージの外観
+#+attr_html: :alt UM773 のパッケージの外観
+#+ATTR_HTML: :style float:left;margin:20px 20px 20px 0px;
+#+ATTR_HTML: :width 50% :style border:2px solid black;
+[[file:images/um773_pacage.png]]
+
+パッケージの中身です。
+
+
+#+caption: UM773 のパッケージの中身
+#+attr_html: :alt UM773 のパッケージの中身
+#+ATTR_HTML: :style float:left;margin:20px 20px 20px 0px;
+#+ATTR_HTML: :width 50% :style border:2px solid white;
+#+caption: UM773 のパッケージの中身
+[[file:images/um773_Naiyou.png]]
+
+左上から時計まわりに次のものがはいっていました。
+
+- AC アダプタ
+- HDMI ケーブル
+- スタンド
+- 本体
+- Windows11 のセットアップの注意書き
+- マニュアル
+- SSD 用のケーブル
+- ディスレーにマウントするあめの金具
+
+** セットアップの注意点
+
+Windows11 をセットアップするときに
+日本語キーボードが有効になっえいないので、
+付属にの説明書きを見てセットアップを続けてください。
+
+#+attr_html: :alt Windows11 のセットアップの注意書き
+#+ATTR_HTML: :style float:left;margin:20px 20px 20px 0px;
+#+ATTR_HTML: :width 50% :style border:2px solid white;
+#+caption: Windows11 のセットアップの注意書き
+[[file:images/um773_setup_manual.png]]
+
+** 使用感
+
+以下使ってみての感想です。
+
+- 速さ ::
+  VirtualBox で Ubuntu MATE を動かしえいますが、きびきび動きます。
+  まあ、前のパソコンが遅いだけかもしれませんが。
+- ファンの音 ::
+  そんなに気になりません。本体はほとんど熱くなりません。
+  こんな小さな筐体で放熱を確保しているのはすごいと思います。
+- 品質 ::
+  2 週間電源をいれっぱなしにして使用しましたが、問題ないです。
+
+
+** Minisforum UM773 Lite は買いか？
+
+さて、Minisforum UM773 Lite は買いかどうかですが、
+個人的には満足しています。
+私の使用用途:
+
+- 簡単な動画編集
+- 仮想環境でのブログの作成
+- プログラミング
+
+では全く問題ありません。
+
+以下、買うとよいだろう人と、買うべきではない人です。
+
+買うと良い人:
+- 小さなパソコンが欲しい人
+- そこそこの値段で、そこそこの性能が欲しい人
+- GPU をあまり使わない人
+
+買うべきではない人:
+- ゴリゴリのゲームをやる人
+- 機械学習などで GPU をたくさん使いたい人
+
