@@ -18,10 +18,10 @@ pygmentsCodeFences = true # Enable syntax highlighting with GitHub flavoundred c
 # pygmentsOptions = "linenos=table"
 # pygmentsOptions = "linenos=inline"
 # Pygment のスタイル
-pygmentsStyle = "monokai"
+# pygmentsStyle = "monokai"
 # pygmentsStyle = "perldoc"
 # pygmentsStyle = "manni"
-# pygmentsStyle = "github-dark"
+pygmentsStyle = "github-dark"
 
 
 [languages.en]
