@@ -1,7 +1,7 @@
 #+TITLE: LaTeX あれこれ
 #+LANGUAGE: ja
 #+AUTHOR: 島野 善雄
-#+EMAIL: shimano.yoshio@jp.fujitsu.com
+#+EMAIL: shimano.yoshio@gmail.com
 # 出版した日付
 #+date: 2019-03-31
 # 更新日を自動的につける
