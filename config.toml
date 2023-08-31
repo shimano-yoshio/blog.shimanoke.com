@@ -20,8 +20,8 @@ pygmentsCodeFences = true # Enable syntax highlighting with GitHub flavoundred c
 # Pygment のスタイル
 # pygmentsStyle = "monokai"
 # pygmentsStyle = "perldoc"
-# pygmentsStyle = "manni"
-pygmentsStyle = "github-dark"
+pygmentsStyle = "manni"
+# pygmentsStyle = "github-dark"
 
 
 [languages.en]
