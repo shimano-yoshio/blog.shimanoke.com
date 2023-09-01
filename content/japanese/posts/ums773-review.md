@@ -2,7 +2,7 @@
 title = "Minisforum UM773 Lite (Mini PC) レビュー"
 author = ["島野 善雄"]
 date = 2023-09-01T00:00:00+09:00
-lastmod = 2023-08-31T14:31:39+09:00
+lastmod = 2023-09-01T09:25:35+09:00
 tags = ["Ubuntu", """
   "Ubuntu
   """, """

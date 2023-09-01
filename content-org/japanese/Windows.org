@@ -31,6 +31,7 @@
 :EXPORT_OPTIONS: toc:t num:t
 :END:
 
+
 最近 Minisforum UM773 Lite という Mini PC を買ったので、
 レビューを行ないます。
 
