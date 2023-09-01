@@ -10,6 +10,11 @@ paginate = 10
 # has chinese/japanese/korean ? 
 hasCJKLanguage = true
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 # ハイライトオプション
 # See https://gohugo.io/content-management/syntax-highlighting/
 pygmentsCodeFences = true # Enable syntax highlighting with GitHub flavoundred code fences
