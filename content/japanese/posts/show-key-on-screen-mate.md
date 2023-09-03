@@ -1,8 +1,8 @@
 +++
 title = "スクリーン上にキーストロークを表示する (Ubuntu 23.04)"
 author = ["島野 善雄"]
-date = 2023-09-03T00:00:00+09:00
-lastmod = 2023-09-03T12:39:10+09:00
+date = 2023-09-03T12:41:00+09:00
+lastmod = 2023-09-03T12:43:39+09:00
 tags = ["Ubuntu", """
   "Ubuntu
   """, """
@@ -10,7 +10,7 @@ tags = ["Ubuntu", """
   """]
 categories = ["Ubuntu"]
 type = "post"
-draft = true
+draft = false
 +++
 
 <div class="ox-hugo-toc toc has-section-numbers">

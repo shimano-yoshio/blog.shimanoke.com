@@ -28,7 +28,7 @@
 * DONE スクリーン上にキーストロークを表示する (Ubuntu 23.04)
 CLOSED: [2023-09-03 Sun 12:41]
 :PROPERTIES:
-:EXPORT_DATE: <2023-09-03 Sun>
+:EXPORT_DATE: <2023-09-02 Sat>
 :EXPORT_HUGO_SECTION: japanese/posts
 :EXPORT_FILE_NAME: show-key-on-screen-mate
 :EXPORT_OPTIONS: toc:t num:t
