@@ -35,7 +35,7 @@ languageName = "English"
 contentDir = "content/english"
 [languages.en.params]
       authorinfo = "<h4>Authored By Yoshio Shimano</h4>"
-      licenseinfo = ""
+      licenseinfojj = ""
       logotext = "Get out of your door" # logo text
       isso_baseurl=""  #if you want to use isso as comment system,set your isso js baseurl here. It is like "https://isso.yourwebsite.com/" or "https://yourwebsite.com/isso/"
       isso_langcode="en"

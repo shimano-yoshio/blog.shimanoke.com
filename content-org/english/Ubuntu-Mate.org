@@ -1,9 +1,9 @@
 #+TITLE: Ubuntu Mate Tips
-#+LANGUAGE: ja
-#+AUTHOR: 島野 善雄
+#+LANGUAGE: en
+#+AUTHOR: Yoshio Shimano
 #+EMAIL: shimano.yoshio@gmail.com
 # 出版した日付
-#+date: <2023-08-31 Thu>
+#+date: <2024-08-31 Sat>
 # 更新日を自動的につける
 #+hugo_auto_set_lastmod: t
 # 見出しをレベル 6 まで出す
@@ -14,87 +14,79 @@
 # 出力するディレクトリ
 #+hugo_base_dir: ../..
 # 出版するファイル名
-#+hugo_section: japanese/docs
+#+hugo_section: english/docs
 #+OPTIONS: creator:nil author:t
-#+LANGUAGE: ja
+#+LANGUAGE: en
 # Hugo のタグ
 #+filetags: Ubuntu "Ubuntu MATE"
 # Hugo のカテゴリー
 #+hugo_categories: Ubuntu
 # #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
 
-
-
-* DONE スクリーン上にキーストロークを表示する (Ubuntu 23.04)
+* DONE Show Keystrokes on your Screen (Ubuntu 23.04)
 CLOSED: [2023-09-03 Sun 12:41]
 :PROPERTIES:
 :EXPORT_DATE: <2023-09-03 Sun>
-:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_HUGO_SECTION: english/posts
 :EXPORT_FILE_NAME: show-key-on-screen-mate
 :EXPORT_OPTIONS: toc:t num:t
 :END:
 :LOGBOOK:
-- State "DONE"       from "TODO"       [2023-09-03 Sun 12:41]
 CLOCK: [2023-09-03 Sun 09:56]
 :END:
 
-ときどき、プレゼンテーションの間のように、
-キーストロークを画面に表示したいことがあります。
+Sometimes you may want to show your keystoroke on the screen,
+for example, during a presentation.
 
-このために、私は [[https://www.thregr.org/wavexx/software/screenkey/][screenkey]] を使っていあます。
+For this, I use [[https://www.thregr.org/wavexx/software/screenkey/][screenkey]].
 
 - [[https://www.thregr.org/wavexx/software/screenkey/][Screencast your keys.]]
 
-この記事では、
-Screenkey のインストール/セットアップ方法を示します。
+In this article, I'll show you how to install/use Screenkye.
 
-** 環境
+** Environment
 
 - OS: Ubuntu Mate 23.04 on VirtualBox] on Windows 11.
 
 
-** screenkey のインストール
+** Installl screenkey:
 
-Screenky を Ubuntu にインストールするには、
-これをターミナルの中でタイプします:
+To install Screenky on Ubuntu, type this in your terminal:
 
 #+caption: Install Screenkye
 #+begin_src sh :eval no
 sudo apt -y install screenkey
 #+end_src
 
-** Screnkye をはじめる
-次に
-screenkey をターミナルからはじめます:
+** Start Screnkye
+Then start screenkey from your terminal:
 
 #+caption: Start Screenkey
 #+begin_src sh :eval no
 screenkey
 #+end_src
 
-その後で screenkey アイコンが
-メインメニュー上に表示されます:
+After that, screenkey's menu apeears
+on the main menu.
 
 #+attr_html: :alt Screenkye Icon on Main Menu
 #+ATTR_HTML: :width 50% :style float:center;border:2px solid black;
-#+caption: Screenkye のアイコン
+#+caption: Screenkye Icon on Main Menu
 [[file:~/Documents/blog.shimanoke.com/content-org/japanese/images/screenshot-menu.png]]
 
-"Preferences" を選択して、
-自分の好みに設定してください。
+Select "Preferences", and set diaplay duration etc.
 
-#+attr_html: :alt Screenkey の設定
+#+attr_html: :alt Screenkye Prefs
 #+ATTR_HTML: :width 50% :style border:2px solid black;
-#+caption: Screenkey の設定
+#+caption: Screenkye Prefs.
 [[file:~/Documents/blog.shimanoke.com/content-org/japanese/images/screenky-prefs.png]]
 
 
-... そうすると、キーストロークがスクリーン上に
-表示されることがわかります。
+...and you can see keystorokes are shown on the screen:
 
-#+attr_html: :al Screenkey の動いている様子
+#+attr_html: :al tScreenkey in Action
 #+ATTR_HTML: :width 50% :style border:2px solid black;
-#+caption: Screenkey の動いている様子
+#+caption: Screenkey in Action
 [[file:~/Documents/blog.shimanoke.com/content-org/japanese/images/screenkye.gif]]
 
 
@@ -102,16 +94,12 @@ screenkey
 
 
 
-
-* DONE peco を使って zsh でコマンド履歴を便利にする
+* TODO peco を使って zsh でコマンド履歴を便利にする
 :PROPERTIES:
-:EXPORT_DATE: <2023-08-31 Thu>
+:EXPORT_DATE: <2023-09-04 Mon>
 :EXPORT_HUGO_SECTION: japanese/posts
 :EXPORT_FILE_NAME: use-peco-in-zsh
 :EXPORT_OPTIONS: toc:t num:t
-:END:
-:LOGBOOK:
-- State "DONE"       from              [2023-09-03 Sun 09:54]
 :END:
 
 私はシェルとして Zsh を使っています。
