@@ -63,7 +63,7 @@ Screenky を Ubuntu にインストールするには、
 sudo apt -y install screenkey
 #+end_src
 
-** Screnkye をはじめる
+** Screnkey をはじめる
 次に
 screenkey をターミナルからはじめます:
 

@@ -2,7 +2,7 @@
 title = "スクリーン上にキーストロークを表示する (Ubuntu 23.04)"
 author = ["島野 善雄"]
 date = 2023-09-03T12:41:00+09:00
-lastmod = 2023-09-03T12:43:39+09:00
+lastmod = 2023-09-03T13:13:21+09:00
 tags = ["Ubuntu", """
   "Ubuntu
   """, """
@@ -19,7 +19,7 @@ draft = false
 
 - <span class="section-num">1</span> [環境](#環境)
 - <span class="section-num">2</span> [screenkey のインストール](#screenkey-のインストール)
-- <span class="section-num">3</span> [Screnkye をはじめる](#screnkye-をはじめる)
+- <span class="section-num">3</span> [Screnkey をはじめる](#screnkey-をはじめる)
 
 </div>
 <!--endtoc-->
@@ -54,7 +54,7 @@ sudo apt -y install screenkey
 </div>
 
 
-## <span class="section-num">3</span> Screnkye をはじめる {#screnkye-をはじめる}
+## <span class="section-num">3</span> Screnkey をはじめる {#screnkey-をはじめる}
 
 次に
 screenkey をターミナルからはじめます:
