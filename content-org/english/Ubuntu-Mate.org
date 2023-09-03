@@ -58,7 +58,7 @@ To install Screenky on Ubuntu, type this in your terminal:
 sudo apt -y install screenkey
 #+end_src
 
-** Start Screnkye
+** Start Screnkey
 Then start screenkey from your terminal:
 
 #+caption: Start Screenkey

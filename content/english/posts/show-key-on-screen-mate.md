@@ -2,7 +2,7 @@
 title = "Show Keystrokes on your Screen (Ubuntu 23.04)"
 author = ["Yoshio Shimano"]
 date = 2023-09-03T12:41:00+09:00
-lastmod = 2023-09-03T12:44:19+09:00
+lastmod = 2023-09-03T13:14:27+09:00
 tags = ["Ubuntu", """
   "Ubuntu
   """, """
@@ -19,7 +19,7 @@ draft = false
 
 - <span class="section-num">1</span> [Environment](#environment)
 - <span class="section-num">2</span> [Installl screenkey:](#installl-screenkey)
-- <span class="section-num">3</span> [Start Screnkye](#start-screnkye)
+- <span class="section-num">3</span> [Start Screnkey](#start-screnkey)
 
 </div>
 <!--endtoc-->
@@ -52,7 +52,7 @@ sudo apt -y install screenkey
 </div>
 
 
-## <span class="section-num">3</span> Start Screnkye {#start-screnkye}
+## <span class="section-num">3</span> Start Screnkey {#start-screnkey}
 
 Then start screenkey from your terminal:
 
