@@ -31,9 +31,6 @@ CLOSED: [2023-09-03 Sun 12:41]
 :EXPORT_FILE_NAME: show-key-on-screen-mate
 :EXPORT_OPTIONS: toc:t num:t
 :END:
-:LOGBOOK:
-CLOCK: [2023-09-03 Sun 09:56]
-:END:
 
 Sometimes you may want to show your keystoroke on the screen,
 for example, during a presentation.

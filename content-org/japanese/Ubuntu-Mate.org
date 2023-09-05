@@ -23,6 +23,128 @@
 #+hugo_categories: Ubuntu
 # #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
 
+* DONE ripgrep （Rust で作られた grep ）を使う
+CLOSED: [2023-09-05 Tue 15:32]
+:PROPERTIES:
+:EXPORT_DATE: <2023-09-04 Mon>
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: use-ripgrep
+:EXPORT_OPTIONS: toc:t num:t
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2023-09-05 Tue 15:32]
+CLOCK: [2023-09-05 Tue 15:15]--[2023-09-05 Tue 15:32] =>  0:17
+CLOCK: [2023-09-05 Tue 15:10]--[2023-09-05 Tue 15:13] =>  0:03
+CLOCK: [2021-11-23 Tue 10:01]--[2021-11-23 Tue 10:07] =>  0:06
+CLOCK: [2021-11-23 Tue 10:00]--[2021-11-23 Tue 10:01] =>  0:01
+:END:
+
+ripgrep は Rust で作られた grep です。
+次のような特徴があります。
+
+- マルチスレッドで動くので速い
+- grep よりも短かくコマンドを書くことができる
+
+詳しくは以下をごらんください。
+
+- [[https://github.com/BurntSushi/ripgrep][BurntSushi/ripgrep: ripgrep recursively searches directories for a regex pattern while respecting your gitignore]]
+
+
+** Ubuntu MATE 23.04 への ripgrep インストール
+
+Ubuntu MATE 23.04 に ripgrep をインストールするには
+次のようにします:
+
+#+caption: Ubuntu への ripgrep のインストール
+#+begin_src sh :eval no
+sudo apt-get install ripgrep
+#+end_src
+
+** ripgrep の使いかた
+
+ripgrep を使ってカレントディレクトリを "hoge" に対して再起動に検索するには
+次のようにします。
+
+#+caption: ripgrep を使ってカレントディレクトリを "hoge" に対して再起動に検索
+#+begin_src sh :eval no
+rg hoge
+#+end_src
+
+"rg" は ripgrep の実行ファイル名です。
+
+これは次のようにして grep を使った場合と同様です:
+
+#+caption: grep を使ってカレントディレクトリを "hoge" に対して再起動に検索
+#+begin_src sh :eval no
+grep -r hoge *
+#+end_src
+
+ただし、 ripgrep のほうがずっと速く、
+コマンドが短か、
+出力が読みやすいです。
+
+もちろん日本語も検索できます
+
+#+caption: ripgrep で日本語を検索
+#+begin_src sh :eval no
+rg カレントディレクトリ
+#+end_src
+
+このように出力されます:
+
+#+begin_example
+Ubuntu-Mate.org
+63:ripgrep を使ってカレントディレクトリを "hoge" に対して再起動に検索するには
+66:#+caption: ripgrep を使ってカレントディレクトリを "hoge" に対して再起動に検索
+75:#+caption: ripgrep を使ってカレントディレクトリを "hoge" に対して再起動に検
+#+end_example
+
+
+** 結論
+
+grep のかわりに ripgrep を使いましょう。
+
+
+
+* TODO ラウンチャ Albert を Ubuntu で使う
+DEADLINE: <2023-09-12 Tue>
+:PROPERTIES:
+:EXPORT_DATE: <2023-09-10 Sun>
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: use-alert
+:EXPORT_OPTIONS: toc:t num:t
+:END:
+:LOGBOOK:
+CLOCK: [2021-12-02 Thu 08:13]--[2021-12-02 Thu 08:37] =>  0:24
+CLOCK: [2021-12-02 Thu 08:12]--[2021-12-02 Thu 08:13] =>  0:01
+:END:
+
+- [[https://albertlauncher.github.io/installing/][Albert - Installing]]
+
+
+** インストールした環境
+
+- OS : Ubuntu MATE 23.04 on VirtualBox on Windowss 11
+
+
+** Albert のインストール
+
+次のようにして Albert をインストールします。
+詳しくは以下をごらんください。
+
+- [[https://software.opensuse.org/download.html?project=home%3Amanuelschneid3r&package=albert-master][パッケージのインストール: home:manuelschneid3r / albert-master]]
+
+#+caption: Albert のインストール
+#+begin_src sh :eval no
+echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_23.04/ /' | sudo tee /etc/apt/sources.list.d/home:manuelschneid3r.list
+curl -fsSL https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_23.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_manuelschneid3r.gpg > /dev/null
+sudo apt update
+sudo apt install albert-master
+#+end_src
+
+
+** Albert を使う
+
 
 
 * DONE スクリーン上にキーストロークを表示する (Ubuntu 23.04)
@@ -35,7 +157,6 @@ CLOSED: [2023-09-03 Sun 12:41]
 :END:
 :LOGBOOK:
 - State "DONE"       from "TODO"       [2023-09-03 Sun 12:41]
-CLOCK: [2023-09-03 Sun 09:56]
 :END:
 
 ときどき、プレゼンテーションの間のように、
