@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-sudo add\PYGZhy{}apt\PYGZhy{}repository ppa:gophers/archive
-sudo apt update
-sudo apt install golang\PYGZhy{}1.11\PYGZhy{}go
-\end{Verbatim}

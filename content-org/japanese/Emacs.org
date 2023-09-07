@@ -1,0 +1,34 @@
+#+TITLE: Emacs Tips
+#+LANGUAGE: ja
+#+AUTHOR: 島野 善雄
+#+EMAIL: shimano.yoshio@gmail.com
+# 出版した日付
+#+date: <2023-08-31 Thu>
+# 更新日を自動的につける
+#+hugo_auto_set_lastmod: t
+# 見出しをレベル 6 まで出す
+#+OPTIONS: H:6 num:nil
+#+OPTIONS: toc:1
+#+STARTUP: indent
+#+hugo_type: post
+# 出力するディレクトリ
+#+hugo_base_dir: ../..
+# 出版するファイル名
+#+hugo_section: japanese/docs
+#+OPTIONS: creator:nil author:t
+#+LANGUAGE: ja
+# Hugo のタグ
+#+filetags: Emacs
+# Hugo のカテゴリー
+#+hugo_categories: Ubuntu
+# #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
+
+
+* Emacs についてコツ                                           :RefileTarget:
+** TODO Chemacs を使って複数のEmacsをたちあげる
+:PROPERTIES:
+:EXPORT_DATE: <2023-09-09 Sat>
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: use-chemacs
+:EXPORT_OPTIONS: toc:t num:t
+:END:

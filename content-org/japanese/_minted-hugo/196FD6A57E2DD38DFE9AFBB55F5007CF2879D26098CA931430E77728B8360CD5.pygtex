@@ -1,7 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYGZsh{}+HTML: \PYGZob{}\PYGZob{}\PYGZpc{} blockquote width=\PYGZdq{}70\PYGZpc{}\PYGZdq{} \PYGZpc{}\PYGZcb{}\PYGZcb{}
-\PYGZsh{}+begin\PYGZus{}quotation :author Shimano
-こんなものですかね。引用は。うまくいきます？
-\PYGZsh{}+end\PYGZus{}quotation
-\PYGZsh{}+HTML: \PYGZob{}\PYGZob{}\PYGZlt{} /blockquote \PYGZgt{}\PYGZcb{}\PYGZcb{}
-\end{Verbatim}

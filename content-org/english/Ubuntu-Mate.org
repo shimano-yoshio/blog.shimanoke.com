@@ -23,7 +23,9 @@
 #+hugo_categories: Ubuntu
 # #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
 
-* DONE Show Keystrokes on your Screen (Ubuntu 23.04)
+
+* Ubuntu Tips                                                  :RefileTarget:
+** DONE Show Keystrokes on your Screen (Ubuntu 23.04)
 CLOSED: [2023-09-03 Sun 12:41]
 :PROPERTIES:
 :EXPORT_DATE: <2023-09-02 Sat>
@@ -41,12 +43,12 @@ For this, I use [[https://www.thregr.org/wavexx/software/screenkey/][screenkey]]
 
 In this article, I'll show you how to install/use Screenkye.
 
-** Environment
+*** Environment
 
 - OS: Ubuntu Mate 23.04 on VirtualBox] on Windows 11.
 
 
-** Installl screenkey:
+*** Installl screenkey:
 
 To install Screenky on Ubuntu, type this in your terminal:
 
@@ -55,7 +57,7 @@ To install Screenky on Ubuntu, type this in your terminal:
 sudo apt -y install screenkey
 #+end_src
 
-** Start Screnkey
+*** Start Screnkey
 Then start screenkey from your terminal:
 
 #+caption: Start Screenkey
@@ -91,7 +93,7 @@ Select "Preferences", and set diaplay duration etc.
 
 
 
-* TODO peco を使って zsh でコマンド履歴を便利にする
+** TODO peco を使って zsh でコマンド履歴を便利にする
 :PROPERTIES:
 :EXPORT_DATE: <2023-09-04 Mon>
 :EXPORT_HUGO_SECTION: japanese/posts
@@ -115,12 +117,12 @@ Zsh はコマンド補完がありますが、peco を使うと、
 #+caption: peco を起動した情愛
 [[file:images/peco-samoke.png]]
 
-** この文書の設定できること
+*** この文書の設定できること
 
 - コマンド履歴の検索 (Ctl+r)
 - cd の履歴の検索 (Ctl+f)
 
-** 参考文献
+*** 参考文献
 
 
 以下のサイトを参考にさせていただきました。
@@ -128,14 +130,14 @@ Zsh はコマンド補完がありますが、peco を使うと、
 - [[https://github.com/peco/peco][peco/peco: Simplistic interactive filtering tool]] : peco 本家
 - [[https://www.wakuwakubank.com/posts/862-mac-zsh-peco/][Mac | zshとpecoでコマンド入力作業を快適に - わくわくBank]] : zsh から
   peco を使う方法が詳しくのっています。
-** 確認環境
+*** 確認環境
 確認した環境です。
 私は Ubuntu MATE を使っていますが、Windows でも動くようです。
 
 - Host OS : Windows11 Pro
 - Guest OS : Ubuntu Mate 23.04 on VirtualBox
 
-** peco のインストール
+*** peco のインストール
 
 peco をインストールするには次のようにします:
 
@@ -144,7 +146,7 @@ peco をインストールするには次のようにします:
 sudo apt -y install peco
 #+end_src
 
-** Zsh で peco を使うための設定
+*** Zsh で peco を使うための設定
 
 =~/.zshrc= に以下を追加します。
 
@@ -195,7 +197,7 @@ bindkey '^f' peco-cdr
 #+end_src
 
 
-** 使用方法
+*** 使用方法
 
 - コマンド履歴の検索 (Ctl+r)
 - cd の履歴の検索 (Ctl+f)
