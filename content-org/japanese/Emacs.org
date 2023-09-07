@@ -25,10 +25,360 @@
 
 
 * Emacs についてコツ                                           :RefileTarget:
-** TODO Chemacs を使って複数のEmacsをたちあげる
+
+** Ubuntu MATE で複数のEmacsディストリビューションを動かす
 :PROPERTIES:
-:EXPORT_DATE: <2023-09-09 Sat>
+:EXPORT_DATE: <2023-09-06 Wed>
 :EXPORT_HUGO_SECTION: japanese/posts
-:EXPORT_FILE_NAME: use-chemacs
+:EXPORT_FILE_NAME: install-emacs-on-ubuntu
 :EXPORT_OPTIONS: toc:t num:t
 :END:
+
+*** 目的
+Ubuntu MATE 23.04にEmacsをインストールする方法を説明します。
+
+また、[[https://github.com/plexus/chemacs2][chemacs2]] を使って複数の Emacsを同時に動かせるようにします。
+
+以下のツールを使います。
+
+- [[https://github.com/plexus/chemacs2][chemacs2]] :: Emacsのバージョンスッチャー
+- [[https://www.spacemacs.org/][Spacemacs]] :: 人気のあるEmacsのディストリビューション
+- [[https://github.com/doomemacs/doomemacs][doomemacs]] :: これも人気のあるEmacsのディストリビューション
+
+*** 今回の目標のイメージ
+
+今回の設定を行なうと下図のように Spacemacsと
+Doom Emacs を同時に動かすことができます。
+
+#+caption: Spacemacsと Doom Emacs を同時に動かす
+#+attr_html: :alt Spacemacsと Doom Emacs を同時に動かす
+#+ATTR_HTML: :style float:left;margin:20px 20px 20px 0px;
+#+ATTR_HTML: :width 50% :style border:2px solid white;
+[[file:images/spaceemacs-and-doom.png]]
+
+*** 環境
+
+今回Emacsをインストールする環境です。
+
+- Guest OS :: [[https://ubuntu-mate.org/][Ubuntu MATE]] 23.04
+- Host OS :: Windowd 11 Professional
+- VM 環境: [[https://www.virtualbox.org/][VirtualBox]] 7.0.100
+
+*** Ubuntu MATE へのEmacsのインストール
+
+Ubuntu MATE へEmacsのインストールするには次のようにします。
+
+#+caption: Ubuntu MATE へのEmacsのインストール
+#+begin_src sh :eval no
+sudo apt -y install emacs emacs-gtk
+#+end_src
+
+Emacsのバージョンを確認します:
+
+#+caption: Emacsのバージョン確認
+#+begin_src sh :eval no
+emacs --version
+#+end_src
+
+#+begin_example
+GNU Emacs 28.2
+Copyright (C) 2022 Free Software Foundation, Inc.
+GNU Emacs comes with ABSOLUTELY NO WARRANTY.
+You may redistribute copies of GNU Emacs
+under the terms of the GNU General Public License.
+For more information about these matters, see the file named COPYING.
+#+end_example
+
+以上でEmacs自体のインストールは終了です。
+
+*** Chemacs を使って複数のEmacsをたちあげる
+
+複数のEmacsの異なるディストリビューション、
+異なるバージョンを動かしたいことがあります。
+そのために私は [[https://github.com/plexus/chemacs2][chemacs2]] を使っていあます。
+
+今回は次の2 つのEmacsのディストリビューションを
+動かします。
+
+- [[https://www.spacemacs.org/][Spacemacs]]
+- [[https://github.com/doomemacs/doomemacs][doomemacs]]
+
+[[https://github.com/plexus/chemacs2][chemacs2]] の詳細は以下をごらんください。
+
+- [[https://github.com/plexus/chemacs2][plexus/chemacs2: Emacs version switcher, improved]]
+
+
+**** 今回使用するディレクトリ
+
+今回使うディレクトリの説明です。
+「[[*chemacs の設定][chemacs の設定]]」で重要になります。
+
+- =~/.emacs.d= :: chemacs 用のファイルがはいります
+- =~/EmacsDist= :: 複数のEmacsのディレクトリを置くディレクトリ
+- =~/EmacsDist/Spacemacs= :: Spqcemacs のディレクトリ
+- =~/EmacsDist/DoomEmacs= :: Doom Emacs のディレクトリ
+- =~/.spacemacs.d= :: Spacemacs用の設定がはいるディレクトリ
+- ==~/.doom.d= :: Doom Emacs 用の設定がはいるディレクトリ
+
+**** chemacs のインストール
+
+[[https://github.com/plexus/chemacs2][chemacs2]] をインストールします。
+ターミナルンから次を順番に実行してください
+
+#+caption: chemacs のインストール
+#+begin_src sh :eval no
+  # .emacs ファイルの退避
+  [ -f ~/.emacs ] && mv ~/.emacs ~/.emacs.bak
+  # .emacs.d ディレクトリの退避
+  [ -d ~/.emacs.d ] && mv ~/.emacs.d ~/.emacs.default
+  # Chemacs のインストール
+  git clone https://github.com/plexus/chemacs2.git ~/.emacs.d
+#+end_src
+
+既存のEmacs設定があった場合には、次のように退避されます:
+
+- /~/.emacs/ → /~/.emacs.bak/
+- /~/.emacs.d/ → /~/.emacs.defaulta/
+
+以上でchemacs のインストールは終了です。
+
+**** Spacemacsのインストール
+
+今回使用するディレクトリは次のとおりです。
+
+- =~/EmacsDist/Spacemacs= :: Spqcemacs のディレクトリ
+- =~/EmacsDist/DoomEmacs= :: Doom Emacs のディレクトリ
+
+
+***** =~/EmacsDist= ディレクトリの作成
+各種Emacsのディストリビューションを格納するディレクトリを作成します
+
+#+caption: 各種Emacsのディストリビューションを格納するディレクトリno作成
+#+begin_src sh :eval no
+mkdir ~/EmacsDist
+#+end_src
+
+***** Spacemacsのレポジトリのクローン
+
+Spacemacsのレポジトリをクローンします。
+
+#+caption: Spacemacsのレポジトリのクローン
+#+begin_src sh :eval no
+cd ~/EmacsDist
+git clone https://github.com/syl20bnr/spacemacs ~/EmacsDist/Spacemacs
+#+end_src
+
+"develop" ブランチをチェックアウトします
+必要ないかもしれません。
+
+#+caption: "develop" ブランチのチェックアウト
+#+begin_src sh :eval no
+cd Spacemacs
+git checkout develop
+#+end_src
+
+***** =~/.spacemacs.d= ディレクトリの作成
+
+Spacemacsの設定ファイルを格納する
+=~/.spacemacs.d= ディレクトリを作成します。
+
+#+caption: =~/.spacemacs.d= ディレクトリの作成
+#+begin_src sh :eval no
+mkdir ~/.spacemacs.d
+#+end_src
+
+ディレクトリの "init.el" ファイルをコピーします。
+
+#+caption: ディレクトリの "init.el" ファイルをコピー
+#+begin_src sh :eval no
+cp ~/EmacsDist/Spacemacs/init.el .spacemacs.d
+#+end_src
+
+以上でSpacemacsのインストールは終了です。
+
+**** Doom Emacs のインストール
+
+doom Emacs をインストールします。
+使用されるディレクトリです。
+
+- =~/.spacemacs.d= :: Spacemacs用の設定がはいるディレクトリ
+- ==~/.doom.d= :: Doom Emacs 用の設定がはいるディレクトリ
+
+
+- =~/.spacemacs.d= :: Spacemacs用の設定がはいるディレクトリ
+- ==~/.doom.d= :: Doom Emacs 用の設定がはいるディレクトリ
+  （doom instal で自動的に作成されます）
+
+
+***** Doom Emacs のレポジトリをクローン
+Doom Emacs のレポジトリをクローンします:
+すぐに終わります。
+
+#+caption: Doom Emacs のレポジトリをクローン
+#+begin_src sh :eval no
+  cd ~/EmacsDist
+  git clone --depth 1 https://github.com/doomemacs/doomemacs ~/EmacsDist/DoomEmacs
+#+end_src
+
+***** =doom install= の実行
+次に Doom Emacs をインストールします。
+結構時間がかかります。
+途中で質問がでるので "y" と入力します。
+
+=~/.doom.d= という、設定ファイルを格納するフォルダが作成されます。
+
+#+caption: doom installの実行
+#+begin_src sh :eval no
+~/EmacsDist/DoomEmacs/bin/doom install
+#+end_src
+
+#+begin_example
+Installing Doom Emacs!
+
+✓ Created ~/.doom.d/
+  - Creating ~/.doom.d/init.el
+  ✓ Done!
+  - Creating ~/.doom.d/config.el
+  ✓ Done!
+  - Creating ~/.doom.d/packages.el
+  ✓ Done!
+Generate an envvar file? (see `doom help env` for details) (y or n) y
+# y と入力します
+
+> Generating envvars file
+  ✓ Generated ~/EmacsDist/DoomEmacs/.local/env
+Installing plugins
+> Installing straight...
+...省略
+
+Download and install all-the-icon's fonts? (y or n) Please answer y or n.  Download and install all-the-icon's fonts? (y or n) Please answer y or n.  Download and install all-the-icon's fonts? (y or n) y
+# y と入力します
+✓  Finished! Doom is ready to go!
+
+But before you doom yourself, here are some things you should know:
+
+1. Don't forget to run 'doom sync', then restart Emacs, after modifying init.el
+   or packages.el in ~/.config/doom.
+
+   This command ensures needed packages are installed, orphaned packages are
+   removed, and your autoloads/cache files are up to date. When in doubt, run
+   'doom sync'!
+
+2. If something goes wrong, run `doom doctor`. It diagnoses common issues with
+   your environment and setup, and may offer clues about what is wrong.
+
+3. Use 'doom upgrade' to update Doom. Doing it any other way will require
+   additional steps. Run 'doom help upgrade' to understand those extra steps.
+
+4. Access Doom's documentation from within Emacs via 'SPC h d h' or 'C-h d h'
+   (or 'M-x doom/help')
+
+Have fun!
+
+✓ Finished in 9m 48s
+#+end_example
+
+***** 、=doom sync= の実行
+上の出力に書いてあるとおり、=doom sync= を実行します。
+
+#+caption: doom sync の実行
+#+begin_src sh :eval no
+~/EmacsDist/DoomEmacs/bin/doom sync
+#+end_src
+
+#+begin_example
+> Synchronizing "default" profile...
+  > Regenerating envvars file
+    ✓ Generated ~/EmacsDist/DoomEmacs/.local/env
+  > Installing packages...
+    - No packages need to be installed
+  > (Re)building packages...
+    - No packages need rebuilding
+  > Purging orphaned packages (for the emperor)...
+    - Skipping builds
+    - Skipping elpa packages
+    - Skipping repos
+    - Skipping regrafting
+    - Skipping native bytecode
+  > (Re)building profile in /home/shimano/EmacsDist/DoomEmacs/.local/etc/@/...
+    > Deleting old init files...
+    > Generating 4 init files...
+    > Byte-compiling ~/EmacsDist/DoomEmacs/.local/etc/@init.28.el...
+    ✓ Built init.28.elc
+  - Restart Emacs or use 'M-x doom/reload' for changes to take effect
+#+end_example
+
+
+以上で Doom Emacsのインストールが終了しました。
+
+**** chemacs の設定
+
+***** =~/.emacs-profiles.el=
+=~/.emacs-profiles.el= を作成し、
+次のように入力します。
+
+#+BEGIN_SRC elisp :eval no
+(("spacemacs" . ((user-emacs-directory . "~/EmacsDist/Spacemacs")
+                 (env . (("SPACEMACSDIR" . "~/.spacemacs.d")))))
+
+ ("doom" . ((user-emacs-directory . "~/EmacsDist/DoomEmacs")
+            (env . (("DOOMDIR" . "~/.doom.d"))))))
+#+END_SRC
+
+以下パラメータの説明です。
+
+- spacemacs
+  - user-emacs-directory  ::
+    =~/EmacsDist/Spacemacs= はSpacemacsのレポジトリを
+    クローンしたディレクトリです
+  - SPACEMACSDIR ::
+    =~/.spacemacs.d= はSpacemacsの設定ファイルがあるディレクトリです。
+ー doom
+  - user-emacs-directory ::
+    ="~/EmacsDist/DoomEmacs= は Doom Emacs のレポジトリを
+    クローンしたディレクトリでう。
+    - DOOMDIR ::
+      =~/.doom.d= は Doom Emacs の設定ファイルがあるディレクトリです
+
+***** =~/.emacs-profile=
+
+=~/.emacs-profile= を作成し、次のように入力します。
+
+#+caption: =~/.emacs-profile=
+#+begin_src sh :eval no
+spacemacs
+#+end_src
+
+"spacemacs" は =~/.emacs-profiles.el= の中で指定した
+エントリーの名前です。ここで指定したものが "emacs" 単体で
+起動したときに使用されます。
+
+以上で chemacs の設定は終了です。
+
+
+**** chemacs の使いかた
+
+Spacemacsを起動するには次のようにします.
+
+#+caption: Spacemacsを起動する
+#+begin_src sh :eval no
+  emacs --with-profile spacemacs
+  # または
+  emacs
+#+end_src
+
+
+Doom Emacsを立ち上げるには次のようにします。
+
+#+caption: Doom Emacsを立ち上げる
+#+begin_src sh :eval no
+emacs --with-profile doom
+#+end_src
+
+*** 結論
+
+今回は  [[https://github.com/plexus/chemacs2][chemacs2]]  を使って、
+Ubuntu 上でSpacemacsと Doom Emaccs を動かす
+方法を紹介しました。
+
+Spacemacsの使いかた/設定については別の機械に紹介します。
