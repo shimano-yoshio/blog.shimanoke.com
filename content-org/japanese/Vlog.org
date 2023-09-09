@@ -1,0 +1,294 @@
+#+TITLE: Vlog Tips
+#+LANGUAGE: ja
+#+AUTHOR: 島野 善雄
+#+EMAIL: shimano.yoshio@gmail.com
+# 出版した日付
+#+date: <2023-08-31 Thu>
+# 更新日を自動的につける
+#+hugo_auto_set_lastmod: t
+# 見出しをレベル 6 まで出す
+#+OPTIONS: H:6 num:nil
+#+OPTIONS: toc:1
+#+STARTUP: indent
+#+hugo_type: post
+# 出力するディレクトリ
+#+hugo_base_dir: ../..
+# 出版するファイル名
+#+hugo_section: japanese/docs
+#+OPTIONS: creator:nil author:t
+#+LANGUAGE: ja
+# Hugo のタグ
+#+filetags: Emacs
+# Hugo のカテゴリー
+#+hugo_categories: Ubuntu
+# #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
+
+
+* Vlog のコツ                               :RefileTarget:
+
+
+** Vlog 作成
+
+
+*** 画面キャプチャに注射をつける
+
+- [[https://www.pinta-project.com/][Pinta: Painting Made Simple]]
+
+: sudo apt -y install pinta
+
+- [[https://krita.org/en/][Krita | Digital Painting. Creative Freedom.]]
+
+: sudo apt -y insall krita
+
+
+[[https://ubuntuhandbook.org/index.php/2021/11/install-annotator-ppa-ubuntu/][Ubuntu PPA for Annotator – Elementary OS Image Annotation Tool | UbuntuHandbook]]
+
+
+
+** TODO Davinci Resolve 18 のトレーニングをやる
+:LOGBOOK:
+CLOCK: [2023-09-08 Fri 12:10]
+:END:
+
+- [[https://www.blackmagicdesign.com/jp/products/davinciresolve/training][DaVinci Resolve 18 – トレーニング | Blackmagic Design]]
+
+- [[https://www.youtube.com/watch?v=ZTbh928Qk3o&list=PLMdjXm5WUUy1SYJmJoNHY3E29nmtP9sCP][DaVinci Resolve 18 入門講座 #1｜動画編集の基礎（エディットページ） - YouTube]]
+
+
+
+*** 準備
+
+**** トレーニングブックのダウンロード
+#+caption: トレーニングブックのダウンロード
+[[file:images/download-dvcrv-training-book.png]]
+
+**** トレーニングで使用するプロジェクトファイルのダウンロード
+
+#+caption: トレーニングで使用するプロジェクトファイルのダウンロード
+[[file:images/download-dvh-project.png]]
+
+*** レッスン 1 Edit Page の中での編集
+
+映画とビデオのコンテンツを作成することは
+とてもクリエイティブであい
+エキサイティングであり
+価値のあるプロセスです。
+しかしそれは、
+精度と性格さを必要とする、努力が必要なプロセスでもあります。
+何十年もの映画制作の中で開発されてきた、
+強力だけれど、簡単に使うことができる非線形編集ツールの機能が、
+Edit ページにあり、
+あなたが DaVinci Resolve 18 を探求する中での
+素晴しい次のステップです。
+
+よって、
+あなたがビデオ編集が初めてであろうとも、
+既に経験を積んだプロフェッショナルであろうとも、
+Edit ページが、
+ストーリーを伝えるために必要な、
+全てのツールが見つかる場所です。
+
+次の 2 つのレッスンンで、
+思考過程のいくつかと、
+編集の間にしばしば世界中で起きる幸せなアクシデントを、
+あなたは楽しむことができるように、
+Brian J. Terwilliger によって監督された
+ドキュメンタリ映画
+「Living in the Age of Airplanes」用の短かいトレーラーを、
+あなたは編集します。
+
+**** プロジェクトのインポートと再リンク
+
+既にセットアップされていて、
+このトレーラーを編集するために必要な含んでいる
+プロジェクトをインポートすることによって、
+あなたはあこのレッスンをはじめます。
+
+注意: あなたはプロジェクト設定について
+レッスン 6 でさらに学びます。
+
+1. Project Manager を表示するために
+   DaVinci Resolve を開きます。
+
+2. 「Project Manager」 の左下で、
+   Import ボタンをクリックします。
+
+3. 「R18 Beginner Guide Lessons / Lesson 01」
+   フォルダに行って、
+   「Age of Airplanes.drp」というファイルを選択します。
+
+   注意:
+   これが DaVinci Resolve Project ファイルであるということを、
+   .drp というファイル拡張子は示しています。
+   このようにしてプロジェクトファイルを使うということが、
+   特にあなたがローカルなプロジェクトライブラリを使っている場合に、
+   プロジェクトを他のユーザーと交換するための良い方法です
+   プロジェクトライブラリについてと
+   あなた自身の .drp ファイルの作成方法について、
+   あなたはレッスン 9 でさらに学びます。
+
+4. Open をクリックする
+   このプロジェクトが
+   Project Manager の
+   現在のプロジェクトライブラリに対して追加されます。
+
+   注意:
+   DaVinci Resolve ha
+   プロジェクトファイルを直接あなたのシステムから「開き」ません。
+   かわりに .drp ファイルは
+   into the current project library
+   現在のプロジェクトライブラリの中に直接コピーされます。
+   よって、
+   プロジェクトに対する全ての変更が、
+   プロジェクトライブラリの中にあるコピーに対してだけ適用されます。
+
+5. 「Age of Airplanes」 プロジェクトを開くためにそれを
+   ダブルクリックし、
+   必要であれば、
+    Edit ページのボタンをクリックします。
+
+  6. Edit ページのワークスペースを
+    デフォルトのコンフィギュレーションへリセットするために、
+    Workspace > Reset UI Layout を選択します。
+
+  7. bin リストの中で、
+    中身を表示するために 「VIDEO CLIPS」 bin を選択します。
+
+    現在、
+    このプロジェクトの中にある全てのクリックが
+    オフラインで表示しています。
+    クリックが最初にインポートされたときに、
+    元々このプロジェクトによって確立された、
+    メディアファイルに対してリンクが壊れているということを、
+    これは意味します。
+    よって、
+    このプロジェクトの中にあるクロップの編集をはじめることができる前に、
+    このプロジェクトの中にあるクリックを、
+    あなたのコンピュータのハードディスク上にある、
+    そのメディアファイルに対して再リンクする必要がありまう
+
+    注意:
+    元のストレージの中で、
+    メディアファイルが移動されているか名前が変更されているので、
+    メディアファイルはしばしばオフラインになることがあります。
+    これが起きることを防ぐために、
+    一度クリップをインポートしたら、
+    あなたのコンピュータ上の、その元の場所に、
+    それらを残しておくべきです。
+    それらを移動する必要がある場合には、
+    Media Management ツールを使うことができます。
+    これをあなたはレッスン 9 でさらに学びます。
+
+
+  8. このインターフェースの中の
+    「メディアプール」の上で、
+    Relink Media ボタンをクリックします。
+
+  9. 「Relink Media」ウインドウが出現し、
+    how many clips
+    何個のクリップにそのメディアファイルがないのかを伝えています。
+
+  10. 「Locate」 ボタンをクリックし、
+      出現するファイルウインドウの中で、
+      「R18 Beginner Guide Lessons」フォルダに行、
+      「Open」をクリックします。
+
+      Resolve がこのフォルダをすぐに検索し、
+      マッチするメディアファイルを見つけだそうとします。
+
+      注意:
+      Resolve が適切なファイルを見つけることができない場合には、
+      Relink Media ウインドウから
+      「Disk Search」ボタンを使って、
+      より包括的な検索を開始することができます。
+      検索するべきたくさんのメディアファイルがある、
+      とても大きなハードディスクがあなたにある場合には、
+      この検索にずっと多くの時間がかかるかもしれないということに
+      注意してください!
+
+      一度クリップが
+      R18 Beginner Guide Lessons フォルダの中で見つかったら、
+      Resolve はプロジェクトの中にあるクリップを、
+      その適切なメディアファイルに対してすぐに再リンクし、
+      クリップはメディアプールの中で
+      もはやオフラインとして表示されていません。。
+
+      今、クリップがそのメディアファイルへリンウされたので、
+      このプロジェクトを探求しはみめることができます。
+
+
+  **** メディアプールを使った詐欺
+
+  メディアプールは、
+  クリップと、タイムラインといった他の要素が
+  保存され、管理される場所です。
+  けれど Edit ページの中では、
+  異なる bin の中にある特定のクリックにアクセスするためえに、
+  メディアプールはずっと多く使われます。
+
+  ***** bin とスマート bin を使う
+
+  bin リストはメディアプールの左側に表示されます。
+  いつでも bin をクリックすることによって、
+  それぞれの bin のウチガワにあるクリップにアクセスすることができます。。
+
+  1. この bin の中で利用できるクリップを確認するために、
+    VIDEO CLIPS bin を選択します。
+
+    bin を他の bin の内側に置くこともできます。
+
+  2. VO (voiceover) と呼ばれるサブ bin を表示するために、
+     AUDIO CLIPS bin の隣りにある矢印をクリップします。
+
+     You can also display
+     表示することもできます
+     the contents
+     中身を
+     of multiple bins
+     together
+     まとめて
+     in the media pool
+     .
+3. Select
+   the
+   AUDIO CLIPS bin を選択し
+   ,
+   and then
+   次に
+   Command-click (macOS) か
+   Ctrl-click (Windows) します
+   the
+   VIDEO CLIPS bin を
+   to display
+   表示するために
+   all the individual clips
+   全ての個々のクリップを
+   in these bins
+   これらの bin の中にある
+   .
+
+   Despite
+   easily accessing
+   the different bins, the edit page has a much more flexible
+   approach to finding the clip you’re after, using the metadata that’s applied to a clip.
+
+4. In the
+   Smart Bins section
+   of the bin list
+   ,
+   click
+   the disclosure arrow
+   next
+   to the Keywords folder
+   .
+
+   Smart bins
+   are special bins
+   that will automatically
+   collect different clips based on sets
+   of rules. The Keywords Smart Bin category is an example of a set of automatic smart
+   bins that appear when you start adding keywords to clips in your project.
+
+5. Timelapse smart bin を選択します。
+   Two clips appear in the media pool because each of
+   these has timelapse applied as a keyword.

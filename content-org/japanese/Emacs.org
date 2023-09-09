@@ -26,7 +26,7 @@
 
 * Emacs についてコツ                                           :RefileTarget:
 
-** Ubuntu MATE で複数のEmacsディストリビューションを動かす
+** Ubuntu MATE で複数の Emacs ディストリビューションを動かす
 :PROPERTIES:
 :EXPORT_DATE: <2023-09-06 Wed>
 :EXPORT_HUGO_SECTION: japanese/posts
@@ -35,45 +35,45 @@
 :END:
 
 *** 目的
-Ubuntu MATE 23.04にEmacsをインストールする方法を説明します。
+Ubuntu MATE 23.04 に Emacs をインストールする方法を説明します。
 
-また、[[https://github.com/plexus/chemacs2][chemacs2]] を使って複数の Emacsを同時に動かせるようにします。
+また、[[https://github.com/plexus/chemacs2][chemacs2]] を使って複数の Emacs を同時に動かせるようにします。
 
 以下のツールを使います。
 
-- [[https://github.com/plexus/chemacs2][chemacs2]] :: Emacsのバージョンスッチャー
-- [[https://www.spacemacs.org/][Spacemacs]] :: 人気のあるEmacsのディストリビューション
-- [[https://github.com/doomemacs/doomemacs][doomemacs]] :: これも人気のあるEmacsのディストリビューション
+- [[https://github.com/plexus/chemacs2][chemacs2]] :: Emacs のバージョンスッチャー
+- [[https://www.spacemacs.org/][Spacemacs]] :: 人気のある Emacs のディストリビューション
+- [[https://github.com/doomemacs/doomemacs][doomemacs]] :: これも人気のある Emacs のディストリビューション
 
 *** 今回の目標のイメージ
 
-今回の設定を行なうと下図のように Spacemacsと
+今回の設定を行なうと下図のように Spacemacs と
 Doom Emacs を同時に動かすことができます。
 
-#+caption: Spacemacsと Doom Emacs を同時に動かす
-#+attr_html: :alt Spacemacsと Doom Emacs を同時に動かす
+#+caption: Spacemacs と Doom Emacs を同時に動かす
+#+attr_html: :alt Spacemacs と Doom Emacs を同時に動かす
 #+ATTR_HTML: :style float:left;margin:20px 20px 20px 0px;
 #+ATTR_HTML: :width 50% :style border:2px solid white;
 [[file:images/spaceemacs-and-doom.png]]
 
 *** 環境
 
-今回Emacsをインストールする環境です。
+今回 Emacs をインストールする環境です。
 
 - Guest OS :: [[https://ubuntu-mate.org/][Ubuntu MATE]] 23.04
 - Host OS :: Windowd 11 Professional
 - VM 環境: [[https://www.virtualbox.org/][VirtualBox]] 7.0.100
 
-*** Ubuntu MATE へのEmacsのインストール
+*** Ubuntu MATE への Emacs のインストール
 
-Ubuntu MATE へEmacsのインストールするには次のようにします。
+Ubuntu MATE へ Emacs のインストールするには次のようにします。
 
 #+caption: Ubuntu MATE へのEmacsのインストール
 #+begin_src sh :eval no
 sudo apt -y install emacs emacs-gtk
 #+end_src
 
-Emacsのバージョンを確認します:
+Emacs のバージョンを確認します:
 
 #+caption: Emacsのバージョン確認
 #+begin_src sh :eval no
@@ -89,15 +89,15 @@ under the terms of the GNU General Public License.
 For more information about these matters, see the file named COPYING.
 #+end_example
 
-以上でEmacs自体のインストールは終了です。
+以上で Emacs 自体のインストールは終了です。
 
-*** Chemacs を使って複数のEmacsをたちあげる
+*** Chemacs を使って複数の Emacs をたちあげる
 
-複数のEmacsの異なるディストリビューション、
+複数の Emacs の異なるディストリビューション、
 異なるバージョンを動かしたいことがあります。
 そのために私は [[https://github.com/plexus/chemacs2][chemacs2]] を使っていあます。
 
-今回は次の2 つのEmacsのディストリビューションを
+今回は次の 2 つの Emacs のディストリビューションを
 動かします。
 
 - [[https://www.spacemacs.org/][Spacemacs]]
@@ -114,10 +114,10 @@ For more information about these matters, see the file named COPYING.
 「[[*chemacs の設定][chemacs の設定]]」で重要になります。
 
 - =~/.emacs.d= :: chemacs 用のファイルがはいります
-- =~/EmacsDist= :: 複数のEmacsのディレクトリを置くディレクトリ
+- =~/EmacsDist= :: 複数の Emacs のディレクトリを置くディレクトリ
 - =~/EmacsDist/Spacemacs= :: Spqcemacs のディレクトリ
 - =~/EmacsDist/DoomEmacs= :: Doom Emacs のディレクトリ
-- =~/.spacemacs.d= :: Spacemacs用の設定がはいるディレクトリ
+- =~/.spacemacs.d= :: Spacemacs 用の設定がはいるディレクトリ
 - ==~/.doom.d= :: Doom Emacs 用の設定がはいるディレクトリ
 
 **** chemacs のインストール
@@ -135,14 +135,14 @@ For more information about these matters, see the file named COPYING.
   git clone https://github.com/plexus/chemacs2.git ~/.emacs.d
 #+end_src
 
-既存のEmacs設定があった場合には、次のように退避されます:
+既存の Emacs 設定があった場合には、次のように退避されます:
 
 - /~/.emacs/ → /~/.emacs.bak/
 - /~/.emacs.d/ → /~/.emacs.defaulta/
 
-以上でchemacs のインストールは終了です。
+以上で chemacs のインストールは終了です。
 
-**** Spacemacsのインストール
+**** Spacemacs のインストール
 
 今回使用するディレクトリは次のとおりです。
 
@@ -151,16 +151,16 @@ For more information about these matters, see the file named COPYING.
 
 
 ***** =~/EmacsDist= ディレクトリの作成
-各種Emacsのディストリビューションを格納するディレクトリを作成します
+各種 Emacs のディストリビューションを格納するディレクトリを作成します
 
 #+caption: 各種Emacsのディストリビューションを格納するディレクトリno作成
 #+begin_src sh :eval no
 mkdir ~/EmacsDist
 #+end_src
 
-***** Spacemacsのレポジトリのクローン
+***** Spacemacs のレポジトリのクローン
 
-Spacemacsのレポジトリをクローンします。
+Spacemacs のレポジトリをクローンします。
 
 #+caption: Spacemacsのレポジトリのクローン
 #+begin_src sh :eval no
@@ -179,7 +179,7 @@ git checkout develop
 
 ***** =~/.spacemacs.d= ディレクトリの作成
 
-Spacemacsの設定ファイルを格納する
+Spacemacs の設定ファイルを格納する
 =~/.spacemacs.d= ディレクトリを作成します。
 
 #+caption: =~/.spacemacs.d= ディレクトリの作成
@@ -194,18 +194,18 @@ mkdir ~/.spacemacs.d
 cp ~/EmacsDist/Spacemacs/init.el .spacemacs.d
 #+end_src
 
-以上でSpacemacsのインストールは終了です。
+以上で Spacemacs のインストールは終了です。
 
 **** Doom Emacs のインストール
 
 doom Emacs をインストールします。
 使用されるディレクトリです。
 
-- =~/.spacemacs.d= :: Spacemacs用の設定がはいるディレクトリ
+- =~/.spacemacs.d= :: Spacemacs 用の設定がはいるディレクトリ
 - ==~/.doom.d= :: Doom Emacs 用の設定がはいるディレクトリ
 
 
-- =~/.spacemacs.d= :: Spacemacs用の設定がはいるディレクトリ
+- =~/.spacemacs.d= :: Spacemacs 用の設定がはいるディレクトリ
 - ==~/.doom.d= :: Doom Emacs 用の設定がはいるディレクトリ
   （doom instal で自動的に作成されます）
 
@@ -309,7 +309,7 @@ Have fun!
 #+end_example
 
 
-以上で Doom Emacsのインストールが終了しました。
+以上で Doom Emacs のインストールが終了しました。
 
 **** chemacs の設定
 
@@ -329,10 +329,10 @@ Have fun!
 
 - spacemacs
   - user-emacs-directory  ::
-    =~/EmacsDist/Spacemacs= はSpacemacsのレポジトリを
+    =~/EmacsDist/Spacemacs= は Spacemacs のレポジトリを
     クローンしたディレクトリです
   - SPACEMACSDIR ::
-    =~/.spacemacs.d= はSpacemacsの設定ファイルがあるディレクトリです。
+    =~/.spacemacs.d= は Spacemacs の設定ファイルがあるディレクトリです。
 ー doom
   - user-emacs-directory ::
     ="~/EmacsDist/DoomEmacs= は Doom Emacs のレポジトリを
@@ -358,7 +358,7 @@ spacemacs
 
 **** chemacs の使いかた
 
-Spacemacsを起動するには次のようにします.
+Spacemacs を起動するには次のようにします.
 
 #+caption: Spacemacsを起動する
 #+begin_src sh :eval no
@@ -368,7 +368,7 @@ Spacemacsを起動するには次のようにします.
 #+end_src
 
 
-Doom Emacsを立ち上げるには次のようにします。
+Doom Emacs を立ち上げるには次のようにします。
 
 #+caption: Doom Emacsを立ち上げる
 #+begin_src sh :eval no
@@ -378,7 +378,214 @@ emacs --with-profile doom
 *** 結論
 
 今回は  [[https://github.com/plexus/chemacs2][chemacs2]]  を使って、
-Ubuntu 上でSpacemacsと Doom Emaccs を動かす
+Ubuntu 上で Spacemacs と Doom Emaccs を動かす
 方法を紹介しました。
 
-Spacemacsの使いかた/設定については別の機械に紹介します。
+Spacemacs の使いかた/設定については別の機械に紹介します。
+
+
+** "muhenkan" （無変換）キーを =evil-escape= に割り当てる(Spacemacs)
+:PROPERTIES:
+:EXPORT_DATE: <2023-09-08 Fri>
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: bind-muhenkan-to-evil-escape
+:EXPORT_OPTIONS: toc:t num:t
+:END:
+
+Spacemacs の vim と hybrid の編集モードでは、
+"ESC" キーを頻繁に叩きます。
+
+しかし "ESC" キーはホームポジションからはるか遠くにあります。
+そこで "ESC" を別のキーにヮリアテます。
+
+日本語 106 キーボードでは、私が使っていない
+キーがいくつかあります。
+
+#+caption: 日本語 106 キーボード
+#+attr_html: :alt 日本語 106 キーボード
+#+ATTR_HTML: :width 50% :style border:2px solid white;
+[[file:~/Documents/blog.shimanoke.com/content-org/japanese/images/japanese-keyboad.jpg]]
+
+よって "muhenkan" （無変換）キー （スペースバーの左）を
+=evil-escape" に割り当てます。
+これで "muhenkan" キーを叩くことと "ESC" キーを
+叩くことが同じになりまう
+
+これを Emacs のコンフィギュレーションに追加してください:
+
+#+caption: Bind "muhenkan" key to =evil-escape"
+#+BEGIN_SRC emacs-lisp
+(define-key global-map (kbd "<muhenkan>") 'evil-escape)
+#+END_SRC
+
+日本語 106 キーボードを使ったいない場合には、
+"<muhenkan>" を別の使ったいないキーで置き換えてください。
+
+
+以上です。 Emacs を楽しんでください!
+
+
+** TODO Spacemacs を起動/設定する
+
+*** Spacemacs の起動
+
+*** モードの選択
+
+
+- vim ::
+  Vil/Vim ユーザーであれば、これを選択するとよいでしょう。
+- hybrid ::
+  Emacs ユーザーであればこれを選択すると良いかもしれません。
+  Vim のキーバインディングに加えて、Emacs のキーバインディングも
+  使ううことができます。私はこれを使っています。
+- emacs ::
+  Emacs ユーザーで、Vim のキーバインディングを使いたくないかたは
+  これを選択してください。お勧めはしません。
+
+
+*** パッケージのインストール
+
+自動的に必要な Emacs のパッケージがインストールされます。
+しばらくお待ちください。
+
+
+*** Spacemacs の終了のしかた
+
+space q q
+
+または hybrid か emacs のかたは
+
+Ctl-+x Ctl+c
+
+が使えます。
+
+
+
+
+*** TODO Spacemacs で Rust を編集する
+
+*** 目的
+
+*** 環境
+
+
+*** Rust の Ubuntu MATE 23.04 へのインストール
+
+*** 便利なツールのインストール
+
+*** 結論
+
+** TODO Spacemacs で画面のズームイン/ズームアウト
+
+*** 目的
+
+
+*** 設定
+
+*** 使用方法
+- =Ctln+ "-"= ::
+  画面のズームアウト
+- =Ctln+ "shift" + -"= ::
+  画面のズームイン
+
+このキーバインディングはよく使われているようで、
+VSCode や qterminal でも使用することができます。
+
+
+*** 結論
+
+** TODO Spacemacs のフォント設定
+
+** TODO ox-hugo 用のテンプレートを作る
+
+** TODO Org-mode で ox-hugo 用のテンプレートを作る
+** TODO ブラウザから Org-mode へリンクをコピーする
+
+** TODO doom-themes を使う 
+DEADLINE: <2019-05-22 水>
+:PROPERTIES:
+:ID:       42ea9280-f4ad-492e-996d-4abcd406eee4
+:END:
+:LOGBOOK:
+- State "TODO"       from "DONE"       [2023-09-08 Fri 10:50]
+- State "DONE"       from "TODO"       [2019-05-22 水 15:13]
+CLOCK: [2019-05-22 水 10:37]--[2019-05-22 水 12:16] =>  1:39
+CLOCK: [2019-05-22 水 10:07]--[2019-05-22 水 10:27] =>  0:20
+CLOCK: [2019-05-22 水 09:46]--[2019-05-22 水 10:07] =>  0:21
+CLOCK: [2019-05-22 水 09:32]--[2019-05-22 水 09:35] =>  0:03
+CLOCK: [2019-05-22 水 08:40]--[2019-05-22 水 08:40] =>  0:00
+:END:
+
+- [[https://github.com/hlissner/emacs-doom-themes][hlissner/emacs-doom-themes: An opinionated pack of modern color-themes]]
+
+#+begin_src emacs-lisp
+(require 'doom-themes)
+
+;; Global settings (defaults)
+(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+      doom-themes-enable-italic t) ; if nil, italics is universally disabled
+
+;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
+;; may have their own settings.
+;; (load-theme 'doom-one t)
+(load-theme 'doom-dracula t)
+
+;; Enable flashing mode-line on errors
+(doom-themes-visual-bell-config)
+
+;; Enable custom neotree theme (all-the-icons must be installed!)
+;; (doom-themes-neotree-config)
+;; or for treemacs users
+(doom-themes-treemacs-config)
+
+;; Corrects (and improves) org-mode's native fontification.
+(doom-themes-org-config)
+#+end_src
+
+** TODO Emacs でロックファイルを作らないようにする
+:PROPERTIES:
+:ID:       12dbc3d5-3f14-42c6-9d01-3364d33e1bf6
+:END:
+: (setq create-lockfiles nil)
+
+
+
+
+** TODO doom-modeline を使う
+:PROPERTIES:
+:ID:       bfa2360e-02cf-4e80-bccd-5ca600745aad
+:END:
+:LOGBOOK:
+CLOCK: [2019-05-22 水 09:41]--[2019-05-22 水 09:46] =>  0:05
+CLOCK: [2019-05-22 水 09:35]--[2019-05-22 水 09:41] =>  0:06
+:END:
+
+- [[https://github.com/seagle0128/doom-modeline][seagle0128/doom-modeline: A fancy and fast mode-line inspired by minimalism design.]]
+
+To use doom-modeline, change =dotspacemacs-mode-line-theme= 
+in =init.el= to this:
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+dotspacemacs-mode-line-theme '(doom)
+#+END_SRC
+
+doom-modeline needs all-the-icons fonts
+(- [[https://github.com/domtronn/all-the-icons.el][domtronn/all-the-icons.el: A utility package to collect various Icon Fonts and propertize them within Emacs.]])
+
+To install these fonts, run this in Spacemacs:
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+all-the-icons-install-fonts
+#+END_SRC
+
+Or, if you can't get fonts, run this in a terminal:
+
+#+begin_src sh :eval no
+git clone https://github.com/domtronn/all-the-icons.el.git
+cp all-the-icons.el/fonts/all-the-icons.ttf all-the-icons.el/fonts/file-icons.ttf all-the-icons.el/fonts/fontawesome.ttf all-the-icons.el/fonts/material-design-icons.ttf all-the-icons.el/fonts/octicons.ttf all-the-icons.el/fonts/weathericons.ttf ~/.fonts 
+all-the-icons.el
+fc-cache -f -v
+#+end_src
+
+Then, restart Spacemacs (=SPC q r=).
+

@@ -1,0 +1,104 @@
+#+TITLE: Emacs Tips
+#+LANGUAGE: ja
+#+AUTHOR: 島野 善雄
+#+EMAIL: shimano.yoshio@gmail.com
+# 出版した日付
+#+date: <2023-08-31 Thu>
+# 更新日を自動的につける
+#+hugo_auto_set_lastmod: t
+# 見出しをレベル 6 まで出す
+#+OPTIONS: H:6 num:nil
+#+OPTIONS: toc:1
+#+STARTUP: indent
+#+hugo_type: post
+# 出力するディレクトリ
+#+hugo_base_dir: ../..
+# 出版するファイル名
+#+hugo_section: japanese/docs
+#+OPTIONS: creator:nil author:t
+#+LANGUAGE: ja
+# Hugo のタグ
+#+filetags: Emacs
+# Hugo のカテゴリー
+#+hugo_categories: Ubuntu
+# #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
+
+
+* Emacs Tips                                                   :RefileTarget:
+** Bind "muhenkan" key to =evil-escape= in Spacemacs
+:PROPERTIES:
+:EXPORT_DATE: <2023-09-10 Sun>
+:EXPORT_HUGO_SECTION: english/posts
+:EXPORT_FILE_NAME: bind-muhenkan-to-evil-escape
+:EXPORT_OPTIONS: toc:t num:t
+:END:
+
+In vim and hybrid editing styles in Spaecemacs,
+you hit "ESC" key frequently
+to escape to "normal mode".
+But "ESC" keye is far away from the home row.
+
+In a Japanse 106 keyboard, there some unused keys:
+
+#+caption: Japanese 106 Keyboard
+#+attr_html: :alt Japanese 106 Keyboard
+#+ATTR_HTML: :width 50% :style border:2px solid white;
+[[file:~/Documents/blog.shimanoke.com/content-org/japanese/images/japanese-keyboad.jpg]]
+
+
+So bind "muhenkan" key (lett to the spacebar)
+to =evil-escape" to espcape to normal mode.
+
+Add this to your Emacs configuration:
+
+#+caption: Bind "muhenkan" key to =evil-escape"
+#+BEGIN_SRC emacs-lisp
+(define-key global-map (kbd "<muhenkan>") 'evil-escape)
+#+END_SRC
+
+If you do not use a Japanese keybord,
+please replace "<muhenkan>"
+with the key you want to use.
+
+That's all. Enjoy!
+
+** TODO Bind "Henkan" key to set shift key in Emacs
+DEADLINE: <2023-09-10 Sun>
+
+This means that if you hit "Henkan" key, then hit "s",
+then you get "T".
+
+For example:
+- =Henkan t= → T
+
+This is for Japanese 106 only.
+
+To bind "Henkan" to enter "Shit",
+Write this in you Emacs configuration.
+Replace ='henkan= to the key you want to use:
+
+#+CAPTION: "Henkan" key to set shift key
+#+BEGIN_SRC emacs-lisp :tangle yes
+  (let ((i ?a))
+    (while (<= i ?z)
+      (define-key key-translation-map
+        (vector 'henkan i) (vector (- i 32)))
+      (setq i (1+ i))))
+  (setq x-meta-keysym 'meta)
+  (setq x-super-keysym 'meta)
+#+END_SRC
+
+That's all.
+
+Enjoy!
+
+#+BEGIN_SRC emacs-lisp :tangle no
+  (let ((i ?a))
+    (while (<= i ?z)
+      (define-key key-translation-map
+        (vector 'muhenkan i) (vector (- i 32)))
+      (setq i (1+ i))))
+  (setq x-meta-keysym 'meta)
+  (setq x-super-keysym 'meta)
+#+END_SRC
+

@@ -23,7 +23,9 @@
 #+hugo_categories: Ubuntu
 # #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
 
-* DONE ripgrep （Rust で作られた grep ）を使う
+
+* Ubuntu のコツ                                                :RefileTarget:
+** DONE ripgrep （Rust で作られた grep ）を使う
 CLOSED: [2023-09-05 Tue 15:32]
 :PROPERTIES:
 :EXPORT_DATE: <2023-09-04 Mon>
@@ -50,7 +52,7 @@ ripgrep は Rust で作られた grep です。
 - [[https://github.com/BurntSushi/ripgrep][BurntSushi/ripgrep: ripgrep recursively searches directories for a regex pattern while respecting your gitignore]]
 
 
-** Ubuntu MATE 23.04 への ripgrep インストール
+*** Ubuntu MATE 23.04 への ripgrep インストール
 
 Ubuntu MATE 23.04 に ripgrep をインストールするには
 次のようにします:
@@ -60,7 +62,7 @@ Ubuntu MATE 23.04 に ripgrep をインストールするには
 sudo apt-get install ripgrep
 #+end_src
 
-** ripgrep の使いかた
+*** ripgrep の使いかた
 
 ripgrep を使ってカレントディレクトリを "hoge" に対して再起動に検索するには
 次のようにします。
@@ -100,13 +102,14 @@ Ubuntu-Mate.org
 #+end_example
 
 
-** 結論
+*** 結論
 
 grep のかわりに ripgrep を使いましょう。
 
 
 
-* TODO ラウンチャ Albert を Ubuntu で使う
+
+** TODO ラウンチャ Albert を Ubuntu で使う
 DEADLINE: <2023-09-12 Tue>
 :PROPERTIES:
 :EXPORT_DATE: <2023-09-10 Sun>
@@ -122,12 +125,12 @@ CLOCK: [2021-12-02 Thu 08:12]--[2021-12-02 Thu 08:13] =>  0:01
 - [[https://albertlauncher.github.io/installing/][Albert - Installing]]
 
 
-** インストールした環境
+*** インストールした環境
 
 - OS : Ubuntu MATE 23.04 on VirtualBox on Windowss 11
 
 
-** Albert のインストール
+*** Albert のインストール
 
 次のようにして Albert をインストールします。
 詳しくは以下をごらんください。
@@ -143,11 +146,11 @@ sudo apt install albert-master
 #+end_src
 
 
-** Albert を使う
+*** Albert を使う
 
 
 
-* DONE スクリーン上にキーストロークを表示する (Ubuntu 23.04)
+** DONE スクリーン上にキーストロークを表示する (Ubuntu 23.04)
 CLOSED: [2023-09-03 Sun 12:41]
 :PROPERTIES:
 :EXPORT_DATE: <2023-09-02 Sat>
@@ -169,12 +172,12 @@ CLOSED: [2023-09-03 Sun 12:41]
 この記事では、
 Screenkey のインストール/セットアップ方法を示します。
 
-** 環境
+*** 環境
 
 - OS: Ubuntu Mate 23.04 on VirtualBox] on Windows 11.
 
 
-** screenkey のインストール
+*** screenkey のインストール
 
 Screenky を Ubuntu にインストールするには、
 これをターミナルの中でタイプします:
@@ -184,7 +187,7 @@ Screenky を Ubuntu にインストールするには、
 sudo apt -y install screenkey
 #+end_src
 
-** Screnkey をはじめる
+*** Screnkey をはじめる
 次に
 screenkey をターミナルからはじめます:
 
@@ -224,7 +227,7 @@ screenkey
 
 
 
-* DONE peco を使って zsh でコマンド履歴を便利にする
+** DONE peco を使って zsh でコマンド履歴を便利にする
 :PROPERTIES:
 :EXPORT_DATE: <2023-08-31 Thu>
 :EXPORT_HUGO_SECTION: japanese/posts
@@ -251,12 +254,12 @@ Zsh はコマンド補完がありますが、peco を使うと、
 #+caption: peco を起動した情愛
 [[file:images/peco-samoke.png]]
 
-** この文書の設定できること
+*** この文書の設定できること
 
 - コマンド履歴の検索 (Ctl+r)
 - cd の履歴の検索 (Ctl+f)
 
-** 参考文献
+*** 参考文献
 
 
 以下のサイトを参考にさせていただきました。
@@ -264,14 +267,14 @@ Zsh はコマンド補完がありますが、peco を使うと、
 - [[https://github.com/peco/peco][peco/peco: Simplistic interactive filtering tool]] : peco 本家
 - [[https://www.wakuwakubank.com/posts/862-mac-zsh-peco/][Mac | zshとpecoでコマンド入力作業を快適に - わくわくBank]] : zsh から
   peco を使う方法が詳しくのっています。
-** 確認環境
+*** 確認環境
 確認した環境です。
 私は Ubuntu MATE を使っていますが、Windows でも動くようです。
 
 - Host OS : Windows11 Pro
 - Guest OS : Ubuntu Mate 23.04 on VirtualBox
 
-** peco のインストール
+*** peco のインストール
 
 peco をインストールするには次のようにします:
 
@@ -280,7 +283,7 @@ peco をインストールするには次のようにします:
 sudo apt -y install peco
 #+end_src
 
-** Zsh で peco を使うための設定
+*** Zsh で peco を使うための設定
 
 =~/.zshrc= に以下を追加します。
 
@@ -331,9 +334,228 @@ bindkey '^f' peco-cdr
 #+end_src
 
 
-** 使用方法
+*** 使用方法
 
 - コマンド履歴の検索 (Ctl+r)
 - cd の履歴の検索 (Ctl+f)
+
+** TODO peco の色を変更する
+
+- [[https://rochefort.hatenablog.com/entry/2015/12/10/210000][pecoのkeymapと色を変更 - rochefort's blog]]
+
+
+** TODO Ubuntu でスクリーンキャストを録画し、GIF に保存する
+DEADLINE: <2023-09-12 Tue>
+
+
+peek を使っています
+
+- [[https://github.com/phw/peek][phw/peek: Simple animated GIF screen recorder with an easy to use interface]]
+
+
+*** Install
+
+#+begin_src sh :eval no
+sudo add-apt-repository ppa:peek-developers/stable
+sudo apt update
+sudo apt install peek
+#+end_src
+
+
+バージョン確認
+#+begin_src sh
+/usr/bin/peek -v
+#+end_src
+
+#+begin_example
+Peek 1.5.1
+#+end_example
+
+
+** TODO ターミナルンの見栄えをよくするために PowerLine を使う
+
+** TODO git の diff 出力を見やすくするためいのん delta を使う
+
+
+** TODO bat を使ってファイルの中身を見る （less の代用）
+
+
+** TODO Zoom In/Out in Ubuntu MATE 23.04
+DEADLINE: <2023-09-03 Sun>
+:LOGBOOK:
+CLOCK: [2023-03-24 Fri 15:04]--[2023-03-24 Fri 15:05] =>  0:01
+:END:
+
+*** Purpose
+
+It is useful to zoom in/out your screen.
+
+*** Environment
+
+#+begin_src sh
+cat /etc/os-release
+#+end_src
+
+
+*** Reference
+
+- https://learnubuntumate.weebly.com/enable-magnification.html
+
+
+*** Install Packages
+
+#+begin_src sh :eval no
+sudo apt -y install compiz compizconfig-settings-manager compiz-plugins
+#+end_src
+
+*** Setup
+
+**** Change the window manaer to Commpiz
+
+1. Open "MATE Tweak"
+2. Selct "WindowsW
+3. In "Window Manager"
+   - Select "Commpiz"
+
+#+caption: Select "Commpiz" in Ubuntu MATE
+[[file:images/mate-tweak-select-winmngr.png]]
+
+**** Zoom Settin
+
+- Zoom In : <super>semicolon
+- Zoom Out : <super>equal
+
+When the Control Center dialog box appears
+,
+scroll down
+to the
+"Look and Feel"
+group
+and click on the CompizConfig Settings Manager.
+
+Click the Composite icon under the General group.
+
+
+Uncheck
+the box
+to the right
+of
+Unredirect Fullscreen Windows
+and then
+click
+the Back button
+in the lower left corner
+of the dialog box
+.
+This feature
+causes
+screen
+flickering
+on a lot
+of machines
+.
+However
+if your machine
+can support it
+,
+it can dramatically improve graphical performance.
+
+
+Make sure
+you
+have checks
+next
+to Magnifier
+and Enhanced Zoom Desktop
+in the Accessibilty category
+. 
+
+#+caption: Zoom In/Out Settings
+[[file:images/mate-zoom-settings.png]]
+
+
+*** Conclusion
+
+Ubuntu 上でスクリーンの拡大/縮小ができるようになります。
+
+
+** TODO Ubuntu でスクリーンキャストを録画し、GIF に保存する
+
+- [[https://github.com/phw/peek][phw/peek: Simple animated GIF screen recorder with an easy to use interface]]
+
+
+*** Install
+
+
+#+begin_src sh :eval no
+sudo add-apt-repository ppa:peek-developers/stable
+sudo apt update
+sudo apt install peek
+#+end_src
+
+#+begin_src sh
+/usr/bin/peek -v
+#+end_src
+
+#+begin_example
+Peek 1.5.1
+#+end_example
+
+
+** TODO Use UIM on Ubuntu Mate 23.04
+DEADLINE: <2023-09-02 Sat>
+
+: sudo apt install uim uim-data uim-mozc uim-plugins uim-xim
+
+=~/.zshrc= 
+
+#+begin_example
+export XMODIFIERS=@im=uim
+export GTK_IM_MODULE=uim
+export QT_IM_MODULE=uim
+#+end_example
+
+
+- [[https://whoraibo.hatenablog.com/entry/2021/02/23/222612][Ubuntu 18.04で日本語, 韓国語混在入力: uim-mozc, byeoru - 風来坊@真幸福知]]
+
+
+
+** TODO Ubuntu での情報取得あれこれ
+:LOGBOOK:
+CLOCK: [2023-09-05 Tue 15:37]
+:END:
+
+
+*** インストールされているパッケージ
+
+#+begin_src sh :eval no
+apt list
+#+end_src
+
+*** カーネル情報
+
+#+begin_src sh :eval no
+uname -a
+#+end_src
+
+*** OS のリリース情報
+
+#+begin_src sh
+  cat /etc/os-release
+#+end_src
+
+
+
+** TODO Ubuntu Mate t でメニューなどのフォンオを微調整する方法
+
+「コントロールセンター」→ 「ルック & フィール」→ 「外観」
+
+で、「フォント」タブを選択し、「詳細」を選択
+
+DPI 数の数値をあげます。
+
+** TODO How to take a screenshot on Ubunbu MATE 23.040a
+DEADLINE: <2023-09-06 Wed>
+
 
 
