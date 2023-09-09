@@ -3,8 +3,8 @@ title = """
   Bind "muhenkan" key to evil-escape in Spacemacs
   """
 author = ["島野 善雄"]
-date = 2023-09-10T00:00:00+09:00
-lastmod = 2023-09-09T10:55:46+09:00
+date = 2023-09-08T00:00:00+09:00
+lastmod = 2023-09-09T11:40:30+09:00
 tags = ["Emacs"]
 categories = ["Ubuntu"]
 type = "post"
