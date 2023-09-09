@@ -27,7 +27,7 @@
 * Emacs Tips                                                   :RefileTarget:
 ** Bind "muhenkan" key to =evil-escape= in Spacemacs
 :PROPERTIES:
-:EXPORT_DATE: <2023-09-10 Sun>
+:EXPORT_DATE: <2023-09-08 Fri>
 :EXPORT_HUGO_SECTION: english/posts
 :EXPORT_FILE_NAME: bind-muhenkan-to-evil-escape
 :EXPORT_OPTIONS: toc:t num:t
