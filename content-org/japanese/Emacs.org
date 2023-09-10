@@ -419,13 +419,38 @@ Spacemacs の vim と hybrid の編集モードでは、
 以上です。 Emacs を楽しんでください!
 
 
-** TODO Spacemacs を起動/設定する
+** Spacemacs を初めて起動する
+:PROPERTIES:
+:EXPORT_DATE: <2023-09-09 Sat>
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: fist-spacemacs-startup
+:EXPORT_OPTIONS: toc:t num:t
+:END:
+
+ここでは Spacemacs を初めて起動する
+方法を説明します。
+
+Emacs と Spacemacs のインストールが
+おわっていない場合には、
+「[[https://blog.shimanoke.com/ja/posts/install-emacs-on-ubuntu/][Ubuntu MATE で複数の Emacs ディストリビューションを動かす •]]」を
+参考にしてインストールしておいてください。
 
 *** Spacemacs の起動
 
+「[[https://blog.shimanoke.com/ja/posts/install-emacs-on-ubuntu/][Ubuntu MATE で複数の Emacs ディストリビューションを動かす •]]」を
+使って Spacemacs を設定している場合は
+次のコマンドで Spacemacs を起動することができます
+
+: emacs --with-profile spacemacs
+
+または
+
 : emacs
 
-*** モードの選択
+で起動します。
+
+
+*** 編集モードの選択
 
 Spacemacs を最初に立ち上げると、
 編集モードを何にするかと質問されます。
@@ -434,48 +459,77 @@ Spacemacs を最初に立ち上げると、
 
 - vim ::
   Vil/Vim ユーザーであれば、これを選択するとよいでしょう。
-- hybrid ::
-  Emacs ユーザーであればこれを選択すると良いかもしれません。
-  Vim のキーバインディングに加えて、Emacs のキーバインディングも
-  使ううことができます。私はこれを使っています。
 - emacs ::
   Emacs ユーザーで、Vim のキーバインディングを使いたくないかたは
   これを選択してください。お勧めはしません。
+- hybrid ::
+  最初は選択できません。
+  Emacs ユーザーであればこれを選択すると良いかもしれません。
+  Vim のキーバインディングに加えて、Emacs のキーバインディングも
+  使ううことができます。私はこれを使っています。
 
-ここでは "hybrid" を選択します。
+ここでは "vim" を選択します。
 "h" と入力して "Return" を押します。
 
 #+caption: Spacemacs の編集モードの選択
-[[file:images/spacemacs-first-startup.png]]
+#+attr_html: :alt Spacemacs の編集モードの選択
+#+ATTR_HTML: :style float:left;margin:20px 20px 20px 0px;
+#+ATTR_HTML: :width 100% :style border:2px solid white;
+file:images/spacemacs-ask-edit-mode.png
 
 
-*** パッケージのインストール
+*** ディストリビューションの選択肢
 
-編集モードの選択が終了すると、必要なパッケージが
-自動的にインストールされます。
+次に、どのディストリビューションを使うかが
+質問されます。
+矢印キーを使って、 "spacemacs" を選択してください。
 
+#+caption: ディストリビューションの選択
+#+attr_html: :alt ディストリビューションの選択
+#+ATTR_HTML: :style float:left;margin:20px 20px 20px 0px;
+#+ATTR_HTML: :width 100% :style border:2px solid white;
+[[file:images/spacemacs-akk-didt.png]]
+
+*** パッケージのインストール （自動）
+
+ディストリビューションの選択肢が終了したらあ、
 自動的に必要な Emacs のパッケージがインストールされます。
 しばらくお待ちください。
 
+パッケージのインストールが終わると
+次のような画面になります
 
-#+caption: Spacemacs の最初のパッケージのインストール
-[[file:images/spacemacs-first-pkg-install.png]]
-
+#+caption: 
+#+attr_html: :alt Spacemacs の最初の起動
+#+ATTR_HTML: :style float:left;margin:20px 20px 20px 0px;
+#+ATTR_HTML: :width 70% :style border:2px solid white;
+[[file:images/spacemacs-strt-screen.png]]
 
 *** Spacemacs の終了のしかた
 
-space q q
+Spacemacs を終了するには次をうちます。
 
-または hybrid か emacs のかたは
+: =space q q=
 
-Ctl-+x Ctl+c
+=space q= とタイプしたら
+Spacemacs の終了メニューが出るので、
+"q" を押して終了します。
 
-が使えます。
+#+caption: Spacemacs の終了メニュー
+#+attr_html: :alt Spacemacs の終了メニュー
+#+ATTR_HTML: :style float:left;margin:20px 20px 20px 0px;
+#+ATTR_HTML: :width 70% :style border:2px solid white;
+[[file:images/spaceemacs-quit-menu.png]]
+
+または編集モードが hybrid か emacs のかたは
+=Ctl-+x Ctl+c= が使えます。
+
+*** 次は
+次の記事では、Spacemacs のカスタマイズに
+ついて説明します。
 
 
-
-
-*** TODO Spacemacs で Rust を編集する
+** TODO Spacemacs で Rust を編集する
 
 *** 目的
 
