@@ -187,12 +187,6 @@ Spacemacs の設定ファイルを格納する
 mkdir ~/.spacemacs.d
 #+end_src
 
-ディレクトリの "init.el" ファイルをコピーします。
-
-#+caption: ディレクトリの "init.el" ファイルをコピー
-#+begin_src sh :eval no
-cp ~/EmacsDist/Spacemacs/init.el .spacemacs.d
-#+end_src
 
 以上で Spacemacs のインストールは終了です。
 
@@ -429,8 +423,14 @@ Spacemacs の vim と hybrid の編集モードでは、
 
 *** Spacemacs の起動
 
+: emacs
+
 *** モードの選択
 
+Spacemacs を最初に立ち上げると、
+編集モードを何にするかと質問されます。
+編集喪には "vim", "hybrid", "emacs" の
+3 種類があります。それぞれの特徴は次のとおりです。
 
 - vim ::
   Vil/Vim ユーザーであれば、これを選択するとよいでしょう。
@@ -442,11 +442,24 @@ Spacemacs の vim と hybrid の編集モードでは、
   Emacs ユーザーで、Vim のキーバインディングを使いたくないかたは
   これを選択してください。お勧めはしません。
 
+ここでは "hybrid" を選択します。
+"h" と入力して "Return" を押します。
+
+#+caption: Spacemacs の編集モードの選択
+[[file:images/spacemacs-first-startup.png]]
+
 
 *** パッケージのインストール
 
+編集モードの選択が終了すると、必要なパッケージが
+自動的にインストールされます。
+
 自動的に必要な Emacs のパッケージがインストールされます。
 しばらくお待ちください。
+
+
+#+caption: Spacemacs の最初のパッケージのインストール
+[[file:images/spacemacs-first-pkg-install.png]]
 
 
 *** Spacemacs の終了のしかた

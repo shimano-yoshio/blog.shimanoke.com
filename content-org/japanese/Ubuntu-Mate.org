@@ -425,6 +425,10 @@ sudo apt -y install compiz compizconfig-settings-manager compiz-plugins
 - Zoom In : <super>semicolon
 - Zoom Out : <super>equal
 
+Open the control center:
+
+mate-control-center
+
 When the Control Center dialog box appears
 ,
 scroll down
@@ -432,6 +436,9 @@ to the
 "Look and Feel"
 group
 and click on the CompizConfig Settings Manager.
+
+
+[[file:images/select-compiz-from-ctl-ctr.png]]
 
 Click the Composite icon under the General group.
 
@@ -521,9 +528,6 @@ export QT_IM_MODULE=uim
 
 
 ** TODO Ubuntu での情報取得あれこれ
-:LOGBOOK:
-CLOCK: [2023-09-05 Tue 15:37]
-:END:
 
 
 *** インストールされているパッケージ

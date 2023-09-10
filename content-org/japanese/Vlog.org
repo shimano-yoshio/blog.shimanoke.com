@@ -47,7 +47,7 @@
 
 ** TODO Davinci Resolve 18 のトレーニングをやる
 :LOGBOOK:
-CLOCK: [2023-09-08 Fri 12:10]
+CLOCK: [2023-09-08 Fri 12:10]--[2023-09-10 Sun 10:16] => 46:06
 :END:
 
 - [[https://www.blackmagicdesign.com/jp/products/davinciresolve/training][DaVinci Resolve 18 – トレーニング | Blackmagic Design]]
@@ -240,55 +240,750 @@ Brian J. Terwilliger によって監督された
   2. VO (voiceover) と呼ばれるサブ bin を表示するために、
      AUDIO CLIPS bin の隣りにある矢印をクリップします。
 
-     You can also display
-     表示することもできます
-     the contents
-     中身を
-     of multiple bins
-     together
-     まとめて
-     in the media pool
-     .
-3. Select
-   the
-   AUDIO CLIPS bin を選択し
+     メディアプールの中で
+     複数の bin のまとめて表示することもできます。
+
+3. 「AUDIO CLIPS」bin を選択し
+   次に、
+   これらの bin の中にある全ての個々のクリップを表示するために、
+   「VIDEO CLIPS」 bin を
+   =Command-click= (macOS) か
+   =Ctrl-click= (Windows) します。
+
+   これは異なる bin に簡単にアクセスすることができますが、
+   クリップに適用されているメタデータを使って、
+   探しているクリップを見つけるためのずっと柔軟性のあるアプローチが、
+   Edit ページにあります。
+
+4. bin リストの Smart Bins セクションの中で
+   Keywords フォルダの隣りにある矢印をクリックしてください。
+
+   スマートビンは、
+   異なるクリップをルールの集合に基いて自動的に集める
+   特別な bin です。あ
+   「Keywords Smart Bin」 カテゴリは、
+   プロジェの中にあるクリップに対してキーワードを追加しはじめるときに
+   出現する、自動的なスマートビンの集合の例です。
+
+5. 「Timelapse」 スマートビンを選択します。
+   キーワードとして適用された timelapse を持っていつので、
+   メディアプールの中に 2 つのクリップが出現します。
+
+6. 「Custom Smart」 フォルダの横にある三角形をクリックします。
+   このプロジェクトの中にあるクリックをさらに
+   整理することを助けるために、
+   “Good Takes” と呼ばれるこのスマートビンは。
+   手動で作成されました
+
+7. 「Good Take」 としてマークされているクリップを表示するために、
+   Good Takes スマートビンを選択します。
+
+   注意: あなたが
+   自分自身のスマートビンを作成し整理することができるように
+   キーワードを追加する方法と、
+   クリップを good takes としてマークする方法を含む、
+   クリップのメタデータの閲覧、追加、変更にたちういて、
+   あなたはレッスン 6 でさらに学びます。
+
+
+**** Edit ページの中でクリップをレビューする
+
+プロジェクトの中にあるクリップを
+ソースビューワーの中で効率的にレビューできることが、
+編集プロセスの重要な部分です
+
+1. キーワード “B-Roll” を使ってタグがつけられている
+   クリップを表示するために。
+   「B-Roll」 スマートビンを選択します。
+
+2. メディアプールの中にある最初のクリップ、
+   「01 A380 TAKEOFF.mov」 へ、
+   マウスポインターを移動します。
+
+   このクリップが
+   ソースビューワーの中で自動的にプレビューされます。
+
+   コツ:
+   =Timeline > Audio Scrubbing= を選択するか、
+   =Shift-S= を押すことによって、
+   audio scrubbing を無効にすることができます。
+
+3. 素早くプレビューするために、
+   このスマートビンの中にある異なるファイルへ
+   マウスポインターを移動し続けます。
+
+   メディアプールの中にあるクリップの上に
+   マウスポインターがある間だけ、
+   ライブプレビューがクリップを一時的に表示するので、
+   さらなるコントロールに対しては
+   クリップをソースビューワーの中で開く必要があるかもしれません。
+
+4. メディアプールの中で、
+   ライブプレビューするためにクリップ
+   「07 KENYA.mov」 を指定し、
+   次に、このクリップをメディアプールから
+   ソースビューワーの中へドラッグします。
+
+   今、
+   クリップをライブプレビューしていないときには、
+   「Kenya」 クリップがソースビューワーの中で表示されます。
+
+   コツ:
+   ソースビューワーの右上の角にある Options メニュー
+   （3 つのドッととして表示されます）をクリックすし、
+   Live Preview を選択を解除することによって、
+   ライブプレビューをオフにすることができます
+
+5. クリック 03 MALDIVES.mov を
+   メディアプールの中でライブプレビューし、
+   次に、
+   それをソースビューワーの中で.開くために、
+   それをダブルクリックします。
+
+   ソースビューワーの中で、
+   Maldives クリップが
+   アクティブなクリップとして
+   Kenya クリップと置き換わります。
+
+   Kenya クリップに戻るには、
+   それをメディアプールから再度開くか、
+   recent clips メニューを使うことができます
+
+6. ソースビューワーの上にある recent clips メニューをクリックし、
+   07 Kenya.mov を最近開かれたクリックから選択します。
+
+   「Kenya」 クリックが再度開かれます。
+
+   コツ:
+   ソースビューワーの recent clips メニューは、
+   最も最近開かれたクリップをこのリストの一番上に表示しながら、
+   ソースビューワーの中で前に開かれていた最後の 10 個のクリップをリストします。
+
+   注意:
+   赤いクリップの名前は、
+   ソースビューワーが
+   インディケータの現在アクティブな部分であるということを
+   示しているので、
+   全てのキーボードショートカットやメニューアイテムは、
+   Resolve のインターフェースのこの部分だけに適用されます。
+
+
+**** 閲覧オプションを探求する
+
+メディアプールの中でクリップを閲覧することができる
+異なる方法があり、
+選択に依存してクリップをソートするためのオプションがありまう。
+現在、
+クリップはサムネールとして表示されています。
+
+1. メディアプールの一番上で、
+   サムネールを大きくするためにスライダーを右側へドラッグします。
+
+   サムネールが大きいときには、
+   クリップの名前を読むことがより簡単です。
+
+   注意:
+   あなたがラップトップ上で作業を行なっている場合には、
+   メディアプールとソースビューワーの間にある
+   ディバイダをドラッグすることによって、
+   メディアプールの全体としてのサイズを
+   増やす必要があるかもしれません。
+
+2. クリップのソートの順番を表示するために、
+   「Sort」 メニューをクリックします。
+
+   デフォルトでメディアプールの中のクリップは
+   クリップの名前に基いて昇順で表示されます。
+
+3. より短かいクリップが一番上に、
+   より長いクリップが下に表示されるように、
+   長さに基いてソートの順番を変更するために、
+   「Duration」 をクリックします。
+
+4. 「List View」 ボタンをクリックします。
+
+   各クリップにういての様々な部分の情報を表示している列の連続によって、
+   サムネールあ置き換えられます。
+
+5. このリストをスクロールし、
+   クリップがまで長さによってソートされていることに注意してください。
+
+6. 今、より長いクリップが
+   このリストの一番上にきて、
+   短かいクリップが一番下にくるよいうに、
+   ソートの順番を逆にするために Duration 列のヘッダをクリックします。
+
+7. Name 列までスクロールし、
+   滑に基いて、 昇順になるようにクリックの順番を変更すうために、
+   そのヘッダーをクリックします。。
+
+8. サムネールビューに戻るために
+   thumbnail view ボタンをクリックします。
+
+   サムネールビューは
+   クリップを素早くライブプレビューするための良い方法であ、
+   一方でリストビューは、
+   それぞれのクリップについてのずっと多くの情報を表示しますが、
+   各クリップを素早くプレビューを行なうことを可能にしません。
+   各クリップが何であるのかを見るには、
+   それぞれのクリップをソースビューワーの中で開く必要があります。
+
+   #+begin_example
+Metadata ビュー
+
+Edit ページのメディアプールの中の3番目の閲覧オプションは、
+Metadata ビューであり、
+これはサムネールビューとリストビューの中間です。
+.
+
+image...
+
+Metadata ビューの中で、
+クリップのライブプレビューすることを可能にし、かう、
+クリップの名前、シーン、撮影番号、
+クリップがGood としてマークされているかどうかといった
+いくつかの役に立つメタデータフィールドを表示も行なう
+サムネールが表示されます。
+   #+end_example
+
+
+**** Edit ページの中でタイムラインを作成する
+
+今、このプロジェクト用の footage をレビューを行なうという側面で,
+Edit ページを探求してきたので、
+短かいトレーラーの中でフッテージの編集をはじめる時間です。
+それを行なうためにはタイムラインが必要です。
+しばしば多くのプロジェクトが
+複数のタイムラインを含んでいるので
+特に全てのタイムラインをまとめて保存するための
+bin を作成するということが役に立ち、
+タイムラインの場所を確認することがより簡単にします。
+
+1. ビンリストの中で、 Masterbin を右クリックし、
+  「New Bin」を選択するか、
+   =Shift-Command-N= (macOS) か
+   =Shift-Ctrl-N= (Windows) を押します。
+
+   ...fiure
+
+   このプロジェクトの中で作成された 6 番目の bin なので、
+   「Master」 bin の中に
+   「Bin 6」 と呼ばれる新しい bin がえ作成されます。
+
+   ...fiure
+
+2. この bin の名前をハイライトしておいて、
+   この bin の名前を変更するために、
+   「TIMELINES」とタイプし、
+   =Return= (=Enter=) を押します。
+
+   ...fiure
+
+3. 新しい空の TIMELINES bin を選択し、
+   「File > New Timeline」を選択するか、
+   =Command-N= (macOS) か
+   =Ctrl-N= (Windows) を押します。
+
+4. このタイムラインの名前を
+   「Age of Airplanes Trailer」に変更し、
+   「Create」をクリックします。
+
+   ...fiure
+
+   新しいタイムラインが
+   選択された bin に対して追加され、
+   タイムラインウインドウの中で開きます。
+
+   ...fiure
+
+   コツ:
+   タイムラインを間違った bin の中で作成した場合には、
+   常にいつでも、
+   そのタイムラインをメディアプールから、
+   ビンリストの中の正しい bin の中へドラッグすることによって、
+   そのタイムラインを正しい bin の中に移動することができます。
+
+
+
+**** Editing the Sound Bites
+
+As with the previous lesson
+前のレッスンと同じように、
+,
+you’ll
+あなたは
+begin
+
+インタビューのクリップをまとめて編集することによってはじめます。
+.
+
+1. Interview スマートビンを選択し、
+   クリップ「Interview 01.mov」を
+    ソースビューワーの中で開きます。
+
+   ...fiure
+
+2. クリップのはじめへ戻すために、
+   「Go To First Frame」 ボタンをクリップするか、
+   Up Arrow キーを押します。
+
+   ...fiure
+
+3. このクリップを再生するために
+   Play ボタンをクリップするか、
+   Spacebar を押し、
+   Brian のインタビューを聴きます。
+
+   ...fiure
+
+   Edit ページはドラッグアンドドロップによる編集をサポートしていますが、
+   この方法で実行できる種類の編集はずっと制限されていて、
+   デフォルトの上書き編集に制限しています。
+   かわりに、専用の編集機能を使うことができます。
+
+4. このクリップを
+   ソースビューワーから
+   タイムラインビューに対してドラッグしますが、
+   すぐにはマウスボタンを離さないでください。
+
+   ...fiure
+
+   オーバーレイが出現し
+   利用可能な異なる種類の編集機能の詳細を表示しています。
+   デフォルトは「Overwrite」であり、
+   これが自動的にハイライトされます。
+
+5. Overwrite オプションをハイライトしたままで、
+   マウスボタンを離してください。
+   あなたの最初のクリップがタイムラインの中で編集されていて、
+     タイムラインビューが自動的にアクティブになります。
+
+   ...fiure
+
+6. このクリックが
+   タイムラインウインドウを埋めるように、
+   Full Extent Zoom ボタンをクリックします。
+
+   ...fiure
+
+7. タイムラインクリップの開始時点に戻るために、
+   タイムラインビューの中で
+   Go To Previous Edit ボタンを押すか、
+   Up Arrow キーを押します
+   この場所から再生をはじめるために Spacebar を押し、
+   Brian が “...shoot the real world” と言った後で、
+   再生を止めるために
+   Spacebar をもう一度押してください。
+
+   ...fiure
+
+   これはあなたが次の編集を行なう場所です。
+
+   コツ:
+   マウスホイールを使うことによってか、
+   Left Arrow キーか Right Arrow キーを押すことによって、
+   常に演奏した場所に戻ることができます。
+
+   #+begin_example
+タイムラインのズッムのコントロール
+
+The edit page
+has
+three options
+3 つのオプションが
+for controlling
+コントロールするための
+the zoom level
+ズームレベルを
+of clips
+クリップの
+in the timeline
+タイムラインの中で
+:
+Full Extent Zoom と
+Detail Zoom と
+Custom Zoom です。.
+
+Full Extent Zoom は
+タイムラインの全体の長さをタイムラインウインドウの中で常に表示し、
+全てが見えるようにズームを自動的に調節します。
+This
+これは
+is most useful
+for seeing
+入るために
+a bird’s-eye view
+of your edit
+and allows
+可能にします
+you to navigate
+ナビゲーションを起こなうことを
+anywhere
+どこにでも
+within the timeline
+タイムラインの内側にある
+,
+like the upper timeline
+in the cut page
+Cut ページの中の
+.
+
+Detail Zoom は
+scales
+スケールを変更します
+the timeline
+タイムラインの
+to a closer
+,
+zoomed view
+,
+centered
+on the playhead. This option is most useful when you want to step into the timeline to
+select a clip or edit point to make fine adjustments, like the lower timeline in
+the cut page.
+
+Custom Zoom provides the most flexibility as it allows you to set your own zoom
+scale in the timeline. You can use the slider to zoom in and out of the playhead
+location or hold Option (macOS) or Alt (Windows) and use the scroll function on
+your mouse (or trackpad) to adjust the zoom of the timeline dynamically, centered
+on the playhead.
+
+Timeline track heights can be adjusted using the timeline view options menu or by
+holding Shift and using the mouse scroll wheel in either the audio or video areas
+of the timeline.
+Useful keyboard shortcuts for zooming the timeline include:
+
+— Command-= (equals) in macOS or Ctrl-= (equals) in Windows to zoom in to the
+  timeline playhead
+— Command--(minus) in macOS or Ctrl--(minus) in Windows to zoom out of the
+  timeline playhead
+— Shift-Z は
+  toggles
+  トグルします
+  between fitting the timeline to the timeline window and
+  returning you to the previous zoom level
+   #+end_example
+
+8. メディアプールから、
+   「Interview 02.mov」を
+   ソースモニターの中で開きます。
+
+   ...fiure
+
+   このクリップの最初のフレームに行き、
+   はじめから再生します
+   Brian のインタビューからの、
+   この音声部分の一部だけを使う必要があります。
+   このようなオーディオがついたクリップで作業するときに、
+   ソースビューワーの中で
+   ビデオとともに音声波形の表示を見ることが役に立ちます。
+
+   コツ:
+   クリップにビデオとともに音声があるかどうかが、
+   メディアプールの中のクリップのサムネールの左下で表示されている
+   オーデオ新保の存在によってわかります。
+
+9. ソースビューワーの右上で
+   オプションメニュー
+   （3 つのドッととして表示されています）をクリックし、
+   Show Zoomed Audio Waveform を選択します。
+
+   ...fiure
+
+   音声波形がソースビューワーの中で表示されます。
+
+   ...fiure
+
+   クールですよね？
+   Now
+   ここで、
    ,
-   and then
-   次に
-   Command-click (macOS) か
-   Ctrl-click (Windows) します
-   the
-   VIDEO CLIPS bin を
-   to display
-   表示するために
-   all the individual clips
-   全ての個々のクリップを
-   in these bins
-   これらの bin の中にある
+   as you
+   あなたが
+   scrub
+   or
+   play
+   再生するにつれて
+   through this clip
+   このクリップを
+   ,
+   you can see from the waveform where he starts and stops speaking
+   書いわの最初と最後の部分の場所を波形から見ることができまう。
    .
 
-   Despite
-   easily accessing
-   the different bins, the edit page has a much more flexible
-   approach to finding the clip you’re after, using the metadata that’s applied to a clip.
+   #+begin_example
+再生のコントロール
 
-4. In the
-   Smart Bins section
-   of the bin list
-   ,
-   click
-   the disclosure arrow
-   next
-   to the Keywords folder
+編集の重要な部分は、
+ビデオの再生方法を学ぶということです。
+DaVinci Resolve の
+’s default keyboard layout
+デフォルトのキーボードレイアウトは
+supports
+サポートしています
+all the usual shortcuts
+よく使われる全てのショートカットを
+for playback
+再生するための
+that professional editors
+プロの編集者が
+around the world
+世界中の
+recognize
+認識している
+.
+You can use
+使うことができます
+the
+Spacebar を
+to start
+開始して
+and stop
+止めるために
+playback
+再生を
+and
+the
+Left Arrow と
+Right Arrow キーを
+to move forward and back one frame at a time
+一度に1 フレーム分前方と候補にむかって移動するための
+.
+More experienced users
+will be happy
+to know
+that the
+J, K, and L keys
+also
+control
+playback
+at different speeds
+異なるスピードで
+.
+
+The order
+順番は
+of the
+JKL キーの
+match
+マッチしています
+the layout
+レイアウトに
+of the
+Play Reverse と
+,
+Stop と
+,
+and
+Play transport controls
+in both the source and timeline viewers.
+
+Try
+試してください
+the following
+次を
+to practice
+練習するために
+controlling
+the playback
+of the source
+or timeline viewer
+:
+
+— Hold
+  Kを押しにゃら、
+  and
+  tap
+  L を達布します
+  to jog forward 1 frame
+— Hold
+  K を押しにゃら、
+  and
+  tap
+  J を達布します
+  to jog backward
+  1 frame
+— Hold
+  Kを押しにゃら、
+  and
+  Hold
+  L を押し続けます
+  to scrub forward
+  at half speed
+— Hold
+  K を押しにゃら、
+  and hold
+  J
+  to scrub
+  backward at half speed
+— Press
+  L
+  twice
+  to shuttle forward at twice normal speed
+— Press J twice to shuttle backward at twice normal speed
+
+You can keep tapping the J or L keys to increase the shuttling speed up to 64x
+normal speed.
+   #+end_example
+
+10. このクリップを最初からもう一度再生し
+    Brian が
+    “If it was possible to shoot it, we wanted
+    to go shoot it” と言うすぐ前で再生を止めます。
+
+    ...fiure
+
+11. In 点をこの場所に設定するために、=I= を押します。
+
+    ...fiure
+
+12. このクリップを再生し、
+    Brian が
+    “...everything was real” と言った後で
+    再生を止めます。
+
+13. Out 点をこの場所に設定するために、
+    =O= を押します。
+
+    ...fiure
+
+14. タイムラインのツールバーの中で、
+    Overwrite Clip ボタンをクリックするか、
+    F10 を押します。
+
+    ...fiure
+
+    The second interview clip is edited
+    二番目のインタビューのクリップが編集されます。
+    into the timeline
+    タイムラインの中の、、
+    starting at the position of the timeline playhead
+    タイムラインの再生ヘッドがはじまる場所で、
+    .
+    最初のクリップの終わりは
+    このクリップで上書きされています。
+
+    ...fiure
+
+    注意:
+    If you’re using
+    DaVinci Resolve を macOS 上で使っている場合には
+    ,
+    you
+    may need to configure
+    設定する必要があるかもしれません
+    your keyboard settings
+    キーボード設定を
+    in
+    System Preferences の中で
+    to
+    “Use F1, F2, etc. keys as standard function keys”
+    to use
+    使うために
+    the default editing shortcuts
+    デフォルトの編集ショートカットを
+    .
+    あるいは、
+    macOS のショートカットを上書きするために、
+    fn キーを任意の F-キーとともに使うことができます。
+
+15. タイムラインの再生位置を
+    これら 2 つのインタビューの間の編集地点へ移動するために、
+    キーボード上の Up Arrow を押します。
+
+    ...fiure
+
+16. この編集をレビューするために、
+    Playback > Play Around/To > Play Around Current Selection を選択するか、
+    / （フォワードスラッシュ）を押します
+    The edit is successful enough
+    この編集者は十分成功していますが、
+    ,
+    but
+    it’s
+    それは
+    a nasty jump cut
+    ,
+    which you’ll fix in the following steps
+    これを次のステップで修正します。
+    .
+
+**** B-Roll の挿入
+
+航空機に対する Brian の情熱を活気づけるために、
+いくつかの B-Roll のフッテージを追加する時間です。
+
+1. B-Roll スマートビンを選択し、
+   01 A380 TAKEOFF.mov を
+   ソースビューワーの中で開きます。
+   このフッテージをレビューするために、、
+   このクリップを最初から再生します。
+
+   ...fiure
+
+2. 飛行機のホイールが
+   ランナウエイを離れはじめるにつれて
+   In 点を設定するために、
+   I を押します。
+
+   ...fiure
+
+3. この飛行機の末尾がフレームを離れたら、
+   Out 点を設定するために O を押します。。
+
+
+4. Ensure
+   your timeline playhead
+   is still
+   まだ
+   on the edit point
+   between the two interview clips
+   and
+   drag
+   the clip
+   to the
+   Insert overlay
+   in the timeline viewer
    .
 
-   Smart bins
-   are special bins
-   that will automatically
-   collect different clips based on sets
-   of rules. The Keywords Smart Bin category is an example of a set of automatic smart
-   bins that appear when you start adding keywords to clips in your project.
+   ...fiure
 
-5. Timelapse smart bin を選択します。
-   Two clips appear in the media pool because each of
-   these has timelapse applied as a keyword.
+   The clip
+   is added
+   in between the two interview clips
+   in the timeline
+   but has been inserted
+   between them rather than overwriting the clip at the playhead.
+
+   ...fiure
+
+5. Move
+   the timeline playhead
+   back to the edit
+   between
+   INTERVIEW 01.mov
+   and
+   01 A380 TAKEOFF.mov
+   .
+   This
+   これは
+   will be the location
+   for your next edit
+   .
+
+   NOTE Using the Up Arrow and Down Arrow keys are fast ways of moving
+   between the different edit points in your timeline. If you prefer, you can
+   always drag the timeline playhead, and it will snap to the nearest edit point as
+  long as your Snapping option is enabled. Press N to toggle snapping on or off.
+
+6. From the media pool, open 02 A380 TAXI.mov in the source viewer. Play the clip
+   through to review.
+
+   ...fiure
+
+   This
+   これは
+   is a nice overhead shot
+   of the same type of plane
+   that you’ve just edited into the
+   timeline, but the audio is a little distractin

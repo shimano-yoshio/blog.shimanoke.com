@@ -1,8 +1,8 @@
 +++
-title = "Ubuntu MATE で複数のEmacsディストリビューションを動かす"
+title = "Ubuntu MATE で複数の Emacs ディストリビューションを動かす"
 author = ["島野 善雄"]
 date = 2023-09-06T00:00:00+09:00
-lastmod = 2023-09-07T12:31:31+09:00
+lastmod = 2023-09-10T10:22:01+09:00
 tags = ["Emacs"]
 categories = ["Ubuntu"]
 type = "post"
@@ -16,13 +16,13 @@ draft = false
 - <span class="section-num">1</span> [目的](#目的)
 - <span class="section-num">2</span> [今回の目標のイメージ](#今回の目標のイメージ)
 - <span class="section-num">3</span> [環境](#環境)
-- <span class="section-num">4</span> [Ubuntu MATE へのEmacsのインストール](#ubuntu-mate-へのemacsのインストール)
-- <span class="section-num">5</span> [Chemacs を使って複数のEmacsをたちあげる](#chemacs-を使って複数のemacsをたちあげる)
+- <span class="section-num">4</span> [Ubuntu MATE への Emacs のインストール](#ubuntu-mate-への-emacs-のインストール)
+- <span class="section-num">5</span> [Chemacs を使って複数の Emacs をたちあげる](#chemacs-を使って複数の-emacs-をたちあげる)
     - <span class="section-num">5.1</span> [今回使用するディレクトリ](#今回使用するディレクトリ)
     - <span class="section-num">5.2</span> [chemacs のインストール](#chemacs-のインストール)
-    - <span class="section-num">5.3</span> [Spacemacsのインストール](#spacemacsのインストール)
+    - <span class="section-num">5.3</span> [Spacemacs のインストール](#spacemacs-のインストール)
         - <span class="section-num">5.3.1</span> [`~/EmacsDist` ディレクトリの作成](#emacsdist-ディレクトリの作成)
-        - <span class="section-num">5.3.2</span> [Spacemacsのレポジトリのクローン](#spacemacsのレポジトリのクローン)
+        - <span class="section-num">5.3.2</span> [Spacemacs のレポジトリのクローン](#spacemacs-のレポジトリのクローン)
         - <span class="section-num">5.3.3</span> [`~/.spacemacs.d` ディレクトリの作成](#dot-spacemacs-dot-d-ディレクトリの作成)
     - <span class="section-num">5.4</span> [Doom Emacs のインストール](#doom-emacs-のインストール)
         - <span class="section-num">5.4.1</span> [Doom Emacs のレポジトリをクローン](#doom-emacs-のレポジトリをクローン)
@@ -40,33 +40,33 @@ draft = false
 
 ## <span class="section-num">1</span> 目的 {#目的}
 
-Ubuntu MATE 23.04にEmacsをインストールする方法を説明します。
+Ubuntu MATE 23.04 に Emacs をインストールする方法を説明します。
 
-また、[chemacs2](https://github.com/plexus/chemacs2) を使って複数の Emacsを同時に動かせるようにします。
+また、[chemacs2](https://github.com/plexus/chemacs2) を使って複数の Emacs を同時に動かせるようにします。
 
 以下のツールを使います。
 
 [chemacs2](https://github.com/plexus/chemacs2)
-: Emacsのバージョンスッチャー
+: Emacs のバージョンスッチャー
 
 [Spacemacs](https://www.spacemacs.org/)
-: 人気のあるEmacsのディストリビューション
+: 人気のある Emacs のディストリビューション
 
 [doomemacs](https://github.com/doomemacs/doomemacs)
-: これも人気のあるEmacsのディストリビューション
+: これも人気のある Emacs のディストリビューション
 
 
 ## <span class="section-num">2</span> 今回の目標のイメージ {#今回の目標のイメージ}
 
-今回の設定を行なうと下図のように Spacemacsと
+今回の設定を行なうと下図のように Spacemacs と
 Doom Emacs を同時に動かすことができます。
 
-{{< figure src="/ox-hugo/spaceemacs-and-doom.png" alt="Spacemacsと Doom Emacs を同時に動かす" caption="<span class=\"figure-number\">&#22259;1:  </span>Spacemacsと Doom Emacs を同時に動かす" width="50%" >}}
+{{< figure src="/ox-hugo/spaceemacs-and-doom.png" alt="Spacemacs と Doom Emacs を同時に動かす" caption="<span class=\"figure-number\">&#22259;1:  </span>Spacemacs と Doom Emacs を同時に動かす" width="50%" >}}
 
 
 ## <span class="section-num">3</span> 環境 {#環境}
 
-今回Emacsをインストールする環境です。
+今回 Emacs をインストールする環境です。
 
 Guest OS
 : [Ubuntu MATE](https://ubuntu-mate.org/) 23.04
@@ -77,9 +77,9 @@ Host OS
 VM 環境: [VirtualBox](https://www.virtualbox.org/) 7.0.100
 
 
-## <span class="section-num">4</span> Ubuntu MATE へのEmacsのインストール {#ubuntu-mate-へのemacsのインストール}
+## <span class="section-num">4</span> Ubuntu MATE への Emacs のインストール {#ubuntu-mate-への-emacs-のインストール}
 
-Ubuntu MATE へEmacsのインストールするには次のようにします。
+Ubuntu MATE へ Emacs のインストールするには次のようにします。
 
 ```sh
 sudo apt -y install emacs emacs-gtk
@@ -89,7 +89,7 @@ sudo apt -y install emacs emacs-gtk
   Ubuntu MATE へのEmacsのインストール
 </div>
 
-Emacsのバージョンを確認します:
+Emacs のバージョンを確認します:
 
 ```sh
 emacs --version
@@ -108,16 +108,16 @@ under the terms of the GNU General Public License.
 For more information about these matters, see the file named COPYING.
 ```
 
-以上でEmacs自体のインストールは終了です。
+以上で Emacs 自体のインストールは終了です。
 
 
-## <span class="section-num">5</span> Chemacs を使って複数のEmacsをたちあげる {#chemacs-を使って複数のemacsをたちあげる}
+## <span class="section-num">5</span> Chemacs を使って複数の Emacs をたちあげる {#chemacs-を使って複数の-emacs-をたちあげる}
 
-複数のEmacsの異なるディストリビューション、
+複数の Emacs の異なるディストリビューション、
 異なるバージョンを動かしたいことがあります。
 そのために私は [chemacs2](https://github.com/plexus/chemacs2) を使っていあます。
 
-今回は次の2 つのEmacsのディストリビューションを
+今回は次の 2 つの Emacs のディストリビューションを
 動かします。
 
 -   [Spacemacs](https://www.spacemacs.org/)
@@ -137,7 +137,7 @@ For more information about these matters, see the file named COPYING.
 : chemacs 用のファイルがはいります
 
 `~/EmacsDist`
-: 複数のEmacsのディレクトリを置くディレクトリ
+: 複数の Emacs のディレクトリを置くディレクトリ
 
 `~/EmacsDist/Spacemacs`
 : Spqcemacs のディレクトリ
@@ -146,7 +146,7 @@ For more information about these matters, see the file named COPYING.
 : Doom Emacs のディレクトリ
 
 `~/.spacemacs.d`
-: Spacemacs用の設定がはいるディレクトリ
+: Spacemacs 用の設定がはいるディレクトリ
 
 `=~/.doom.d`
 : Doom Emacs 用の設定がはいるディレクトリ
@@ -170,15 +170,15 @@ git clone https://github.com/plexus/chemacs2.git ~/.emacs.d
   chemacs のインストール
 </div>
 
-既存のEmacs設定があった場合には、次のように退避されます:
+既存の Emacs 設定があった場合には、次のように退避されます:
 
 -   _~_.emacs/ → _~_.emacs.bak/
 -   _~_.emacs.d/ → _~_.emacs.defaulta/
 
-以上でchemacs のインストールは終了です。
+以上で chemacs のインストールは終了です。
 
 
-### <span class="section-num">5.3</span> Spacemacsのインストール {#spacemacsのインストール}
+### <span class="section-num">5.3</span> Spacemacs のインストール {#spacemacs-のインストール}
 
 今回使用するディレクトリは次のとおりです。
 
@@ -191,7 +191,7 @@ git clone https://github.com/plexus/chemacs2.git ~/.emacs.d
 
 #### <span class="section-num">5.3.1</span> `~/EmacsDist` ディレクトリの作成 {#emacsdist-ディレクトリの作成}
 
-各種Emacsのディストリビューションを格納するディレクトリを作成します
+各種 Emacs のディストリビューションを格納するディレクトリを作成します
 
 ```sh
 mkdir ~/EmacsDist
@@ -202,9 +202,9 @@ mkdir ~/EmacsDist
 </div>
 
 
-#### <span class="section-num">5.3.2</span> Spacemacsのレポジトリのクローン {#spacemacsのレポジトリのクローン}
+#### <span class="section-num">5.3.2</span> Spacemacs のレポジトリのクローン {#spacemacs-のレポジトリのクローン}
 
-Spacemacsのレポジトリをクローンします。
+Spacemacs のレポジトリをクローンします。
 
 ```sh
 cd ~/EmacsDist
@@ -230,7 +230,7 @@ git checkout develop
 
 #### <span class="section-num">5.3.3</span> `~/.spacemacs.d` ディレクトリの作成 {#dot-spacemacs-dot-d-ディレクトリの作成}
 
-Spacemacsの設定ファイルを格納する
+Spacemacs の設定ファイルを格納する
 `~/.spacemacs.d` ディレクトリを作成します。
 
 ```sh
@@ -241,17 +241,7 @@ mkdir ~/.spacemacs.d
   <code>~/.spacemacs.d</code> ディレクトリの作成
 </div>
 
-ディレクトリの "init.el" ファイルをコピーします。
-
-```sh
-cp ~/EmacsDist/Spacemacs/init.el .spacemacs.d
-```
-<div class="src-block-caption">
-  <span class="src-block-number">ソースコード 8:</span>
-  ディレクトリの "init.el" ファイルをコピー
-</div>
-
-以上でSpacemacsのインストールは終了です。
+以上で Spacemacs のインストールは終了です。
 
 
 ### <span class="section-num">5.4</span> Doom Emacs のインストール {#doom-emacs-のインストール}
@@ -260,7 +250,7 @@ doom Emacs をインストールします。
 使用されるディレクトリです。
 
 `~/.spacemacs.d`
-: Spacemacs用の設定がはいるディレクトリ
+: Spacemacs 用の設定がはいるディレクトリ
 
 `=~/.doom.d`
 : Doom Emacs 用の設定がはいるディレクトリ
@@ -268,7 +258,7 @@ doom Emacs をインストールします。
 <!--listend-->
 
 `~/.spacemacs.d`
-: Spacemacs用の設定がはいるディレクトリ
+: Spacemacs 用の設定がはいるディレクトリ
 
 `=~/.doom.d`
 : Doom Emacs 用の設定がはいるディレクトリ
@@ -285,7 +275,7 @@ cd ~/EmacsDist
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/EmacsDist/DoomEmacs
 ```
 <div class="src-block-caption">
-  <span class="src-block-number">ソースコード 9:</span>
+  <span class="src-block-number">ソースコード 8:</span>
   Doom Emacs のレポジトリをクローン
 </div>
 
@@ -302,7 +292,7 @@ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/EmacsDist/DoomEmacs
 ~/EmacsDist/DoomEmacs/bin/doom install
 ```
 <div class="src-block-caption">
-  <span class="src-block-number">ソースコード 10:</span>
+  <span class="src-block-number">ソースコード 9:</span>
   doom installの実行
 </div>
 
@@ -361,7 +351,7 @@ Have fun!
 ~/EmacsDist/DoomEmacs/bin/doom sync
 ```
 <div class="src-block-caption">
-  <span class="src-block-number">ソースコード 11:</span>
+  <span class="src-block-number">ソースコード 10:</span>
   doom sync の実行
 </div>
 
@@ -387,7 +377,7 @@ Have fun!
   - Restart Emacs or use 'M-x doom/reload' for changes to take effect
 ```
 
-以上で Doom Emacsのインストールが終了しました。
+以上で Doom Emacs のインストールが終了しました。
 
 
 ### <span class="section-num">5.5</span> chemacs の設定 {#chemacs-の設定}
@@ -409,9 +399,9 @@ Have fun!
 以下パラメータの説明です。
 
 -   spacemacs
-    -   **user-emacs-directory :** `~/EmacsDist/Spacemacs` はSpacemacsのレポジトリを
+    -   **user-emacs-directory :** `~/EmacsDist/Spacemacs` は Spacemacs のレポジトリを
         クローンしたディレクトリです
-    -   **SPACEMACSDIR:** `~/.spacemacs.d` はSpacemacsの設定ファイルがあるディレクトリです。
+    -   **SPACEMACSDIR:** `~/.spacemacs.d` は Spacemacs の設定ファイルがあるディレクトリです。
 
 ー doom
 
@@ -429,7 +419,7 @@ user-emacs-directory
 spacemacs
 ```
 <div class="src-block-caption">
-  <span class="src-block-number">ソースコード 12:</span>
+  <span class="src-block-number">ソースコード 11:</span>
   <code>~/.emacs-profile</code>
 </div>
 
@@ -442,7 +432,7 @@ spacemacs
 
 ### <span class="section-num">5.6</span> chemacs の使いかた {#chemacs-の使いかた}
 
-Spacemacsを起動するには次のようにします.
+Spacemacs を起動するには次のようにします.
 
 ```sh
 emacs --with-profile spacemacs
@@ -450,17 +440,17 @@ emacs --with-profile spacemacs
 emacs
 ```
 <div class="src-block-caption">
-  <span class="src-block-number">ソースコード 13:</span>
+  <span class="src-block-number">ソースコード 12:</span>
   Spacemacsを起動する
 </div>
 
-Doom Emacsを立ち上げるには次のようにします。
+Doom Emacs を立ち上げるには次のようにします。
 
 ```sh
 emacs --with-profile doom
 ```
 <div class="src-block-caption">
-  <span class="src-block-number">ソースコード 14:</span>
+  <span class="src-block-number">ソースコード 13:</span>
   Doom Emacsを立ち上げる
 </div>
 
@@ -468,7 +458,7 @@ emacs --with-profile doom
 ## <span class="section-num">6</span> 結論 {#結論}
 
 今回は  [chemacs2](https://github.com/plexus/chemacs2)  を使って、
-Ubuntu 上でSpacemacsと Doom Emaccs を動かす
+Ubuntu 上で Spacemacs と Doom Emaccs を動かす
 方法を紹介しました。
 
-Spacemacsの使いかた/設定については別の機械に紹介します。
+Spacemacs の使いかた/設定については別の機械に紹介します。
