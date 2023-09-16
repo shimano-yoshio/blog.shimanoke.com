@@ -1,8 +1,8 @@
 +++
 title = "Ubuntu でスクリーンキャストを録画し、GIF に保存する (peek)"
 author = ["島野 善雄"]
-date = 2023-09-15T00:00:00+09:00
-lastmod = 2023-09-16T10:37:15+09:00
+date = 2023-09-16T10:38:00+09:00
+lastmod = 2023-09-16T10:38:26+09:00
 tags = ["Ubuntu", """
   "Ubuntu
   """, """
@@ -10,7 +10,7 @@ tags = ["Ubuntu", """
   """]
 categories = ["Ubuntu"]
 type = "post"
-draft = true
+draft = false
 +++
 
 <div class="ox-hugo-toc toc has-section-numbers">

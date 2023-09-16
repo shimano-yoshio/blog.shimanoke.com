@@ -318,8 +318,8 @@ DEADLINE: <2023-09-06 Wed>
 
 
 
-** TODO Ubuntu でスクリーンキャストを録画し、GIF に保存する (peek)
-DEADLINE: <2023-09-17 Sun>
+** DONE Ubuntu でスクリーンキャストを録画し、GIF に保存する (peek)
+CLOSED: [2023-09-16 Sat 10:38] DEADLINE: <2023-09-17 Sun>
 :PROPERTIES:
 :EXPORT_DATE: <2023-09-15 Fri>
 :EXPORT_HUGO_SECTION: japanese/posts
@@ -327,6 +327,7 @@ DEADLINE: <2023-09-17 Sun>
 :EXPORT_OPTIONS: toc:t num:t
 :END:
 :LOGBOOK:
+- State "DONE"       from "TODO"       [2023-09-16 Sat 10:38]
 CLOCK: [2023-09-16 Sat 09:31]--[2023-09-16 Sat 09:32] =>  0:01
 :END:
 
