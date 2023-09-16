@@ -107,11 +107,11 @@ Brian J. Terwilliger によって監督された
 注意: あなたはプロジェクト設定について
 レッスン 6 でさらに学びます。
 
-1. Project Manager を表示するために
+1. 「Project Manager」 を表示するために
    DaVinci Resolve を開きます。
 
 2. 「Project Manager」 の左下で、
-   Import ボタンをクリックします。
+   「Import」 ボタンをクリックします。
 
 3. 「R18 Beginner Guide Lessons / Lesson 01」
    フォルダに行って、
@@ -119,7 +119,7 @@ Brian J. Terwilliger によって監督された
 
    注意:
    これが DaVinci Resolve Project ファイルであるということを、
-   .drp というファイル拡張子は示しています。
+   =.drp= というファイル拡張子は示しています。
    このようにしてプロジェクトファイルを使うということが、
    特にあなたがローカルなプロジェクトライブラリを使っている場合に、
    プロジェクトを他のユーザーと交換するための良い方法です
@@ -127,20 +127,21 @@ Brian J. Terwilliger によって監督された
    あなた自身の .drp ファイルの作成方法について、
    あなたはレッスン 9 でさらに学びます。
 
-4. Open をクリックする
+4. 「Open」 をクリックする
+
    このプロジェクトが
-   Project Manager の
+   「Project Manager」 の
    現在のプロジェクトライブラリに対して追加されます。
 
    注意:
-   DaVinci Resolve ha
-   プロジェクトファイルを直接あなたのシステムから「開き」ません。
-   かわりに .drp ファイルは
-   into the current project library
+   DaVinci Resolve は
+   プロジェクトファイルを、
+   直接あなたのシステムから「開き」ません。
+   かわりに =.drp= ファイルが
    現在のプロジェクトライブラリの中に直接コピーされます。
    よって、
-   プロジェクトに対する全ての変更が、
-   プロジェクトライブラリの中にあるコピーに対してだけ適用されます。
+   プロジェクトライブラリの中にあるコピーに対してだけ
+   プロジェクトに対する全ての変更が適用されます。
 
 5. 「Age of Airplanes」 プロジェクトを開くためにそれを
    ダブルクリックし、
@@ -181,12 +182,12 @@ Brian J. Terwilliger によって監督された
 
 
   8. このインターフェースの中の
-    「メディアプール」の上で、
-    Relink Media ボタンをクリックします。
+     「メディアプール」の上で、
+     Relink Media ボタンをクリックします。
 
   9. 「Relink Media」ウインドウが出現し、
-    how many clips
-    何個のクリップにそのメディアファイルがないのかを伝えています。
+     how many clips
+     何個のクリップにそのメディアファイルがないのかを伝えています。
 
   10. 「Locate」 ボタンをクリックし、
       出現するファイルウインドウの中で、
@@ -217,7 +218,7 @@ Brian J. Terwilliger によって監督された
       このプロジェクトを探求しはみめることができます。
 
 
-  **** メディアプールを使った詐欺
+**** メディアプールを使った詐欺
 
   メディアプールは、
   クリップと、タイムラインといった他の要素が
@@ -568,7 +569,7 @@ begin
 
 7. タイムラインクリップの開始時点に戻るために、
    タイムラインビューの中で
-   Go To Previous Edit ボタンを押すか、
+   「Go To Previous Edit」 ボタンを押すか、
    Up Arrow キーを押します
    この場所から再生をはじめるために Spacebar を押し、
    Brian が “...shoot the real world” と言った後で、
@@ -587,46 +588,19 @@ begin
    #+begin_example
 タイムラインのズッムのコントロール
 
-The edit page
-has
-three options
-3 つのオプションが
-for controlling
-コントロールするための
-the zoom level
-ズームレベルを
-of clips
-クリップの
-in the timeline
-タイムラインの中で
-:
+タイムラインの中のクリップのズームレベルを
+コントロールするための3 つのオプションが、e
+Edit ページにあります:
 Full Extent Zoom と
 Detail Zoom と
 Custom Zoom です。.
 
-Full Extent Zoom は
 タイムラインの全体の長さをタイムラインウインドウの中で常に表示し、
 全てが見えるようにズームを自動的に調節します。
-This
-これは
-is most useful
-for seeing
-入るために
-a bird’s-eye view
-of your edit
-and allows
-可能にします
-you to navigate
-ナビゲーションを起こなうことを
-anywhere
-どこにでも
-within the timeline
-タイムラインの内側にある
-,
-like the upper timeline
-in the cut page
-Cut ページの中の
-.
+これは編集の鳥瞰ビューを入ることに対して最も役に立ち、
+Cut ページの中の上側のタイムラインのように、
+タイムラインの内側にあるどこにでも、
+ナビゲーションを行なうことを可能にします。
 
 Detail Zoom は
 scales
@@ -638,7 +612,8 @@ to a closer
 zoomed view
 ,
 centered
-on the playhead. This option is most useful when you want to step into the timeline to
+on the playhead.
+This option is most useful when you want to step into the timeline to
 select a clip or edit point to make fine adjustments, like the lower timeline in
 the cut page.
 
@@ -695,23 +670,12 @@ Useful keyboard shortcuts for zooming the timeline include:
    ...fiure
 
    クールですよね？
-   Now
    ここで、
-   ,
-   as you
-   あなたが
-   scrub
-   or
-   play
-   再生するにつれて
-   through this clip
-   このクリップを
-   ,
-   you can see from the waveform where he starts and stops speaking
-   書いわの最初と最後の部分の場所を波形から見ることができまう。
-   .
+   あなたがこのクリップを早回しするか、再生するにつれて、
+   会話の最初と最後の部分の場所を
+   波形から見ることができます。
 
-   #+begin_example
+      #+begin_example
 再生のコントロール
 
 編集の重要な部分は、
@@ -732,31 +696,30 @@ around the world
 recognize
 認識している
 .
-You can use
-使うことができます
-the
-Spacebar を
-to start
-開始して
-and stop
-止めるために
+You can use the
+Spacebar を使うことができます
+to start and stop
+開始して、止めるために
 playback
 再生を
 and
 the
-Left Arrow と
-Right Arrow キーを
+Left Arrow と Right Arrow キーを
 to move forward and back one frame at a time
 一度に1 フレーム分前方と候補にむかって移動するための
 .
 More experienced users
+より経験のあるユーザーはね
 will be happy
 to know
 that the
-J, K, and L keys
+J, K, L の各キーが
 also
+また
 control
+コントロールする
 playback
+再生を
 at different speeds
 異なるスピードで
 .
@@ -811,18 +774,35 @@ or timeline viewer
   to scrub forward
   at half speed
 — Hold
-  K を押しにゃら、
+  K を保持して、
   and hold
-  J
+  保持してください
+  J を
   to scrub
-  backward at half speed
+  backward
+  at half speed
+  半分のスピードで
 — Press
-  L
+  押してください
+  L を
   twice
-  to shuttle forward at twice normal speed
-— Press J twice to shuttle backward at twice normal speed
+  2 回
+  to shuttle
+  forward
+  at twice normal speed
+  通常の2倍のスピードで
+— Press
+  J を
+  twice
+  2 回
+  to shuttle backward at twice normal speed
 
-You can keep tapping the J or L keys to increase the shuttling speed up to 64x
+You can keep tapping
+the
+J キーか L キーを
+to increase
+the shuttling speed
+up to 64x
 normal speed.
    #+end_example
 
@@ -853,36 +833,20 @@ normal speed.
 
     ...fiure
 
-    The second interview clip is edited
-    二番目のインタビューのクリップが編集されます。
-    into the timeline
     タイムラインの中の、、
-    starting at the position of the timeline playhead
     タイムラインの再生ヘッドがはじまる場所で、
-    .
+    二番目のインタビューのクリップが編集されます。
     最初のクリップの終わりは
     このクリップで上書きされています。
 
     ...fiure
 
     注意:
-    If you’re using
     DaVinci Resolve を macOS 上で使っている場合には
-    ,
-    you
-    may need to configure
-    設定する必要があるかもしれません
-    your keyboard settings
-    キーボード設定を
-    in
-    System Preferences の中で
-    to
-    “Use F1, F2, etc. keys as standard function keys”
-    to use
-    使うために
-    the default editing shortcuts
-    デフォルトの編集ショートカットを
-    .
+    デフォルトの編集ショートカットを使うために、
+    「System Preferences」 の中で、
+    “Use F1, F2, etc. keys as standard function keys” へ
+    キーボード設定を設定する必要があるかもしれません。
     あるいは、
     macOS のショートカットを上書きするために、
     fn キーを任意の F-キーとともに使うことができます。
@@ -894,27 +858,21 @@ normal speed.
     ...fiure
 
 16. この編集をレビューするために、
-    Playback > Play Around/To > Play Around Current Selection を選択するか、
-    / （フォワードスラッシュ）を押します
-    The edit is successful enough
+    「Playback > Play Around/To > Play Around Current Selection」 を
+    選択するか、
+    =/= （フォワードスラッシュ）を押します
     この編集者は十分成功していますが、
-    ,
-    but
-    it’s
-    それは
-    a nasty jump cut
-    ,
-    which you’ll fix in the following steps
+    それはひどいジャンプカットです。
     これを次のステップで修正します。
-    .
+
 
 **** B-Roll の挿入
 
 航空機に対する Brian の情熱を活気づけるために、
 いくつかの B-Roll のフッテージを追加する時間です。
 
-1. B-Roll スマートビンを選択し、
-   01 A380 TAKEOFF.mov を
+1. 「B-Roll 」スマートビンを選択し、
+   /01 A380 TAKEOFF.mov/ を
    ソースビューワーの中で開きます。
    このフッテージをレビューするために、、
    このクリップを最初から再生します。
@@ -923,67 +881,415 @@ normal speed.
 
 2. 飛行機のホイールが
    ランナウエイを離れはじめるにつれて
-   In 点を設定するために、
-   I を押します。
+   In 点を設定するために、 =I= を押します。
 
    ...fiure
 
 3. この飛行機の末尾がフレームを離れたら、
    Out 点を設定するために O を押します。。
 
-
-4. Ensure
-   your timeline playhead
-   is still
-   まだ
-   on the edit point
-   between the two interview clips
-   and
-   drag
-   the clip
-   to the
-   Insert overlay
-   in the timeline viewer
-   .
+4. タイムラインの再生ヘッドが
+   まだ 2 つのインタビュークリップの間の変更点上にあることを
+   確実にして、
+   このクリップを
+   タイムラインビューの中の Insert overlay へドラッグしてくだし。
 
    ...fiure
 
-   The clip
-   is added
-   in between the two interview clips
-   in the timeline
-   but has been inserted
-   between them rather than overwriting the clip at the playhead.
+   このクリップは
+   タイムラインの中の
+   これら 2 つのインタビューのクリップ追加されますが、の間に
+   再生ヘッドにあるクリップを上書きするのではなく、
+   それらの間に挿入されています。。
 
    ...fiure
 
-5. Move
-   the timeline playhead
-   back to the edit
-   between
-   INTERVIEW 01.mov
-   and
-   01 A380 TAKEOFF.mov
-   .
-   This
-   これは
-   will be the location
-   for your next edit
-   .
+5. /INTERVIEW 01.mov/ と
+   /01 A380 TAKEOFF.mov/ の間の編集点へ、
+   タイムラインの再生ヘッドを戻します。
+   これが次の編集点の場所になります。
 
-   NOTE Using the Up Arrow and Down Arrow keys are fast ways of moving
-   between the different edit points in your timeline. If you prefer, you can
-   always drag the timeline playhead, and it will snap to the nearest edit point as
-  long as your Snapping option is enabled. Press N to toggle snapping on or off.
+   注意:
+   上矢印キーと下矢印キーを使うということが、
+   タイムラインの中の異なる編集点の間を
+   移動するための早い方法です。
+   好む場合には、
+   常に
+   タイムラインの再生ヘッドをドラッグすることができ、
+   Snapping オプションが有効であるかぎり、
+   それが一番近い編集点にスマップします。
+   スナップ機能のオンオフをトグルするには N を押してください。
 
-6. From the media pool, open 02 A380 TAXI.mov in the source viewer. Play the clip
-   through to review.
+6. メディアプールから、
+   /02 A380 TAXI.mov/ を
+   ソースビューワーの中で開きます。
+   レビューするためにこのクリップを再生します。
 
    ...fiure
 
-   This
-   これは
-   is a nice overhead shot
-   of the same type of plane
-   that you’ve just edited into the
-   timeline, but the audio is a little distractin
+   これは、
+   今あなたがタイムラインの中で編集した
+   同じ種類の飛行機の、良いオーバーヘッドショットです、
+   音声が少し気を散らします。
+
+   ...fiure
+
+7. マウスポインターをソースビューワーの上に置き、
+   次に、
+   このクリップのビデオだけを挿入するために、
+   video-only overlay をクリックして、
+   タイムラインビューワーの中の Insert overlay へ
+   ドラッグします。
+
+   注意:
+   These overlays will allow
+   これらのオーバーレイは可能にします
+   you
+   あなたが
+   to edit
+   編集することを
+   only audio and video
+   音声とビデオだけを
+   for the clip in the source viewer
+   ソースビューワーの中にあるクリップに対する
+   if you
+   あなたが
+   are using
+   drag-and-drop editing
+   ドラッグアンドドロップによる
+   編集を使っている場合に
+   ,
+   or
+   the timeline viewer overlays
+   タイムラインビューのオーバーレイを
+   .
+   タイムラインの中で
+   ビデオの音声かどちらかだけか編集するのかと、
+   どのトラックをターゲットにするのかを
+   指定するためのさらに洗練された方法を、
+   レッスン 2 で学びます。
+
+   ここで、既存のクリップを分割するために、
+   1 つのクリップを挿入します。
+
+8. タイムラインの中で、
+   二番目の居んたびゅーのクリップを再生し、
+   Brian が
+   “If it was possible to shoot it
+   we wanted to go shoot it” と言った後で
+   再生を止めます。
+   これは次の編集の場所になります。
+
+   ...fiure
+
+9. 03 MALDIVES.mov を
+   ソースビューワーの中で開き、、
+   そのクリップをレビューします
+
+   ...fiure
+
+10. 飛行機が影が珊瑚礁を越えはじめるすぐ後に、
+    In 点を設定します。
+
+    ...fiure
+
+11. 再生ヘッドを 3 秒間前方へジャンプするために、
+    ソースビューワーの中で、
+    +300 とタイプし、
+    Return (Enter) を押します。
+
+    ...fiure
+
+12. Out 点を設定するために
+    =O= を押します。
+
+    ...fiure
+
+    注意:
+    直接ソースビューワーの中で
+    長さを設定することはできませんが、
+    再生ヘッドを前方にむかって移動し、
+    Out 点を設定するとが、
+    次に一番良い解決方法です。
+    However
+    しかし、
+    ,
+    you will probably
+    たぶんあなたは
+    notice
+    気付きます
+    that
+    the duration of the marked clip
+    マークされているクリップの長さ
+    （ソースビューワーの
+    左上の角にあるタイムコードによって表現されています）が、
+    indicates
+    示していることに
+    the duration you have marked
+    あなたがマークした長さが
+    is
+    03:01     （3 秒と 1 フレーム）であることを
+    .
+    This
+    これは Resolve が、
+    フレームのヘッド、またははじめに、
+    Out 点を
+    フレームのテール、または終わりに設定するからです。
+    This means
+    これは意味します
+    the minimum duration
+    you
+    can mark
+    あなたがマークすることができる
+    最小限のフレームが
+    is 1 frame
+    1 フレームであることを
+    .
+    If you
+    wish to make sure
+    you
+    are marking
+    exactly
+    3 seconds
+    ,
+    you’ll
+    need to move
+    one frame
+    back before
+    setting
+    the
+    Out point
+    .
+    At this  stage
+    though
+    けれど
+    ,
+    an extra frame
+    is nothing to worry about
+    心配することではありません
+    .
+
+13. このクリップを
+    再生ヘッドの場所に挿入するために,
+    F9 を押します。
+
+    ...fiure
+
+    注意:
+    If you
+    need to catch up
+    before
+    moving
+    to the next step
+    ,
+    select
+    the
+    TIMELINES bin wo
+    and
+    choose
+    「File > Import > Timeline」を選択して、
+    ,
+    navigate to
+    R18 Beginner Guide Lessons / Lesson 01 / Timelines / Age of Airplanes Catchup 1.drt へ
+    行って、、
+    and
+    click
+    「Open」をクリックしてください。
+    .
+
+
+**** タイムラインのクリップを取り除いて、トリムする
+
+素晴しい。
+Your edit is starting to come along
+あなたの編集はさまになってきていて、
+,
+and
+you’re
+あなたは
+now
+at the stage
+ステージにいます
+where
+you’re
+あなたが
+probably
+たぶん
+thinking
+考えている
+it
+may benefit
+from some refinement
+いくつかを洗練することによって
+.
+
+1. タイムラインの再生ヘッドを
+   真ん中の居んたびゅーんのはじめに移動し、
+   「Detail Zoom」ボタンをクリックします。
+
+   ...fiure
+
+   このクリップンのビデオをオーディオ上の
+   小さなチェインアイコンに、
+   あなたは気付きましたか？
+   このクリップの 2 つの部分がリンクされているということを、
+   それは意味します。
+   This can be useful
+   これが役に立つことがあります
+   if
+   you
+   あなたが
+   want to remove
+   取り除くか
+   or
+   move
+   移動したい場合に
+   bot h parts
+   of this clip
+   このクリップの
+   (
+   meaning
+   意味します
+   it
+   would be quite difficult
+   極めて難しいということを
+   to move
+   them
+   それらを
+   out of sync
+   with each other
+   互いに同期しないでおくことが
+   ,
+   for example
+   例えば
+   )
+   .
+
+2. タイムラインのツールバーの中で
+   「Linked Selection」 ボタンをクリックします。
+
+   ...fiure
+
+   「Linked Selection」を無効いしておくと、
+   クリップの間のリンクは無視されます。
+
+   ...fiure
+
+3. このインタビューのクリップのビデオ部分を選択し、あ
+   「Edit > Ripple Delete」を選択するか、
+   =Shift-Delete= (Backspace) を押します。
+
+   このクリップのビデオ部分が取り除かれ、
+   A380 が 離陸する前のショットの下に、
+   残っているオーディオがうまく移動します。あ
+
+   ...fiure
+
+   タイムラインの中で他のことが起きた他のことに、
+   あなたは気付きましたか？
+   ripple 削除を実行したので、
+   あなたがギャップを残さず、
+   タイムラインの中のこのフッテージの残りが
+   移動したということを、それは意味しました。
+   さらい言うべきことに、
+   最後のインタビューのクリップの中のオーディオとビデオはん
+   remained in sync
+
+   クリップの選択部分を
+   タイムラインから取り除くための別の方法は、
+   「Blade Edit mode」を使うことにってです。
+
+4. タイムラインに対して
+   リンクされている選択を有効にするために、
+   「Linked Selection」ボタンを
+   もう一度クリックします。
+
+5. 「Full Extent Zoom」ボタンをクリックし、
+   タイムライン上の最後のクリップまで再生します。
+
+   ...fiure
+
+   このサウンド部分を綺麗にするために、
+   Brian が
+   “...stay at that
+   location longer...” と言っている
+   部分を取り除きます。
+
+6. タイムライン上を最後のクリップまで再生し、
+   “... stay...” と言っているすぐ前で止めます。
+
+7. 再生ヘッドの場所でズームインするために
+   「Detail Zoom」ボタンをクリップします。
+
+8. タイムラインのツールバーから
+   「Blade Edit mode」 ボタンをクリックするか、
+    =B= を押します。
+
+   ...fiure
+
+9. 「Blade Edit mode」を選択したまめんえ、
+   マウスを再生ヘッドの場所に置き、
+   編集点を追加するために、
+   インタビューのクリップをクリックします。
+
+   ...fiure
+
+10. 前方へむかって再生し、
+    彼が
+    “...or it didn’t make the movie.” と
+    言っている前で止めます。
+
+11. 再生ヘッドの場所で
+    クリック上を.クリックすることによって、
+    別の編集点を追加します。
+
+    ...fiure
+
+12. タイムラインのツールバーの中で、
+    「Selection mode 」ボタンをクリックするか、
+     =A= を押します。
+
+    ...fiure
+
+13. 「選択モード（Selection mode）」を有効にしたままで、
+    編集点を今追加した、
+    このインタビュークリップの
+    必要のない真ん中の部分をクリックします。
+
+    ...fiure
+
+14. In 点と Out 点の間の部分を
+    リップル削除するために、
+    =Shift-Delete= (=Backspace=) を
+    押します。
+
+15. この新しい編集をプレビューするために
+    =/= （フォワードスラッシュ）を押します。
+
+この音声編集が、
+あなたが望んでいるほどちゃんとしていなくても
+心配しないでください;
+それを洗練するための機会がすぐにやってきます。
+
+
+
+**** Trim Edit Mode を使う
+
+The
+「Blade Edit mode」が
+isn’t the only mode
+唯一のモードであるわけではありません
+you have
+in your timeline
+タイムラインの中にある
+to help
+助けるための
+you
+あなたが
+refine
+洗練させることを
+the edit
+ハイシュウを
+.
+次の演習に対しあは
+「Trim Edit mode」 を使いまう。

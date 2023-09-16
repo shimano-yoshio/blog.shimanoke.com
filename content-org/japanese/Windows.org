@@ -23,7 +23,9 @@
 #+hugo_categories: Ubuntu
 # #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
 
-* Minisforum UM773 Lite (Mini PC) レビュー
+
+* Windows のコツ                                               :RefileTarget:
+** Minisforum UM773 Lite (Mini PC) レビュー
 :PROPERTIES:
 :EXPORT_DATE: <2023-09-01 Fri>
 :EXPORT_HUGO_SECTION: japanese/posts
@@ -42,7 +44,7 @@ Lite のほうを買いました。 SE ではないです。 SE のほうが
 
 - [[https://store.minisforum.jp/products/minisforum-um773-lite?variant=43979794415782][Minisforum UM773 Lite AMD Ryzen™ 7 7735HS Mini PC – Minisforum JP]]
 
-** スペック
+*** スペック
 
 スペックは以下のとおりです。
 
@@ -54,7 +56,7 @@ Lite のほうを買いました。 SE ではないです。 SE のほうが
   - 4K/60Hz HDMI X 2
   - USB4(8K@60Hz)ポート×1
 
-** パッケージと中身
+*** パッケージと中身
 
 パッケージの外観です。
 ビールの 350 缶を並べてあります。
@@ -87,7 +89,7 @@ Lite のほうを買いました。 SE ではないです。 SE のほうが
 - SSD 用のケーブル
 - ディスレーにマウントするあめの金具
 
-** セットアップの注意点
+*** セットアップの注意点
 
 Windows11 をセットアップするときに
 日本語キーボードが有効になっえいないので、
@@ -99,7 +101,7 @@ Windows11 をセットアップするときに
 #+caption: Windows11 のセットアップの注意書き
 [[file:images/um773_setup_manual.png]]
 
-** 使用感
+*** 使用感
 
 以下使ってみての感想です。
 
@@ -113,7 +115,7 @@ Windows11 をセットアップするときに
   2 週間電源をいれっぱなしにして使用しましたが、問題ないです。
 
 
-** Minisforum UM773 Lite は買いか？
+*** Minisforum UM773 Lite は買いか？
 
 さて、Minisforum UM773 Lite は買いかどうかですが、
 個人的には満足しています。
@@ -135,4 +137,89 @@ Windows11 をセットアップするときに
 買うべきではない人:
 - ゴリゴリのゲームをやる人
 - 機械学習などで GPU をたくさん使いたい人
+
+
+** TODO Chocolatey を使って Windows 11 でパッケージを管理する
+
+
+- 
+
+Chocolatey をインストールします。
+
+
+PowerSherll から管理者権限で次を実行します。
+
+#+begin_src sh :eval no
+Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))                                                                               Forcing web requests to allow TLS v1.2 (Required for requests to Chocolatey.org)
+#+end_src
+
+
+#+begin_example
+Getting latest version of the Chocolatey package for download.
+Not using proxy.
+Getting Chocolatey from https://community.chocolatey.org/api/v2/package/chocolatey/2.2.2.
+Downloading https://community.chocolatey.org/api/v2/package/chocolatey/2.2.2 to C:\Users\shima\AppData\Local\Temp\chocolatey\chocoInstall\chocolatey.zip
+Not using proxy.
+Extracting C:\Users\shima\AppData\Local\Temp\chocolatey\chocoInstall\chocolatey.zip to C:\Users\shima\AppData\Local\Temp\chocolatey\chocoInstall
+Installing Chocolatey on the local machine
+Creating ChocolateyInstall as an environment variable (targeting 'Machine')
+  Setting ChocolateyInstall to 'C:\ProgramData\chocolatey'
+WARNING: It's very likely you will need to close and reopen your shell
+  before you can use choco.
+Restricting write permissions to Administrators
+We are setting up the Chocolatey package repository.
+The packages themselves go to 'C:\ProgramData\chocolatey\lib'
+  (i.e. C:\ProgramData\chocolatey\lib\yourPackageName).
+A shim file for the command line goes to 'C:\ProgramData\chocolatey\bin'
+  and points to an executable in 'C:\ProgramData\chocolatey\lib\yourPackageName'.
+
+Creating Chocolatey folders if they do not already exist.
+
+chocolatey.nupkg file not installed in lib.
+ Attempting to locate it from bootstrapper.
+PATH environment variable does not have C:\ProgramData\chocolatey\bin in it. Adding...
+警告: Not setting tab completion: Profile file does not exist at
+'C:\Users\shima\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1'.
+Chocolatey (choco.exe) is now ready.
+You can call choco from anywhere, command line or powershell by typing choco.
+Run choco /? for a list of functions.
+You may need to shut down and restart powershell and/or consoles
+ first prior to using choco.
+Ensuring Chocolatey commands are on the path
+Ensuring chocolatey.nupkg is in the lib folder
+PS C:\WINDOWS\system32>
+#+end_example
+
+** TODO Windows 11 で SandS を使う
+
+-動かないんですけど...
+
+** TODO Windos 11 で SKK を使う）（CorvusSKK
+DEADLINE: <2023-09-11 Mon>
+
+corvusskk のインストール
+
+Install
+: choco install corvusskk
+Upgrade
+: choco upgrade corvusskk
+Uninstall
+: choco uninstall corvusskk
+
+corvusskk を有効にする
+
+辞書の追加
+https://skk-dev.github.io/dict/
+
+SKK-JISYO.L，.geo，.propernoun，.station
+
+SandS
+https://github.com/fiore57/SandSExe
+
+
+
+*** 参考文献
+- [[https://blog.fascode.net/2021/09/28/ime-skk/][SKKという選択 IME CorvusSKK | FascodeNetwork Blog]]
+- 
+
 

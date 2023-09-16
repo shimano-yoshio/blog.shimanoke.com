@@ -25,7 +25,8 @@
 
 
 * Ubuntu のコツ                                                :RefileTarget:
-** DONE ripgrep （Rust で作られた grep ）を使う
+** Ubuntu:Terminal                                            :RefileTarget:
+*** DONE ripgrep （Rust で作られた grep ）を使う
 CLOSED: [2023-09-05 Tue 15:32]
 :PROPERTIES:
 :EXPORT_DATE: <2023-09-04 Mon>
@@ -52,7 +53,7 @@ ripgrep は Rust で作られた grep です。
 - [[https://github.com/BurntSushi/ripgrep][BurntSushi/ripgrep: ripgrep recursively searches directories for a regex pattern while respecting your gitignore]]
 
 
-*** Ubuntu MATE 23.04 への ripgrep インストール
+**** Ubuntu MATE 23.04 への ripgrep インストール
 
 Ubuntu MATE 23.04 に ripgrep をインストールするには
 次のようにします:
@@ -62,7 +63,7 @@ Ubuntu MATE 23.04 に ripgrep をインストールするには
 sudo apt-get install ripgrep
 #+end_src
 
-*** ripgrep の使いかた
+**** ripgrep の使いかた
 
 ripgrep を使ってカレントディレクトリを "hoge" に対して再起動に検索するには
 次のようにします。
@@ -102,132 +103,13 @@ Ubuntu-Mate.org
 #+end_example
 
 
-*** 結論
+**** 結論
 
 grep のかわりに ripgrep を使いましょう。
 
 
 
-
-** TODO ラウンチャ Albert を Ubuntu で使う
-DEADLINE: <2023-09-12 Tue>
-:PROPERTIES:
-:EXPORT_DATE: <2023-09-10 Sun>
-:EXPORT_HUGO_SECTION: japanese/posts
-:EXPORT_FILE_NAME: use-alert
-:EXPORT_OPTIONS: toc:t num:t
-:END:
-:LOGBOOK:
-CLOCK: [2021-12-02 Thu 08:13]--[2021-12-02 Thu 08:37] =>  0:24
-CLOCK: [2021-12-02 Thu 08:12]--[2021-12-02 Thu 08:13] =>  0:01
-:END:
-
-- [[https://albertlauncher.github.io/installing/][Albert - Installing]]
-
-
-*** インストールした環境
-
-- OS : Ubuntu MATE 23.04 on VirtualBox on Windowss 11
-
-
-*** Albert のインストール
-
-次のようにして Albert をインストールします。
-詳しくは以下をごらんください。
-
-- [[https://software.opensuse.org/download.html?project=home%3Amanuelschneid3r&package=albert-master][パッケージのインストール: home:manuelschneid3r / albert-master]]
-
-#+caption: Albert のインストール
-#+begin_src sh :eval no
-echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_23.04/ /' | sudo tee /etc/apt/sources.list.d/home:manuelschneid3r.list
-curl -fsSL https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_23.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_manuelschneid3r.gpg > /dev/null
-sudo apt update
-sudo apt install albert-master
-#+end_src
-
-
-*** Albert を使う
-
-
-
-** DONE スクリーン上にキーストロークを表示する (Ubuntu 23.04)
-CLOSED: [2023-09-03 Sun 12:41]
-:PROPERTIES:
-:EXPORT_DATE: <2023-09-02 Sat>
-:EXPORT_HUGO_SECTION: japanese/posts
-:EXPORT_FILE_NAME: show-key-on-screen-mate
-:EXPORT_OPTIONS: toc:t num:t
-:END:
-:LOGBOOK:
-- State "DONE"       from "TODO"       [2023-09-03 Sun 12:41]
-:END:
-
-ときどき、プレゼンテーションの間のように、
-キーストロークを画面に表示したいことがあります。
-
-このために、私は [[https://www.thregr.org/wavexx/software/screenkey/][screenkey]] を使っていあます。
-
-- [[https://www.thregr.org/wavexx/software/screenkey/][Screencast your keys.]]
-
-この記事では、
-Screenkey のインストール/セットアップ方法を示します。
-
-*** 環境
-
-- OS: Ubuntu Mate 23.04 on VirtualBox] on Windows 11.
-
-
-*** screenkey のインストール
-
-Screenky を Ubuntu にインストールするには、
-これをターミナルの中でタイプします:
-
-#+caption: Install Screenkye
-#+begin_src sh :eval no
-sudo apt -y install screenkey
-#+end_src
-
-*** Screnkey をはじめる
-次に
-screenkey をターミナルからはじめます:
-
-#+caption: Start Screenkey
-#+begin_src sh :eval no
-screenkey
-#+end_src
-
-その後で screenkey アイコンが
-メインメニュー上に表示されます:
-
-#+attr_html: :alt Screenkye Icon on Main Menu
-#+ATTR_HTML: :width 50% :style float:center;border:2px solid black;
-#+caption: Screenkye のアイコン
-[[file:~/Documents/blog.shimanoke.com/content-org/japanese/images/screenshot-menu.png]]
-
-"Preferences" を選択して、
-自分の好みに設定してください。
-
-#+attr_html: :alt Screenkey の設定
-#+ATTR_HTML: :width 50% :style border:2px solid black;
-#+caption: Screenkey の設定
-[[file:~/Documents/blog.shimanoke.com/content-org/japanese/images/screenky-prefs.png]]
-
-
-... そうすると、キーストロークがスクリーン上に
-表示されることがわかります。
-
-#+attr_html: :al Screenkey の動いている様子
-#+ATTR_HTML: :width 50% :style border:2px solid black;
-#+caption: Screenkey の動いている様子
-[[file:~/Documents/blog.shimanoke.com/content-org/japanese/images/screenkye.gif]]
-
-
-
-
-
-
-
-** DONE peco を使って zsh でコマンド履歴を便利にする
+*** DONE peco を使って zsh でコマンド履歴を便利にする
 :PROPERTIES:
 :EXPORT_DATE: <2023-08-31 Thu>
 :EXPORT_HUGO_SECTION: japanese/posts
@@ -254,12 +136,12 @@ Zsh はコマンド補完がありますが、peco を使うと、
 #+caption: peco を起動した情愛
 [[file:images/peco-samoke.png]]
 
-*** この文書の設定できること
+**** この文書の設定できること
 
 - コマンド履歴の検索 (Ctl+r)
 - cd の履歴の検索 (Ctl+f)
 
-*** 参考文献
+**** 参考文献
 
 
 以下のサイトを参考にさせていただきました。
@@ -267,14 +149,14 @@ Zsh はコマンド補完がありますが、peco を使うと、
 - [[https://github.com/peco/peco][peco/peco: Simplistic interactive filtering tool]] : peco 本家
 - [[https://www.wakuwakubank.com/posts/862-mac-zsh-peco/][Mac | zshとpecoでコマンド入力作業を快適に - わくわくBank]] : zsh から
   peco を使う方法が詳しくのっています。
-*** 確認環境
+**** 確認環境
 確認した環境です。
 私は Ubuntu MATE を使っていますが、Windows でも動くようです。
 
 - Host OS : Windows11 Pro
 - Guest OS : Ubuntu Mate 23.04 on VirtualBox
 
-*** peco のインストール
+**** peco のインストール
 
 peco をインストールするには次のようにします:
 
@@ -283,7 +165,7 @@ peco をインストールするには次のようにします:
 sudo apt -y install peco
 #+end_src
 
-*** Zsh で peco を使うための設定
+**** Zsh で peco を使うための設定
 
 =~/.zshrc= に以下を追加します。
 
@@ -334,83 +216,251 @@ bindkey '^f' peco-cdr
 #+end_src
 
 
-*** 使用方法
+**** 使用方法
 
 - コマンド履歴の検索 (Ctl+r)
 - cd の履歴の検索 (Ctl+f)
 
-** TODO peco の色を変更する
+*** TODO peco の色を変更する
 
 - [[https://rochefort.hatenablog.com/entry/2015/12/10/210000][pecoのkeymapと色を変更 - rochefort's blog]]
 
 
-** TODO Ubuntu でスクリーンキャストを録画し、GIF に保存する
-DEADLINE: <2023-09-12 Tue>
+*** TODO ターミナルンの見栄えをよくするために PowerLine を使う
+
+*** TODO git の diff 出力を見やすくするためいのん delta を使う
 
 
-peek を使っています
+*** TODO bat を使ってファイルの中身を見る （less の代用）
+
+
+
+** [1/2] Ubuntu:Video                                         :RefileTarget:
+*** DONE スクリーン上にキーストロークを表示する (Ubuntu 23.04)
+CLOSED: [2023-09-03 Sun 12:41]
+:PROPERTIES:
+:EXPORT_DATE: <2023-09-02 Sat>
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: show-key-on-screen-mate
+:EXPORT_OPTIONS: toc:t num:t
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2023-09-03 Sun 12:41]
+:END:
+
+ときどき、プレゼンテーションの間のように、
+キーストロークを画面に表示したいことがあります。
+
+このために、私は [[https://www.thregr.org/wavexx/software/screenkey/][screenkey]] を使っていあます。
+
+- [[https://www.thregr.org/wavexx/software/screenkey/][Screencast your keys.]]
+
+この記事では、
+Screenkey のインストール/セットアップ方法を示します。
+
+**** 環境
+
+- OS: Ubuntu Mate 23.04 on VirtualBox] on Windows 11.
+
+
+**** screenkey のインストール
+
+Screenky を Ubuntu にインストールするには、
+これをターミナルの中でタイプします:
+
+#+caption: Install Screenkye
+#+begin_src sh :eval no
+sudo apt -y install screenkey
+#+end_src
+
+**** Screnkey をはじめる
+次に
+screenkey をターミナルからはじめます:
+
+#+caption: Start Screenkey
+#+begin_src sh :eval no
+screenkey
+#+end_src
+
+その後で screenkey アイコンが
+メインメニュー上に表示されます:
+
+#+attr_html: :alt Screenkye Icon on Main Menu
+#+ATTR_HTML: :width 50% :style float:center;border:2px solid black;
+#+caption: Screenkye のアイコン
+[[file:~/Documents/blog.shimanoke.com/content-org/japanese/images/screenshot-menu.png]]
+
+"Preferences" を選択して、
+自分の好みに設定してください。
+
+#+attr_html: :alt Screenkey の設定
+#+ATTR_HTML: :width 50% :style border:2px solid black;
+#+caption: Screenkey の設定
+[[file:~/Documents/blog.shimanoke.com/content-org/japanese/images/screenky-prefs.png]]
+
+
+... そうすると、キーストロークがスクリーン上に
+表示されることがわかります。
+
+#+attr_html: :al Screenkey の動いている様子
+#+ATTR_HTML: :width 50% :style border:2px solid black;
+#+caption: Screenkey の動いている様子
+[[file:~/Documents/blog.shimanoke.com/content-org/japanese/images/screenkye.gif]]
+
+
+
+
+
+
+
+*** TODO How to take a screenshot on Ubunbu MATE 23.040a
+DEADLINE: <2023-09-06 Wed>
+
+
+
+** TODO Ubuntu でスクリーンキャストを録画し、GIF に保存する (peek)
+DEADLINE: <2023-09-17 Sun>
+:PROPERTIES:
+:EXPORT_DATE: <2023-09-15 Fri>
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: use-peek
+:EXPORT_OPTIONS: toc:t num:t
+:END:
+:LOGBOOK:
+CLOCK: [2023-09-16 Sat 09:31]--[2023-09-16 Sat 09:32] =>  0:01
+:END:
+
+Linux で画面を動画としてキャプチャしたい場合には、
+「[[https://obsproject.com/][OBS]]」を使うことが一般的ですが、
+もっと御気軽に画面を録画し、 GIF アニメーションとして
+保存したいことがあります。
+
+私はこのにめに peek を使っています
 
 - [[https://github.com/phw/peek][phw/peek: Simple animated GIF screen recorder with an easy to use interface]]
 
+この文書では peek のインストール方法と使いかたを説明します。
 
-*** Install
+*** peek のインストール
 
+Ubuntu に peek をインストールします。
+次をターミナルの中で実行してください。
+
+#+caption: peek のインストール
 #+begin_src sh :eval no
-sudo add-apt-repository ppa:peek-developers/stable
-sudo apt update
-sudo apt install peek
+  sudo apt update
+  sudo apt install peek
 #+end_src
 
+peek のバージョンを確認します
 
-バージョン確認
+#+caption: peek のバージョン確認
 #+begin_src sh
-/usr/bin/peek -v
+/usr/bin/peek --version
 #+end_src
 
 #+begin_example
 Peek 1.5.1
 #+end_example
 
+バージョン番号が出力されたら peek のインストールは成功です。
 
-** TODO ターミナルンの見栄えをよくするために PowerLine を使う
+*** peek を使ってみる
 
-** TODO git の diff 出力を見やすくするためいのん delta を使う
+ターミナルから次のコマンドを入力して、
+peek をたちあげます。
+
+#+caption: peek の起動
+#+begin_src sh :eval no
+peek
+#+end_src
 
 
-** TODO bat を使ってファイルの中身を見る （less の代用）
+すると次のような画面になるので、タイトルを右クリックし、
+「Resize」をクリックして、録画したい領域を選択します。
+
+#+attr_html: :alt peek の画面
+#+ATTR_HTML: :width 50% :style float:center;border:2px solid black;
+#+caption: peek の画面
+[[file:images/peek-select-area.png]]
 
 
-** TODO Zoom In/Out in Ubuntu MATE 23.04
-DEADLINE: <2023-09-03 Sun>
+録画する領域が選択できたら、右上の「Record as GIF」をクリックして、
+録画を開始します。
+
+すると 「Record as GIF」ボタンが 「Stop」に変化します。
+
+#+attr_html: :alt peek で録画中
+#+ATTR_HTML: :width 50% :style float:center;border:2px solid black;
+#+caption: peek で録画中
+[[file:images/peek-in-recording.png]]
+
+
+録画を終了するには「Stop」ボタンを押してください。
+ファイルを保存するダイアログが出ます。
+デフォルトの保存先は 「=~/Videos=」です。
+これは peek の設定で変更することができます。
+
+
+以下に例を示します。ターミナルの操作であれば、問題なく録画されています。
+
+
+#+attr_html: :al peek での録画の例
+#+ATTR_HTML: :width 50% :style border:2px solid black;
+#+caption: peek での録画の例
+[[file:~/Documents/blog.shimanoke.com/content-org/japanese/images/screenkye.gif]]
+
+
+ちなみにこのファイルのサイズは 150 KByte ほどです。
+
+*** 結論
+
+OBS と peek の使いわけです。
+
+- OBS::
+  - YouTube などに綺麗なビデオをアップロードするため
+  - ストリーミング配信を行なうため
+- peek::
+  - ブログなどに気軽に動画を入れるため
+
+
+*** 参考文献
+
+- [[https://github.com/phw/peek][phw/peek: Simple animated GIF screen recorder with an easy to use interface]]
+
+
+** Ubuntu:GUI                                                 :RefileTarget:
+*** TODO Zoom In/Out in Ubuntu MATE 23.04
+DEADLINE: <2023-09-16 Sat>
 :LOGBOOK:
 CLOCK: [2023-03-24 Fri 15:04]--[2023-03-24 Fri 15:05] =>  0:01
 :END:
 
-*** Purpose
+**** Purpose
 
 It is useful to zoom in/out your screen.
 
-*** Environment
+**** Environment
 
 #+begin_src sh
 cat /etc/os-release
 #+end_src
 
 
-*** Reference
+**** Reference
 
 - https://learnubuntumate.weebly.com/enable-magnification.html
 
 
-*** Install Packages
+**** Install Packages
 
 #+begin_src sh :eval no
 sudo apt -y install compiz compizconfig-settings-manager compiz-plugins
 #+end_src
 
-*** Setup
+**** Setup
 
-**** Change the window manaer to Commpiz
+***** Change the window manaer to Commpiz
 
 1. Open "MATE Tweak"
 2. Selct "WindowsW
@@ -420,7 +470,7 @@ sudo apt -y install compiz compizconfig-settings-manager compiz-plugins
 #+caption: Select "Commpiz" in Ubuntu MATE
 [[file:images/mate-tweak-select-winmngr.png]]
 
-**** Zoom Settin
+***** Zoom Settin
 
 - Zoom In : <super>semicolon
 - Zoom Out : <super>equal
@@ -481,40 +531,75 @@ in the Accessibilty category
 [[file:images/mate-zoom-settings.png]]
 
 
-*** Conclusion
+**** Conclusion
 
 Ubuntu 上でスクリーンの拡大/縮小ができるようになります。
 
+*** TODO Ubuntu Mate でメニューなどのフォントを微調整する方法
 
-** TODO Ubuntu でスクリーンキャストを録画し、GIF に保存する
+「コントロールセンター」→ 「ルック & フィール」→ 「外観」
 
-- [[https://github.com/phw/peek][phw/peek: Simple animated GIF screen recorder with an easy to use interface]]
+で、「フォント」タブを選択し、「詳細」を選択
+
+DPI 数の数値をあげます。
 
 
-*** Install
+
+*** TODO ラウンチャ Albert を Ubuntu で使う
+DEADLINE: <2023-09-12 Tue>
+:PROPERTIES:
+:EXPORT_DATE: <2023-09-10 Sun>
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: use-alert
+:EXPORT_OPTIONS: toc:t num:t
+:END:
+:LOGBOOK:
+CLOCK: [2021-12-02 Thu 08:13]--[2021-12-02 Thu 08:37] =>  0:24
+CLOCK: [2021-12-02 Thu 08:12]--[2021-12-02 Thu 08:13] =>  0:01
+:END:
+
+- [[https://albertlauncher.github.io/installing/][Albert - Installing]]
 
 
+**** インストールした環境
+
+- OS : Ubuntu MATE 23.04 on VirtualBox on Windowss 11
+
+
+**** Albert のインストール
+
+次のようにして Albert をインストールします。
+詳しくは以下をごらんください。
+
+- [[https://software.opensuse.org/download.html?project=home%3Amanuelschneid3r&package=albert-master][パッケージのインストール: home:manuelschneid3r / albert-master]]
+
+#+caption: Albert のインストール
 #+begin_src sh :eval no
-sudo add-apt-repository ppa:peek-developers/stable
+echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_23.04/ /' | sudo tee /etc/apt/sources.list.d/home:manuelschneid3r.list
+curl -fsSL https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_23.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_manuelschneid3r.gpg > /dev/null
 sudo apt update
-sudo apt install peek
+sudo apt install albert-master
 #+end_src
 
-#+begin_src sh
-/usr/bin/peek -v
-#+end_src
 
-#+begin_example
-Peek 1.5.1
-#+end_example
+**** Albert を使う
 
 
-** TODO Use UIM on Ubuntu Mate 23.04
-DEADLINE: <2023-09-02 Sat>
 
-: sudo apt install uim uim-data uim-mozc uim-plugins uim-xim
+
+
+** TODO Ubuntu Mate 23.04 上で UIM を使う
+DEADLINE: <2023-09-09 Sat>
+
+
+
+: sudo apt install uim uim-data uim-plugins uim-xim
+: sudo apt install uim-mozc
+: sudo apt install uim-skk
 
 =~/.zshrc= 
+
+
 
 #+begin_example
 export XMODIFIERS=@im=uim
@@ -522,6 +607,14 @@ export GTK_IM_MODULE=uim
 export QT_IM_MODULE=uim
 #+end_example
 
+~/.Xresources
+
+#+begin_example
+Emacs*UseXIM: false
+#+end_example
+
+
+*** 参考文献
 
 - [[https://whoraibo.hatenablog.com/entry/2021/02/23/222612][Ubuntu 18.04で日本語, 韓国語混在入力: uim-mozc, byeoru - 風来坊@真幸福知]]
 
@@ -530,7 +623,7 @@ export QT_IM_MODULE=uim
 ** TODO Ubuntu での情報取得あれこれ
 
 
-*** インストールされているパッケージ
+*** インストールされているパッケージの一覧を得る
 
 #+begin_src sh :eval no
 apt list
@@ -549,17 +642,27 @@ uname -a
 #+end_src
 
 
+*** CPU 情報
 
-** TODO Ubuntu Mate t でメニューなどのフォンオを微調整する方法
-
-「コントロールセンター」→ 「ルック & フィール」→ 「外観」
-
-で、「フォント」タブを選択し、「詳細」を選択
-
-DPI 数の数値をあげます。
-
-** TODO How to take a screenshot on Ubunbu MATE 23.040a
-DEADLINE: <2023-09-06 Wed>
+#+begin_src sh
+cpuinfo
+#+end_src
 
 
+#+begin_src sh :eval no
+cat /proc/cpuinfo
+#+end_src
 
+
+*** ディスク情報
+
+
+#+begin_src sh :eval no
+df -h
+#+end_src
+
+*** ディスクのマウント情報
+
+#+begin_src sh :eval no
+df -h
+#+end_src

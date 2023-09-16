@@ -64,7 +64,7 @@ with the key you want to use.
 That's all. Enjoy!
 
 ** TODO Bind "Henkan" key to set shift key in Emacs
-DEADLINE: <2023-09-10 Sun>
+DEADLINE: <2023-09-18 Mon>
 
 This means that if you hit "Henkan" key, then hit "s",
 then you get "T".
