@@ -318,7 +318,7 @@ DEADLINE: <2023-09-06 Wed>
 
 
 
-** DONE Ubuntu でスクリーンキャストを録画し、GIF に保存する (peek)
+*** DONE Ubuntu でスクリーンキャストを録画し、GIF に保存する (peek)
 CLOSED: [2023-09-16 Sat 10:38] DEADLINE: <2023-09-17 Sun>
 :PROPERTIES:
 :EXPORT_DATE: <2023-09-15 Fri>
@@ -342,7 +342,7 @@ Linux で画面を動画としてキャプチャしたい場合には、
 
 この文書では peek のインストール方法と使いかたを説明します。
 
-*** peek のインストール
+***** peek のインストール
 
 Ubuntu に peek をインストールします。
 次をターミナルの中で実行してください。
@@ -366,7 +366,7 @@ Peek 1.5.1
 
 バージョン番号が出力されたら peek のインストールは成功です。
 
-*** peek を使ってみる
+***** peek を使ってみる
 
 ターミナルから次のコマンドを入力して、
 peek をたちあげます。
@@ -414,7 +414,7 @@ peek
 
 ちなみにこのファイルのサイズは 150 KByte ほどです。
 
-*** 結論
+***** 結論
 
 OBS と peek の使いわけです。
 
@@ -425,116 +425,114 @@ OBS と peek の使いわけです。
   - ブログなどに気軽に動画を入れるため
 
 
-*** 参考文献
+***** 参考文献
 
 - [[https://github.com/phw/peek][phw/peek: Simple animated GIF screen recorder with an easy to use interface]]
 
 
 ** Ubuntu:GUI                                                 :RefileTarget:
-*** TODO Zoom In/Out in Ubuntu MATE 23.04
+*** TODO Ubuntu MATE 23.04 で画面をズームイン/ズームアウトする
 DEADLINE: <2023-09-16 Sat>
+:PROPERTIES:
+:EXPORT_DATE: <2023-09-16 Sat>
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: howto-zoomin-in^mate
+:EXPORT_OPTIONS: toc:t num:t
+:END:
 :LOGBOOK:
+CLOCK: [2023-09-17 Sun 16:23]
 CLOCK: [2023-03-24 Fri 15:04]--[2023-03-24 Fri 15:05] =>  0:01
 :END:
 
-**** Purpose
+スクリーンキャストで画面の細かい部分を説明するときに、
+画面をズームできると便利です。
 
-It is useful to zoom in/out your screen.
-
-**** Environment
-
-#+begin_src sh
-cat /etc/os-release
-#+end_src
+ここでは Ubuntu MATE 23.04 で
+画面をズームイン/ズームアウトする方法を
+説明します。
 
 
-**** Reference
 
-- https://learnubuntumate.weebly.com/enable-magnification.html
+**** 必要なパッケージのインストール
 
+次を使って、必要なパッケージをインスします。
 
-**** Install Packages
-
+#+caption: 必要なパッケージのインストール
 #+begin_src sh :eval no
 sudo apt -y install compiz compizconfig-settings-manager compiz-plugins
 #+end_src
 
-**** Setup
+**** ズームイン/ズームアウトの設定
 
-***** Change the window manaer to Commpiz
+必要なパッケージがインストールされた、
+ズームイン/ズームアウトの設定を行ないます。
 
-1. Open "MATE Tweak"
-2. Selct "WindowsW
-3. In "Window Manager"
-   - Select "Commpiz"
+***** Commpiz の中でウインドウマネージャを変更する
 
-#+caption: Select "Commpiz" in Ubuntu MATE
+まず、使用するウインドウマネージャを
+変更します:
+
+1. "MATE Tweak" を開きます
+2. "Windowls" を選択します
+3. "Window Manager" の中で
+   "Commpiz" を選択します
+
+#+attr_html: alt: "Commpiz" を選択する
+#+ATTR_HTML: :width 50% :style float:center;border:2px solid black;
+#+caption: "Commpiz" を選択する
 [[file:images/mate-tweak-select-winmngr.png]]
 
-***** Zoom Settin
+***** ズームのセットアップ
 
-- Zoom In : <super>semicolon
-- Zoom Out : <super>equal
+次にキーを次のようにセットアップします
 
-Open the control center:
+- ズームイン : <super>semicolon
+  （Windows キー　＋　セミコロン）
+- ズームアウト : <super>equal
+  （Windows キー + "=" キー）
 
-mate-control-center
+=<super>= キーは。 "Widodws" キーです。
 
-When the Control Center dialog box appears
-,
-scroll down
-to the
-"Look and Feel"
-group
-and click on the CompizConfig Settings Manager.
+まず「Control Center」を開きあます。
 
+: mate-control-center
 
+次に 「CompizConfig Settings Manager」を
+クリックします。
+
+#+attr_html: alt: 「CompizConfig Settings Manager」を表示する
+#+ATTR_HTML: :width 50% :style float:center;border:2px solid black;
+#+caption: 「CompizConfig Settings Manager」を表示する
 [[file:images/select-compiz-from-ctl-ctr.png]]
 
-Click the Composite icon under the General group.
+次に
+「CompizConfig Settings Manager」の
+中で、
+「Zoom In key」と
+「Zoom Out  key」を次のように設定します。
 
-
-Uncheck
-the box
-to the right
-of
-Unredirect Fullscreen Windows
-and then
-click
-the Back button
-in the lower left corner
-of the dialog box
-.
-This feature
-causes
-screen
-flickering
-on a lot
-of machines
-.
-However
-if your machine
-can support it
-,
-it can dramatically improve graphical performance.
-
-
-Make sure
-you
-have checks
-next
-to Magnifier
-and Enhanced Zoom Desktop
-in the Accessibilty category
-. 
-
-#+caption: Zoom In/Out Settings
+#+attr_html: alt: 「CompizConfig Settings Manager」を表示する
+#+ATTR_HTML: :width 50% :style float:center;border:2px solid black;
+#+caption: ズームイン/ズームアウトの設定
 [[file:images/mate-zoom-settings.png]]
 
+これでズームイン/ズームアウトを設定することができました。
 
-**** Conclusion
 
+**** 結論
+
+以上の設定を使うと、
 Ubuntu 上でスクリーンの拡大/縮小ができるようになります。
+
+- ズームイン :: "Windows" + セミコロン
+- ズームアウト :: "Windows" + "=" キー
+
+
+**** 参考文献
+
+- https://learnubuntumate.weebly.com/enable-magnification.html
+
+
 
 *** TODO Ubuntu Mate でメニューなどのフォントを微調整する方法
 
