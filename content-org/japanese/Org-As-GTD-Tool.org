@@ -1,0 +1,86 @@
+#+TITLE: GTD ツールとしてのOrg mode
+#+LANGUAGE: ja
+#+AUTHOR: 島野 善雄
+#+EMAIL: shimano.yoshio@gmail.com
+# 出版した日付
+#+date: <2023-08-31 Thu>
+# 更新日を自動的につける
+#+hugo_auto_set_lastmod: t
+# 見出しをレベル 6 まで出す
+#+OPTIONS: H:6 num:nil
+#+OPTIONS: toc:1
+#+STARTUP: indent
+#+hugo_type: post
+# 出力するディレクトリ
+#+hugo_base_dir: ../..
+# 出版するファイル名
+#+hugo_section: japanese/docs
+#+OPTIONS: creator:nil author:t
+#+LANGUAGE: ja
+# Hugo のタグ
+#+filetags: Emacs Spacemacs Org-mode GTD
+# Hugo のカテゴリー
+#+hugo_categories: GTD
+# #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
+
+
+
+
+* TODO Org mode で GTD                                          :RefileTarget:
+
+** 目的
+
+- GTD を Org mode で行ないたい
+- いろんな人が使える共通設定を作りたい
+
+** 準備
+
+*** TODO Spacemacs で Org mode を有効にする
+
+init.el の中で
+
+
+*** アジェンダファイルを作成する
+**** GTP の受信箱を用紙する
+
+~/org/Inbox.org
+
+*** デフォルトのノートファイルそ指定す
+
+
+#+begin_src emacs-lisp
+  (setq org-default-notes-file
+        (concat org-directory "/notes.org"))
+#+end_src
+
+*** 複数の TODO キーワードを定義する
+
+*** タグを定義する
+
+*** 収集のセットアップ
+
+**** 収集のテンプレートを作成する
+
+- 家 ::
+  一般的なアイテム
+
+** GTD の収集を行なう
+
+
+
+
+** 優先順位について
+
+- 優先順位はつけない
+- 他の人に優先順位をつけてもらう
+  - 上司、奥様
+
+** 工数見積りをつける
+
+*** 工数見積りに対して許可されている値を定義する
+
+** 自分の作業時間を記録する
+
+** 列ビューを使う
+
+*** 列ビューの定義

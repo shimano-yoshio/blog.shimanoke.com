@@ -195,7 +195,7 @@ PS C:\WINDOWS\system32>
 -動かないんですけど...
 
 ** TODO Windos 11 で SKK を使う）（CorvusSKK
-DEADLINE: <2023-09-11 Mon>
+DEADLINE: <2023-09-21 Thu>
 
 corvusskk のインストール
 

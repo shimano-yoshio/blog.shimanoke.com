@@ -1,4 +1,4 @@
-#+TITLE: Org modeの骨
+#+TITLE: Org modeで GPD
 #+LANGUAGE: ja
 #+AUTHOR: 島野 善雄
 #+EMAIL: shimano.yoshio@gmail.com
@@ -18,11 +18,9 @@
 #+OPTIONS: creator:nil author:t
 #+LANGUAGE: ja
 # Hugo のタグ
-#+filetags: Emacs Org-mode
+#+filetags: Orgmode
 # Hugo のカテゴリー
-#+hugo_categories: Emacs
+#+hugo_categories: Org-mode
 # #+hugo_custom_front_matter: :thumbnail images/org-to-hugo.svg
-
-
 
 

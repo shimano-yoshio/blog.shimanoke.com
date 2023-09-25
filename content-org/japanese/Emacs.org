@@ -542,24 +542,65 @@ Spacemacs の終了メニューが出るので、
 
 *** 結論
 
-** TODO Spacemacs で画面のズームイン/ズームアウト
+** DONE Epacemacs でテキストのズームイン/ズームアウト
+CLOSED: [2023-09-25 Mon 09:51] DEADLINE: <2023-09-25 Mon>
+:PROPERTIES:
+:EXPORT_DATE: <2023-09-24 Sun>
+:EXPORT_HUGO_SECTION: japanese/posts
+:EXPORT_FILE_NAME: emacs-zoom-in-out
+:EXPORT_OPTIONS: toc:t num:t
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2023-09-25 Mon 09:51]
+:END:
+
+このドキュメントでは、Emacs の中でテキストの
+ズームイン/ズームアウトする方法を説明します。
 
 *** 目的
 
+Emacs でキーバインディングを設定して、
+テキストのズームイン/ズームアウトを簡単に行ないます。
 
 *** 設定
 
+次を Emacs の初期化ファイルに入れます:
+
+#+caption: Emacs でズームイン/ズームアウトを行なう
+#+BEGIN_SRC emacs-lisp :tangle yes
+ ;; Zoom in
+  (define-key global-map (kbd "C-+") 'text-scale-increase)
+
+  ;; Zoom out
+  (define-key global-map (kbd "C--") 'text-scale-decrease)
+#+END_SRC
+
+
 *** 使用方法
-- =Ctln+ "-"= ::
-  画面のズームアウト
-- =Ctln+ "shift" + -"= ::
-  画面のズームイン
+
+次のキーバインディングでテキストのズームイン/ズームアウトを
+行なうことができます。Emacs の中のどこからでも使用できます。
+
+- =Ctl + "+"= ::
+  テキストのズームイン
+- =Ctl + "shift" + -"= ::
+  テキストのズームアウト
+
 
 このキーバインディングはよく使われているようで、
 VSCode や qterminal でも使用することができます。
 
-
 *** 結論
+
+上で設定したるキーバインディングを使うと、
+次のキーを使って Emacs のテキストのズームイン/ズームアウトを
+行なうことができます。
+
+- =Ctl + "+"= ::
+  テキストのズームイン
+- =Ctl + "shift" + -"= ::
+  テキストのズームアウト
+
 
 ** TODO Spacemacs のフォント設定
 

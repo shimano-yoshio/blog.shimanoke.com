@@ -314,7 +314,7 @@ screenkey
 
 
 *** TODO How to take a screenshot on Ubunbu MATE 23.040a
-DEADLINE: <2023-09-06 Wed>
+DEADLINE: <2023-09-13 Wed>
 
 
 
@@ -431,8 +431,8 @@ OBS と peek の使いわけです。
 
 
 ** Ubuntu:GUI                                                 :RefileTarget:
-*** TODO Ubuntu MATE 23.04 で画面をズームイン/ズームアウトする
-DEADLINE: <2023-09-16 Sat>
+*** DONE Ubuntu MATE 23.04 で画面をズームイン/ズームアウトする
+CLOSED: [2023-09-17 Sun 16:53] DEADLINE: <2023-09-16 Sat>
 :PROPERTIES:
 :EXPORT_DATE: <2023-09-16 Sat>
 :EXPORT_HUGO_SECTION: japanese/posts
@@ -440,7 +440,8 @@ DEADLINE: <2023-09-16 Sat>
 :EXPORT_OPTIONS: toc:t num:t
 :END:
 :LOGBOOK:
-CLOCK: [2023-09-17 Sun 16:23]
+- State "DONE"       from "TODO"       [2023-09-17 Sun 16:53]
+CLOCK: [2023-09-17 Sun 16:23]--[2023-09-17 Sun 16:53] =>  0:30
 CLOCK: [2023-03-24 Fri 15:04]--[2023-03-24 Fri 15:05] =>  0:01
 :END:
 
@@ -545,7 +546,7 @@ DPI 数の数値をあげます。
 
 
 *** TODO ラウンチャ Albert を Ubuntu で使う
-DEADLINE: <2023-09-12 Tue>
+DEADLINE: <2023-09-22 Fri>
 :PROPERTIES:
 :EXPORT_DATE: <2023-09-10 Sun>
 :EXPORT_HUGO_SECTION: japanese/posts
@@ -588,7 +589,7 @@ sudo apt install albert-master
 
 
 ** TODO Ubuntu Mate 23.04 上で UIM を使う
-DEADLINE: <2023-09-09 Sat>
+DEADLINE: <2023-09-18 Mon>
 
 
 
