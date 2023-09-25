@@ -1,8 +1,8 @@
 +++
-title = "Epacemacs でテキストのズームイン/ズームアウト"
+title = "Emacs でテキストのズームイン/ズームアウト"
 author = ["島野 善雄"]
 date = 2023-09-25T09:51:00+09:00
-lastmod = 2023-09-25T09:51:35+09:00
+lastmod = 2023-09-25T10:00:23+09:00
 tags = ["Emacs"]
 categories = ["Ubuntu"]
 type = "post"

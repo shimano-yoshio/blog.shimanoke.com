@@ -542,7 +542,7 @@ Spacemacs の終了メニューが出るので、
 
 *** 結論
 
-** DONE Epacemacs でテキストのズームイン/ズームアウト
+** DONE Emacs でテキストのズームイン/ズームアウト
 CLOSED: [2023-09-25 Mon 09:51] DEADLINE: <2023-09-25 Mon>
 :PROPERTIES:
 :EXPORT_DATE: <2023-09-24 Sun>
